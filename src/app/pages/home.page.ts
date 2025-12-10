@@ -15,10 +15,10 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
   providers: [provideIcons({ lucideGithub })],
   template: `
     <elb-layout>
-      <div class="flex flex-col items-center justify-center gap-5 py-10">
+      <div class="flex flex-col items-center justify-center gap-6 py-10">
         <div class="text-center">
-          <h1 class="text-5xl font-bold">elbe/ui</h1>
-          <p class="text-muted-foreground mt-2 text-xl">Custom spartan/ui components</p>
+          <h1 class="text-5xl font-bold">elbe/<span class="text-primary">ui</span></h1>
+          <p class="text-muted-foreground mt-3 text-xl">Custom spartan/ui components</p>
         </div>
 
         <a
