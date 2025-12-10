@@ -24,12 +24,12 @@ export class ElbGallery implements OnDestroy {
   });
   protected readonly _computedClass = computed(() => hlm(this._userClass()));
 
-  public readonly mainClass = input<ClassValue>();
-  protected readonly _computedMainClass = computed(() =>
+  public readonly photoswipeClass = input<ClassValue>();
+  protected readonly _computedPhotoswipeClass = computed(() =>
     hlm(
       '[--pswp-bg:var(--color-foreground)]',
       '[--pswp-icon-color-secondary:var(--color-muted-foreground)] [--pswp-icon-color:var(--color-muted)] [--pswp-icon-stroke-color:var(--color-muted-foreground)]',
-      this.mainClass(),
+      this.photoswipeClass(),
     ),
   );
 
@@ -49,7 +49,7 @@ export class ElbGallery implements OnDestroy {
       this.lightbox = new PhotoSwipeLightbox({
         gallery: `#${this.galleryId()}`,
         children: this.children(),
-        mainClass: this._computedMainClass(),
+        mainClass: this._computedPhotoswipeClass(),
         pswpModule: () => import('photoswipe'),
         ...this.options(),
       });
