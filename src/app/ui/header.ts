@@ -11,9 +11,9 @@ import { config } from '../config';
   providers: [provideIcons({ lucideGithub })],
   template: `
     <header
-      class="border-border bg-background sticky top-0 z-10 flex h-(--header-height) items-center justify-between border-b px-4"
+      class="border-border bg-background/40 sticky top-0 z-10 flex h-(--header-height) items-center justify-between border-b px-4 backdrop-blur-lg"
     >
-      <a routerLink="/" class="text-medium"> elbe/ui </a>
+      <a routerLink="/" class="font-semibold"> elbe/<span class="text-primary">ui</span> </a>
 
       <nav>
         <a hlmBtn variant="ghost" href="${config.github}" target="_blank" rel="noopener noreferrer">
