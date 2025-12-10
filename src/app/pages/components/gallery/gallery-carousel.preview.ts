@@ -12,8 +12,10 @@ import { images } from './images';
       <hlm-carousel [options]="{ loop: true }">
         <hlm-carousel-content>
           @for (image of images; track $index) {
-            <hlm-carousel-item class="aspect-video">
-              <elb-gallery-item
+            <hlm-carousel-item>
+              <a
+                elbGalleryItem
+                class="flex aspect-video overflow-hidden rounded-lg"
                 [imageSrc]="image.src"
                 [width]="image.width"
                 [height]="image.height"
@@ -26,7 +28,7 @@ import { images } from './images';
                   [alt]="image.alt"
                   priority
                 />
-              </elb-gallery-item>
+              </a>
             </hlm-carousel-item>
           }
         </hlm-carousel-content>

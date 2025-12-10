@@ -9,7 +9,8 @@ import { images } from './images';
   template: `
     <elb-gallery class="grid grid-cols-3 gap-4">
       @for (image of images; track $index) {
-        <elb-gallery-item
+        <a
+          elbGalleryItem
           class="aspect-square overflow-hidden rounded-lg"
           [imageSrc]="image.src"
           [width]="image.width"
@@ -23,7 +24,7 @@ import { images } from './images';
             [alt]="image.alt"
             priority
           />
-        </elb-gallery-item>
+        </a>
       }
     </elb-gallery>
   `,
