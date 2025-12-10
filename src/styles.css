@@ -5,6 +5,8 @@
 
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 
+@import 'photoswipe/photoswipe.css' layer(components);
+
 :root {
   color-scheme: light;
 
