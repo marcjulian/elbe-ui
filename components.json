@@ -1,0 +1,4 @@
+{
+  "componentsPath": "libs/ui",
+  "importAlias": "@spartan-ng/helm"
+}
