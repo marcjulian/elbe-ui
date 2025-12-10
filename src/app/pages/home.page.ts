@@ -5,6 +5,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
 import { Layout } from '../ui/layout';
 import { Preview } from '../ui/preview';
+import { code } from '../ui/typography';
 import { GalleryCarouselPreview } from './components/gallery/gallery-carousel.preview';
 import { GalleryPreview } from './components/gallery/gallery.preview';
 
@@ -43,6 +44,12 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
           >photoswipe</a
         >
         library.
+      </p>
+
+      <p class="text-muted-foreground mt-2">
+        Install <code class="${code}">npm install photoswipe</code> and add the styles to your
+        global styles file:<br />
+        <code class="${code}">@import 'photoswipe/photoswipe.css' layer(components);</code>
       </p>
 
       <h3 id="gallery-preview" class="pt-(--header-height) text-xl font-medium">Gallery Preview</h3>
