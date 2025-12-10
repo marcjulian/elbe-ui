@@ -15,7 +15,7 @@ import { ElbGalleryImports } from '@elbe/ui/gallery';
           [height]="image.height"
         >
           <img
-            class="size-full object-cover"
+            elbGalleryImage
             [ngSrc]="image.previewUrl"
             [width]="image.previewWidth"
             [height]="image.previewHeight"

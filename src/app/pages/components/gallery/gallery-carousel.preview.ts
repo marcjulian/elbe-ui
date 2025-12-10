@@ -18,7 +18,7 @@ import { HlmCarouselImports } from '@spartan-ng/helm/carousel';
                 [height]="image.height"
               >
                 <img
-                  class="size-full object-cover"
+                  elbGalleryImage
                   [ngSrc]="image.src"
                   [width]="image.width"
                   [height]="image.height"
