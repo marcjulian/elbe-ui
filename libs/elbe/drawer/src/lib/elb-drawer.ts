@@ -47,6 +47,13 @@ export class ElbDrawer {
     afterNextRender(() => {
       this.cupertino = new CupertinoPane(this._elementRef.nativeElement, {
         events: {
+          onDidPresent: () => {
+            this._document.body.style.overflowY = 'hidden';
+          },
+          onTransitionEnd: () => {
+            this._document.body.style.overflowY = '';
+            this._document.body.style.overscrollBehaviorY = '';
+          },
           onBackdropTap: () => this._close(),
           onWillDismiss: () => this.stateChanged.emit('closed'),
           onDidDismiss: () => this._state.set('closed'),
