@@ -6,12 +6,21 @@ import { config } from '../config';
 import { Layout } from '../ui/layout';
 import { Preview } from '../ui/preview';
 import { code } from '../ui/typography';
+import { GalleryCaptionPreview } from './components/gallery/gallery-caption.preview';
 import { GalleryCarouselPreview } from './components/gallery/gallery-carousel.preview';
 import { GalleryPreview } from './components/gallery/gallery.preview';
 
 @Component({
   selector: 'elb-home-page',
-  imports: [HlmButtonImports, Layout, NgIcon, Preview, GalleryPreview, GalleryCarouselPreview],
+  imports: [
+    HlmButtonImports,
+    Layout,
+    NgIcon,
+    Preview,
+    GalleryPreview,
+    GalleryCarouselPreview,
+    GalleryCaptionPreview,
+  ],
   providers: [provideIcons({ lucideGithub })],
   template: `
     <elb-layout>
@@ -86,6 +95,17 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
       </p>
       <div elbPreview>
         <elb-gallery-carousel-preview />
+      </div>
+      <h3 id="gallery-caption-preview" class="pt-(--header-height) text-xl font-medium">
+        Gallery Caption
+      </h3>
+      <p class="text-muted-foreground mt-3">
+        Use
+        <code class="${code}">elb-gallery-caption</code> to add captions to each image in the
+        gallery component.
+      </p>
+      <div elbPreview>
+        <elb-gallery-caption-preview />
       </div>
     </elb-layout>
   `,

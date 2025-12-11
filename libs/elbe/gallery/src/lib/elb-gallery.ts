@@ -40,7 +40,10 @@ export class ElbGallery implements OnDestroy {
 
   public readonly counterTextClass = input<ClassValue>('');
   protected readonly _computedCounterTextClass = computed(() =>
-    hlm('bg-muted-foreground text-muted rounded-sm px-2.5 py-1.5 text-xs', this.counterTextClass()),
+    hlm(
+      'bg-muted-foreground/80 text-muted rounded-sm px-2.5 py-1.5 text-xs',
+      this.counterTextClass(),
+    ),
   );
 
   public readonly galleryId = input<ElementProvider>(`gallery-${ElbGallery._id++}`);
@@ -67,6 +70,7 @@ export class ElbGallery implements OnDestroy {
 
       this._lightbox.on('uiRegister', () => {
         this.registerGalleryCounter(this._lightbox!);
+        this.registerGalleryCaption(this._lightbox!);
       });
       this._lightbox.on('close', () => this.onClose.emit());
       this._lightbox.on('destroy', () => this.onDestroy.emit());
@@ -81,6 +85,29 @@ export class ElbGallery implements OnDestroy {
 
   ngOnDestroy(): void {
     this._lightbox?.destroy();
+  }
+
+  private registerGalleryCaption(lightbox: PhotoSwipeLightbox) {
+    lightbox.pswp!.ui!.registerElement({
+      name: 'gallery-caption',
+      order: 9,
+      isButton: false,
+      appendTo: 'root',
+      onInit: (captionElement, pswp) => {
+        pswp.on('change', () => {
+          const currSlideElement = pswp!.currSlide?.data.element;
+
+          if (currSlideElement) {
+            const caption = currSlideElement.querySelector('elb-gallery-caption');
+            if (caption) {
+              captionElement.innerHTML = caption.innerHTML;
+            } else {
+              captionElement.innerHTML = '';
+            }
+          }
+        });
+      },
+    });
   }
 
   private registerGalleryCounter(lightbox: PhotoSwipeLightbox) {
