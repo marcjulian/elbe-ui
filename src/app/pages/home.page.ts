@@ -47,9 +47,8 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
         </a>
       </div>
 
-      <div class="flex items-center justify-between">
+      <div class="flex items-end justify-between">
         <elb-h2 id="gallery">Gallery</elb-h2>
-        <!-- <h2 id="gallery" >Gallery</h2> -->
         <a
           hlmBtn
           variant="outline"
