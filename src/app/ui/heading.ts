@@ -17,7 +17,7 @@ import { lucideLink } from '@ng-icons/lucide';
     <a routerLink="." [fragment]="id()" class="inline-flex" aria-label="Link to heading">
       <span
         aria-hidden="true"
-        class="hover:text-primary inline-flex [@media(hover:hover)]:opacity-0 transition-opacity group-hover:opacity-100"
+        class="hover:text-primary inline-flex transition-opacity group-hover:opacity-100 [@media(hover:hover)]:opacity-0"
       >
         <ng-icon name="lucideLink" />
       </span>
@@ -43,7 +43,7 @@ export class H2 {
     <a routerLink="." [fragment]="id()" class="inline-flex" aria-label="Link to heading">
       <span
         aria-hidden="true"
-        class="hover:text-primary inline-flex [@media(hover:hover)]:opacity-0 transition-opacity group-hover:opacity-100"
+        class="hover:text-primary inline-flex transition-opacity group-hover:opacity-100 [@media(hover:hover)]:opacity-0"
       >
         <ng-icon name="lucideLink" />
       </span>

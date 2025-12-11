@@ -79,12 +79,38 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
         <code class="${code}">@import 'photoswipe/photoswipe.css' layer(components);</code>
       </p>
 
-      <elb-h3 id="gallery-preview">Gallery Preview</elb-h3>
+      <div class="flex items-end justify-between">
+        <elb-h3 id="gallery-preview">Gallery Preview</elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/gallery/gallery.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="lucideGithub" />
+        </a>
+      </div>
       <div elbPreview>
         <elb-gallery-preview />
       </div>
 
-      <elb-h3 id="gallery-carousel-preview"> Gallery and Carousel Preview </elb-h3>
+      <div class="flex items-end justify-between">
+        <elb-h3 id="gallery-carousel-preview"> Gallery and Carousel Preview </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/gallery/gallery-carousel.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="lucideGithub" />
+        </a>
+      </div>
       <p class="text-muted-foreground mt-3">
         Gallery in combination with spartan/ui
         <a
@@ -100,7 +126,21 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
         <elb-gallery-carousel-preview />
       </div>
 
-      <elb-h3 id="gallery-caption-preview"> Gallery Caption </elb-h3>
+      <div class="flex items-end justify-between">
+        <elb-h3 id="gallery-caption-preview"> Gallery Caption </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/gallery/gallery-caption.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="lucideGithub" />
+        </a>
+      </div>
+
       <p class="text-muted-foreground mt-3">
         Use
         <code class="${code}">elb-gallery-caption</code> to add captions to each image in the
