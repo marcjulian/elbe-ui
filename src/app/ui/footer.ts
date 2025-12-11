@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <footer class="flex flex-col items-center gap-4 px-4 py-10">
       <a href="https://paddlingspots.com" target="_blank" rel="noopener noreferrer">
-        <svg class="text-black dark:text-white h-8" viewBox="0 0 292 46">
+        <svg class="h-8 text-black dark:text-white" viewBox="0 0 292 46">
           <path fill="currentColor" d="m21.07 0 3.69 1.343-12.982 35.666-3.69-1.343L21.07 0Z" />
           <path fill="#14B8A6" d="m11.778 37.009-3.69-1.343-1.342 3.69 3.69 1.342 1.342-3.69Z" />
           <path
