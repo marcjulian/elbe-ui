@@ -1,9 +1,18 @@
-import { Directive, OnDestroy, afterNextRender, computed, input, output } from '@angular/core';
+import type { BooleanInput } from '@angular/cdk/coercion';
+import {
+  Directive,
+  OnDestroy,
+  afterNextRender,
+  booleanAttribute,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 import { hlm } from '@spartan-ng/helm/utils';
-import { ClassValue } from 'clsx';
+import type { ClassValue } from 'clsx';
 import { ElementProvider } from 'photoswipe';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import { GalleryOptions, injectElbGalleryConfig } from './elb-gallery.token';
+import { type GalleryOptions, injectElbGalleryConfig } from './elb-gallery.token';
 
 @Directive({
   selector: '[elbGallery],elb-gallery',
@@ -51,6 +60,8 @@ export class ElbGallery implements OnDestroy {
 
   public readonly options = input<GalleryOptions>();
 
+  public readonly caption = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
+
   /** events */
   public readonly onClose = output();
   public readonly onDestroy = output();
@@ -70,7 +81,9 @@ export class ElbGallery implements OnDestroy {
 
       this._lightbox.on('uiRegister', () => {
         this.registerGalleryCounter(this._lightbox!);
-        this.registerGalleryCaption(this._lightbox!);
+        if (this.caption()) {
+          this.registerGalleryCaption(this._lightbox!);
+        }
       });
       this._lightbox.on('close', () => this.onClose.emit());
       this._lightbox.on('destroy', () => this.onDestroy.emit());

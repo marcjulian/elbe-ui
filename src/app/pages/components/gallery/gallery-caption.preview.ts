@@ -7,7 +7,7 @@ import { images } from './images';
   selector: 'elb-gallery-caption-preview',
   imports: [ElbGalleryImports, NgOptimizedImage],
   template: `
-    <elb-gallery class="grid grid-cols-3 gap-4">
+    <elb-gallery class="grid grid-cols-3 gap-4" caption>
       @for (image of images; track $index) {
         <a
           elbGalleryItem

@@ -1,7 +1,7 @@
 import type { BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import { Directive, booleanAttribute, computed, input, numberAttribute } from '@angular/core';
 import { hlm } from '@spartan-ng/helm/utils';
-import { ClassValue } from 'clsx';
+import type { ClassValue } from 'clsx';
 
 @Directive({
   selector: 'a[elbGalleryItem]',
