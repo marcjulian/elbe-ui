@@ -3,13 +3,15 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGithub } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
+import { CodeBlock } from '../ui/code-block';
 import { H2, H3 } from '../ui/heading';
 import { Layout } from '../ui/layout';
 import { Preview } from '../ui/preview';
-import { code } from '../ui/typography';
+import { code, link } from '../ui/typography';
 import { DrawerPreview } from './components/drawer/drawer.preview';
 import { GalleryCaptionPreview } from './components/gallery/gallery-caption.preview';
 import { GalleryCarouselPreview } from './components/gallery/gallery-carousel.preview';
+import { galleryStyles } from './components/gallery/gallery-styles';
 import { GalleryPreview } from './components/gallery/gallery.preview';
 
 @Component({
@@ -21,6 +23,7 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
     Preview,
     H2,
     H3,
+    CodeBlock,
     GalleryPreview,
     GalleryCarouselPreview,
     GalleryCaptionPreview,
@@ -67,21 +70,18 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
       </div>
       <p class="text-muted-foreground mt-3">
         The gallery component is built using the
-        <a
-          href="https://photoswipe.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="underline"
+        <a href="https://photoswipe.com/" target="_blank" rel="noopener noreferrer" class="${link}"
           >photoswipe</a
         >
         library.
       </p>
 
       <p class="text-muted-foreground mt-3">
-        Install <code class="${code}">npm install photoswipe</code> and add the styles to your
-        global styles file:<br />
-        <code class="${code}">@import 'photoswipe/photoswipe.css' layer(components);</code>
+        Install <code class="${code}">npm install photoswipe</code> and add the following style
+        import and colors to your CSS file.
       </p>
+
+      <elb-code-block [code]="galleryStyles" fileName="styles.css" class="mt-3" />
 
       <div class="flex items-baseline justify-between gap-6">
         <elb-h3 id="gallery-preview">Gallery Preview</elb-h3>
@@ -121,7 +121,7 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
           href="https://spartan.ng/components/carousel"
           target="_blank"
           rel="noopener noreferrer"
-          class="underline"
+          class="${link}"
           >carousel</a
         >
         component.
@@ -170,7 +170,7 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
       </div>
       <p class="text-muted-foreground mt-3">
         The drawer component is built using the
-        <a href="https://panejs.com/" target="_blank" rel="noopener noreferrer" class="underline"
+        <a href="https://panejs.com/" target="_blank" rel="noopener noreferrer" class="${link}"
           >Cupertino Panes</a
         >
         library.
@@ -187,4 +187,6 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage {}
+export class HomePage {
+  galleryStyles = galleryStyles;
+}

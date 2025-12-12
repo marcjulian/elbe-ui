@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { link } from './typography';
 
 @Component({
   selector: 'elb-footer',
@@ -25,7 +26,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </a>
       <p class="text-muted-foreground text-center text-sm">
         &copy; {{ year }} elbe/ui. Built by
-        <a href="https://marcjulian.de" class="underline" target="_blank" rel="noopener noreferrer"
+        <a href="https://marcjulian.de" class="${link}" target="_blank" rel="noopener noreferrer"
           >marcjulian</a
         >.
       </p>

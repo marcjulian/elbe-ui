@@ -47,6 +47,7 @@
     "prettier": "3.7.4",
     "prettier-plugin-organize-imports": "4.3.0",
     "prettier-plugin-tailwindcss": "0.7.2",
+    "shiki": "^3.20.0",
     "sitemap": "^9.0.0",
     "tailwindcss": "4.1.18",
     "tsx": "^4.21.0",
