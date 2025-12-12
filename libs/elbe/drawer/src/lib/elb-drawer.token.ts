@@ -12,6 +12,7 @@ const defaultConfig: ElbDrawerConfig = {
     parentElement: 'body',
     fitHeight: true,
     backdrop: true,
+    backdropOpacity: 0.5,
     bottomClose: true,
     buttonDestroy: false,
     cssClass:
