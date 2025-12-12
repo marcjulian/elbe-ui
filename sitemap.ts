@@ -35,10 +35,8 @@ async function generateSitemap() {
     const stream = new SitemapStream({ hostname: 'https://elbe-ui.dev' });
 
     const paths = getPaths(routes);
-    // Filter out 404 if you want
-    const filteredPaths = paths.filter((p) => p !== '/404');
 
-    const links = filteredPaths.map((url) => ({
+    const links = paths.map((url) => ({
       url,
     }));
 
@@ -48,7 +46,7 @@ async function generateSitemap() {
     writeFileSync(path, data.toString());
 
     console.log('✅ Sitemap generated successfully at', path);
-    console.log('   Routes included:', filteredPaths.join(', '));
+    console.log('   Routes included:', paths.join(', '));
   } catch (error) {
     console.error('❌ Error generating sitemap:', error);
     process.exit(1);

@@ -4,7 +4,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGithub, lucideMoon, lucideSun } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
-import { ThemeService } from './theme';
+import { ThemeService } from '../utils/theme';
 
 @Component({
   selector: 'elb-header',
