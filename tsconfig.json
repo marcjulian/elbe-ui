@@ -15,6 +15,7 @@
     "paths": {
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
+      "@elbe/motion": ["./libs/motion/src/index.ts"],
       "@spartan-ng/helm/button": ["./libs/ui/button/src/index.ts"],
       "@spartan-ng/helm/carousel": ["./libs/ui/carousel/src/index.ts"],
       "@spartan-ng/helm/icon": ["./libs/ui/icon/src/index.ts"],
@@ -37,6 +38,12 @@
   "references": [
     {
       "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./libs/motion/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/motion/tsconfig.spec.json"
     }
   ]
 }

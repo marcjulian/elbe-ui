@@ -19,6 +19,10 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'labs',
+    loadComponent: () => import('./pages/labs').then((m) => m.LabsPage),
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found.page').then((m) => m.NotFoundPage),
     title: 'Page Not Found',
