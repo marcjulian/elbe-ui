@@ -2,9 +2,12 @@ import {
   afterNextRender,
   AnimationCallbackEvent,
   Directive,
+  effect,
   ElementRef,
   inject,
+  Injector,
   input,
+  signal,
   type OnDestroy,
 } from '@angular/core';
 import {
@@ -24,24 +27,40 @@ import {
 })
 export class Animate implements OnDestroy {
   private readonly _element = inject(ElementRef);
+  private readonly _injector = inject(Injector);
 
-  public readonly animate = input.required<DOMKeyframesDefinition>();
-  public readonly transition = input<AnimationOptions>();
   public readonly initial = input<DOMKeyframesDefinition>();
+  public readonly animate = input.required<DOMKeyframesDefinition>();
   public readonly exit = input<DOMKeyframesDefinition>();
+
+  public readonly transition = input<AnimationOptions>();
 
   private _animation?: AnimationPlaybackControlsWithThen;
 
+  private readonly _initialized = signal(false);
+
   constructor() {
     afterNextRender(() => {
-      // TODO this is rerun when @if is true
-      console.log('Motion constructor');
-      this._animation = animate(this._element.nativeElement, this.animate(), this.transition());
+      effect(
+        () => {
+          if (this._initialized()) {
+            // FIXME - sometimes the animate state is shortly visibile before switching to initial state
+            this._animation = animate(
+              this._element.nativeElement,
+              this.animate(),
+              this.transition(),
+            );
+          }
+        },
+        {
+          injector: this._injector,
+        },
+      );
     });
   }
 
   ngOnDestroy(): void {
-    this._animation?.cancel();
+    this._animation?.stop();
   }
 
   replay() {
@@ -49,8 +68,19 @@ export class Animate implements OnDestroy {
   }
 
   protected enteringFn(event: AnimationCallbackEvent) {
-    // TODO animate initial state
-    event.animationComplete();
+    const initial = this.initial();
+    if (initial) {
+      animate(event.target, initial, {
+        duration: 0,
+        onComplete: () => {
+          event.animationComplete();
+          this._initialized.set(true);
+        },
+      });
+    } else {
+      event.animationComplete();
+      this._initialized.set(true);
+    }
   }
 
   protected leavingFn(event: AnimationCallbackEvent) {

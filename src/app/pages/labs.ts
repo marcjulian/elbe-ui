@@ -57,18 +57,31 @@ import { Preview } from '../ui/preview';
         <div class="text-6xl text-orange-500" count from="0" to="1000"></div>
       </elb-preview>
 
+      <elb-h3 id="enter-exit">Enter animation</elb-h3>
+      <elb-preview>
+        <div
+          id="ball"
+          class="size-25 shrink-0 rounded-full bg-fuchsia-500"
+          [initial]="{ opacity: 0, scale: 0 }"
+          [animate]="{ opacity: 1, scale: 1 }"
+          [transition]="{
+            duration: 0.4,
+            scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
+          }"
+        ></div>
+      </elb-preview>
       <elb-h3 id="enter-exit">Enter / Exit</elb-h3>
       <elb-preview>
         @if (isVisible()) {
           <div
+            id="box"
             class="bg-primary size-25 shrink-0 rounded-md"
-            motion
             [initial]="{ opacity: 0, scale: 0 }"
             [animate]="{ opacity: 1, scale: 1 }"
             [exit]="{ opacity: 0, scale: 0 }"
           ></div>
         }
-        <button hlmBtn class="absolute bottom-4" (click)="toggle()">
+        <button hlmBtn class="absolute bottom-4 w-25" [whilePress]="{ y: 1 }" (click)="toggle()">
           {{ isVisible() ? 'Hide' : 'Show' }}
         </button>
       </elb-preview>
