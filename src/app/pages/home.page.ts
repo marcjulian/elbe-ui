@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideGithub } from '@ng-icons/lucide';
+import { lucideEye, lucideGithub } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
+import { BaseLayout } from '../layouts/base.layout';
+import { BlockPreview } from '../ui/block-preview';
 import { CodeBlock } from '../ui/code-block';
 import { H2, H3 } from '../ui/heading';
-import { Layout } from '../ui/layout';
 import { Preview } from '../ui/preview';
 import { code, link } from '../ui/typography';
 import { DrawerPreview } from './components/drawer/drawer.preview';
@@ -18,9 +20,11 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
   selector: 'elb-home-page',
   imports: [
     HlmButtonImports,
-    Layout,
+    BaseLayout,
+    RouterLink,
     NgIcon,
     Preview,
+    BlockPreview,
     H2,
     H3,
     CodeBlock,
@@ -31,9 +35,9 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
     GalleryCarouselPreview,
     DrawerPreview,
   ],
-  providers: [provideIcons({ lucideGithub })],
+  providers: [provideIcons({ lucideGithub, lucideEye })],
   template: `
-    <elb-layout>
+    <elb-base-layout>
       <div class="flex flex-col items-center justify-center gap-6 py-10">
         <div class="text-center">
           <h1 class="text-5xl font-bold">elbe/<span class="text-primary">ui</span></h1>
@@ -183,7 +187,31 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
       <div elbPreview>
         <elb-drawer-preview />
       </div>
-    </elb-layout>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="sidebar-drawer-mobile">Sidebar with Drawer on Mobile</elb-h3>
+        <div class="flex items-center gap-1">
+          <a [routerLink]="['/preview/sidebar-drawer']" hlmBtn variant="outline" size="icon-sm">
+            <ng-icon name="lucideEye" />
+          </a>
+          <a
+            hlmBtn
+            variant="outline"
+            size="sm"
+            href="${config.github}/tree/main/src/app/pages/components/gallery/gallery.preview.ts"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open in
+            <ng-icon name="lucideGithub" />
+          </a>
+        </div>
+      </div>
+
+      <elb-block-preview name="sidebar-drawer" [showImagesOnMobile]="false" />
+
+      <!-- TODO add sidebar + drawer preview - load example as iframe -->
+    </elb-base-layout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

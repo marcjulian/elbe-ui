@@ -34,8 +34,8 @@ async function generateSitemap() {
   try {
     const stream = new SitemapStream({ hostname: 'https://elbe-ui.dev' });
 
-    const paths = getPaths(routes);
-
+    // TODO filter out routes starting with /preview
+    const paths = getPaths(routes).filter((path) => !path.startsWith('/preview'));
     const links = paths.map((url) => ({
       url,
     }));

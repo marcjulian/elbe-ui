@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HlmButton } from '@spartan-ng/helm/button';
-import { Layout } from '../ui/layout';
+import { BaseLayout } from '../layouts/base.layout';
 
 @Component({
   selector: 'elb-not-found',
-  imports: [Layout, RouterLink, HlmButton],
+  imports: [BaseLayout, RouterLink, HlmButton],
   template: `
-    <elb-layout>
+    <elb-base-layout>
       <div class="min-h-[50vh] py-24 text-center">
         <p class="text-primary text-base font-semibold">404</p>
         <h1
@@ -24,7 +24,7 @@ import { Layout } from '../ui/layout';
           >
         </div>
       </div>
-    </elb-layout>
+    </elb-base-layout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Footer } from './footer';
-import { Header } from './header';
+import { Footer } from '../ui/footer';
+import { Header } from '../ui/header';
 
 @Component({
-  selector: 'elb-layout',
+  selector: 'elb-base-layout',
   imports: [Header, Footer],
   template: `
     <elb-header />
@@ -16,4 +16,4 @@ import { Header } from './header';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Layout {}
+export class BaseLayout {}

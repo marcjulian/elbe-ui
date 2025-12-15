@@ -107,6 +107,8 @@ export class ElbDrawer {
   }
 
   private async destroy() {
+    if (!this.cupertino?.isPanePresented()) return;
+
     await this.cupertino?.destroy({ animate: this.animate() });
   }
 }
