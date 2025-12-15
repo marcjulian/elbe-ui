@@ -48,15 +48,18 @@ export class ElbDrawer {
       this.cupertino = new CupertinoPane(this._elementRef.nativeElement, {
         events: {
           onDidPresent: () => {
+            // prevent body scroll when drawer is open
             this._document.body.style.overflowY = 'hidden';
-          },
-          onTransitionEnd: () => {
-            this._document.body.style.overflowY = '';
-            this._document.body.style.overscrollBehaviorY = '';
           },
           onBackdropTap: () => this._close(),
           onWillDismiss: () => this.stateChanged.emit('closed'),
-          onDidDismiss: () => this._state.set('closed'),
+          onDidDismiss: () => {
+            this._state.set('closed');
+
+            // restore body scroll when drawer is closed
+            this._document.body.style.overflowY = '';
+            this._document.body.style.overscrollBehaviorY = '';
+          },
         },
         ...this._config.options,
         ...this.options(),
