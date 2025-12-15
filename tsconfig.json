@@ -16,6 +16,7 @@
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
       "@elbe-ui/motion": ["./libs/motion/src/index.ts"],
+      "@spartan-ng/helm/badge": ["./libs/ui/badge/src/index.ts"],
       "@spartan-ng/helm/button": ["./libs/ui/button/src/index.ts"],
       "@spartan-ng/helm/carousel": ["./libs/ui/carousel/src/index.ts"],
       "@spartan-ng/helm/icon": ["./libs/ui/icon/src/index.ts"],

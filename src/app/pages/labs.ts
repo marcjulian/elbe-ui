@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
 import { Animate, Count, MotionImports } from '@elbe-ui/motion';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideRotateCcw } from '@ng-icons/lucide';
+import { lucideFlaskConical, lucideRotateCcw } from '@ng-icons/lucide';
+import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { BaseLayout } from '../layouts/base.layout';
 import { H2, H3 } from '../ui/heading';
@@ -9,10 +10,22 @@ import { Preview } from '../ui/preview';
 
 @Component({
   selector: 'elb-dev-page',
-  imports: [BaseLayout, Preview, MotionImports, HlmButtonImports, NgIcon, H3, H2],
-  providers: [provideIcons({ lucideRotateCcw })],
+  imports: [BaseLayout, Preview, MotionImports, HlmButtonImports, HlmBadgeImports, NgIcon, H3, H2],
+  providers: [provideIcons({ lucideRotateCcw, lucideFlaskConical })],
   template: `
     <elb-base-layout>
+      <div class="flex flex-col items-center justify-center gap-6 py-10">
+        <div class="text-center">
+          <span hlmBadge variant="secondary">
+            <ng-icon name="lucideFlaskConical" />Experimental
+          </span>
+          <h1 class="mt-1 text-5xl font-bold">Labs</h1>
+          <p class="text-muted-foreground mt-3 max-w-sm text-xl text-balance">
+            A collection of experimental features that are still in development.
+          </p>
+        </div>
+      </div>
+
       <div class="flex flex-col">
         <elb-h2 id="motion">Motion</elb-h2>
         <elb-h3 id="animate">Animate</elb-h3>
