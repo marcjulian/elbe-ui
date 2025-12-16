@@ -3,8 +3,10 @@ import {
   type AnimationCallbackEvent,
   computed,
   Directive,
+  effect,
   ElementRef,
   inject,
+  Injector,
   input,
   type OnDestroy,
 } from '@angular/core';
@@ -27,6 +29,7 @@ import { resolveVariant } from './variant';
   },
 })
 export class Animate implements OnDestroy {
+  private readonly _injector = inject(Injector);
   private readonly _element = inject(ElementRef);
 
   /** Animation start state */
@@ -65,12 +68,18 @@ export class Animate implements OnDestroy {
           '@elbe-ui/motion: Variants are not set but initial, animate or exit is a variant string.',
         );
       }
-      const initial = this._initial();
-      if (initial) {
-        this.playInitial(initial, () => this.playAnimate());
-      } else {
-        this.playAnimate();
-      }
+
+      effect(
+        () => {
+          const initial = this._initial();
+          if (initial) {
+            this.playInitial(initial, () => this.playAnimate());
+          } else {
+            this.playAnimate();
+          }
+        },
+        { injector: this._injector },
+      );
     });
   }
 
