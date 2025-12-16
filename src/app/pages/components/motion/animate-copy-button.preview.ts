@@ -5,7 +5,7 @@ import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 
 @Component({
-  selector: 'elb-animate-copy-button',
+  selector: 'elb-animate-copy-button-preview',
   imports: [HlmButtonImports, NgIcon, MotionImports],
   providers: [provideIcons({ lucideCheck, lucideCopy })],
   template: `
