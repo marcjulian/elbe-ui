@@ -42,7 +42,7 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
         <div class="text-center">
           <h1 class="text-5xl font-bold">elbe/<span class="text-primary">ui</span></h1>
           <p class="text-muted-foreground mt-3 max-w-sm text-xl text-balance">
-            Angular UI components built with Tailwind CSS and spartan/ui
+            Angular UI components built with Tailwind CSS and spartan/ui.
           </p>
         </div>
 
