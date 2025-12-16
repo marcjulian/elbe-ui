@@ -14,11 +14,13 @@ export const routes: Routes = [
           import('./pages/preview/sidebar-drawer-preview.page').then(
             (m) => m.SidebarDrawerPreviewPage,
           ),
+        title: 'Sidebar Drawer Preview',
       },
     ],
   },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found.page').then((m) => m.NotFoundPage),
+    title: 'Page Not Found',
   },
 ];
