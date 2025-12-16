@@ -21,6 +21,7 @@
     "@angular/platform-server": "21.0.5",
     "@angular/router": "21.0.5",
     "@angular/ssr": "21.0.3",
+    "@fontsource/noto-mono": "^5.2.5",
     "@ng-icons/core": "33.0.0",
     "@ng-icons/lucide": "33.0.0",
     "@spartan-ng/brain": "0.0.1-alpha.581",

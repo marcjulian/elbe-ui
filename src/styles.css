@@ -4,6 +4,7 @@
 @import 'tailwindcss/utilities.css';
 
 @import 'inter-ui/inter.css';
+@import '@fontsource/noto-mono';
 
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 
@@ -21,6 +22,7 @@
     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
+  --font-mono: 'Noto Mono', monospace;
 
   --radius: 0.625rem;
   --background: oklch(1 0 0);
