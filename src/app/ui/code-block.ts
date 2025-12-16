@@ -8,7 +8,7 @@ import { codeToHtml } from 'shiki/bundle/web';
 @Component({
   selector: 'elb-code-block',
   host: {
-    class: 'block relative',
+    class: 'block relative border-border border rounded-lg',
   },
   imports: [NgIcon, HlmButtonImports],
   providers: [provideIcons({ lucideCopy, lucideCheck })],
