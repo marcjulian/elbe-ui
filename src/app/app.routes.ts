@@ -21,6 +21,7 @@ export const routes: Routes = [
   {
     path: 'labs',
     loadComponent: () => import('./pages/labs').then((m) => m.LabsPage),
+    title: 'Labs',
   },
   {
     path: '**',

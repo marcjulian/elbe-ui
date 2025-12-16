@@ -21,7 +21,7 @@ import { Preview } from '../ui/preview';
           </span>
           <h1 class="mt-1 text-5xl font-bold">Labs</h1>
           <p class="text-muted-foreground mt-3 max-w-sm text-xl text-balance">
-            A collection of experimental features that are still in development.
+            A collection of experimental features for Angular.
           </p>
         </div>
       </div>
