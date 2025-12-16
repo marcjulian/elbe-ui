@@ -7,5 +7,6 @@ export * from './lib/animate';
 export * from './lib/count';
 export * from './lib/hover';
 export * from './lib/press';
+export * from './lib/types';
 
 export const MotionImports = [Animate, Hover, Press, Count] as const;

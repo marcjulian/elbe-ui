@@ -10,7 +10,7 @@ import { Preview } from '../ui/preview';
 
 @Component({
   selector: 'elb-dev-page',
-  imports: [BaseLayout, Preview, MotionImports, HlmButtonImports, HlmBadgeImports, NgIcon, H3, H2],
+  imports: [BaseLayout, Preview, MotionImports, HlmButtonImports, HlmBadgeImports, NgIcon, H2, H3],
   providers: [provideIcons({ lucideRotateCcw, lucideFlaskConical })],
   template: `
     <elb-base-layout>
@@ -28,6 +28,7 @@ import { Preview } from '../ui/preview';
 
       <div class="flex flex-col">
         <elb-h2 id="motion">Motion</elb-h2>
+
         <elb-h3 id="animate">Animate</elb-h3>
         <elb-preview>
           <button
