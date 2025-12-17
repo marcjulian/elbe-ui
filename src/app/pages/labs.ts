@@ -7,10 +7,21 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { BaseLayout } from '../layouts/base.layout';
 import { H2, H3 } from '../ui/heading';
 import { Preview } from '../ui/preview';
+import { AnimateTypePreview } from './components/motion/animate-type.preview';
 
 @Component({
   selector: 'elb-dev-page',
-  imports: [BaseLayout, Preview, MotionImports, HlmButtonImports, HlmBadgeImports, NgIcon, H2, H3],
+  imports: [
+    BaseLayout,
+    Preview,
+    MotionImports,
+    HlmButtonImports,
+    HlmBadgeImports,
+    NgIcon,
+    H2,
+    H3,
+    AnimateTypePreview,
+  ],
   providers: [provideIcons({ lucideRotateCcw, lucideFlaskConical })],
   template: `
     <elb-base-layout>
@@ -46,6 +57,11 @@ import { Preview } from '../ui/preview';
             [animate]="{ rotate: 360 }"
             [transition]="{ duration: 1 }"
           ></div>
+        </elb-preview>
+
+        <elb-h3 id="animate-spring-tween">Spring and tween animation</elb-h3>
+        <elb-preview>
+          <elb-animate-type-preview />
         </elb-preview>
 
         <elb-h3 id="hover-press">Hover / Press</elb-h3>
