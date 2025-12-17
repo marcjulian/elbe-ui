@@ -8,6 +8,7 @@ import { BaseLayout } from '../layouts/base.layout';
 import { H2, H3 } from '../ui/heading';
 import { Preview } from '../ui/preview';
 import { AnimateTypePreview } from './components/motion/animate-type.preview';
+import { AnimateWavePreview } from './components/motion/animate-wave.preview';
 
 @Component({
   selector: 'elb-dev-page',
@@ -21,6 +22,7 @@ import { AnimateTypePreview } from './components/motion/animate-type.preview';
     H2,
     H3,
     AnimateTypePreview,
+    AnimateWavePreview,
   ],
   providers: [provideIcons({ lucideRotateCcw, lucideFlaskConical })],
   template: `
@@ -115,6 +117,11 @@ import { AnimateTypePreview } from './components/motion/animate-type.preview';
           <button hlmBtn class="absolute bottom-4 w-25" [whilePress]="{ y: 1 }" (click)="toggle()">
             {{ isVisible() ? 'Hide' : 'Show' }}
           </button>
+        </elb-preview>
+
+        <elb-h3 id="wave">Wave Animation</elb-h3>
+        <elb-preview>
+          <elb-animate-wave-preview />
         </elb-preview>
       </div>
     </elb-base-layout>
