@@ -8,7 +8,7 @@ import {
   numberAttribute,
   type OnDestroy,
 } from '@angular/core';
-import { animate, Easing, type AnimationPlaybackControlsWithThen } from 'motion';
+import { animate, type AnimationPlaybackControlsWithThen, type Easing } from 'motion';
 
 @Directive({ selector: '[count]', exportAs: 'count' })
 export class Count implements OnDestroy {

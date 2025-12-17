@@ -4,7 +4,7 @@ import {
   ElementRef,
   inject,
   input,
-  OnDestroy,
+  type OnDestroy,
   output,
 } from '@angular/core';
 import { animate, type DOMKeyframesDefinition, hover } from 'motion';
