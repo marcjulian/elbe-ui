@@ -130,7 +130,10 @@ export class ElbGallery implements OnDestroy {
       onInit: (counterElement, pswp) => {
         counterElement.className = this._computedCounterClass();
         pswp.on('change', () => {
-          counterElement.innerHTML = `<span class="${this._computedCounterTextClass()}">${pswp.currIndex + 1 + pswp.options.indexIndicatorSep + pswp.getNumItems()}</span>`;
+          const current = pswp.currIndex + 1;
+          const total = pswp.getNumItems();
+          const counter = [current, total].join(pswp.options.indexIndicatorSep);
+          counterElement.innerHTML = `<span class="${this._computedCounterTextClass()}">${counter}</span>`;
         });
       },
     });
