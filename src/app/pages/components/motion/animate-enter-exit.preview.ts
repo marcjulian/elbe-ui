@@ -15,7 +15,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
         [exit]="{ opacity: 0, scale: 0 }"
       ></div>
     }
-    <button hlmBtn class="absolute bottom-4 w-25" [whilePress]="{ y: 1 }" (click)="toggle()">
+    <button hlmBtn class="absolute bottom-4 left-1/2 -translate-x-1/2 w-25" [whilePress]="{ y: 1 }" (click)="toggle()">
       {{ isVisible() ? 'Hide' : 'Show' }}
     </button>
   `,

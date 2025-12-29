@@ -17,7 +17,7 @@ import { MotionImports } from '@elbe-ui/motion';
             repeat: infinity,
             repeatType: 'mirror',
           }"
-          class="h-16 w-2 rounded-lg bg-blue-500"
+          class="h-14 w-1.5 rounded-lg bg-blue-500 sm:h-16 sm:w-2"
         ></div>
       }
     </div>
