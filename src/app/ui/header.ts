@@ -19,8 +19,9 @@ import { ThemeService } from '../utils/theme';
         <span>elbe/<span class="text-primary">ui</span></span>
       </a>
 
-      <!-- TODO add main nav here -->
-      <!-- <nav></nav> -->
+      <nav>
+        <a hlmBtn variant="ghost" size="sm" routerLink="/labs">Labs</a>
+      </nav>
 
       <div class="ml-auto flex gap-1">
         <a hlmBtn variant="ghost" href="${config.github}" target="_blank" rel="noopener noreferrer">

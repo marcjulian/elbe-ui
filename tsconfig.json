@@ -15,10 +15,13 @@
     "paths": {
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
+      "@elbe-ui/motion": ["./libs/motion/src/index.ts"],
+      "@spartan-ng/helm/badge": ["./libs/ui/badge/src/index.ts"],
       "@spartan-ng/helm/button": ["./libs/ui/button/src/index.ts"],
       "@spartan-ng/helm/carousel": ["./libs/ui/carousel/src/index.ts"],
       "@spartan-ng/helm/icon": ["./libs/ui/icon/src/index.ts"],
       "@spartan-ng/helm/input": ["./libs/ui/input/src/index.ts"],
+      "@spartan-ng/helm/label": ["./libs/ui/label/src/index.ts"],
       "@spartan-ng/helm/separator": ["./libs/ui/separator/src/index.ts"],
       "@spartan-ng/helm/sheet": ["./libs/ui/sheet/src/index.ts"],
       "@spartan-ng/helm/sidebar": ["./libs/ui/sidebar/src/index.ts"],
@@ -37,6 +40,12 @@
   "references": [
     {
       "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./libs/motion/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/motion/tsconfig.spec.json"
     }
   ]
 }
