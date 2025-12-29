@@ -4,6 +4,7 @@ import { lucideFlaskConical } from '@ng-icons/lucide';
 import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { BaseLayout } from '../layouts/base.layout';
+import { CodeBlock } from '../ui/code-block';
 import { H2, H3 } from '../ui/heading';
 import { Preview } from '../ui/preview';
 import { code, link } from '../ui/typography';
@@ -14,6 +15,7 @@ import { AnimateHoverPressPreview } from './components/motion/animate-hover-pres
 import { AnimateRotatePreview } from './components/motion/animate-rotate.preview';
 import { AnimateTypePreview } from './components/motion/animate-type.preview';
 import { AnimateWavePreview } from './components/motion/animate-wave.preview';
+import { motionStyles } from './components/motion/motion-styles';
 
 @Component({
   selector: 'elb-dev-page',
@@ -25,6 +27,7 @@ import { AnimateWavePreview } from './components/motion/animate-wave.preview';
     NgIcon,
     H2,
     H3,
+    CodeBlock,
     AnimateTypePreview,
     AnimateWavePreview,
     AnimateRotatePreview,
@@ -67,6 +70,14 @@ import { AnimateWavePreview } from './components/motion/animate-wave.preview';
           >.
         </p>
 
+        <p class="text-muted-foreground mt-3">
+          Install <code class="${code}">npm install @elbe-ui/motion</code> and add the following
+          style, which applies to <code class="${code}">animate.enter</code> to hide element
+          initially if an <code class="${code}">initial</code> animation is defined.
+        </p>
+
+        <elb-code-block [code]="motionStyles" fileName="styles.css" class="mt-3" />
+
         <elb-h3 id="animate">Animate</elb-h3>
         <elb-preview>
           <elb-animate-rotate-preview />
@@ -106,4 +117,6 @@ import { AnimateWavePreview } from './components/motion/animate-wave.preview';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LabsPage {}
+export class LabsPage {
+  motionStyles = motionStyles;
+}

@@ -49,9 +49,11 @@ export class Animate implements OnDestroy {
 
   public readonly variants = input<VariantsType>();
 
-  // hide element initially if initial animation is defined
+  /** CSS class applied for the initial animation state. Hide element initially if initial animation is defined */
+  public readonly animateEnterClass = input<string>('animate-enter');
+
   protected readonly _animateEnterClass = computed(() =>
-    this.initial() ? 'opacity-0' : undefined,
+    this.initial() ? this.animateEnterClass() : undefined,
   );
 
   private _animation?: AnimationPlaybackControlsWithThen;
