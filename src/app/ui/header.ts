@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideGithub, lucideMoon, lucideSun } from '@ng-icons/lucide';
+import { lucideGithub, lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
 import { ThemeService } from '../utils/theme';
@@ -9,12 +9,13 @@ import { ThemeService } from '../utils/theme';
 @Component({
   selector: 'elb-header',
   imports: [RouterLink, NgIcon, HlmButtonImports],
-  providers: [provideIcons({ lucideGithub, lucideSun, lucideMoon })],
+  providers: [provideIcons({ lucideGithub, lucideSun, lucideMoon, lucideKayak })],
   template: `
     <header
       class="bg-background/40 sticky top-0 z-10 flex h-(--header-height) items-center gap-2 px-4 backdrop-blur-lg"
     >
       <a routerLink="/" hlmBtn variant="ghost" size="sm" class="font-semibold">
+        <ng-icon name="lucideKayak" class="text-xl text-primary" />
         <span>elbe/<span class="text-primary">ui</span></span>
       </a>
 
