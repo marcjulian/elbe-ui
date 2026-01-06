@@ -209,8 +209,6 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
       </div>
 
       <elb-block-preview name="sidebar-drawer" [showImagesOnMobile]="false" />
-
-      <!-- TODO add sidebar + drawer preview - load example as iframe -->
     </elb-base-layout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
