@@ -45,8 +45,8 @@ importers:
         specifier: 33.0.0
         version: 33.0.0
       '@spartan-ng/brain':
-        specifier: 0.0.1-alpha.581
-        version: 0.0.1-alpha.581(@angular/cdk@21.0.5(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/forms@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/platform-browser@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.1.18)
+        specifier: 0.0.1-alpha.597
+        version: 0.0.1-alpha.597(@angular/cdk@21.0.5(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/forms@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/platform-browser@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.1.18)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -88,8 +88,8 @@ importers:
         specifier: 21.0.6
         version: 21.0.6(@angular/compiler@21.0.6)(typescript@5.9.3)
       '@spartan-ng/cli':
-        specifier: 0.0.1-alpha.581
-        version: 0.0.1-alpha.581(@angular-devkit/core@21.0.4(chokidar@4.0.3))(@angular-devkit/schematics@21.0.4(chokidar@4.0.3))(@angular/build@21.0.4(258c7715fbd11ecf590dca522d054a3d))(@angular/compiler@21.0.6)(@babel/traverse@7.28.5)(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@4.0.3)(eslint@9.39.1(jiti@2.6.1))(less@4.4.2)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(tslib@2.8.1)
+        specifier: 0.0.1-alpha.597
+        version: 0.0.1-alpha.597(@angular-devkit/core@21.0.4(chokidar@4.0.3))(@angular-devkit/schematics@21.0.4(chokidar@4.0.3))(@angular/build@21.0.4(258c7715fbd11ecf590dca522d054a3d))(@angular/compiler@21.0.6)(@babel/traverse@7.28.5)(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@4.0.3)(eslint@9.39.1(jiti@2.6.1))(less@4.4.2)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(tslib@2.8.1)
       '@tailwindcss/postcss':
         specifier: 4.1.18
         version: 4.1.18
@@ -2639,8 +2639,8 @@ packages:
   '@sinclair/typebox@0.34.41':
     resolution: {integrity: sha512-6gS8pZzSXdyRHTIqoqSVknxolr1kzfy4/CeDnrzsVz8TTIWUbOBr6gnzOmTYJ3eXQNh4IYHIGi5aIL7sOZ2G/g==}
 
-  '@spartan-ng/brain@0.0.1-alpha.581':
-    resolution: {integrity: sha512-JuZztuB43ymQOZTf25pfF6uJmQSbrDV6AQ8Avf31T1OoYYk7gAQliPZ3NH01e2iXrz/epWun86V+TiLZPk4uGA==}
+  '@spartan-ng/brain@0.0.1-alpha.597':
+    resolution: {integrity: sha512-aGo07bPSbsJ0EhHdzeYZhyI5DPMbL5GEdIq7xXFCeXuROJaEeRwqd4OHvJnEjo9nLU98k4Vz2Goc4CmfxZdENg==}
     peerDependencies:
       '@angular/cdk': '>=20.0.0 <22.0.0'
       '@angular/common': '>=20.0.0 <22.0.0'
@@ -2654,8 +2654,8 @@ packages:
       luxon:
         optional: true
 
-  '@spartan-ng/cli@0.0.1-alpha.581':
-    resolution: {integrity: sha512-XfYyzF+TQReIWkgLxVlN08PPM1If6R7Uwdh3H+p+1dSQT98b0hzIesK2fXWJyPozz6DlZPGDMsRVuCQ9rI2ayA==}
+  '@spartan-ng/cli@0.0.1-alpha.597':
+    resolution: {integrity: sha512-CAQRzV8xF6GYR6oZ4VmboAw1SuqjbBCcRmlOHFdoAqYFKe6yX3+1A71LjjypKtLZf4zuI4L1EkNUFhbFl7doWA==}
     peerDependencies:
       tslib: ^2.3.0
 
@@ -6953,6 +6953,7 @@ packages:
   whatwg-encoding@2.0.0:
     resolution: {integrity: sha512-p41ogyeMUrw3jWclHWTQg1k05DSVXPLcVxRTYsXUk+ZooOCZLcoYgPZ/HL/D/N+uQPOtcp1me1WhBEaX02mhWg==}
     engines: {node: '>=12'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -9840,7 +9841,7 @@ snapshots:
 
   '@sinclair/typebox@0.34.41': {}
 
-  '@spartan-ng/brain@0.0.1-alpha.581(@angular/cdk@21.0.5(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/forms@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/platform-browser@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.1.18)':
+  '@spartan-ng/brain@0.0.1-alpha.597(@angular/cdk@21.0.5(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/forms@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(@angular/platform-browser@21.0.6(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)))(rxjs@7.8.2))(clsx@2.1.1)(luxon@3.7.2)(rxjs@7.8.2)(tailwindcss@4.1.18)':
     dependencies:
       '@angular/cdk': 21.0.5(@angular/common@21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/common': 21.0.6(@angular/core@21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2))(rxjs@7.8.2)
@@ -9853,7 +9854,7 @@ snapshots:
     optionalDependencies:
       luxon: 3.7.2
 
-  '@spartan-ng/cli@0.0.1-alpha.581(@angular-devkit/core@21.0.4(chokidar@4.0.3))(@angular-devkit/schematics@21.0.4(chokidar@4.0.3))(@angular/build@21.0.4(258c7715fbd11ecf590dca522d054a3d))(@angular/compiler@21.0.6)(@babel/traverse@7.28.5)(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@4.0.3)(eslint@9.39.1(jiti@2.6.1))(less@4.4.2)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(tslib@2.8.1)':
+  '@spartan-ng/cli@0.0.1-alpha.597(@angular-devkit/core@21.0.4(chokidar@4.0.3))(@angular-devkit/schematics@21.0.4(chokidar@4.0.3))(@angular/build@21.0.4(258c7715fbd11ecf590dca522d054a3d))(@angular/compiler@21.0.6)(@babel/traverse@7.28.5)(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@4.0.3)(eslint@9.39.1(jiti@2.6.1))(less@4.4.2)(lightningcss@1.30.2)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(tslib@2.8.1)':
     dependencies:
       '@angular/core': 21.0.6(@angular/compiler@21.0.6)(rxjs@7.8.2)
       '@nx/angular': 22.2.0(@angular-devkit/core@21.0.4(chokidar@4.0.3))(@angular-devkit/schematics@21.0.4(chokidar@4.0.3))(@angular/build@21.0.4(258c7715fbd11ecf590dca522d054a3d))(@babel/traverse@7.28.5)(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)(webpack@5.103.0))(@rspack/core@1.6.7)(@schematics/angular@20.0.6(chokidar@4.0.3))(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(eslint@9.39.1(jiti@2.6.1))(less@4.4.2)(lightningcss@1.30.2)(nx@22.2.0)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(typescript@5.9.3)
