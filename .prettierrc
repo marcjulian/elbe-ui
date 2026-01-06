@@ -9,6 +9,6 @@
       }
     }
   ],
-  "tailwindFunctions": ["hlm", "cva"],
+  "tailwindFunctions": ["hlm", "cva", "classes"],
   "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
 }

@@ -20,18 +20,12 @@ import { type GalleryOptions, injectElbGalleryConfig } from './elb-gallery.token
   host: {
     'data-slot': 'gallery',
     '[id]': 'galleryId()',
-    '[class]': '_computedClass()',
   },
 })
 export class ElbGallery implements OnDestroy {
   private static _id = 0;
 
   private readonly _config = injectElbGalleryConfig();
-
-  public readonly _userClass = input<ClassValue>('', {
-    alias: 'class',
-  });
-  protected readonly _computedClass = computed(() => hlm(this._userClass()));
 
   public readonly photoswipeClass = input<ClassValue>();
   protected readonly _computedPhotoswipeClass = computed(() =>

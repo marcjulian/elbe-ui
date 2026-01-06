@@ -1,19 +1,14 @@
-import { computed, Directive, input } from '@angular/core';
-import { hlm } from '@spartan-ng/helm/utils';
-import type { ClassValue } from 'clsx';
+import { Directive } from '@angular/core';
+import { classes } from '@spartan-ng/helm/utils';
 
 @Directive({
   selector: '[elbDrawerTitle]',
   host: {
     'data-slot': 'drawer-title',
-    '[class]': '_computedClass()',
   },
 })
 export class ElbDrawerTitle {
-  public readonly _userClass = input<ClassValue>('', {
-    alias: 'class',
-  });
-  protected readonly _computedClass = computed(() =>
-    hlm('text-foreground font-semibold', this._userClass()),
-  );
+  constructor() {
+    classes(() => 'text-foreground font-semibold');
+  }
 }

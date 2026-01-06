@@ -4,7 +4,6 @@ import type { ClassValue } from 'clsx';
 
 @Component({
   selector: 'elb-gallery-caption',
-  imports: [],
   host: {
     class: 'hidden',
   },
