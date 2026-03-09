@@ -19,5 +19,6 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
   `,
 })
 export class MapPreview {
+  // TODO replace with your own key
   maptilerKey = 'rObRf3wgR040OguVX5YE';
 }
