@@ -15,6 +15,8 @@ import { GalleryCaptionPreview } from './components/gallery/gallery-caption.prev
 import { GalleryCarouselPreview } from './components/gallery/gallery-carousel.preview';
 import { galleryStyles } from './components/gallery/gallery-styles';
 import { GalleryPreview } from './components/gallery/gallery.preview';
+import { mapStyles } from './components/map/map-styles';
+import { MapPreview } from './components/map/map.preview';
 
 @Component({
   selector: 'elb-home-page',
@@ -34,6 +36,7 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
     GalleryPreview,
     GalleryCarouselPreview,
     DrawerPreview,
+    MapPreview,
   ],
   providers: [provideIcons({ lucideGithub, lucideEye })],
   template: `
@@ -209,10 +212,62 @@ import { GalleryPreview } from './components/gallery/gallery.preview';
       </div>
 
       <elb-block-preview name="sidebar-drawer" [showImagesOnMobile]="false" />
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h2 id="map">Map</elb-h2>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/libs/elbe/map/src/lib"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="lucideGithub" />
+        </a>
+      </div>
+
+      <p class="text-muted-foreground mt-3">
+        The map components are an addition to the
+        <a
+          href="https://github.com/maplibre/ngx-maplibre-gl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="${link}"
+          >ngx-maplibre-gl</a
+        >
+        library.
+      </p>
+
+      <p class="text-muted-foreground mt-3">
+        Install <code class="${code}">npm install @maplibre/ngx-maplibre-gl maplibre-gl</code>.
+      </p>
+
+      <elb-code-block [code]="mapStyles" fileName="styles.css" class="mt-3" />
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="map-control"> Map Control </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/map/map.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="lucideGithub" />
+        </a>
+      </div>
+      <div elbPreview>
+        <elb-map-preview />
+      </div>
     </elb-base-layout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
   galleryStyles = galleryStyles;
+  mapStyles = mapStyles;
 }

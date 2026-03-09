@@ -15,7 +15,9 @@
     "paths": {
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
+      "@elbe/ui/map": ["./libs/elbe/map/src/index.ts"],
       "@spartan-ng/helm/button": ["./libs/ui/button/src/index.ts"],
+      "@spartan-ng/helm/button-group": ["./libs/ui/button-group/src/index.ts"],
       "@spartan-ng/helm/carousel": ["./libs/ui/carousel/src/index.ts"],
       "@spartan-ng/helm/icon": ["./libs/ui/icon/src/index.ts"],
       "@spartan-ng/helm/input": ["./libs/ui/input/src/index.ts"],

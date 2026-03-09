@@ -9,6 +9,7 @@
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 
 @import 'photoswipe/photoswipe.css' layer(components);
+@import 'maplibre-gl/dist/maplibre-gl.css' layer(components);
 
 @theme inline {
   --color-gallery: var(--gallery);
