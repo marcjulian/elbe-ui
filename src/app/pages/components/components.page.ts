@@ -18,12 +18,12 @@ type UiComponent = {
   providers: [provideIcons({ lucideImages, lucideMap, lucidePanelTopClose, lucideChevronRight })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <elb-base-layout mainClasses="gap-10 flex flex-col min-h-[70vh]" >
+    <elb-base-layout mainClasses="gap-10 flex flex-col min-h-[70vh]">
       <div class="text-center">
         <h1 class="text-4xl font-bold">Components</h1>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2 ">
+      <div class="grid gap-4 sm:grid-cols-2">
         @for (component of components; track component.slug) {
           <a hlmItem [routerLink]="[component.slug]" variant="outline">
             <hlm-item-media variant="icon">

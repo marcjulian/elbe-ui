@@ -11,7 +11,7 @@ import { images } from './images';
       @for (image of images; track $index) {
         <a
           elbGalleryItem
-          class="ring-ring/10 aspect-square overflow-hidden rounded-xl ring shadow-sm"
+          class="ring-ring/10 aspect-square overflow-hidden rounded-xl shadow-sm ring"
           [imageSrc]="image.src"
           [width]="image.width"
           [height]="image.height"
