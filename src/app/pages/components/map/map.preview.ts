@@ -6,11 +6,15 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
   selector: 'elb-map-preview',
   imports: [NgxMapLibreGLModule, ElbMapImports],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'flex aspect-video size-full rounded-md overflow-hidden' },
+  host: { class: 'flex aspect-square md:aspect-video size-full rounded-md overflow-hidden' },
   template: `
     <mgl-map
       class="size-full"
       [mapStyle]="'https://api.maptiler.com/maps/streets-v4/style.json?key=' + maptilerKey"
+      [center]="[9.9278215, 53.5584587]"
+      [zoom]="[8]"
+      [minZoom]="6"
+      [maxZoom]="14"
     >
       <elb-fullscreen-control />
       <elb-navigation-control />
