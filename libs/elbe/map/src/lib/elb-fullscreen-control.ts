@@ -9,14 +9,14 @@ import {
 } from '@angular/core';
 import { ControlComponent, MapService } from '@maplibre/ngx-maplibre-gl';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideExpand } from '@ng-icons/lucide';
+import { lucideMaximize } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import type { ControlPosition } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-fullscreen-control',
   imports: [ControlComponent, HlmButton, NgIcon],
-  providers: [provideIcons({ lucideExpand })],
+  providers: [provideIcons({ lucideMaximize })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control>
@@ -30,7 +30,7 @@ import type { ControlPosition } from 'maplibre-gl';
         [disabled]="disabled()"
         (click)="toggleFullscreen()"
       >
-        <ng-icon name="lucideExpand" />
+        <ng-icon name="lucideMaximize" />
       </button>
     </mgl-control>
   `,
