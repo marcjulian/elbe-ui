@@ -49,16 +49,19 @@ import { MapPreview } from './components/map/map.preview';
           </p>
         </div>
 
-        <a
-          hlmBtn
-          variant="outline"
-          href="${config.github}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <ng-icon name="lucideGithub" />
-          GitHub
-        </a>
+        <div class="flex items-center gap-2">
+          <a hlmBtn routerLink="/components">View Components</a>
+          <a
+            hlmBtn
+            variant="outline"
+            href="${config.github}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <ng-icon name="lucideGithub" />
+            GitHub
+          </a>
+        </div>
       </div>
 
       <div class="flex items-baseline justify-between gap-6">
