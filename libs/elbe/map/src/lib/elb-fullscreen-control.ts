@@ -26,6 +26,7 @@ import type { ControlPosition } from 'maplibre-gl';
         size="icon-sm"
         type="button"
         aria-label="Toggle fullscreen"
+        class="dark:bg-background dark:hover:bg-background/80"
         [disabled]="disabled()"
         (click)="toggleFullscreen()"
       >

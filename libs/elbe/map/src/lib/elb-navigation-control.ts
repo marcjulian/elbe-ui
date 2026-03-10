@@ -15,12 +15,13 @@ import type { ControlPosition } from 'maplibre-gl';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control [position]="position()">
-      <div hlmButtonGroup orientation="vertical" aria-label="Media controls" class="h-fit">
+      <hlm-button-group orientation="vertical" aria-label="Media controls" class="h-fit">
         <button
           hlmBtn
           variant="outline"
           size="icon-sm"
           type="button"
+          class="dark:bg-background dark:hover:bg-background/80"
           [disabled]="disabled()"
           (click)="_zoomIn()"
         >
@@ -31,12 +32,13 @@ import type { ControlPosition } from 'maplibre-gl';
           variant="outline"
           size="icon-sm"
           type="button"
+          class="dark:bg-background dark:hover:bg-background/80"
           [disabled]="disabled()"
           (click)="_zoomOut()"
         >
           <ng-icon name="lucideMinus" />
         </button>
-      </div>
+      </hlm-button-group>
     </mgl-control>
   `,
 })

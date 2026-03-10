@@ -26,7 +26,7 @@ import type { ControlPosition } from 'maplibre-gl';
         size="icon-sm"
         type="button"
         aria-label="Toggle globe view"
-        class="data-active:text-primary"
+        class="dark:bg-background dark:hover:bg-background/80 data-active:text-primary"
         [attr.data-active]="_active() ? 'true' : null"
         [disabled]="disabled()"
         (click)="toggleGlobeView()"
