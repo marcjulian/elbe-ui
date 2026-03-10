@@ -8,7 +8,7 @@ import { lucideLink } from '@ng-icons/lucide';
   imports: [RouterLink, NgIcon],
   providers: [provideIcons({ lucideLink })],
   host: {
-    class: 'group pt-(--header-height)',
+    class: 'group block pt-(--header-height)',
   },
   template: `
     <h2 [id]="id()" class="inline text-2xl font-semibold">
@@ -34,7 +34,7 @@ export class H2 {
   imports: [RouterLink, NgIcon],
   providers: [provideIcons({ lucideLink })],
   host: {
-    class: 'group pt-(--header-height)',
+    class: 'group block pt-(--header-height)',
   },
   template: `
     <h3 [id]="id()" class="inline text-xl font-medium">

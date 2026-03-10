@@ -7,6 +7,7 @@ import { images } from './images';
 @Component({
   selector: 'elb-gallery-carousel-preview',
   imports: [ElbGalleryImports, NgOptimizedImage, HlmCarouselImports],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <elb-gallery>
       <hlm-carousel [options]="{ loop: true }">
@@ -15,7 +16,7 @@ import { images } from './images';
             <hlm-carousel-item>
               <a
                 elbGalleryItem
-                class="flex aspect-video overflow-hidden rounded-lg"
+                class="flex aspect-video overflow-hidden rounded-xl"
                 [imageSrc]="image.src"
                 [width]="image.width"
                 [height]="image.height"
@@ -35,7 +36,6 @@ import { images } from './images';
       </hlm-carousel>
     </elb-gallery>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GalleryCarouselPreview {
   images = images;

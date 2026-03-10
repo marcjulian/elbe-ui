@@ -6,7 +6,7 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
   selector: 'elb-map-preview',
   imports: [NgxMapLibreGLModule, ElbMapImports],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'flex aspect-square md:aspect-video size-full rounded-md overflow-hidden' },
+  host: { class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden' },
   template: `
     <mgl-map
       class="size-full"
