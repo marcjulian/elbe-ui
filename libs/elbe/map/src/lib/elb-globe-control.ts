@@ -19,7 +19,7 @@ import type { ControlPosition } from 'maplibre-gl';
   providers: [provideIcons({ lucideGlobe })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <mgl-control>
+    <mgl-control [position]="position()">
       <button
         hlmBtn
         variant="outline"
