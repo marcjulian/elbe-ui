@@ -6,7 +6,9 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
   selector: 'elb-map-preview',
   imports: [NgxMapLibreGLModule, ElbMapImports],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden' },
+  host: {
+    class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden relative',
+  },
   template: `
     <mgl-map
       class="size-full"
@@ -20,9 +22,13 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
       <elb-navigation-control />
       <elb-globe-control />
     </mgl-map>
+
+    <a href="https://www.maptiler.com" class="absolute bottom-2.5 left-2.5 z-10">
+      <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo" />
+    </a>
   `,
 })
 export class MapPreview {
   // TODO replace with your own key
-  maptilerKey = 'rObRf3wgR040OguVX5YE';
+  maptilerKey = 'IzR0Y1rL7idlJ8Mya3mw';
 }
