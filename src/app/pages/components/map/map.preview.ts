@@ -1,6 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ElbMapImports } from '@elbe/ui/map';
 import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
+import { environment } from '../../../../environments/environment';
+import { ThemeService } from '../../../utils/theme';
+
+const MapStyles: Record<string, string> = {
+  light: 'streets-v4',
+  dark: 'streets-v4-dark',
+};
 
 @Component({
   selector: 'elb-map-preview',
@@ -12,7 +19,7 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
   template: `
     <mgl-map
       class="size-full"
-      [mapStyle]="'https://api.maptiler.com/maps/streets-v4/style.json?key=' + maptilerKey"
+      [mapStyle]="mapStyle()"
       [center]="[9.9278215, 53.5584587]"
       [zoom]="[8]"
       [minZoom]="6"
@@ -29,6 +36,11 @@ import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
   `,
 })
 export class MapPreview {
-  // TODO replace with your own key
-  maptilerKey = 'IzR0Y1rL7idlJ8Mya3mw';
+  private readonly _theme = inject(ThemeService);
+
+  // replace maptiler key with your own
+  mapStyle = computed(
+    () =>
+      `https://api.maptiler.com/maps/${MapStyles[this._theme.theme() || 'light']}/style.json?key=${environment.maptilerKey}`,
+  );
 }
