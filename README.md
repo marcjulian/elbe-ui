@@ -12,6 +12,6 @@ Angular UI components built with [Tailwind CSS](https://tailwindcss.com/) and [s
 
 elbe/ui works great with spartan/ui components. Here are some example combinations:
 
-- [Gallery + Carousel](https://elbe-ui.dev/#gallery-carousel-preview)
-- [Drawer + Sidebar](https://elbe-ui.dev/#sidebar-drawer-mobile)
-- [Map Control](https://elbe-ui.dev/#map-control)
+- [Gallery + Carousel](https://elbe-ui.dev/components/gallery#gallery-carousel-preview)
+- [Drawer + Sidebar](https://elbe-ui.dev/components/drawer#sidebar-drawer-mobile)
+- [Map Control](https://elbe-ui.dev/components/map#map-control)
