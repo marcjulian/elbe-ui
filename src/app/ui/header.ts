@@ -24,12 +24,20 @@ import { ThemeService } from '../utils/theme';
       </nav>
 
       <div class="ml-auto flex gap-1">
-        <a hlmBtn variant="ghost" href="${config.github}" target="_blank" rel="noopener noreferrer">
+        <a
+          hlmBtn
+          size="icon-sm"
+          variant="ghost"
+          href="${config.github}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <ng-icon name="lucideGithub" />
         </a>
-        <button hlmBtn variant="ghost" (click)="_themeService.toggle()">
+        <button hlmBtn size="icon-sm" variant="ghost" (click)="_themeService.toggle()">
           <ng-icon name="lucideMoon" class="not-dark:hidden" />
           <ng-icon name="lucideSun" class="dark:hidden" />
+          <span class="sr-only">Toggle theme</span>
         </button>
       </div>
     </header>
