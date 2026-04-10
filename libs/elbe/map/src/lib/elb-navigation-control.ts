@@ -10,16 +10,15 @@ import {
   signal,
 } from '@angular/core';
 import { ControlComponent, MapService } from '@maplibre/ngx-maplibre-gl';
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMinus, lucidePlus } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmButtonGroupImports } from '@spartan-ng/helm/button-group';
-import { HlmIconImports } from '@spartan-ng/helm/icon';
 import type { ControlPosition } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-navigation-control',
-  imports: [ControlComponent, HlmIconImports, HlmButtonImports, HlmButtonGroupImports],
+  imports: [ControlComponent, NgIcon, HlmButtonImports, HlmButtonGroupImports],
   providers: [provideIcons({ lucidePlus, lucideMinus })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
