@@ -10,7 +10,7 @@
     "serve:ssr:elbeui": "node dist/elbeui/server/server.mjs",
     "fmt": "prettier --write ."
   },
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.32.1",
   "dependencies": {
     "@angular/cdk": "21.2.7",
     "@angular/common": "21.2.9",
