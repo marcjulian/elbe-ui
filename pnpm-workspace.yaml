@@ -1,0 +1,10 @@
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@spartan-ng/*'
+
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  lmdb: false
+  msgpackr-extract: false
+  nx: false
