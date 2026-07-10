@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideEye, lucideGithub } from '@ng-icons/lucide';
+import { lucideEye } from '@ng-icons/lucide';
+import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { BaseLayout } from '../../../layouts/base.layout';
@@ -24,7 +25,7 @@ import { DrawerPreview } from './drawer.preview';
     BlockPreview,
     RouterLink,
   ],
-  providers: [provideIcons({ lucideGithub, lucideEye })],
+  providers: [provideIcons({ simpleGithub, lucideEye })],
   template: `
     <elb-base-layout mainClasses="pt-8">
       <div class="flex flex-col gap-2">
@@ -39,7 +40,7 @@ import { DrawerPreview } from './drawer.preview';
             rel="noopener noreferrer"
           >
             Open in
-            <ng-icon name="lucideGithub" />
+            <ng-icon name="simpleGithub" />
           </a>
         </div>
         <p class="text-muted-foreground">Drawer component built with Cupertino Pane.</p>
@@ -80,7 +81,7 @@ import { DrawerPreview } from './drawer.preview';
             rel="noopener noreferrer"
           >
             Open in
-            <ng-icon name="lucideGithub" />
+            <ng-icon name="simpleGithub" />
           </a>
         </div>
       </div>

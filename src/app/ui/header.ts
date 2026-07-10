@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideGithub, lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
+import { lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
+import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
 import { ThemeService } from '../utils/theme';
@@ -9,7 +10,7 @@ import { ThemeService } from '../utils/theme';
 @Component({
   selector: 'elb-header',
   imports: [RouterLink, NgIcon, HlmButtonImports],
-  providers: [provideIcons({ lucideGithub, lucideSun, lucideMoon, lucideKayak })],
+  providers: [provideIcons({ simpleGithub, lucideSun, lucideMoon, lucideKayak })],
   template: `
     <header
       class="bg-background/40 sticky top-0 z-10 flex h-(--header-height) items-center gap-2 px-4 backdrop-blur-lg"
@@ -32,7 +33,7 @@ import { ThemeService } from '../utils/theme';
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ng-icon name="lucideGithub" />
+          <ng-icon name="simpleGithub" />
         </a>
         <button hlmBtn size="icon-sm" variant="ghost" (click)="_themeService.toggle()">
           <ng-icon name="lucideMoon" class="not-dark:hidden" />

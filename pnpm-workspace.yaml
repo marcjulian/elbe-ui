@@ -5,6 +5,7 @@ minimumReleaseAgeExclude:
   - '@angular-devkit/*'
   - '@schematics/angular'
   - 'prettier@3.9.5'
+  - '@ng-icons/*'
 
 allowBuilds:
   '@parcel/watcher': false
