@@ -6,7 +6,7 @@ import {
   injectHlmSidebarConfig,
   SidebarVariant,
 } from '@spartan-ng/helm/sidebar';
-import { hlm } from '@spartan-ng/helm/utils';
+import { classes, hlm } from '@spartan-ng/helm/utils';
 import type { ClassValue } from 'clsx';
 
 @Component({
@@ -14,7 +14,6 @@ import type { ClassValue } from 'clsx';
   imports: [NgTemplateOutlet, ElbDrawerImports],
   host: {
     '[attr.data-slot]': '_dataSlot()',
-    '[class]': '_computedClass()',
     '[attr.data-state]': '_dataState()',
     '[attr.data-collapsible]': '_dataCollapsible()',
     '[attr.data-variant]': '_dataVariant()',
@@ -39,11 +38,15 @@ import type { ClassValue } from 'clsx';
     } @else {
       <!-- Sidebar gap on desktop -->
       <div data-slot="sidebar-gap" [class]="_sidebarGapComputedClass()"></div>
-      <div data-slot="sidebar-container" [class]="_sidebarContainerComputedClass()">
+      <div
+        data-slot="sidebar-container"
+        [attr.data-side]="_dataSide()"
+        [class]="_sidebarContainerComputedClass()"
+      >
         <div
           data-sidebar="sidebar"
           data-slot="sidebar-inner"
-          class="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow"
+          class="bg-sidebar group-data-[variant=floating]:ring-sidebar-border flex size-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow-sm group-data-[variant=floating]:ring-1"
         >
           <ng-container *ngTemplateOutlet="contentContainer" />
         </div>
@@ -54,8 +57,6 @@ import type { ClassValue } from 'clsx';
 export class HlmSidebarDrawer {
   protected readonly _sidebarService = inject(HlmSidebarService);
   private readonly _config = injectHlmSidebarConfig();
-
-  public readonly userClass = input<ClassValue>('', { alias: 'class' });
   public readonly sidebarWidthMobile = input<string>(this._config.sidebarWidthMobile);
 
   public readonly side = input<'left' | 'right'>('left');
@@ -64,41 +65,25 @@ export class HlmSidebarDrawer {
 
   protected readonly _sidebarGapComputedClass = computed(() =>
     hlm(
-      'relative w-[var(--sidebar-width)] bg-transparent transition-[width] duration-200 ease-linear',
+      'relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear',
       'group-data-[collapsible=offcanvas]:w-0',
       'group-data-[side=right]:rotate-180',
       this.variant() === 'floating' || this.variant() === 'inset'
-        ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
-        : 'group-data-[collapsible=icon]:w-[var(--sidebar-width-icon)]',
+        ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]'
+        : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)',
     ),
   );
 
   public readonly sidebarContainerClass = input<ClassValue>('');
   protected readonly _sidebarContainerComputedClass = computed(() =>
     hlm(
-      'fixed inset-y-0 z-10 hidden h-svh w-[var(--sidebar-width)] transition-[left,right,width] duration-200 ease-linear md:flex',
-      this.side() === 'left'
-        ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
-        : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
+      'fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)] md:flex',
       this.variant() === 'floating' || this.variant() === 'inset'
-        ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
-        : 'group-data-[collapsible=icon]:w-[var(--sidebar-width-icon)] group-data-[side=left]:border-r group-data-[side=right]:border-l',
+        ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]'
+        : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l',
       this.sidebarContainerClass(),
     ),
   );
-
-  protected readonly _computedClass = computed(() => {
-    if (this.collapsible() === 'none') {
-      return hlm(
-        'bg-sidebar text-sidebar-foreground flex h-svh w-[var(--sidebar-width)] flex-col',
-        this.userClass(),
-      );
-    } else if (this._sidebarService.isMobile()) {
-      return hlm(this.userClass());
-    } else {
-      return hlm('text-sidebar-foreground group peer hidden md:block', this.userClass());
-    }
-  });
 
   protected readonly _dataSlot = computed(() => {
     return !this._sidebarService.isMobile() ? 'sidebar' : undefined;
@@ -131,6 +116,16 @@ export class HlmSidebarDrawer {
     // Sync variant input with service
     effect(() => {
       this._sidebarService.setVariant(this.variant());
+    });
+
+    classes(() => {
+      if (this.collapsible() === 'none') {
+        return hlm('bg-sidebar text-sidebar-foreground flex h-svh w-(--sidebar-width) flex-col');
+      } else if (this._sidebarService.isMobile()) {
+        return '';
+      } else {
+        return hlm('group peer text-sidebar-foreground hidden md:block');
+      }
     });
   }
 }
