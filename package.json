@@ -6,7 +6,7 @@
     "start": "ng serve",
     "generate:sitemap": "tsx sitemap.ts",
     "build": "pnpm generate:sitemap && ng build",
-    "build:pages": "pnpm generate:sitemap && ng build --base-href /elbe-ui/ && cp dist/elbeui/browser/index.html dist/elbeui/browser/404.html",
+    "build:pages": "pnpm generate:sitemap && ng build && cp dist/elbeui/browser/index.html dist/elbeui/browser/404.html",
     "watch": "ng build --watch --configuration development",
     "serve:ssr:elbeui": "node dist/elbeui/server/server.mjs",
     "fmt": "prettier --write ."
