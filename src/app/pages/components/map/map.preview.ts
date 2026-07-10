@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ElbMapImports } from '@elbe/ui/map';
 import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { environment } from '../../../../environments/environment';
@@ -12,7 +12,6 @@ const MapStyles: Record<string, string> = {
 @Component({
   selector: 'elb-map-preview',
   imports: [NgxMapLibreGLModule, ElbMapImports],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden relative',
   },

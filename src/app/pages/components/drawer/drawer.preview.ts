@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ElbDrawerImports } from '@elbe/ui/drawer';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { images } from '../gallery/images';
@@ -34,7 +34,6 @@ import { images } from '../gallery/images';
       </div>
     </elb-drawer>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DrawerPreview {
   image = images[0];

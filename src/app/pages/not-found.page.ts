@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { BaseLayout } from '../layouts/base.layout';
@@ -26,6 +26,5 @@ import { BaseLayout } from '../layouts/base.layout';
       </div>
     </elb-base-layout>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotFoundPage {}

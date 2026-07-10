@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideEye, lucideGithub } from '@ng-icons/lucide';
@@ -25,7 +25,6 @@ import { DrawerPreview } from './drawer.preview';
     RouterLink,
   ],
   providers: [provideIcons({ lucideGithub, lucideEye })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <elb-base-layout mainClasses="pt-8">
       <div class="flex flex-col gap-2">

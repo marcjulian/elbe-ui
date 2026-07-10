@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { link } from './typography';
 
 @Component({
@@ -33,7 +33,6 @@ import { link } from './typography';
       </p>
     </footer>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Footer {
   year = new Date().getFullYear();

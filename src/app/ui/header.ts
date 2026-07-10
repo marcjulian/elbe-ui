@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGithub, lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
@@ -42,7 +42,6 @@ import { ThemeService } from '../utils/theme';
       </div>
     </header>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
   protected _themeService = inject(ThemeService);

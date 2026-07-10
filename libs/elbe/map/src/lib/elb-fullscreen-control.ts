@@ -1,12 +1,5 @@
 import type { BooleanInput } from '@angular/cdk/coercion';
-import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  Component,
-  DOCUMENT,
-  inject,
-  input,
-} from '@angular/core';
+import { booleanAttribute, Component, DOCUMENT, inject, input } from '@angular/core';
 import { ControlComponent, MapService } from '@maplibre/ngx-maplibre-gl';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMaximize } from '@ng-icons/lucide';
@@ -17,7 +10,6 @@ import type { ControlPosition } from 'maplibre-gl';
   selector: 'elb-fullscreen-control',
   imports: [ControlComponent, HlmButton, NgIcon],
   providers: [provideIcons({ lucideMaximize })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control [position]="position()">
       <button

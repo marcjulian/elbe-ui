@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGithub } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
@@ -15,7 +15,6 @@ import { MapPreview } from './map.preview';
   selector: 'elb-map-page',
   imports: [BaseLayout, NgIcon, H2, H3, HlmButtonImports, CodeBlock, Preview, MapPreview],
   providers: [provideIcons({ lucideGithub })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <elb-base-layout mainClasses="pt-8">
       <div class="flex flex-col gap-2">

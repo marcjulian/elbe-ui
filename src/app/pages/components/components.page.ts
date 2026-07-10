@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideChevronRight, lucideImages, lucideMap, lucidePanelTopClose } from '@ng-icons/lucide';
@@ -16,7 +16,6 @@ type UiComponent = {
   selector: 'elb-components',
   imports: [BaseLayout, NgIcon, HlmItemImports, RouterLink],
   providers: [provideIcons({ lucideImages, lucideMap, lucidePanelTopClose, lucideChevronRight })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <elb-base-layout mainClasses="gap-10 flex flex-col min-h-[70vh]">
       <div class="text-center">

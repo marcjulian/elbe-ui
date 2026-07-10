@@ -2,7 +2,6 @@ import type { BooleanInput } from '@angular/cdk/coercion';
 import {
   afterNextRender,
   booleanAttribute,
-  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
@@ -20,7 +19,6 @@ import type { ControlPosition } from 'maplibre-gl';
   selector: 'elb-navigation-control',
   imports: [ControlComponent, NgIcon, HlmButtonImports, HlmButtonGroupImports],
   providers: [provideIcons({ lucidePlus, lucideMinus })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control [position]="position()">
       <hlm-button-group orientation="vertical" aria-label="Media controls" class="h-fit">

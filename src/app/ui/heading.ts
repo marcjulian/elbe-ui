@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideLink } from '@ng-icons/lucide';
@@ -23,7 +23,6 @@ import { lucideLink } from '@ng-icons/lucide';
       </span>
     </a>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class H2 {
   public readonly id = input.required<string>();
@@ -49,7 +48,6 @@ export class H2 {
       </span>
     </a>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class H3 {
   public readonly id = input.required<string>();

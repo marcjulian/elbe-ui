@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -73,7 +73,6 @@ import { HlmSidebarDrawer } from './hlm-sidebar-drawer';
       </main>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarDrawerPreviewPage {
   items: { title: string; url: string; icon: string; isActive?: boolean }[] = [

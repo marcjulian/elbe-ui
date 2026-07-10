@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGithub } from '@ng-icons/lucide';
@@ -60,7 +60,6 @@ import { MapPreview } from './components/map/map.preview';
       </div>
     </elb-base-layout>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
   galleryStyles = galleryStyles;

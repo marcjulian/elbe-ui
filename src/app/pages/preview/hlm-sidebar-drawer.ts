@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input } from '@angular/core';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { ElbDrawerImports } from '@elbe/ui/drawer';
 import {
   HlmSidebarService,
@@ -12,7 +12,6 @@ import type { ClassValue } from 'clsx';
 @Component({
   selector: 'hlm-sidebar-drawer',
   imports: [NgTemplateOutlet, ElbDrawerImports],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[attr.data-slot]': '_dataSlot()',
     '[class]': '_computedClass()',
