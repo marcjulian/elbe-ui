@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideGithub } from '@ng-icons/lucide';
+import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
 import { BaseLayout } from '../layouts/base.layout';
@@ -23,7 +23,7 @@ import { MapPreview } from './components/map/map.preview';
     GalleryCarouselPreview,
     MapPreview,
   ],
-  providers: [provideIcons({ lucideGithub })],
+  providers: [provideIcons({ simpleGithub })],
   template: `
     <elb-base-layout>
       <div class="flex flex-col items-center justify-center gap-6 py-16">
@@ -43,7 +43,7 @@ import { MapPreview } from './components/map/map.preview';
             target="_blank"
             rel="noopener noreferrer"
           >
-            <ng-icon name="lucideGithub" />
+            <ng-icon name="simpleGithub" />
             GitHub
           </a>
         </div>
@@ -60,7 +60,6 @@ import { MapPreview } from './components/map/map.preview';
       </div>
     </elb-base-layout>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
   galleryStyles = galleryStyles;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { hlm } from '@spartan-ng/helm/utils';
 import type { ClassValue } from 'clsx';
 
@@ -12,7 +12,6 @@ import type { ClassValue } from 'clsx';
       <ng-content />
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ElbGalleryCaption {
   public readonly _userClass = input<ClassValue>('', {

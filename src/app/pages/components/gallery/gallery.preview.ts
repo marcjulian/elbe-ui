@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ElbGalleryImports } from '@elbe/ui/gallery';
 import { images } from './images';
 
@@ -28,7 +28,6 @@ import { images } from './images';
       }
     </elb-gallery>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GalleryPreview {
   images = images;

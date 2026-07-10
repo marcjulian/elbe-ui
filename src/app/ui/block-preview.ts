@@ -1,18 +1,15 @@
 import { BooleanInput } from '@angular/cdk/coercion';
-import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-} from '@angular/core';
+import { booleanAttribute, Component, computed, inject, input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { hlm } from '@spartan-ng/helm/utils';
 import { ClassValue } from 'clsx';
 
 @Component({
   selector: 'elb-block-preview',
+  host: {
+    'data-slot': 'block-preview',
+    '[class]': '_computedClass()',
+  },
   template: `
     <!-- TODO add images -->
     @if (showImagesOnMobile()) {
@@ -39,11 +36,6 @@ import { ClassValue } from 'clsx';
       ></iframe>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    'data-slot': 'block-preview',
-    '[class]': '_computedClass()',
-  },
 })
 export class BlockPreview {
   private readonly _sanitizer = inject(DomSanitizer);

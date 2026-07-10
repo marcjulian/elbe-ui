@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideGithub } from '@ng-icons/lucide';
+import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { BaseLayout } from '../../../layouts/base.layout';
@@ -27,8 +27,7 @@ import { GalleryPreview } from './gallery.preview';
     GalleryCaptionPreview,
     GalleryCarouselPreview,
   ],
-  providers: [provideIcons({ lucideGithub })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideIcons({ simpleGithub })],
   template: `
     <elb-base-layout mainClasses="pt-8">
       <div class="flex flex-col gap-2">
@@ -43,7 +42,7 @@ import { GalleryPreview } from './gallery.preview';
             rel="noopener noreferrer"
           >
             Open in
-            <ng-icon name="lucideGithub" />
+            <ng-icon name="simpleGithub" />
           </a>
         </div>
         <p class="text-muted-foreground">Image gallery built with photoswipe.</p>
@@ -86,7 +85,7 @@ import { GalleryPreview } from './gallery.preview';
           rel="noopener noreferrer"
         >
           Open in
-          <ng-icon name="lucideGithub" />
+          <ng-icon name="simpleGithub" />
         </a>
       </div>
       <p class="text-muted-foreground mt-2">
@@ -115,7 +114,7 @@ import { GalleryPreview } from './gallery.preview';
           rel="noopener noreferrer"
         >
           Open in
-          <ng-icon name="lucideGithub" />
+          <ng-icon name="simpleGithub" />
         </a>
       </div>
 

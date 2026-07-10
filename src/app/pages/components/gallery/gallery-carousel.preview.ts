@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ElbGalleryImports } from '@elbe/ui/gallery';
 import { HlmCarouselImports } from '@spartan-ng/helm/carousel';
 import { images } from './images';
@@ -7,7 +7,6 @@ import { images } from './images';
 @Component({
   selector: 'elb-gallery-carousel-preview',
   imports: [ElbGalleryImports, NgOptimizedImage, HlmCarouselImports],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <elb-gallery>
       <hlm-carousel [options]="{ loop: true }">

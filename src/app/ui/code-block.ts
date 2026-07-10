@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, resource, signal } from '@angular/core';
+import { Component, inject, input, resource, signal } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
@@ -7,11 +7,11 @@ import { codeToHtml } from 'shiki/bundle/web';
 
 @Component({
   selector: 'elb-code-block',
+  imports: [NgIcon, HlmButtonImports],
+  providers: [provideIcons({ lucideCopy, lucideCheck })],
   host: {
     class: 'block relative border-border border rounded-lg',
   },
-  imports: [NgIcon, HlmButtonImports],
-  providers: [provideIcons({ lucideCopy, lucideCheck })],
   template: `
     @if (highlightedCode.hasValue()) {
       <div [innerHTML]="highlightedCode.value()"></div>
@@ -31,7 +31,6 @@ import { codeToHtml } from 'shiki/bundle/web';
       </button>
     }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeBlock {
   private readonly _domSanitizer = inject(DomSanitizer);

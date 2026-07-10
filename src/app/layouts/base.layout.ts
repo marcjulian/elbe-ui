@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { hlm } from '@spartan-ng/helm/utils';
 import { ClassValue } from 'clsx';
 import { Footer } from '../ui/footer';
@@ -7,7 +7,6 @@ import { Header } from '../ui/header';
 @Component({
   selector: 'elb-base-layout',
   imports: [Header, Footer],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <elb-header />
 

@@ -1,12 +1,5 @@
 import type { BooleanInput } from '@angular/cdk/coercion';
-import {
-  booleanAttribute,
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-  signal,
-} from '@angular/core';
+import { booleanAttribute, Component, inject, input, signal } from '@angular/core';
 import { ControlComponent, MapService } from '@maplibre/ngx-maplibre-gl';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGlobe } from '@ng-icons/lucide';
@@ -17,7 +10,6 @@ import type { ControlPosition } from 'maplibre-gl';
   selector: 'elb-globe-control',
   imports: [ControlComponent, HlmButton, NgIcon],
   providers: [provideIcons({ lucideGlobe })],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control [position]="position()">
       <button
