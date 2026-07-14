@@ -27,7 +27,8 @@
       "@spartan-ng/helm/sidebar": ["./libs/ui/sidebar/src/index.ts"],
       "@spartan-ng/helm/skeleton": ["./libs/ui/skeleton/src/index.ts"],
       "@spartan-ng/helm/tooltip": ["./libs/ui/tooltip/src/index.ts"],
-      "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"]
+      "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"],
+      "@spartan-ng/helm/empty": ["./libs/ui/empty/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

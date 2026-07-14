@@ -2,35 +2,32 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideArrowLeft } from '@ng-icons/lucide';
-import { HlmButton } from '@spartan-ng/helm/button';
+import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 import { BaseLayout } from '../layouts/base.layout';
 
 @Component({
   selector: 'elb-not-found',
-  imports: [BaseLayout, RouterLink, HlmButton, NgIcon],
+  imports: [BaseLayout, RouterLink, NgIcon, HlmButtonImports, HlmEmptyImports],
   providers: [provideIcons({ lucideArrowLeft })],
   template: `
     <elb-base-layout
       class="flex min-h-dvh flex-col"
       mainClass="flex-1 flex items-center justify-center"
     >
-      <div class="py-24 text-center">
-        <p class="text-primary text-base font-semibold">404</p>
-        <h1
-          class="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl"
-        >
-          Page not found
-        </h1>
-        <p class="mt-6 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-          Sorry, we couldn't find the page you're looking for.
-        </p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
+      <hlm-empty>
+        <hlm-empty-header>
+          <p class="text-primary text-base font-semibold">404</p>
+          <h1 hlmEmptyTitle>Page not found</h1>
+          <p hlmEmptyDescription>Sorry, we couldn't find the page you're looking for.</p>
+        </hlm-empty-header>
+        <hlm-empty-content>
           <a routerLink="/" hlmBtn variant="ghost">
             <ng-icon name="lucideArrowLeft" />
             Back to home
           </a>
-        </div>
-      </div>
+        </hlm-empty-content>
+      </hlm-empty>
     </elb-base-layout>
   `,
 })
