@@ -17,9 +17,12 @@ type UiComponent = {
   imports: [BaseLayout, NgIcon, HlmItemImports, RouterLink],
   providers: [provideIcons({ lucideImages, lucideMap, lucidePanelTopClose, lucideChevronRight })],
   template: `
-    <elb-base-layout mainClass="gap-10 flex flex-col min-h-[70vh]">
+    <elb-base-layout class="flex min-h-dvh flex-col" mainClass="flex-1 flex flex-col gap-10 pt-10">
       <div class="text-center">
         <h1 class="text-4xl font-bold">Components</h1>
+        <p class="text-muted-foreground mx-auto mt-3 max-w-sm text-xl text-balance">
+          All available elbe/ui components
+        </p>
       </div>
 
       <div class="grid gap-4 sm:grid-cols-2">

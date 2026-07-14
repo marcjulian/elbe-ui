@@ -4,6 +4,6 @@
     "outDir": "./out-tsc/app",
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "libs/ui/**/src/**/*.ts", "libs/elbe/**/src/**/*.ts"],
+  "include": ["src/**/*.ts", "tools/**/*.ts", "libs/ui/**/src/**/*.ts", "libs/elbe/**/src/**/*.ts"],
   "exclude": ["src/**/*.spec.ts"]
 }

@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "generate:sitemap": "tsx sitemap.ts",
+    "generate:sitemap": "tsx tools/sitemap.ts",
+    "generate:og": "tsx tools/og.ts",
     "build": "pnpm generate:sitemap && ng build",
     "build:pages": "pnpm generate:sitemap && ng build && cp dist/elbeui/browser/index.html dist/elbeui/browser/404.html",
     "watch": "ng build --watch --configuration development",
@@ -40,6 +41,7 @@
     "photoswipe": "5.4.4",
     "rxjs": "7.8.2",
     "tailwind-merge": "3.6.0",
+    "takumi-js": "^2.1.2",
     "tslib": "2.8.1"
   },
   "devDependencies": {

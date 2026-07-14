@@ -1,3 +1,5 @@
+import { type ValueProvider, InjectionToken, inject } from '@angular/core';
+
 export interface SeoConfig {
   description?: string;
   keywords?: string;
@@ -5,6 +7,16 @@ export interface SeoConfig {
   ogType?: string;
   ogImage?: string;
   twitterCard?: string;
+}
+
+const SeoConfigToken = new InjectionToken<Required<SeoConfig>>('SeoConfig');
+
+export function provideSeo(config: Required<SeoConfig>): ValueProvider {
+  return { provide: SeoConfigToken, useValue: config };
+}
+
+export function injectSeoConfig(): Required<SeoConfig> {
+  return inject(SeoConfigToken);
 }
 
 /**

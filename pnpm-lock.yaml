@@ -89,6 +89,9 @@ importers:
       tailwind-merge:
         specifier: 3.6.0
         version: 3.6.0
+      takumi-js:
+        specifier: ^2.1.2
+        version: 2.1.2(react@19.2.1)
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -2647,6 +2650,88 @@ packages:
 
   '@tailwindcss/postcss@4.3.2':
     resolution: {integrity: sha512-rjVWYCa7Ngbi5AarT6k8TkxUG3Wl1QKzHdIZVsjZSzf36Jmo2IKZt/NHRAwly8oDkbBOH0YTu+CHuf9jPxMc+g==}
+
+  '@takumi-rs/core-darwin-arm64@2.1.2':
+    resolution: {integrity: sha512-rmJWZQwEnEDnfdVuX4oVeYaKKJxpJmE3SDtNQa92lcV5GNqQiDs9CB7MO5DDL2V5sQEhcotmb7GspjJuQwN2mA==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@takumi-rs/core-darwin-x64@2.1.2':
+    resolution: {integrity: sha512-wPQzTuYWeu48ZLAFjr84YaOPmk6No23yFW6Tml6ej0F4+6lYNjDkWbGaOOGUy9cTpPVvFl11ma1Fp+8mONTkCQ==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@takumi-rs/core-linux-arm64-gnu@2.1.2':
+    resolution: {integrity: sha512-IsWiKXFahAqL15ruCCTbP5rWLVrtuN4ylhfBhCyewt9JcnVZUKd42LB2wb8IUZGl4aNdfXA4CsTsp5RwczH5xA==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@takumi-rs/core-linux-arm64-musl@2.1.2':
+    resolution: {integrity: sha512-V6jzw+F3kmCImMqKPHsqUstea380qY/WkECakBjdA5pqyIjv97qSBYNlGpJoJMrY0EhthHlK3VJH0Oc4yhjs3Q==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@takumi-rs/core-linux-x64-gnu@2.1.2':
+    resolution: {integrity: sha512-C3dLmGkAPw1jlLnN1PCkxXozJYg55c5/JkhXvhhfRy8JRCwkW4e7SKXAWJkXd7KvtZZNICizABHp6ybyuPHrjQ==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@takumi-rs/core-linux-x64-musl@2.1.2':
+    resolution: {integrity: sha512-XUJ/M1elsNZDrWDo/TqEZyo0YfJSrv8CMg70aUCFd8mosrHVkc/VWQCHEcRaaDH9mnOloLAiZUwZVAnVx0i9rA==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@takumi-rs/core-win32-arm64-msvc@2.1.2':
+    resolution: {integrity: sha512-WCd4YM07CcXYHb8BZiU88GkGB5cSXJvFjNZ2iksKrLszia1d6E3gOs0C1vSBF7bF05K19LFkI46YjVVazALvRg==}
+    engines: {node: '>=18'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@takumi-rs/core-win32-x64-msvc@2.1.2':
+    resolution: {integrity: sha512-uf3vvOtzwrsd3sN2LTnM7c2NL6uCmcvZSHAVk7WuI48uqk6TLxjtDgcg2ENYKELfFHxItmuNEgFgWG29iabacA==}
+    engines: {node: '>=18'}
+    cpu: [x64]
+    os: [win32]
+
+  '@takumi-rs/core@2.1.2':
+    resolution: {integrity: sha512-L8/k3YMtnROvu7q7rFmPVt6kjhe6JCML29SS4/HRzr0zTdwKCzodTeqtYHcuZKIIIoyn6rF70z49n39Jwocqmg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      csstype: '*'
+    peerDependenciesMeta:
+      csstype:
+        optional: true
+
+  '@takumi-rs/helpers@2.1.2':
+    resolution: {integrity: sha512-gNZR5G8Qs/t1QY5vsnlM5huhQMBN7+k2iGgWYkwcznP/yjTlc7YT9od+qZ6es2Eu/JEgcc+F8weOdzbia+HSCw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      preact: ^10.0.0
+      react: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      preact:
+        optional: true
+      react:
+        optional: true
+
+  '@takumi-rs/wasm@2.1.2':
+    resolution: {integrity: sha512-Z8ioeLmzBKE1r/7JgfY1V/UxCvkpO4FWTw/Wx5YEKtH4Vss8Rhc5bSzFhTUeRqSlQ5pnd1D/3PfRry/ZlPsm3Q==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      csstype: '*'
+    peerDependenciesMeta:
+      csstype:
+        optional: true
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -6445,6 +6530,10 @@ packages:
   tailwindcss@4.3.2:
     resolution: {integrity: sha512-WtctNNSH8A9jlMIqxzuYumOHU5uGZyRv0Q5svQl+oEPy5w84YpBxdb7MdqyiSPQge5jTJ6zFQLq0PFygdccSBA==}
 
+  takumi-js@2.1.2:
+    resolution: {integrity: sha512-m79lONX670IS/AbLYEQRtnG8tBkUEb+He/PVS3ts1QGP91IWnyUIqrLDq8OjQdoZZrBA8/BgdQjPmzHvLiJIjQ==}
+    engines: {node: '>=18'}
+
   tapable@2.3.3:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
@@ -9908,6 +9997,57 @@ snapshots:
       '@tailwindcss/oxide': 4.3.2
       postcss: 8.5.16
       tailwindcss: 4.3.2
+
+  '@takumi-rs/core-darwin-arm64@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-darwin-x64@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-linux-arm64-gnu@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-linux-arm64-musl@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-linux-x64-gnu@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-linux-x64-musl@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-win32-arm64-msvc@2.1.2':
+    optional: true
+
+  '@takumi-rs/core-win32-x64-msvc@2.1.2':
+    optional: true
+
+  '@takumi-rs/core@2.1.2(react@19.2.1)':
+    dependencies:
+      '@takumi-rs/helpers': 2.1.2(react@19.2.1)
+    optionalDependencies:
+      '@takumi-rs/core-darwin-arm64': 2.1.2
+      '@takumi-rs/core-darwin-x64': 2.1.2
+      '@takumi-rs/core-linux-arm64-gnu': 2.1.2
+      '@takumi-rs/core-linux-arm64-musl': 2.1.2
+      '@takumi-rs/core-linux-x64-gnu': 2.1.2
+      '@takumi-rs/core-linux-x64-musl': 2.1.2
+      '@takumi-rs/core-win32-arm64-msvc': 2.1.2
+      '@takumi-rs/core-win32-x64-msvc': 2.1.2
+    transitivePeerDependencies:
+      - preact
+      - react
+
+  '@takumi-rs/helpers@2.1.2(react@19.2.1)':
+    optionalDependencies:
+      react: 19.2.1
+
+  '@takumi-rs/wasm@2.1.2(react@19.2.1)':
+    dependencies:
+      '@takumi-rs/helpers': 2.1.2(react@19.2.1)
+    transitivePeerDependencies:
+      - preact
+      - react
 
   '@trysound/sax@0.2.0': {}
 
@@ -14061,6 +14201,16 @@ snapshots:
   tailwind-merge@3.6.0: {}
 
   tailwindcss@4.3.2: {}
+
+  takumi-js@2.1.2(react@19.2.1):
+    dependencies:
+      '@takumi-rs/core': 2.1.2(react@19.2.1)
+      '@takumi-rs/helpers': 2.1.2(react@19.2.1)
+      '@takumi-rs/wasm': 2.1.2(react@19.2.1)
+    transitivePeerDependencies:
+      - csstype
+      - preact
+      - react
 
   tapable@2.3.3: {}
 

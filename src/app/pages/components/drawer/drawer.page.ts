@@ -33,7 +33,7 @@ import { DrawerPreview } from './drawer.preview';
           <h1 class="text-3xl font-semibold">Drawer</h1>
           <a
             hlmBtn
-            variant="secondary"
+            variant="outline"
             size="sm"
             href="${config.github}/tree/main/libs/elbe/drawer/src/lib"
             target="_blank"

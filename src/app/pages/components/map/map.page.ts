@@ -22,7 +22,7 @@ import { MapPreview } from './map.preview';
           <h1 class="text-3xl font-semibold">Map</h1>
           <a
             hlmBtn
-            variant="secondary"
+            variant="outline"
             size="sm"
             href="${config.github}/tree/main/libs/elbe/map/src/lib"
             target="_blank"

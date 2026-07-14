@@ -3,7 +3,8 @@ import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
-import { routes } from './src/app/app.routes';
+import { routes } from '../src/app/app.routes';
+import { environment } from '../src/environments/environment';
 
 // Helper to extract paths from Angular routes
 function getPaths(routes: Route[], parentPath = ''): string[] {
@@ -32,7 +33,7 @@ function getPaths(routes: Route[], parentPath = ''): string[] {
 
 async function generateSitemap() {
   try {
-    const stream = new SitemapStream({ hostname: 'https://elbe-ui.dev' });
+    const stream = new SitemapStream({ hostname: environment.appUrl });
 
     // TODO filter out routes starting with /preview
     const paths = getPaths(routes).filter((path) => !path.startsWith('/preview'));

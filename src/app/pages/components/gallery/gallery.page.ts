@@ -35,7 +35,7 @@ import { GalleryPreview } from './gallery.preview';
           <h1 class="text-3xl font-semibold">Gallery</h1>
           <a
             hlmBtn
-            variant="secondary"
+            variant="outline"
             size="sm"
             href="${config.github}/tree/main/libs/elbe/gallery/src/lib"
             target="_blank"

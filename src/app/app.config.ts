@@ -3,7 +3,8 @@ import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from 
 
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { routes } from './app.routes';
-import { provideTitleStrategy } from './title.strategy';
+import { provideSeo } from './tools/seo.types';
+import { provideTitleStrategy } from './tools/title.strategy';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,14 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideClientHydration(withEventReplay()),
+    provideSeo({
+      description: 'Angular UI components built with Tailwind CSS and spartan/ui',
+      keywords: 'Angular,spartan/ui,Tailwind CSS,Paddling Spots',
+      robots: 'index, follow',
+      ogType: 'website',
+      ogImage: '/assets/og/og.webp',
+      twitterCard: 'summary_large_image',
+    }),
     provideTitleStrategy(),
   ],
 };

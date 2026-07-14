@@ -8,29 +8,53 @@ export const routes: Routes = [
   },
   {
     path: 'components',
-    title: 'Components',
     children: [
       {
         path: '',
         loadComponent: () =>
           import('./pages/components/components.page').then((m) => m.ComponentsPage),
+        title: 'Components',
+        data: {
+          ...meta({
+            description: 'All available elbe/ui components',
+            ogImage: '/assets/og/components.webp',
+          }),
+        },
       },
       {
         path: 'drawer',
         loadComponent: () =>
           import('./pages/components/drawer/drawer.page').then((m) => m.DrawerPage),
         title: 'Drawer',
+        data: {
+          ...meta({
+            description: 'Drawer component built with Cupertino Panes library.',
+            ogImage: '/assets/og/drawer.webp',
+          }),
+        },
       },
       {
         path: 'gallery',
         loadComponent: () =>
           import('./pages/components/gallery/gallery.page').then((m) => m.GalleryPage),
         title: 'Gallery',
+        data: {
+          ...meta({
+            description: 'Image gallery built with photoswipe library.',
+            ogImage: '/assets/og/gallery.webp',
+          }),
+        },
       },
       {
         path: 'map',
         loadComponent: () => import('./pages/components/map/map.page').then((m) => m.MapPage),
         title: 'Map',
+        data: {
+          ...meta({
+            description: 'Map controls built for ngx-mapbox-gl library.',
+            ogImage: '/assets/og/map.webp',
+          }),
+        },
       },
     ],
   },
@@ -46,6 +70,7 @@ export const routes: Routes = [
         title: 'Sidebar Drawer Preview',
       },
     ],
+    data: { ...meta({ robots: 'noindex, follow' }) },
   },
   {
     path: 'imprint',
