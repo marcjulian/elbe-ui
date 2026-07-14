@@ -10,7 +10,7 @@ import { Header } from '../ui/header';
   template: `
     <elb-header />
 
-    <main [class]="_computedMainClasses()">
+    <main [class]="_computedMainClass()">
       <ng-content />
     </main>
 
@@ -18,8 +18,8 @@ import { Header } from '../ui/header';
   `,
 })
 export class BaseLayout {
-  public readonly mainClasses = input<ClassValue>('');
-  protected readonly _computedMainClasses = computed(() =>
-    hlm('mx-auto max-w-(--breakpoint-lg) px-4 pb-20', this.mainClasses()),
+  public readonly mainClass = input<ClassValue>('');
+  protected readonly _computedMainClass = computed(() =>
+    hlm('mx-auto max-w-(--breakpoint-lg) px-4 pb-20', this.mainClass()),
   );
 }

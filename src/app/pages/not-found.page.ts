@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideArrowLeft } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { BaseLayout } from '../layouts/base.layout';
 
 @Component({
   selector: 'elb-not-found',
-  imports: [BaseLayout, RouterLink, HlmButton],
+  imports: [BaseLayout, RouterLink, HlmButton, NgIcon],
+  providers: [provideIcons({ lucideArrowLeft })],
   template: `
-    <elb-base-layout>
-      <div class="min-h-[50vh] py-24 text-center">
+    <elb-base-layout
+      class="flex min-h-dvh flex-col"
+      mainClass="flex-1 flex items-center justify-center"
+    >
+      <div class="py-24 text-center">
         <p class="text-primary text-base font-semibold">404</p>
         <h1
           class="mt-4 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl"
@@ -19,9 +25,10 @@ import { BaseLayout } from '../layouts/base.layout';
           Sorry, we couldn't find the page you're looking for.
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
-          <a routerLink="/" hlmBtn variant="ghost"
-            ><span aria-hidden="true">&larr;</span> Back to home</a
-          >
+          <a routerLink="/" hlmBtn variant="ghost">
+            <ng-icon name="lucideArrowLeft" />
+            Back to home
+          </a>
         </div>
       </div>
     </elb-base-layout>

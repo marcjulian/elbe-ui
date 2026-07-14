@@ -5,15 +5,16 @@ import { lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
-import { ThemeService } from '../utils/theme';
+import { ThemeService } from '../tools/theme';
 
 @Component({
   selector: 'elb-header',
   imports: [RouterLink, NgIcon, HlmButtonImports],
   providers: [provideIcons({ simpleGithub, lucideSun, lucideMoon, lucideKayak })],
+  host: { class: 'sticky top-0 z-10' },
   template: `
     <header
-      class="bg-background/40 sticky top-0 z-10 flex h-(--header-height) items-center gap-2 px-4 backdrop-blur-lg"
+      class="bg-background/40 flex h-(--header-height) items-center gap-2 px-4 backdrop-blur-lg"
     >
       <a routerLink="/" hlmBtn variant="ghost" size="sm" class="font-semibold">
         <ng-icon name="lucideKayak" class="text-primary text-xl" />

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { link } from './typography';
 
 @Component({
   selector: 'elb-footer',
+  imports: [RouterLink],
   template: `
     <footer class="flex flex-col items-center gap-4 px-4 py-10">
       <a href="https://paddlingspots.com" target="_blank" rel="noopener noreferrer">
@@ -25,11 +27,17 @@ import { link } from './typography';
           />
         </svg>
       </a>
+      <div class="text-muted-foreground flex gap-2 text-xs">
+        <a routerLink="/" class="hover:text-foreground">Home</a>
+        <a routerLink="/components" class="hover:text-foreground">Components</a>
+        <a routerLink="/imprint" class="hover:text-foreground">Imprint</a>
+        <a routerLink="/privacy" class="hover:text-foreground">Privacy Policy</a>
+      </div>
       <p class="text-muted-foreground text-center text-sm">
-        &copy; {{ year }} elbe/ui. Built by
-        <a href="https://marcjulian.de" class="${link}" target="_blank" rel="noopener noreferrer"
-          >marcjulian</a
-        >.
+        &copy; {{ year }} elbe/ui -
+        <a href="https://marcjulian.de" class="${link}" target="_blank" rel="noopener noreferrer">
+          Marc Stammerjohann </a
+        >. All rights reserved.
       </p>
     </footer>
   `,

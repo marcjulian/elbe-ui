@@ -36,10 +36,10 @@ importers:
         specifier: 22.0.6
         version: 22.0.6(@angular/common@22.0.6(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(@angular/platform-server@22.0.6(@angular/common@22.0.6(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@22.0.6)(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(@angular/platform-browser@22.0.6(@angular/common@22.0.6(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/router@22.0.6(@angular/common@22.0.6(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(@angular/platform-browser@22.0.6(@angular/common@22.0.6(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2)))(rxjs@7.8.2))
       '@fontsource/noto-mono':
-        specifier: ^5.2.5
+        specifier: 5.2.5
         version: 5.2.5
       '@maplibre/ngx-maplibre-gl':
-        specifier: ^21.0.2
+        specifier: 21.0.2
         version: 21.0.2(@angular/common@22.0.6(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.6(@angular/compiler@22.0.6)(rxjs@7.8.2))(maplibre-gl@5.24.0)(rxjs@7.8.2)
       '@ng-icons/core':
         specifier: 34.0.0
@@ -57,7 +57,7 @@ importers:
         specifier: 0.7.1
         version: 0.7.1
       clsx:
-        specifier: ^2.1.1
+        specifier: 2.1.1
         version: 2.1.1
       cupertino-pane:
         specifier: 1.5.4
@@ -72,13 +72,16 @@ importers:
         specifier: 5.2.1
         version: 5.2.1
       inter-ui:
-        specifier: ^4.1.1
+        specifier: 4.1.1
         version: 4.1.1
       maplibre-gl:
-        specifier: ^5.24.0
+        specifier: 5.24.0
         version: 5.24.0
+      marked:
+        specifier: 18.0.6
+        version: 18.0.6
       photoswipe:
-        specifier: ^5.4.4
+        specifier: 5.4.4
         version: 5.4.4
       rxjs:
         specifier: 7.8.2
@@ -91,7 +94,7 @@ importers:
         version: 2.8.1
     devDependencies:
       '@angular/build':
-        specifier: ^22.0.6
+        specifier: 22.0.6
         version: 22.0.6(c24ff46d4a24ea433635506018408c80)
       '@angular/cli':
         specifier: 22.0.6
@@ -115,7 +118,7 @@ importers:
         specifier: 27.4.0
         version: 27.4.0(postcss@8.5.16)
       postcss:
-        specifier: ^8.5.16
+        specifier: 8.5.16
         version: 8.5.16
       prettier:
         specifier: 3.9.5
@@ -127,16 +130,16 @@ importers:
         specifier: 0.8.0
         version: 0.8.0(prettier-plugin-organize-imports@4.3.0(prettier@3.9.5)(typescript@6.0.3))(prettier@3.9.5)
       shiki:
-        specifier: ^4.3.1
+        specifier: 4.3.1
         version: 4.3.1
       sitemap:
-        specifier: ^9.0.1
+        specifier: 9.0.1
         version: 9.0.1
       tailwindcss:
         specifier: 4.3.2
         version: 4.3.2
       tsx:
-        specifier: ^4.23.0
+        specifier: 4.23.0
         version: 4.23.0
       tw-animate-css:
         specifier: 1.4.0
@@ -4881,6 +4884,11 @@ packages:
   maplibre-gl@5.24.0:
     resolution: {integrity: sha512-ALyFxgtd5R+65UqZ/++lOqwWcC0SNho9c27fYSyLmG7AfnAul2o46F05aDJGPbFU57wos9dgcIySHs0Xe6ia3A==}
     engines: {node: '>=16.14.0', npm: '>=8.1.0'}
+
+  marked@18.0.6:
+    resolution: {integrity: sha512-MrV5puXBfuiy6wl6DLaq3BtIJQAJToAd5zt/ZKhRfGRAuFPALE7/4Y7jnxRQoEgK/pBgurGqLyAuRgZ2xOjr6w==}
+    engines: {node: '>= 20'}
+    hasBin: true
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -12448,6 +12456,8 @@ snapshots:
       potpack: 2.1.0
       quickselect: 3.0.0
       tinyqueue: 3.0.0
+
+  marked@18.0.6: {}
 
   math-intrinsics@1.1.0: {}
 

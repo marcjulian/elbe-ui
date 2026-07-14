@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { ElbMapImports } from '@elbe/ui/map';
 import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { environment } from '../../../../environments/environment';
-import { ThemeService } from '../../../utils/theme';
+import { ThemeService } from '../../../tools/theme';
 
 const MapStyles: Record<string, string> = {
   light: 'streets-v4',

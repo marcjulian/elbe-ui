@@ -27,7 +27,7 @@ import { DrawerPreview } from './drawer.preview';
   ],
   providers: [provideIcons({ simpleGithub, lucideEye })],
   template: `
-    <elb-base-layout mainClasses="pt-8">
+    <elb-base-layout mainClass="pt-8">
       <div class="flex flex-col gap-2">
         <div class="flex justify-between">
           <h1 class="text-3xl font-semibold">Drawer</h1>

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { meta } from './tools/seo.types';
 
 export const routes: Routes = [
   {
@@ -47,8 +48,27 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'imprint',
+    loadComponent: () => import('./pages/legal/legal.page').then((m) => m.LegalPage),
+    title: 'Imprint',
+    data: {
+      file: 'assets/legal/imprint.md',
+      ...meta({ robots: 'noindex, follow' }),
+    },
+  },
+  {
+    path: 'privacy',
+    loadComponent: () => import('./pages/legal/legal.page').then((m) => m.LegalPage),
+    title: 'Privacy Policy',
+    data: {
+      file: 'assets/legal/privacy.md',
+      ...meta({ robots: 'noindex, follow' }),
+    },
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found.page').then((m) => m.NotFoundPage),
     title: 'Page Not Found',
+    data: { ...meta({ robots: 'noindex, follow' }) },
   },
 ];
