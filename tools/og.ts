@@ -81,7 +81,7 @@ async function generateOg() {
           elbe/<span tw="text-[#009689]">ui</span>
         </h1>
       </div>
-      <p tw="text-white text-3xl text-balance text-center text-white">Angular UI components built with Tailwind CSS and spartan/ui.</p>
+      <p tw="text-white text-3xl text-balance text-center">Angular UI components built with Tailwind CSS and spartan/ui.</p>
     </div>`,
     { width: 1200, height: 630, format: 'webp' },
   );
