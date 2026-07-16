@@ -3,9 +3,7 @@ import { classes } from '@spartan-ng/helm/utils';
 
 @Directive({
   selector: '[elbDrawerFooter],elb-drawer-footer',
-  host: {
-    'data-slot': 'drawer-footer',
-  },
+  host: { 'data-slot': 'drawer-footer' },
 })
 export class ElbDrawerFooter {
   constructor() {

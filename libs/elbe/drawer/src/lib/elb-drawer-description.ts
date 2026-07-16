@@ -3,9 +3,7 @@ import { classes } from '@spartan-ng/helm/utils';
 
 @Directive({
   selector: '[elbDrawerDescription]',
-  host: {
-    'data-slot': 'drawer-description',
-  },
+  host: { 'data-slot': 'drawer-description' },
 })
 export class ElbDrawerDescription {
   constructor() {

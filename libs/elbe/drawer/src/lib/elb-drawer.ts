@@ -21,6 +21,7 @@ import { injectElbDrawerConfig, type DrawerOptions } from './elb-drawer.token';
   exportAs: 'elbDrawer',
   host: {
     'data-slot': 'drawer',
+    '[style]': 'hostStyles()',
   },
 })
 export class ElbDrawer {
@@ -29,6 +30,8 @@ export class ElbDrawer {
   private readonly _document = inject(DOCUMENT);
 
   private readonly _config = injectElbDrawerConfig();
+
+  public readonly hostStyles = input<string>('display: none');
 
   public readonly options = input<DrawerOptions>();
 
@@ -45,6 +48,8 @@ export class ElbDrawer {
 
   constructor() {
     afterNextRender(() => {
+      // reveal the element before initializing CupertinoPane to prevent flash of content
+      this._elementRef.nativeElement.style.display = '';
       this.cupertino = new CupertinoPane(this._elementRef.nativeElement, {
         events: {
           onDidPresent: () => {
