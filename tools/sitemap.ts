@@ -11,7 +11,13 @@ function getPaths(routes: Route[], parentPath = ''): string[] {
   let paths: string[] = [];
 
   for (const route of routes) {
-    if (route.path === '**' || route.redirectTo) {
+    if (route.redirectTo) {
+      continue;
+    }
+
+    // Skip routes that set noindex robots
+    const robots = route.data?.['meta']?.robots as string | undefined;
+    if (robots?.includes('noindex')) {
       continue;
     }
 
@@ -35,8 +41,7 @@ async function generateSitemap() {
   try {
     const stream = new SitemapStream({ hostname: environment.appUrl });
 
-    // TODO filter out routes starting with /preview
-    const paths = getPaths(routes).filter((path) => !path.startsWith('/preview'));
+    const paths = getPaths(routes);
     const links = paths.map((url) => ({
       url,
     }));
