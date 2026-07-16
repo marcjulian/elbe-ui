@@ -2,15 +2,13 @@ import { type ClassProvider, inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { type RouterStateSnapshot, TitleStrategy } from '@angular/router';
 import { config } from '../config';
-import { HeaderService } from './header.service';
-import { SeoService } from './seo.service';
+import { Seo } from './seo';
 import type { SeoConfig } from './seo.types';
 
 @Injectable()
 export class AppTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);
-  private readonly header = inject(HeaderService);
-  private readonly seo = inject(SeoService);
+  private readonly seo = inject(Seo);
 
   updateTitle(snapshot: RouterStateSnapshot): void {
     // PageTitle is equal to the "Title" of a route if it's set
@@ -26,7 +24,7 @@ export class AppTitleStrategy extends TitleStrategy {
     const fullTitle = title.join(' - ');
     this.title.setTitle(fullTitle);
 
-    this.header.setCanonical(snapshot.url);
+    this.seo.setCanonical(snapshot.url);
 
     const mergedSeo = this.collectSeoConfig(snapshot);
     this.seo.applyFromStrategy(mergedSeo, fullTitle);

@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { inject, Service } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { environment } from '../../environments/environment';
@@ -5,7 +6,8 @@ import type { SeoConfig } from './seo.types';
 import { injectSeoConfig } from './seo.types';
 
 @Service()
-export class SeoService {
+export class Seo {
+  private readonly document = inject(DOCUMENT);
   private readonly meta = inject(Meta);
   private readonly config = injectSeoConfig();
 
@@ -41,6 +43,16 @@ export class SeoService {
 
   setRobots(value: string): void {
     this.meta.updateTag({ name: 'robots', content: value });
+  }
+
+  /**
+   * Sets the canonical link in the header.
+   * It supposes the header link is already present in the index.html
+   */
+  setCanonical(url: string): void {
+    const pathWithoutFragment = url.split('#')[0];
+    const fullPath = this.resolveUrl(pathWithoutFragment);
+    this.document.querySelector('link[rel=canonical]')?.setAttribute('href', fullPath);
   }
 
   /** If the path is relative, prefix it with the app URL. */
