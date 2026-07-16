@@ -34,7 +34,6 @@ export class Seo {
   }
 
   /** Imperative API — pages may override tags between navigations. */
-
   setDescription(text: string): void {
     this.meta.updateTag({ name: 'description', content: text });
     this.meta.updateTag({ property: 'og:description', content: text });
