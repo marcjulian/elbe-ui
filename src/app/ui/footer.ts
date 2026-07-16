@@ -33,7 +33,7 @@ import { link } from './typography';
         <a routerLink="/imprint" class="hover:text-foreground">Imprint</a>
         <a routerLink="/privacy" class="hover:text-foreground">Privacy Policy</a>
       </div>
-      <p class="text-muted-foreground text-center text-sm">
+      <p class="text-muted-foreground text-center text-xs">
         &copy; {{ year }} elbe/ui -
         <a href="https://marcjulian.de" class="${link}" target="_blank" rel="noopener noreferrer">
           Marc Stammerjohann </a
