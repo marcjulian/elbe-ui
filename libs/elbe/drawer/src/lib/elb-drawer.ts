@@ -54,7 +54,8 @@ export class ElbDrawer {
         events: {
           onDidPresent: () => {
             // prevent body scroll when drawer is open
-            this._document.body.style.overflowY = 'hidden';
+            this._document.body.style.overflow = 'hidden';
+            this._document.documentElement.style.scrollbarGutter = 'stable';
           },
           onBackdropTap: () => this._close(),
           onWillDismiss: () => this.stateChanged.emit('closed'),
@@ -62,8 +63,8 @@ export class ElbDrawer {
             this._state.set('closed');
 
             // restore body scroll when drawer is closed
-            this._document.body.style.overflowY = '';
-            this._document.body.style.overscrollBehaviorY = '';
+            this._document.body.style.overflow = '';
+            this._document.documentElement.style.scrollbarGutter = '';
           },
         },
         ...this._config.options,
