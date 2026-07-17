@@ -18,8 +18,7 @@ export class Seo {
   applyFromStrategy(config: SeoConfig, fullTitle: string): void {
     const merged = { ...this.config, ...config };
 
-    this.meta.updateTag({ name: 'description', content: merged.description });
-    this.meta.updateTag({ name: 'keywords', content: merged.keywords });
+    this.meta.updateTag({ name: 'description', content: merged.description })
     this.meta.updateTag({ name: 'robots', content: merged.robots });
 
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
@@ -66,9 +65,6 @@ export class Seo {
   set(config: Partial<SeoConfig>): void {
     if (config.description !== undefined) {
       this.setDescription(config.description);
-    }
-    if (config.keywords !== undefined) {
-      this.meta.updateTag({ name: 'keywords', content: config.keywords });
     }
     if (config.robots !== undefined) {
       this.setRobots(config.robots);

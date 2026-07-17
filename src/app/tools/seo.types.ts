@@ -2,7 +2,6 @@ import { type ValueProvider, InjectionToken, inject } from '@angular/core';
 
 export interface SeoConfig {
   description?: string;
-  keywords?: string;
   robots?: string;
   ogType?: string;
   ogImage?: string;
