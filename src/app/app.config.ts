@@ -19,8 +19,9 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(withEventReplay()),
     provideSeo({
+      title: 'elbe/ui - Angular UI components built with Tailwind CSS and spartan/ui',
+      titleTemplate: '%s | elbe/ui',
       description: 'Angular UI components built with Tailwind CSS and spartan/ui',
-      keywords: 'Angular,spartan/ui,Tailwind CSS,Paddling Spots',
       robots: 'index, follow',
       ogType: 'website',
       ogImage: '/assets/og/og.webp',

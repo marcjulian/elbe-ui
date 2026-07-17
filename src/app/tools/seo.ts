@@ -18,7 +18,7 @@ export class Seo {
   applyFromStrategy(config: SeoConfig, fullTitle: string): void {
     const merged = { ...this.config, ...config };
 
-    this.meta.updateTag({ name: 'description', content: merged.description })
+    this.meta.updateTag({ name: 'description', content: merged.description });
     this.meta.updateTag({ name: 'robots', content: merged.robots });
 
     this.meta.updateTag({ property: 'og:title', content: fullTitle });

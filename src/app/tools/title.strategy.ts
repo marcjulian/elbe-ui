@@ -1,27 +1,20 @@
 import { type ClassProvider, inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { type RouterStateSnapshot, TitleStrategy } from '@angular/router';
-import { config } from '../config';
 import { Seo } from './seo';
-import type { SeoConfig } from './seo.types';
+import { injectSeoConfig, type SeoConfig } from './seo.types';
 
 @Injectable()
 export class AppTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);
   private readonly seo = inject(Seo);
+  private readonly config = injectSeoConfig();
 
   updateTitle(snapshot: RouterStateSnapshot): void {
-    // PageTitle is equal to the "Title" of a route if it's set
-    // If its not set it will use the "title" given in index.html
     const pageTitle = this.buildTitle(snapshot);
-
-    let title = [config.name];
-    if (pageTitle) {
-      title.unshift(pageTitle);
-    } else {
-      title.push(config.description);
-    }
-    const fullTitle = title.join(' - ');
+    const fullTitle = pageTitle
+      ? this.config.titleTemplate.replace('%s', pageTitle)
+      : this.config.title;
     this.title.setTitle(fullTitle);
 
     this.seo.setCanonical(snapshot.url);
@@ -32,7 +25,7 @@ export class AppTitleStrategy extends TitleStrategy {
 
   /** Walk the activated route chain, merging parent→child data.meta (child wins). */
   private collectSeoConfig(snapshot: RouterStateSnapshot): SeoConfig {
-    let config: SeoConfig = {};
+    let config: SeoConfig = { ...this.config };
     let route = snapshot.root;
     while (route) {
       const routeMeta = route.data['meta'] as SeoConfig | undefined;
