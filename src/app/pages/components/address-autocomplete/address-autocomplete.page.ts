@@ -51,6 +51,29 @@ import { AddressAutocompletePreview } from './address-autocomplete.preview';
         <elb-address-autocomplete-preview />
       </div>
 
+      <elb-h2 id="about"> About </elb-h2>
+      <div class="typeset text-muted-foreground mt-2">
+        <p>
+          This component uses the
+          <a
+            href="https://docs.maptiler.com/cloud/api/geocoding/#search-by-name-forward"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Maptiler Forward Geocoding API
+          </a>
+          to search for addresses by name. Start typing to see suggestions.
+        </p>
+
+        <p>
+          You need a
+          <a href="https://cloud.maptiler.com" target="_blank" rel="noopener noreferrer"
+            >Maptiler</a
+          >
+          account with an API key to use this feature.
+        </p>
+      </div>
+
       <elb-h2 id="examples"> Examples </elb-h2>
 
       <elb-h3 id="map"> Map </elb-h3>
