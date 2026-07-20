@@ -76,12 +76,38 @@ import { AddressAutocompletePreview } from './address-autocomplete.preview';
 
       <elb-h2 id="examples"> Examples </elb-h2>
 
-      <elb-h3 id="map"> Map </elb-h3>
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="map"> Map </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/address-autocomplete/address-autocomplete-map.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
       <div elbPreview>
         <elb-address-autocomplete-map-preview />
       </div>
 
-      <elb-h3 id="form"> Form </elb-h3>
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="form"> Form </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/address-autocomplete/address-autocomplete-form.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
       <div elbPreview>
         <elb-address-autocomplete-form-preview />
       </div>
