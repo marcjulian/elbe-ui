@@ -13,6 +13,7 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
+      "@elbe/ui/address-search": ["./libs/elbe/address-search/src/index.ts"],
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
       "@elbe/ui/map": ["./libs/elbe/map/src/index.ts"],
@@ -31,6 +32,7 @@
       "@spartan-ng/helm/sheet": ["./libs/ui/sheet/src/index.ts"],
       "@spartan-ng/helm/sidebar": ["./libs/ui/sidebar/src/index.ts"],
       "@spartan-ng/helm/skeleton": ["./libs/ui/skeleton/src/index.ts"],
+      "@spartan-ng/helm/spinner": ["./libs/ui/spinner/src/index.ts"],
       "@spartan-ng/helm/textarea": ["./libs/ui/textarea/src/index.ts"],
       "@spartan-ng/helm/tooltip": ["./libs/ui/tooltip/src/index.ts"],
       "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"]
