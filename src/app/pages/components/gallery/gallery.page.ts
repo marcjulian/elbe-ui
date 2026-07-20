@@ -74,6 +74,8 @@ import { GalleryPreview } from './gallery.preview';
         <elb-code-block [code]="galleryStyles" fileName="styles.css" />
       </div>
 
+      <elb-h2 id="examples"> Examples </elb-h2>
+
       <div class="flex items-baseline justify-between gap-6">
         <elb-h3 id="gallery-carousel-preview"> Gallery and Carousel Preview </elb-h3>
         <a

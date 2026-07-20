@@ -39,6 +39,8 @@ function getPaths(routes: Route[], parentPath = ''): string[] {
 
 async function generateSitemap() {
   try {
+    console.log(`\n\x1b[1m📸 Generating sitemap\x1b[0m\n`);
+
     const stream = new SitemapStream({ hostname: environment.appUrl });
 
     const paths = getPaths(routes);
@@ -51,10 +53,11 @@ async function generateSitemap() {
     const path = resolve(resolve(process.cwd(), 'public'), 'sitemap.xml');
     writeFileSync(path, data.toString());
 
-    console.log('✅ Sitemap generated successfully at', path);
-    console.log('   Routes included:', paths.join(', '));
+    paths.forEach((p) => console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m ${p}\x1b[0m`));
+    console.log(`  \x1b[2m   ${paths.length} routes included\x1b[0m\n`);
+    console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m sitemap.xml\x1b[0m\n`);
   } catch (error) {
-    console.error('❌ Error generating sitemap:', error);
+    console.error(`  \x1b[2m\x1b[31m✗\x1b[0m\x1b[2m Error generating sitemap:\x1b[0m`, error);
     process.exit(1);
   }
 }

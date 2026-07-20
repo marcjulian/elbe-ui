@@ -61,6 +61,9 @@ import { MapPreview } from './map.preview';
 
         <elb-code-block [code]="mapStyles" fileName="styles.css" />
       </div>
+
+      <elb-h2 id="examples"> Examples </elb-h2>
+
       <div class="flex items-baseline justify-between gap-6">
         <elb-h3 id="map-control"> Map Control </elb-h3>
         <a

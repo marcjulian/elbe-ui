@@ -22,6 +22,21 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'address-autocomplete',
+        loadComponent: () =>
+          import('./pages/components/address-autocomplete/address-autocomplete.page').then(
+            (m) => m.AddressAutocompletePage,
+          ),
+        title: 'Address Autocomplete',
+        data: {
+          ...meta({
+            description:
+              'Address Autocomplete component built with spartan/ui Autocomplete and Maptiler Forward Geocoding API.',
+            ogImage: '/assets/og/address-autocomplete.webp',
+          }),
+        },
+      },
+      {
         path: 'drawer',
         loadComponent: () =>
           import('./pages/components/drawer/drawer.page').then((m) => m.DrawerPage),

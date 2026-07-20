@@ -13,7 +13,7 @@ const MapStyles: Record<string, string> = {
   selector: 'elb-map-preview',
   imports: [NgxMapLibreGLModule, ElbMapImports],
   host: {
-    class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden relative',
+    class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden',
   },
   template: `
     <mgl-map
@@ -21,17 +21,19 @@ const MapStyles: Record<string, string> = {
       [mapStyle]="mapStyle()"
       [center]="[9.9278215, 53.5584587]"
       [zoom]="[8]"
-      [minZoom]="6"
+      [minZoom]="1"
       [maxZoom]="14"
     >
       <elb-fullscreen-control />
       <elb-navigation-control />
       <elb-globe-control />
-    </mgl-map>
 
-    <a href="https://www.maptiler.com" class="absolute bottom-2.5 left-2.5 z-10">
-      <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo" />
-    </a>
+      <mgl-control position="bottom-left">
+        <a href="https://www.maptiler.com">
+          <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo" />
+        </a>
+      </mgl-control>
+    </mgl-map>
   `,
 })
 export class MapPreview {
