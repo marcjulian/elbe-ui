@@ -65,6 +65,8 @@ import { DrawerPreview } from './drawer.preview';
         </p>
       </div>
 
+      <elb-h2 id="examples"> Examples </elb-h2>
+
       <div class="flex items-baseline justify-between gap-6">
         <elb-h3 id="sidebar-drawer-mobile">Sidebar with Drawer on Mobile</elb-h3>
 

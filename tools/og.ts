@@ -1,8 +1,9 @@
-import { writeFile } from 'fs/promises';
+import { readdir, unlink, writeFile } from 'fs/promises';
 import { render } from 'takumi-js';
 import { routes } from '../src/app/app.routes';
 
 async function generateComponentOg(title: string, description: string, outputPath: string) {
+  const filename = outputPath.split('/').pop();
   const webp = await render(
     `
     <div
@@ -17,7 +18,7 @@ async function generateComponentOg(title: string, description: string, outputPat
             tw="text-[72px] font-extrabold leading-[1.1] tracking-[-0.04em] text-white"
           >${title}</span>
           <span
-            tw="text-[44px] font-normal leading-[1.4] max-w-[95%] tracking-[-0.01em] line-clamp-2 overflow-hidden text-ellipsis text-white"
+            tw="text-[44px] font-normal leading-[1.4] max-w-[95%] tracking-[-0.01em] line-clamp-3 overflow-hidden text-ellipsis text-white"
           >${description}</span>
         </div>
 
@@ -52,6 +53,7 @@ async function generateComponentOg(title: string, description: string, outputPat
   );
 
   await writeFile(outputPath, webp);
+  console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m ${filename}\x1b[0m`);
 }
 
 async function generateOg() {
@@ -87,18 +89,34 @@ async function generateOg() {
   );
 
   await writeFile(`./public/assets/og/og.webp`, webp);
+  console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m og.webp\x1b[0m`);
 }
 
 async function main() {
+  const ogDir = './public/assets/og';
+
+  const existing = await readdir(ogDir);
+  const toRemove = existing.filter((f) => f.endsWith('.webp'));
+  if (toRemove.length > 0) {
+    console.log(`\x1b[2m🧹 Cleaning ${toRemove.length} old OG images...\x1b[0m`);
+    await Promise.all(toRemove.map((f) => unlink(`${ogDir}/${f}`)));
+  }
+
   const componentRoutes = routes
     .flatMap((r) => r.children ?? [])
     .filter((r) => r.data?.['meta']?.['ogImage']);
+
+  console.log(`\n\x1b[1m📸 Generating ${componentRoutes.length} component OG images\x1b[0m\n`);
   for (const route of componentRoutes) {
     const meta = route.data!['meta'] as { description: string; ogImage: string };
     await generateComponentOg(route.title as string, meta.description, `./public${meta.ogImage}`);
   }
 
+  console.log(`\n\x1b[1m📸 Generating OG image\x1b[0m\n`);
   await generateOg();
+
+  const total = componentRoutes.length + 1;
+  console.log(`\n\x1b[32m\x1b[1m✨ ${total} OG images generated successfully\x1b[0m`);
 }
 
 main();

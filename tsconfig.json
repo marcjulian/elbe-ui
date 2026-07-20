@@ -13,7 +13,7 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "@elbe/ui/address-search": ["./libs/elbe/address-search/src/index.ts"],
+      "@elbe/ui/address-autocomplete": ["./libs/elbe/address-autocomplete/src/index.ts"],
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
       "@elbe/ui/map": ["./libs/elbe/map/src/index.ts"],

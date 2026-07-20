@@ -2,6 +2,8 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideMaptilerConfig } from '../../libs/elbe/address-autocomplete/src';
+import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { provideSeo } from './tools/seo.types';
 import { provideTitleStrategy } from './tools/title.strategy';
@@ -28,5 +30,6 @@ export const appConfig: ApplicationConfig = {
       twitterCard: 'summary_large_image',
     }),
     provideTitleStrategy(),
+    provideMaptilerConfig({ apiKey: environment.maptilerKey }),
   ],
 };

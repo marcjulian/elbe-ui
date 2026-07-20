@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideChevronRight, lucideImages, lucideMap, lucidePanelTopClose } from '@ng-icons/lucide';
+import {
+  lucideChevronRight,
+  lucideImages,
+  lucideMap,
+  lucidePanelTopClose,
+  lucideSearch,
+} from '@ng-icons/lucide';
 import { HlmItemImports } from '@spartan-ng/helm/item';
 import { BaseLayout } from '../../layouts/base.layout';
 
@@ -15,7 +21,15 @@ type UiComponent = {
 @Component({
   selector: 'elb-components',
   imports: [BaseLayout, NgIcon, HlmItemImports, RouterLink],
-  providers: [provideIcons({ lucideImages, lucideMap, lucidePanelTopClose, lucideChevronRight })],
+  providers: [
+    provideIcons({
+      lucideImages,
+      lucideMap,
+      lucidePanelTopClose,
+      lucideChevronRight,
+      lucideSearch,
+    }),
+  ],
   template: `
     <elb-base-layout class="flex min-h-dvh flex-col" mainClass="flex-1 flex flex-col gap-10 pt-10">
       <div class="text-center">
@@ -27,7 +41,7 @@ type UiComponent = {
 
       <div class="grid gap-4 sm:grid-cols-2">
         @for (component of components; track component.slug) {
-          <a hlmItem [routerLink]="[component.slug]" variant="outline">
+          <a hlmItem [routerLink]="[component.slug]" variant="outline" class="items-start">
             <hlm-item-media variant="icon">
               <ng-icon [name]="component.icon" />
             </hlm-item-media>
@@ -46,6 +60,12 @@ type UiComponent = {
 })
 export class ComponentsPage {
   components: UiComponent[] = [
+    {
+      slug: 'address-autocomplete',
+      name: 'Address Autocomplete',
+      icon: 'lucideSearch',
+      description: 'Autocomplete with Maptiler Forward Geocoding.',
+    },
     {
       slug: 'drawer',
       name: 'Drawer',
