@@ -4,6 +4,7 @@ Angular UI components built with [Tailwind CSS](https://tailwindcss.com/) and [s
 
 ## Components
 
+- Address Autocomplete - built on [spartan/ui Autocomplete](https://spartan.ng/components/autocomplete) and [MapTiler](https://www.maptiler.com/)
 - Gallery - built on [photoswipe](https://photoswipe.com/)
 - Drawer - built on [Cupertino Panes](https://panejs.com/)
 - Map Control - built on [ngx-maplibre-gl](https://github.com/maplibre/ngx-maplibre-gl)
