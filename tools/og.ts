@@ -1,12 +1,31 @@
+import { readFileSync } from 'fs';
 import { readdir, unlink, writeFile } from 'fs/promises';
-import { render } from 'takumi-js';
+import { render, type RenderInput } from 'takumi-js';
 import { routes } from '../src/app/app.routes';
 
-async function generateComponentOg(title: string, description: string, outputPath: string) {
-  const filename = outputPath.split('/').pop();
-  const webp = await render(
-    `
-    <div
+const sharedOptions = {
+  width: 1200,
+  height: 630,
+  format: 'webp' as const,
+  fonts: [
+    {
+      name: 'Inter',
+      data: readFileSync(
+        new URL('../node_modules/inter-ui/variable/InterVariable.woff2', import.meta.url),
+      ),
+    },
+  ],
+};
+
+async function renderOg(input: RenderInput, outputFile: string) {
+  const webp = await render(input, sharedOptions);
+  await writeFile(`./public${outputFile}`, webp);
+  console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m ${outputFile}\x1b[0m`);
+}
+
+async function generateComponentOg(title: string, description: string, filename: string) {
+  await renderOg(
+    `<div
       tw="flex h-full w-full flex-col relative overflow-hidden text-white"
       style="background-image: radial-gradient(circle at 100% 0%, rgba(0, 150, 137, 0.35) 0%, transparent 55%), linear-gradient(135deg, #0c1410 0%, #070a0a 55%, #0c070f 100%)"
     >
@@ -47,17 +66,13 @@ async function generateComponentOg(title: string, description: string, outputPat
           </span>
         </div>
       </div>
-    </div>
-    `,
-    { width: 1200, height: 630, format: 'webp' },
+    </div>`,
+    filename,
   );
-
-  await writeFile(outputPath, webp);
-  console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m ${filename}\x1b[0m`);
 }
 
 async function generateOg() {
-  const webp = await render(
+  await renderOg(
     `<div tw="flex h-full w-full flex-col justify-center gap-4 items-center p-20"
         style="background-image: radial-gradient(circle at 100% 0%, rgba(0, 150, 137, 0.35) 0%, transparent 55%), linear-gradient(135deg, #0c1410 0%, #070a0a 55%, #0c070f 100%)"
     >
@@ -85,11 +100,8 @@ async function generateOg() {
       </div>
       <p tw="text-white text-3xl text-balance text-center">Angular UI components built with Tailwind CSS and spartan/ui.</p>
     </div>`,
-    { width: 1200, height: 630, format: 'webp' },
+    '/assets/og/og.webp',
   );
-
-  await writeFile(`./public/assets/og/og.webp`, webp);
-  console.log(`  \x1b[2m\x1b[32m✓\x1b[0m\x1b[2m og.webp\x1b[0m`);
 }
 
 async function main() {
@@ -109,7 +121,7 @@ async function main() {
   console.log(`\n\x1b[1m📸 Generating ${componentRoutes.length} component OG images\x1b[0m\n`);
   for (const route of componentRoutes) {
     const meta = route.data!['meta'] as { description: string; ogImage: string };
-    await generateComponentOg(route.title as string, meta.description, `./public${meta.ogImage}`);
+    await generateComponentOg(route.title as string, meta.description, meta.ogImage);
   }
 
   console.log(`\n\x1b[1m📸 Generating OG image\x1b[0m\n`);
