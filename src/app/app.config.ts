@@ -1,8 +1,8 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
-
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideMaptilerConfig } from '../../libs/elbe/address-autocomplete/src';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+import { provideMaptilerConfig } from '@elbe/ui/address-autocomplete';
+import { provideMaplibreWorker } from '@maplibre/ngx-maplibre-gl/config';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { provideSeo } from './tools/seo.types';
@@ -31,5 +31,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideTitleStrategy(),
     provideMaptilerConfig({ apiKey: environment.maptilerKey }),
+    provideMaplibreWorker('maplibre-gl-worker.mjs'),
   ],
 };

@@ -1,6 +1,6 @@
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
-  - '@maplibre/ngx-maplibre-gl@22.0.0'
+  - '@maplibre/ngx-maplibre-gl@22.0.2'
 
 allowBuilds:
   '@parcel/watcher': false
