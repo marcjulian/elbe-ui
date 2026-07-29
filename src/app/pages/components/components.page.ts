@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideChevronRight,
+  lucideCloudUpload,
   lucideImages,
   lucideMap,
   lucidePanelTopClose,
@@ -28,6 +29,7 @@ type UiComponent = {
       lucidePanelTopClose,
       lucideChevronRight,
       lucideSearch,
+      lucideCloudUpload,
     }),
   ],
   template: `
@@ -71,6 +73,12 @@ export class ComponentsPage {
       name: 'Drawer',
       icon: 'lucidePanelTopClose',
       description: 'Drawer component built with Cupertino Panes library.',
+    },
+    {
+      slug: 'file-upload',
+      name: 'File Upload',
+      icon: 'lucideCloudUpload',
+      description: 'File upload component built with ngx-primitives library.',
     },
     {
       slug: 'gallery',

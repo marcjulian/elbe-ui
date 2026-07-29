@@ -15,6 +15,7 @@
     "paths": {
       "@elbe/ui/address-autocomplete": ["./libs/elbe/address-autocomplete/src/index.ts"],
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
+      "@elbe/ui/file-upload": ["./libs/elbe/file-upload/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
       "@elbe/ui/map": ["./libs/elbe/map/src/index.ts"],
       "@elbe/ui/markdown": ["./libs/elbe/markdown/src/index.ts"],
