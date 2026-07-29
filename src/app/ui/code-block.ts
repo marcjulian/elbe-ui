@@ -10,7 +10,7 @@ import { codeToHtml } from 'shiki/bundle/web';
   imports: [NgIcon, HlmButtonImports],
   providers: [provideIcons({ lucideCopy, lucideCheck })],
   host: {
-    class: 'block relative border-border border rounded-lg',
+    class: 'block relative border-border border rounded-lg not-typeset mt-(--typeset-flow)',
   },
   template: `
     @if (highlightedCode.hasValue()) {

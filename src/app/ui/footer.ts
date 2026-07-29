@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { link } from './typography';
 
 @Component({
   selector: 'elb-footer',
@@ -35,9 +34,15 @@ import { link } from './typography';
       </div>
       <p class="text-muted-foreground text-center text-xs">
         &copy; {{ year }} elbe/ui -
-        <a href="https://marcjulian.de" class="${link}" target="_blank" rel="noopener noreferrer">
-          Marc Stammerjohann </a
-        >. All rights reserved.
+        <a
+          href="https://marcjulian.de"
+          class="hover:text-foreground underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Marc Stammerjohann.</a
+        >
+        All rights reserved.
       </p>
     </footer>
   `,

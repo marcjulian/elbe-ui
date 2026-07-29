@@ -9,7 +9,6 @@ import { BaseLayout } from '../../../layouts/base.layout';
 import { BlockPreview } from '../../../ui/block-preview';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
-import { code, link } from '../../../ui/typography';
 import { DrawerPreview } from './drawer.preview';
 
 @Component({
@@ -51,18 +50,16 @@ import { DrawerPreview } from './drawer.preview';
       </div>
 
       <elb-h2 id="installation"> Installation </elb-h2>
-      <div class="mt-2 flex flex-col gap-4">
-        <p class="text-muted-foreground">
+      <div class="typeset mt-2">
+        <p>
           The drawer component is built using the
-          <a href="https://panejs.com/" target="_blank" rel="noopener noreferrer" class="${link}"
+          <a href="https://panejs.com/" target="_blank" rel="noopener noreferrer"
             >Cupertino Panes</a
           >
           library.
         </p>
 
-        <p class="text-muted-foreground">
-          Install <code class="${code}">npm install cupertino-pane</code>.
-        </p>
+        <p>Install <code>npm install cupertino-pane</code>.</p>
       </div>
 
       <elb-h2 id="examples"> Examples </elb-h2>
@@ -88,12 +85,10 @@ import { DrawerPreview } from './drawer.preview';
         </div>
       </div>
 
-      <p class="text-muted-foreground mt-2">
+      <p class="typeset mt-2">
         Copy
-        <code class="${code}">hlm-sidebar</code> as
-        <code class="${code}">hlm-sidebar-drawer</code> and replace
-        <code class="${code}">hlm-sheet</code> with <code class="${code}">elb-drawer</code> (<a
-          class="${link}"
+        <code>hlm-sidebar</code> as <code>hlm-sidebar-drawer</code> and replace
+        <code>hlm-sheet</code> with <code>elb-drawer</code> (<a
           href="${config.github}/tree/main/src/app/pages/preview/hlm-sidebar-drawer.ts#L32-L39"
           target="_blank"
           rel="noopener noreferrer"

@@ -7,7 +7,6 @@ import { BaseLayout } from '../../../layouts/base.layout';
 import { CodeBlock } from '../../../ui/code-block';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
-import { code, link } from '../../../ui/typography';
 import { mapStyles } from './map-styles';
 import { MapPreview } from './map.preview';
 
@@ -42,23 +41,19 @@ import { MapPreview } from './map.preview';
       </div>
 
       <elb-h2 id="installation"> Installation </elb-h2>
-      <div class="mt-2 flex flex-col gap-4">
-        <p class="text-muted-foreground">
+      <div class="typeset mt-2">
+        <p class="">
           The map components are an addition to the
           <a
             href="https://github.com/maplibre/ngx-maplibre-gl"
             target="_blank"
             rel="noopener noreferrer"
-            class="${link}"
             >ngx-maplibre-gl</a
           >
           library.
         </p>
 
-        <p class="text-muted-foreground">
-          Install <code class="${code}">npm install @maplibre/ngx-maplibre-gl maplibre-gl</code>.
-        </p>
-
+        <p>Install <code>npm install @maplibre/ngx-maplibre-gl maplibre-gl</code>.</p>
         <elb-code-block [code]="mapStyles" fileName="styles.css" />
       </div>
 

@@ -7,7 +7,6 @@ import { BaseLayout } from '../../../layouts/base.layout';
 import { CodeBlock } from '../../../ui/code-block';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
-import { code, link } from '../../../ui/typography';
 import { GalleryCaptionPreview } from './gallery-caption.preview';
 import { GalleryCarouselPreview } from './gallery-carousel.preview';
 import { galleryStyles } from './gallery-styles';
@@ -53,22 +52,16 @@ import { GalleryPreview } from './gallery.preview';
       </div>
 
       <elb-h2 id="installation"> Installation </elb-h2>
-      <div class="mt-2 flex flex-col gap-4">
-        <p class="text-muted-foreground">
+      <div class="typeset mt-2">
+        <p>
           The gallery component is built using the
-          <a
-            href="https://photoswipe.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="${link}"
-            >photoswipe</a
-          >
+          <a href="https://photoswipe.com/" target="_blank" rel="noopener noreferrer">photoswipe</a>
           library.
         </p>
 
-        <p class="text-muted-foreground">
-          Install <code class="${code}">npm install photoswipe</code> and add the following style
-          import and colors to your CSS file.
+        <p>
+          Install <code>npm install photoswipe</code> and add the following style import and colors
+          to your CSS file.
         </p>
 
         <elb-code-block [code]="galleryStyles" fileName="styles.css" />
@@ -90,13 +83,9 @@ import { GalleryPreview } from './gallery.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
-      <p class="text-muted-foreground mt-2">
+      <p class="typeset mt-2">
         Gallery in combination with spartan/ui
-        <a
-          href="https://spartan.ng/components/carousel"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="${link}"
+        <a href="https://spartan.ng/components/carousel" target="_blank" rel="noopener noreferrer"
           >carousel</a
         >
         component.
@@ -120,10 +109,9 @@ import { GalleryPreview } from './gallery.preview';
         </a>
       </div>
 
-      <p class="text-muted-foreground mt-2">
+      <p class="typeset mt-2">
         Use
-        <code class="${code}">elb-gallery-caption</code> to add captions to each image in the
-        gallery component.
+        <code>elb-gallery-caption</code> to add captions to each image in the gallery component.
       </p>
       <div elbPreview>
         <elb-gallery-caption-preview />

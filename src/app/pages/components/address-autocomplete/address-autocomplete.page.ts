@@ -52,7 +52,7 @@ import { AddressAutocompletePreview } from './address-autocomplete.preview';
       </div>
 
       <elb-h2 id="about"> About </elb-h2>
-      <div class="typeset text-muted-foreground mt-2">
+      <div class="typeset mt-2">
         <p>
           This component uses the
           <a
