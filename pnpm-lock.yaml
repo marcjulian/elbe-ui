@@ -39,8 +39,8 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       '@maplibre/ngx-maplibre-gl':
-        specifier: 22.0.2
-        version: 22.0.2(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(maplibre-gl@6.0.0)(rxjs@7.8.2)
+        specifier: 22.1.0
+        version: 22.1.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(maplibre-gl@6.0.0)(rxjs@7.8.2)
       '@ng-icons/core':
         specifier: 34.0.0
         version: 34.0.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(@schematics/angular@22.0.8(chokidar@5.0.0))(rxjs@7.8.2)
@@ -1566,8 +1566,8 @@ packages:
   '@maplibre/mlt@1.1.12':
     resolution: {integrity: sha512-ZeK5w2TTeHOajcLaEQs1KZXw2V9wIKo1PmThlxlsHoXsQsYlBqLJzPOd6tJHRtGTChUY3DPPmjXRArYVvAbmZw==}
 
-  '@maplibre/ngx-maplibre-gl@22.0.2':
-    resolution: {integrity: sha512-KL8YZc6YfXKHSYYpB+TMTUuw7sSPzrVRHtHj7qQAehAY7CQXtlS3j+tT+G3ELIu5ovx4b7pQLbJC+nK+dhoORA==}
+  '@maplibre/ngx-maplibre-gl@22.1.0':
+    resolution: {integrity: sha512-08hcYq0VdUXZEc5YdNLpJCNmhfbTINbTgtERpn2JFFDFbgWLgfKkNuNc1/Y8bCMvNgQuYnXRDiCO/ryoteNKCQ==}
     peerDependencies:
       '@angular/common': '>= 22.0.0'
       '@angular/core': '>= 22.0.0'
@@ -8539,7 +8539,7 @@ snapshots:
     dependencies:
       '@mapbox/point-geometry': 1.1.0
 
-  '@maplibre/ngx-maplibre-gl@22.0.2(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(maplibre-gl@6.0.0)(rxjs@7.8.2)':
+  '@maplibre/ngx-maplibre-gl@22.1.0(@angular/common@22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(maplibre-gl@6.0.0)(rxjs@7.8.2)':
     dependencies:
       '@angular/common': 22.0.8(@angular/core@22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/core': 22.0.8(@angular/compiler@22.0.8)(rxjs@7.8.2)

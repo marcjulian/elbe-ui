@@ -20,7 +20,7 @@ const MapStyles: Record<string, string> = {
       class="size-full"
       [mapStyle]="mapStyle()"
       [center]="[9.9278215, 53.5584587]"
-      [zoom]="[8]"
+      [zoom]="8"
       [minZoom]="1"
       [maxZoom]="14"
     >
