@@ -8,11 +8,6 @@ import { HlmToggleGroupImports } from '@spartan-ng/helm/toggle-group';
 import { environment } from '../../../../environments/environment';
 import { ThemeService } from '../../../tools/theme';
 
-const MapStyles: Record<string, string> = {
-  light: 'streets-v4',
-  dark: 'streets-v4-dark',
-};
-
 @Component({
   selector: 'elb-address-autocomplete-map-preview',
   imports: [
@@ -69,10 +64,10 @@ export class AddressAutocompleteMapPreview {
 
   zoomType = signal<'jump' | 'fly'>('jump');
 
-  mapStyle = computed(
-    () =>
-      `https://api.maptiler.com/maps/${MapStyles[this._theme.theme() || 'light']}/style.json?key=${environment.maptilerKey}`,
-  );
+  mapStyle = computed(() => {
+    const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;
+    return `${base}?key=${environment.maptilerKey}`;
+  });
 
   zoomToAddress(address: Address | null) {
     if (!address) return;

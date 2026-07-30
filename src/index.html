@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
+    <!-- Tints the iOS Safari address bar / safe areas; kept in sync below. -->
+    <meta name="theme-color" content="#ffffff" />
+
     <link rel="canonical" href="https://elbe-ui.dev" />
     <link rel="sitemap" href="/sitemap.xml" />
 
@@ -47,19 +50,25 @@
     </script>
 
     <script>
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+        const theme = localStorage.getItem('theme');
 
-      if (!('theme' in localStorage)) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-          document.documentElement.classList[e.matches ? 'add' : 'remove']('dark');
-        });
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+
+        // Match the iOS browser chrome to the resolved theme before first paint.
+        const isDark = document.documentElement.classList.contains('dark');
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) {
+          themeColor.setAttribute('content', isDark ? '#0a0a0a' : '#ffffff');
+        }
       }
     </script>
   </head>
