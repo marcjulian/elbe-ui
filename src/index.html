@@ -49,6 +49,12 @@
       plausible.init();
     </script>
 
+    <!-- Prevent flash of wrong theme before Angular bootstraps (GitHub Pages). -->
+    <style>
+      :root { color-scheme: light; background-color: #ffffff; }
+      .dark { color-scheme: dark; background-color: #0a0a0a; }
+    </style>
+
     <script>
       if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         const theme = localStorage.getItem('theme');
