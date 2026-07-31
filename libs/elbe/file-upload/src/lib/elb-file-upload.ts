@@ -20,6 +20,7 @@ export const ELB_FILE_UPLOAD_CONTROL_VALUE_ACCESSOR = {
 
 @Directive({
   selector: '[elbFileUpload],elb-file-upload',
+  exportAs: 'elbFileUpload',
   providers: [ELB_FILE_UPLOAD_CONTROL_VALUE_ACCESSOR],
   host: { 'data-slot': 'file-upload' },
 })
@@ -40,7 +41,7 @@ export class ElbFileUpload implements ControlValueAccessor {
   });
 
   constructor() {
-    classes(() => 'flex items-center gap-2');
+    classes(() => 'group/file-upload flex w-full items-center');
   }
 
   selected(selectedFiles: FileList | undefined | null): void {

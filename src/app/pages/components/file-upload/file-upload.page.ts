@@ -7,6 +7,7 @@ import { BaseLayout } from '../../../layouts/base.layout';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
 import { FileUploadAvatarPreview } from './file-upload-avatar.preview';
+import { FileUploadDropzoneAndTriggerPreview } from './file-upload-dropzone-and-trigger.preview';
 import { FileUploadDropzonePreview } from './file-upload-dropzone.preview';
 import { FileUploadPreview } from './file-upload.preview';
 
@@ -22,6 +23,7 @@ import { FileUploadPreview } from './file-upload.preview';
     FileUploadPreview,
     FileUploadAvatarPreview,
     FileUploadDropzonePreview,
+    FileUploadDropzoneAndTriggerPreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -53,7 +55,7 @@ import { FileUploadPreview } from './file-upload.preview';
       <elb-h2 id="about"> About </elb-h2>
       <div class="typeset mt-2">
         <p>
-          This component uses the Angular Primitives
+          This component uses Angular Primitives
           <a
             href="https://docs.maptiler.com/cloud/api/geocoding/#search-by-name-forward"
             target="_blank"
@@ -113,6 +115,24 @@ import { FileUploadPreview } from './file-upload.preview';
       </div>
       <div elbPreview>
         <elb-file-upload-dropzone-preview />
+      </div>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="multi-images"> Dropzone + Button Trigger </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/file-upload/file-upload-dropzone-and-trigger.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <div elbPreview>
+        <elb-file-upload-dropzone-and-trigger-preview />
       </div>
     </elb-base-layout>
   `,
