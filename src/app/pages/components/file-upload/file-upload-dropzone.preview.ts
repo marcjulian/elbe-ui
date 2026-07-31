@@ -18,6 +18,10 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
           <img elbFileUploadPreviewImage class="size-full object-cover" />
         </div>
 
+        <button elbFileUploadPreview elbFileUploadRemoveBadge class="top-2 right-2">
+          <ng-icon name="lucideX" />
+        </button>
+
         <hlm-empty-header elbFileUploadPlaceholder>
           <hlm-empty-media variant="icon">
             <ng-icon name="lucideCircleUserRound" />

@@ -9,7 +9,7 @@ import { HlmButton } from '@spartan-ng/helm/button';
   imports: [HlmButton, NgIcon, ElbFileUploadImports],
   providers: [provideIcons({ lucideX, lucideCircleUserRound })],
   template: `
-    <elb-file-upload class="gap-2">
+    <elb-file-upload class="gap-2.5">
       <div class="relative">
         <div
           class="border-input flex size-9 items-center justify-center overflow-hidden rounded-md border"
@@ -17,13 +17,7 @@ import { HlmButton } from '@spartan-ng/helm/button';
           <img elbFileUploadPreview elbFileUploadPreviewImage class="size-full object-cover" />
           <ng-icon elbFileUploadPlaceholder name="lucideCircleUserRound" />
         </div>
-        <button
-          elbFileUploadPreview
-          elbFileUploadRemove
-          hlmBtn
-          size="icon-xs"
-          class="border-background absolute -top-2 -right-2 size-5 rounded-full border-2"
-        >
+        <button elbFileUploadPreview elbFileUploadRemoveBadge>
           <ng-icon name="lucideX" />
         </button>
       </div>

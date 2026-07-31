@@ -41,7 +41,7 @@ export class ElbFileUpload implements ControlValueAccessor {
   });
 
   constructor() {
-    classes(() => 'group/file-upload flex w-full items-center');
+    classes(() => 'relative flex w-full items-center');
   }
 
   selected(selectedFiles: FileList | undefined | null): void {

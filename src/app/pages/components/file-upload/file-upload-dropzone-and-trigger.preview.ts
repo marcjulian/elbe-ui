@@ -7,17 +7,19 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 
 @Component({
   selector: 'elb-file-upload-dropzone-and-trigger-preview',
-  host: {
-    class: 'block w-full max-w-sm',
-  },
   imports: [HlmButton, NgIcon, ElbFileUploadImports, HlmEmptyImports],
   providers: [provideIcons({ lucideX, lucideCircleUserRound })],
+  host: { class: 'block w-full max-w-sm' },
   template: `
     <elb-file-upload>
       <div hlmEmpty elbFileUploadDropzone types="image/*" class="aspect-video">
         <div elbFileUploadPreview class="absolute inset-0">
-          <img elbFileUploadPreviewImage class="size-full object-cover" />
+          <img elbFileUploadPreviewImage class="bg-muted/50 size-full object-contain" />
         </div>
+
+        <button elbFileUploadPreview elbFileUploadRemoveBadge class="top-2 right-2">
+          <ng-icon name="lucideX" />
+        </button>
 
         <hlm-empty-header elbFileUploadPlaceholder>
           <hlm-empty-media variant="icon">
