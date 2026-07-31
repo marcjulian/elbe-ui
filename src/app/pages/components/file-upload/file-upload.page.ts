@@ -9,6 +9,7 @@ import { Preview } from '../../../ui/preview';
 import { FileUploadAvatarPreview } from './file-upload-avatar.preview';
 import { FileUploadDropzoneAndTriggerPreview } from './file-upload-dropzone-and-trigger.preview';
 import { FileUploadDropzonePreview } from './file-upload-dropzone.preview';
+import { FileUploadFilePreview } from './file-upload-file.preview';
 import { FileUploadPreview } from './file-upload.preview';
 
 @Component({
@@ -24,6 +25,7 @@ import { FileUploadPreview } from './file-upload.preview';
     FileUploadAvatarPreview,
     FileUploadDropzonePreview,
     FileUploadDropzoneAndTriggerPreview,
+    FileUploadFilePreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -133,6 +135,24 @@ import { FileUploadPreview } from './file-upload.preview';
       </div>
       <div elbPreview>
         <elb-file-upload-dropzone-and-trigger-preview />
+      </div>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="file"> File Upload </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/file-upload/file-upload-file.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <div elbPreview>
+        <elb-file-upload-file-preview />
       </div>
     </elb-base-layout>
   `,
