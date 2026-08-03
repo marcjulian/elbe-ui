@@ -26,9 +26,16 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
             <ng-icon name="lucideCircleUserRound" />
           </hlm-empty-media>
           <div hlmEmptyTitle class="text-base">Drop your image here</div>
-          <div hlmEmptyDescription>Max size: 5MB</div>
+          <div hlmEmptyDescription>Max size: 5 MB</div>
           <div hlmEmptyContent>
-            <button hlmBtn elbFileUploadTrigger dragDrop="false" variant="outline" size="sm">
+            <button
+              hlmBtn
+              elbFileUploadTrigger
+              types="image/*"
+              dragDrop="false"
+              variant="outline"
+              size="sm"
+            >
               Select image
             </button>
           </div>

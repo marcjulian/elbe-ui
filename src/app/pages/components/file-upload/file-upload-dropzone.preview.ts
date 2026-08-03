@@ -27,7 +27,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
             <ng-icon name="lucideCircleUserRound" />
           </hlm-empty-media>
           <div hlmEmptyTitle class="text-base">Drop your image here or click to browse</div>
-          <div hlmEmptyDescription>Max size: 5MB</div>
+          <div hlmEmptyDescription>Max size: 5 MB</div>
         </hlm-empty-header>
       </div>
     </elb-file-upload>
