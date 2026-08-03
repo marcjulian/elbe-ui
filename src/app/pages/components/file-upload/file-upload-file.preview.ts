@@ -13,21 +13,30 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
   providers: [provideIcons({ lucideX, lucideFileUp, lucideFile })],
   template: `
     <elb-file-upload>
-      <button
+      <div
         elbFileUploadTrigger
         dragDrop
         types="application/pdf"
         hlmEmpty
-        class="data-preview:border-input aspect-video rounded-md data-preview:border"
+        class="data-preview:border-input aspect-video rounded-md p-6 data-preview:border"
       >
-        <div elbFileUploadPreview class="flex min-w-0 flex-col items-center gap-1 p-2">
-          <ng-icon name="lucideFile" />
-          <span elbFileUploadMeta field="name"></span>
-          <div class="flex max-w-full items-center gap-1">
-            <span elbFileUploadMeta field="size"></span>
-            <span elbFileUploadMeta field="type"></span>
+        <hlm-empty-header elbFileUploadPreview class="w-full">
+          <hlm-empty-media variant="icon">
+            <ng-icon name="lucideFile" />
+          </hlm-empty-media>
+          <div hlmEmptyTitle>
+            <span
+              elbFileUploadMeta
+              field="name"
+              class="line-clamp-1 w-full whitespace-normal"
+            ></span>
           </div>
-        </div>
+          <div hlmEmptyDescription class="flex max-w-full items-center gap-1">
+            <span elbFileUploadMeta field="type"></span>
+            <span aria-hidden="true">·</span>
+            <span elbFileUploadMeta field="size"></span>
+          </div>
+        </hlm-empty-header>
         <hlm-empty-header elbFileUploadPlaceholder>
           <hlm-empty-media variant="icon">
             <ng-icon name="lucideFileUp" />
@@ -35,7 +44,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
           <div hlmEmptyTitle>Upload your CV</div>
           <div hlmEmptyDescription>Max size: 5 MB</div>
         </hlm-empty-header>
-      </button>
+      </div>
       <button elbFileUploadPreview elbFileUploadRemoveBadge class="top-2 right-2">
         <ng-icon name="lucideX" />
       </button>
