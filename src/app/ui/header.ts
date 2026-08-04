@@ -23,6 +23,7 @@ import { ThemeService } from '../tools/theme';
 
       <nav>
         <a hlmBtn variant="ghost" size="sm" routerLink="/components">Components</a>
+        <a hlmBtn variant="ghost" size="sm" routerLink="/labs">Labs</a>
       </nav>
 
       <div class="ml-auto flex gap-1">
