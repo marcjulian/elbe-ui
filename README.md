@@ -1,6 +1,7 @@
 # elbe/ui
 
-Angular UI components built with [Tailwind CSS](https://tailwindcss.com/) and [spartan/ui](https://spartan.ng/).
+[elbe/ui](https://elbe-ui.dev/) is a collection of Angular UI components and blocks built with [Tailwind CSS](https://tailwindcss.com/) and [spartan/ui](https://spartan.ng/).
+
 
 ## Components
 
@@ -16,3 +17,9 @@ elbe/ui works great with spartan/ui components. Here are some example combinatio
 - [Gallery + Carousel](https://elbe-ui.dev/components/gallery#gallery-carousel-preview)
 - [Drawer + Sidebar](https://elbe-ui.dev/components/drawer#sidebar-drawer-mobile)
 - [Map Control](https://elbe-ui.dev/components/map#map-control)
+
+## Labs
+
+Experimental Angular components:
+
+- [Charts](https://elbe-ui.dev/labs#charts) - built on [TanStack Charts](https://tanstack.com/charts/latest/docs/framework/angular/adapter)
