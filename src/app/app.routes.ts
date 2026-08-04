@@ -74,6 +74,18 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'labs',
+    loadComponent: () => import('./pages/labs/labs.page').then((m) => m.LabsPage),
+    title: 'Labs',
+    data: {
+      ...meta({
+        description:
+          'A collection of experimental components and blocks that are still in development.',
+        ogImage: '/assets/og/labs.webp',
+      }),
+    },
+  },
+  {
     path: 'preview',
     children: [
       {
@@ -87,6 +99,7 @@ export const routes: Routes = [
     ],
     data: { ...meta({ robots: 'noindex, follow' }) },
   },
+
   {
     path: 'imprint',
     loadComponent: () => import('./pages/legal/legal.page').then((m) => m.LegalPage),
