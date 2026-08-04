@@ -14,12 +14,10 @@ import { ChartPreview } from './chart.preview';
   providers: [provideIcons({ simpleGithub })],
   template: `
     <elb-base-layout mainClass="pt-8">
-      <div class="flex flex-col gap-2">
-        <div class="flex justify-between">
-          <h1 class="text-3xl font-semibold">Labs</h1>
-        </div>
-        <p class="text-muted-foreground max-w-md text-balance">
-          A collection of experimental features that are still in development.
+      <div class="text-center">
+        <h1 class="text-4xl font-bold">Labs</h1>
+        <p class="text-muted-foreground mx-auto mt-3 max-w-sm text-xl text-balance">
+          A collection of experimental components.
         </p>
       </div>
 
