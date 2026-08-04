@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { readdir, unlink, writeFile } from 'fs/promises';
 import { render, type RenderInput } from 'takumi-js';
 import { routes } from '../src/app/app.routes';
+import type { Route, Routes } from '@angular/router';
 
 const sharedOptions = {
   width: 1200,
@@ -104,6 +105,13 @@ async function generateOg() {
   );
 }
 
+function collectOgRoutes(routeList: Routes): Route[] {
+  return routeList.flatMap((route) => [
+    ...(route.data?.['meta']?.['ogImage'] ? [route] : []),
+    ...(route.children ? collectOgRoutes(route.children) : []),
+  ]);
+}
+
 async function main() {
   const ogDir = './public/assets/og';
 
@@ -114,9 +122,7 @@ async function main() {
     await Promise.all(toRemove.map((f) => unlink(`${ogDir}/${f}`)));
   }
 
-  const componentRoutes = routes
-    .flatMap((r) => r.children ?? [])
-    .filter((r) => r.data?.['meta']?.['ogImage']);
+  const componentRoutes = collectOgRoutes(routes);
 
   console.log(`\n\x1b[1m📸 Generating ${componentRoutes.length} component OG images\x1b[0m\n`);
   for (const route of componentRoutes) {
