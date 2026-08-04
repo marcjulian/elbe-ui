@@ -1,6 +1,6 @@
 import { NumberInput } from '@angular/cdk/coercion';
-import { Directive, effect, inject, input, numberAttribute, signal } from '@angular/core';
-import { ElbFileUpload } from './elb-file-upload';
+import { Directive, effect, input, numberAttribute, signal } from '@angular/core';
+import { injectElbFileUpload } from './elb-file-upload-token';
 
 @Directive({
   selector: 'img[elbFileUploadPreviewImage]',
@@ -10,7 +10,7 @@ import { ElbFileUpload } from './elb-file-upload';
   },
 })
 export class ElbFileUploadPreviewImage {
-  private readonly _fileUpload = inject(ElbFileUpload);
+  private readonly _fileUpload = injectElbFileUpload();
 
   public readonly index = input<number, NumberInput>(0, { transform: numberAttribute });
 

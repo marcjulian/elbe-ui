@@ -1,11 +1,16 @@
-import { booleanAttribute, Directive, inject, input } from '@angular/core';
+import { booleanAttribute, Directive, input } from '@angular/core';
 import { BooleanInput } from '@maplibre/ngx-maplibre-gl';
 import { classes } from '@spartan-ng/helm/utils';
-import { NgpFileUpload, provideFileUploadConfig } from 'ng-primitives/file-upload';
-import { ElbFileUpload } from './elb-file-upload';
+import {
+  injectFileUploadState,
+  NgpFileUpload,
+  provideFileUploadConfig,
+} from 'ng-primitives/file-upload';
+import { injectElbFileUpload } from './elb-file-upload-token';
 
 @Directive({
   selector: '[elbFileUploadTrigger]',
+  exportAs: 'elbFileUploadTrigger',
   providers: [provideFileUploadConfig({ dragAndDrop: false })],
   hostDirectives: [
     {
@@ -29,8 +34,10 @@ import { ElbFileUpload } from './elb-file-upload';
   },
 })
 export class ElbFileUploadTrigger {
-  private readonly _fileUpload = inject(ElbFileUpload);
+  private readonly _fileUpload = injectElbFileUpload();
   protected readonly _hasValue = this._fileUpload.hasValue;
+
+  private readonly _state = injectFileUploadState();
 
   public readonly dragDrop = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
@@ -48,5 +55,9 @@ export class ElbFileUploadTrigger {
 
   canceled(): void {
     this._fileUpload.canceled();
+  }
+
+  showFileDialog(): void {
+    this._state().showFileDialog();
   }
 }

@@ -32,7 +32,6 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
               hlmBtn
               elbFileUploadTrigger
               types="image/*"
-              dragDrop="false"
               variant="outline"
               size="sm"
             >

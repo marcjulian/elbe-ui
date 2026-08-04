@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ElbFileUploadImports } from '@elbe/ui/file-upload';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideFile, lucideFileUp, lucideX } from '@ng-icons/lucide';
+import { lucideFileText, lucideFileUp, lucideX } from '@ng-icons/lucide';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 
 @Component({
@@ -10,7 +10,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
     class: 'block w-full max-w-sm',
   },
   imports: [NgIcon, ElbFileUploadImports, HlmEmptyImports],
-  providers: [provideIcons({ lucideX, lucideFileUp, lucideFile })],
+  providers: [provideIcons({ lucideX, lucideFileUp, lucideFileText })],
   template: `
     <elb-file-upload>
       <div
@@ -22,7 +22,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
       >
         <hlm-empty-header elbFileUploadPreview class="w-full">
           <hlm-empty-media variant="icon">
-            <ng-icon name="lucideFile" />
+            <ng-icon name="lucideFileText" />
           </hlm-empty-media>
           <div hlmEmptyTitle>
             <span

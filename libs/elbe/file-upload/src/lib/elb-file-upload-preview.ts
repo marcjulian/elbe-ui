@@ -1,6 +1,6 @@
-import { computed, Directive, inject } from '@angular/core';
+import { computed, Directive } from '@angular/core';
 import { classes } from '@spartan-ng/helm/utils';
-import { ElbFileUpload } from './elb-file-upload';
+import { injectElbFileUpload } from './elb-file-upload-token';
 
 @Directive({
   selector: '[elbFileUploadPreview]',
@@ -10,7 +10,7 @@ import { ElbFileUpload } from './elb-file-upload';
   },
 })
 export class ElbFileUploadPreview {
-  private readonly _fileUpload = inject(ElbFileUpload);
+  private readonly _fileUpload = injectElbFileUpload();
 
   protected readonly _hidden = computed(() => !this._fileUpload.hasValue());
 

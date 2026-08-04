@@ -10,6 +10,7 @@ import { FileUploadAvatarPreview } from './file-upload-avatar.preview';
 import { FileUploadDropzoneAndTriggerPreview } from './file-upload-dropzone-and-trigger.preview';
 import { FileUploadDropzonePreview } from './file-upload-dropzone.preview';
 import { FileUploadFilePreview } from './file-upload-file.preview';
+import { FileUploadMultiPreview } from './file-upload-multi.preview';
 import { FileUploadPreview } from './file-upload.preview';
 
 @Component({
@@ -26,6 +27,7 @@ import { FileUploadPreview } from './file-upload.preview';
     FileUploadDropzonePreview,
     FileUploadDropzoneAndTriggerPreview,
     FileUploadFilePreview,
+    FileUploadMultiPreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -153,6 +155,24 @@ import { FileUploadPreview } from './file-upload.preview';
       </div>
       <div elbPreview>
         <elb-file-upload-file-preview />
+      </div>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="multi"> Multi </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/file-upload/file-upload-multi.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <div elbPreview>
+        <elb-file-upload-multi-preview />
       </div>
     </elb-base-layout>
   `,

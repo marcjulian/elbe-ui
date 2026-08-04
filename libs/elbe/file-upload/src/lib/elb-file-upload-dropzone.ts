@@ -1,7 +1,7 @@
-import { Directive, inject } from '@angular/core';
+import { Directive } from '@angular/core';
 import { classes } from '@spartan-ng/helm/utils';
 import { NgpFileDropzone } from 'ng-primitives/file-upload';
-import { ElbFileUpload } from './elb-file-upload';
+import { injectElbFileUpload } from './elb-file-upload-token';
 
 @Directive({
   selector: '[elbFileUploadDropzone]',
@@ -26,7 +26,7 @@ import { ElbFileUpload } from './elb-file-upload';
   },
 })
 export class ElbFileUploadDropzone {
-  private readonly _fileUpload = inject(ElbFileUpload);
+  private readonly _fileUpload = injectElbFileUpload();
   protected readonly _hasValue = this._fileUpload.hasValue;
 
   constructor() {
