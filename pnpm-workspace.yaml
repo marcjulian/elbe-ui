@@ -1,6 +1,8 @@
 minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@maplibre/ngx-maplibre-gl@22.1.0'
+  - '@tanstack/angular-charts@0.13.0'
+  - '@tanstack/charts@0.13.0'
 
 allowBuilds:
   '@parcel/watcher': false

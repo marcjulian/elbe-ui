@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { Chart } from '@tanstack/angular-charts';
 import { areaY, d3Curve, defineChart, dot, lineY, whenFocused } from '@tanstack/charts';
 import { tooltip } from '@tanstack/charts/tooltip';
 import { scaleLinear, scalePoint } from 'd3-scale';
 import { curveMonotoneX } from 'd3-shape';
-import { Chart } from './charts/Chart';
 
 interface UsageRow {
   date: string;
