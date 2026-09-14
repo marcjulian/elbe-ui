@@ -118,6 +118,12 @@
   [role='button']:not(:disabled) {
     cursor: pointer;
   }
+
+  .maplibregl-ctrl-group {
+    &:has(*:is(.maplibregl-ctrl-geolocate)) {
+      display: none;
+    }
+  }
 }
 
 html.dark .shiki,

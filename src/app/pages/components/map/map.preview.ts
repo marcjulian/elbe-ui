@@ -20,6 +20,7 @@ import { ThemeService } from '../../../tools/theme';
       [maxZoom]="14"
     >
       <elb-fullscreen-control />
+      <elb-geolocate-control />
       <elb-navigation-control />
       <elb-globe-control />
 

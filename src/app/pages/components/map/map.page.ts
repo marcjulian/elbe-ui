@@ -42,7 +42,7 @@ import { MapPreview } from './map.preview';
 
       <elb-h2 id="installation"> Installation </elb-h2>
       <div class="typeset mt-2">
-        <p class="">
+        <p>
           The map components are an addition to the
           <a
             href="https://github.com/maplibre/ngx-maplibre-gl"
@@ -55,6 +55,11 @@ import { MapPreview } from './map.preview';
 
         <p>Install <code>npm install @maplibre/ngx-maplibre-gl maplibre-gl</code>.</p>
         <elb-code-block [code]="mapStyles" fileName="styles.css" />
+        <p>
+          <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control
+          for its functionality, so hide the original one via CSS:
+        </p>
+        <elb-code-block [code]="geolocateStyles" fileName="styles.css" />
       </div>
 
       <elb-h2 id="examples"> Examples </elb-h2>
@@ -81,4 +86,12 @@ import { MapPreview } from './map.preview';
 })
 export class MapPage {
   mapStyles = mapStyles;
+  geolocateStyles = `/*  styles.css */
+@layer base {
+  .maplibregl-ctrl-group {
+    &:has(*:is(.maplibregl-ctrl-geolocate)) {
+      display: none;
+    }
+  }
+}`;
 }
