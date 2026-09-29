@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { Address, ElbAddressAutocompleteImports } from '@elbe/ui/address-autocomplete';
+import { toast } from '@spartan-ng/brain/sonner';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 
@@ -38,8 +39,11 @@ export class AddressAutocompleteFormPreview {
     {
       submission: {
         action: async () => {
-          const model = this._model();
-          console.log('You submitted the following values:', JSON.stringify(model, null, 2));
+          const { address } = this._model();
+
+          toast.success('Address submitted', {
+            description: address?.placeName ?? 'No address selected',
+          });
         },
       },
     },
