@@ -103,23 +103,25 @@ export class ChartPreview {
             { match: 'x' },
           ),
         ],
-        x: {
-          scale: scalePoint,
-          axis: {
-            ticks: {
-              padding: 10,
-              values: ['2025-08-03', '2025-08-06', '2025-08-09', '2025-08-12'],
-              size: 0,
-              format: (value) =>
-                new Intl.DateTimeFormat('en-US', {
-                  month: 'short',
-                  day: '2-digit',
-                  timeZone: 'UTC',
-                }).format(new Date(`${value}T00:00:00Z`)),
+        scales: {
+          x: {
+            scale: scalePoint,
+            axis: {
+              ticks: {
+                padding: 10,
+                values: ['2025-08-03', '2025-08-06', '2025-08-09', '2025-08-12'],
+                size: 0,
+                format: (value) =>
+                  new Intl.DateTimeFormat('en-US', {
+                    month: 'short',
+                    day: '2-digit',
+                    timeZone: 'UTC',
+                  }).format(new Date(`${value}T00:00:00Z`)),
+              },
             },
           },
+          y: { scale: scaleLinear, nice: true, axis: false },
         },
-        y: { scale: scaleLinear, nice: true, axis: false },
       },
       {
         focus: 'group-x',

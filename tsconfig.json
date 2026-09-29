@@ -21,6 +21,7 @@
       "@elbe/ui/markdown": ["./libs/elbe/markdown/src/index.ts"],
       "@spartan-ng/helm/attachment": ["./libs/ui/attachment/src/index.ts"],
       "@spartan-ng/helm/autocomplete": ["./libs/ui/autocomplete/src/index.ts"],
+      "@spartan-ng/helm/badge": ["./libs/ui/badge/src/index.ts"],
       "@spartan-ng/helm/button": ["./libs/ui/button/src/index.ts"],
       "@spartan-ng/helm/button-group": ["./libs/ui/button-group/src/index.ts"],
       "@spartan-ng/helm/carousel": ["./libs/ui/carousel/src/index.ts"],
@@ -41,8 +42,7 @@
       "@spartan-ng/helm/toggle": ["./libs/ui/toggle/src/index.ts"],
       "@spartan-ng/helm/toggle-group": ["./libs/ui/toggle-group/src/index.ts"],
       "@spartan-ng/helm/tooltip": ["./libs/ui/tooltip/src/index.ts"],
-      "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"],
-      "@spartan-ng/helm/badge": ["./libs/ui/badge/src/index.ts"]
+      "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
