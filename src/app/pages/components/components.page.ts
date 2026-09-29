@@ -9,6 +9,7 @@ import {
   lucidePanelTopClose,
   lucideSearch,
 } from '@ng-icons/lucide';
+import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmItemImports } from '@spartan-ng/helm/item';
 import { BaseLayout } from '../../layouts/base.layout';
 
@@ -17,11 +18,12 @@ type UiComponent = {
   name: string;
   icon: string;
   description: string;
+  new?: boolean;
 };
 
 @Component({
   selector: 'elb-components',
-  imports: [BaseLayout, NgIcon, HlmItemImports, RouterLink],
+  imports: [BaseLayout, NgIcon, HlmBadgeImports, HlmItemImports, RouterLink],
   providers: [
     provideIcons({
       lucideImages,
@@ -48,7 +50,12 @@ type UiComponent = {
               <ng-icon [name]="component.icon" />
             </hlm-item-media>
             <hlm-item-content>
-              <div hlmItemTitle>{{ component.name }}</div>
+              <hlm-item-title>
+                {{ component.name }}
+                @if (component.new) {
+                  <span hlmBadge variant="secondary">New</span>
+                }
+              </hlm-item-title>
               <p hlmItemDescription>{{ component.description }}</p>
             </hlm-item-content>
             <hlm-item-actions>
@@ -79,6 +86,7 @@ export class ComponentsPage {
       name: 'File Upload',
       icon: 'lucideCloudUpload',
       description: 'File upload component built with ngx-primitives library.',
+      new: true,
     },
     {
       slug: 'gallery',
