@@ -15,7 +15,7 @@ export class Seo {
    * Called by TitleStrategy on every navigation.
    * Writes all managed tags, merging the route config with sensible defaults.
    */
-  applyFromStrategy(config: SeoConfig, fullTitle: string): void {
+  applyFromStrategy(config: SeoConfig, fullTitle: string, url: string): void {
     const merged = { ...this.config, ...config };
 
     this.meta.updateTag({ name: 'description', content: merged.description });
@@ -25,6 +25,7 @@ export class Seo {
     this.meta.updateTag({ property: 'og:description', content: merged.description });
     this.meta.updateTag({ property: 'og:type', content: merged.ogType });
     this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
+    this.meta.updateTag({ property: 'og:url', content: this.resolvePageUrl(url) });
 
     this.meta.updateTag({ name: 'twitter:card', content: merged.twitterCard });
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
@@ -48,9 +49,13 @@ export class Seo {
    * It supposes the header link is already present in the index.html
    */
   setCanonical(url: string): void {
-    const pathWithoutFragment = url.split('#')[0];
-    const fullPath = this.resolveUrl(pathWithoutFragment);
+    const fullPath = this.resolvePageUrl(url);
     this.document.querySelector('link[rel=canonical]')?.setAttribute('href', fullPath);
+  }
+
+  /** Resolve a router URL to an absolute, fragment-free URL. */
+  private resolvePageUrl(url: string): string {
+    return this.resolveUrl(url.split('#')[0]);
   }
 
   /** If the path is relative, prefix it with the app URL. */

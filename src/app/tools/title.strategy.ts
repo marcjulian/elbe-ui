@@ -20,7 +20,7 @@ export class AppTitleStrategy extends TitleStrategy {
     this.seo.setCanonical(snapshot.url);
 
     const mergedSeo = this.collectSeoConfig(snapshot);
-    this.seo.applyFromStrategy(mergedSeo, fullTitle);
+    this.seo.applyFromStrategy(mergedSeo, fullTitle, snapshot.url);
   }
 
   /** Walk the activated route chain, merging parent→child data.meta (child wins). */
