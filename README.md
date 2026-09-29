@@ -2,7 +2,6 @@
 
 [elbe/ui](https://elbe-ui.dev/) is a collection of Angular UI components and blocks built with [Tailwind CSS](https://tailwindcss.com/) and [spartan/ui](https://spartan.ng/).
 
-
 ## Components
 
 - Address Autocomplete - built on [spartan/ui Autocomplete](https://spartan.ng/components/autocomplete) and [MapTiler](https://www.maptiler.com/)

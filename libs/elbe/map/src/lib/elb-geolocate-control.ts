@@ -7,18 +7,11 @@ import {
   output,
   viewChild,
 } from '@angular/core';
-import {
-  ControlComponent,
-  GeolocateControlDirective,
-  Position,
-} from '@maplibre/ngx-maplibre-gl';
+import { ControlComponent, GeolocateControlDirective, Position } from '@maplibre/ngx-maplibre-gl';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideLocateFixed } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
-import type {
-  ControlPosition,
-  GeolocateControl as MaplibreGeolocateControl,
-} from 'maplibre-gl';
+import type { ControlPosition, GeolocateControl as MaplibreGeolocateControl } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-geolocate-control',
@@ -52,9 +45,7 @@ import type {
 })
 export class ElbGeolocateControl {
   private _geolocateControl =
-    viewChild.required<ControlComponent<MaplibreGeolocateControl>>(
-      'geolocateControl',
-    );
+    viewChild.required<ControlComponent<MaplibreGeolocateControl>>('geolocateControl');
 
   public readonly position = input<ControlPosition>();
   public readonly disabled = input<boolean, BooleanInput>(false, {
@@ -64,8 +55,7 @@ export class ElbGeolocateControl {
   geolocate = output<Position>();
 
   trigger() {
-    const control = this._geolocateControl()
-      .control as MaplibreGeolocateControl;
+    const control = this._geolocateControl().control as MaplibreGeolocateControl;
     control.trigger();
   }
 }

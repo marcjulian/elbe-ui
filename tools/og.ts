@@ -1,8 +1,8 @@
+import type { Route, Routes } from '@angular/router';
 import { readFileSync } from 'fs';
 import { readdir, unlink, writeFile } from 'fs/promises';
 import { render, type RenderInput } from 'takumi-js';
 import { routes } from '../src/app/app.routes';
-import type { Route, Routes } from '@angular/router';
 
 const sharedOptions = {
   width: 1200,
