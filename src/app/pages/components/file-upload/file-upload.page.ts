@@ -54,7 +54,8 @@ import { FileUploadPreview } from './file-upload.preview';
           </a>
         </div>
         <p class="text-muted-foreground max-w-md text-balance">
-          File Upload component built with ng-primitives File Upload.
+          File upload component built with Angular Primitives. Drag and drop, multi-file selection,
+          and image previews.
         </p>
       </div>
 

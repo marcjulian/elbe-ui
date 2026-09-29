@@ -55,7 +55,8 @@ export const routes: Routes = [
         title: 'File Upload',
         data: {
           ...meta({
-            description: 'File Upload component built with ng-primitives File Upload.',
+            description:
+              'File upload component built with Angular Primitives. Drag and drop, multi-file selection, and image previews.',
             ogImage: '/assets/og/file-upload.webp',
           }),
         },
