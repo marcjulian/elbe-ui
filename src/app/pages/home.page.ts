@@ -5,11 +5,12 @@ import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
 import { BaseLayout } from '../layouts/base.layout';
+import { AddressAutocompleteMapPreview } from './components/address-autocomplete/address-autocomplete-map.preview';
 import { DrawerPreview } from './components/drawer/drawer.preview';
+import { FileUploadDropzonePreview } from './components/file-upload/file-upload-dropzone.preview';
 import { GalleryCarouselPreview } from './components/gallery/gallery-carousel.preview';
 import { galleryStyles } from './components/gallery/gallery-styles';
 import { GalleryPreview } from './components/gallery/gallery.preview';
-import { MapPreview } from './components/map/map.preview';
 
 @Component({
   selector: 'elb-home-page',
@@ -18,10 +19,11 @@ import { MapPreview } from './components/map/map.preview';
     BaseLayout,
     RouterLink,
     NgIcon,
+    AddressAutocompleteMapPreview,
     DrawerPreview,
+    FileUploadDropzonePreview,
     GalleryPreview,
     GalleryCarouselPreview,
-    MapPreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -55,8 +57,15 @@ import { MapPreview } from './components/map/map.preview';
         />
         <elb-gallery-carousel-preview />
         <elb-gallery-preview class="sm:col-span-2" />
+        <div
+          class="ring-ring/10 bg-card flex items-center justify-center rounded-xl p-6 shadow-sm ring sm:col-span-2"
+        >
+          <elb-file-upload-dropzone-preview />
+        </div>
 
-        <elb-map-preview class="ring-ring/10 shadow-sm ring sm:col-span-2 lg:col-span-3" />
+        <elb-address-autocomplete-map-preview
+          class="ring-ring/10 shadow-sm ring sm:col-span-2 lg:col-span-3"
+        />
       </div>
     </elb-base-layout>
   `,
