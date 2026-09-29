@@ -49,6 +49,19 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'file-upload',
+        loadComponent: () =>
+          import('./pages/components/file-upload/file-upload.page').then((m) => m.FileUploadPage),
+        title: 'File Upload',
+        data: {
+          ...meta({
+            description:
+              'File upload component built with Angular Primitives. Drag and drop, multi-file selection, and image previews.',
+            ogImage: '/assets/og/file-upload.webp',
+          }),
+        },
+      },
+      {
         path: 'gallery',
         loadComponent: () =>
           import('./pages/components/gallery/gallery.page').then((m) => m.GalleryPage),
