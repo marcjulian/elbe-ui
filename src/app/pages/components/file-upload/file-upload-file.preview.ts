@@ -42,7 +42,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
             <ng-icon name="lucideFileUp" />
           </hlm-empty-media>
           <div hlmEmptyTitle>Upload your CV</div>
-          <div hlmEmptyDescription>Max size: 5 MB</div>
+          <div hlmEmptyDescription>PDF · Max size: 5 MB</div>
         </hlm-empty-header>
       </div>
       <button elbFileUploadPreview elbFileUploadRemoveBadge class="top-2 right-2">

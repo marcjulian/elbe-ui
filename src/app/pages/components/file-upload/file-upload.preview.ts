@@ -21,7 +21,7 @@ import { HlmButton } from '@spartan-ng/helm/button';
           <ng-icon name="lucideX" />
         </button>
       </div>
-      <button hlmBtn elbFileUploadTrigger types="image/*">Upload image</button>
+      <button hlmBtn variant="outline" elbFileUploadTrigger types="image/*">Upload image</button>
     </elb-file-upload>
   `,
 })

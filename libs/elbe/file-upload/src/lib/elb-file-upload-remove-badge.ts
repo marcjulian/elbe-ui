@@ -4,7 +4,7 @@ import { ElbFileUploadRemove } from './elb-file-upload-remove';
 
 @Directive({
   selector: '[elbFileUploadRemoveBadge],elb-file-upload-remove-badge',
-  hostDirectives: [ElbFileUploadRemove],
+  hostDirectives: [{ directive: ElbFileUploadRemove, inputs: ['index'] }],
   host: { 'data-slot': 'file-upload-remove-badge' },
 })
 export class ElbFileUploadRemoveBadge {

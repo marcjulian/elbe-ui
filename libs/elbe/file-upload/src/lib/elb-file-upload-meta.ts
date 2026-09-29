@@ -1,6 +1,5 @@
 import { NumberInput } from '@angular/cdk/coercion';
 import { Directive, computed, input, numberAttribute } from '@angular/core';
-import { classes } from '@spartan-ng/helm/utils';
 import { injectElbFileUpload } from './elb-file-upload-token';
 
 export type ElbFileUploadMetaField = 'name' | 'type' | 'size';
@@ -23,11 +22,6 @@ export class ElbFileUploadMeta {
     if (!file) return null;
     return this._formatField(file, this.field());
   });
-
-  constructor() {
-    // TODO maybe remove because of hlm-attachment?
-    // classes(() => 'text-muted-foreground max-w-full truncate text-xs');
-  }
 
   private _formatField(file: File, field: ElbFileUploadMetaField): string | null {
     switch (field) {

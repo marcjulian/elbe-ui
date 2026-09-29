@@ -10,6 +10,8 @@ import { FileUploadAvatarPreview } from './file-upload-avatar.preview';
 import { FileUploadDropzoneAndTriggerPreview } from './file-upload-dropzone-and-trigger.preview';
 import { FileUploadDropzonePreview } from './file-upload-dropzone.preview';
 import { FileUploadFilePreview } from './file-upload-file.preview';
+import { FileUploadMultiAttachmentPreview } from './file-upload-multi-attachment.preview';
+import { FileUploadMultiImagesPreview } from './file-upload-multi-images.preview';
 import { FileUploadMultiPreview } from './file-upload-multi.preview';
 import { FileUploadPreview } from './file-upload.preview';
 
@@ -28,6 +30,8 @@ import { FileUploadPreview } from './file-upload.preview';
     FileUploadDropzoneAndTriggerPreview,
     FileUploadFilePreview,
     FileUploadMultiPreview,
+    FileUploadMultiImagesPreview,
+    FileUploadMultiAttachmentPreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -122,7 +126,7 @@ import { FileUploadPreview } from './file-upload.preview';
       </div>
 
       <div class="flex items-baseline justify-between gap-6">
-        <elb-h3 id="multi-images"> Dropzone + Button Trigger </elb-h3>
+        <elb-h3 id="dropzone-button-trigger"> Dropzone + Button Trigger </elb-h3>
         <a
           hlmBtn
           variant="outline"
@@ -158,7 +162,7 @@ import { FileUploadPreview } from './file-upload.preview';
       </div>
 
       <div class="flex items-baseline justify-between gap-6">
-        <elb-h3 id="multi"> Multi </elb-h3>
+        <elb-h3 id="attachment-list"> Attachment List </elb-h3>
         <a
           hlmBtn
           variant="outline"
@@ -173,6 +177,42 @@ import { FileUploadPreview } from './file-upload.preview';
       </div>
       <div elbPreview>
         <elb-file-upload-multi-preview />
+      </div>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="image-grid"> Image Grid </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/file-upload/file-upload-multi-images.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <div elbPreview>
+        <elb-file-upload-multi-images-preview />
+      </div>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="attachment-grid"> Attachment Grid </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/file-upload/file-upload-multi-attachment.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <div elbPreview>
+        <elb-file-upload-multi-attachment-preview />
       </div>
     </elb-base-layout>
   `,

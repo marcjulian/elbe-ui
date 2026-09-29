@@ -28,13 +28,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
           <div hlmEmptyTitle class="text-base">Drop your image here</div>
           <div hlmEmptyDescription>Max size: 5 MB</div>
           <div hlmEmptyContent>
-            <button
-              hlmBtn
-              elbFileUploadTrigger
-              types="image/*"
-              variant="outline"
-              size="sm"
-            >
+            <button hlmBtn elbFileUploadTrigger types="image/*" variant="outline" size="sm">
               Select image
             </button>
           </div>

@@ -7,9 +7,9 @@ import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 
 @Component({
-  selector: 'elb-file-upload-multi-preview',
+  selector: 'elb-file-upload-multi-images-preview',
   host: {
-    class: 'block w-full max-w-sm',
+    class: 'block w-full max-w-2xl',
   },
   imports: [NgIcon, ElbFileUploadImports, HlmEmptyImports, HlmButton, HlmAttachmentImports],
   providers: [provideIcons({ lucideX, lucideTrash, lucideUpload, lucideFileUp, lucideFile })],
@@ -18,12 +18,13 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
       <div
         elbFileUploadTrigger
         #trigger="elbFileUploadTrigger"
+        types="image/*"
         dragDrop
         multiple
         hlmEmpty
         class="data-preview:border-input rounded-md p-6 data-placeholder:aspect-video data-preview:h-auto data-preview:border"
       >
-        <div elbFileUploadPreview class="flex w-full min-w-0 flex-col gap-2 text-left">
+        <div elbFileUploadPreview class="flex w-full min-w-0 flex-col gap-3 text-left">
           <div class="flex gap-2">
             <button hlmBtn variant="outline" size="sm" (click)="trigger.showFileDialog()">
               <ng-icon name="lucideUpload" />
@@ -36,26 +37,25 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
           </div>
 
           <ng-template elbFileUploadFiles let-files>
-            @for (file of files; track file) {
-              <hlm-attachment class="w-full">
-                <hlm-attachment-media>
-                  <ng-icon name="lucideFile" />
-                </hlm-attachment-media>
-                <div hlmAttachmentContent>
-                  <span hlmAttachmentTitle elbFileUploadMeta field="name" [index]="$index"></span>
-                  <span hlmAttachmentDescription class="flex items-center gap-1">
-                    <span elbFileUploadMeta field="type" [index]="$index"></span>
-                    <span aria-hidden="true">·</span>
-                    <span elbFileUploadMeta field="size" [index]="$index"></span>
-                  </span>
-                </div>
-                <hlm-attachment-actions>
-                  <button elbFileUploadRemove [index]="$index" hlmAttachmentAction>
+            <div class="grid grid-cols-3 gap-3">
+              @for (file of files; track file) {
+                <div class="relative aspect-square">
+                  <img
+                    elbFileUploadPreviewImage
+                    [index]="$index"
+                    class="size-full rounded-md object-cover"
+                  />
+                  <button
+                    elbFileUploadPreview
+                    elbFileUploadRemoveBadge
+                    [index]="$index"
+                    class="-top-1 -right-1"
+                  >
                     <ng-icon name="lucideX" />
                   </button>
-                </hlm-attachment-actions>
-              </hlm-attachment>
-            }
+                </div>
+              }
+            </div>
           </ng-template>
         </div>
         <hlm-empty-header elbFileUploadPlaceholder>
@@ -64,7 +64,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
           </hlm-empty-media>
           <div hlmEmptyTitle>Upload files</div>
           <div hlmEmptyDescription class="flex gap-1">
-            <span>All files</span>
+            <span>Images only</span>
             <span aria-hidden="true">·</span>
             <span>Max 10 files</span>
             <span aria-hidden="true">·</span>
@@ -80,4 +80,4 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
     </elb-file-upload>
   `,
 })
-export class FileUploadMultiPreview {}
+export class FileUploadMultiImagesPreview {}

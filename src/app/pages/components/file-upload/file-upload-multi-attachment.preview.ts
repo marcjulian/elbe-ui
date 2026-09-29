@@ -7,9 +7,9 @@ import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmEmptyImports } from '@spartan-ng/helm/empty';
 
 @Component({
-  selector: 'elb-file-upload-multi-preview',
+  selector: 'elb-file-upload-multi-attachment-preview',
   host: {
-    class: 'block w-full max-w-sm',
+    class: 'block w-full max-w-2xl',
   },
   imports: [NgIcon, ElbFileUploadImports, HlmEmptyImports, HlmButton, HlmAttachmentImports],
   providers: [provideIcons({ lucideX, lucideTrash, lucideUpload, lucideFileUp, lucideFile })],
@@ -36,26 +36,32 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
           </div>
 
           <ng-template elbFileUploadFiles let-files>
-            @for (file of files; track file) {
-              <hlm-attachment class="w-full">
-                <hlm-attachment-media>
-                  <ng-icon name="lucideFile" />
-                </hlm-attachment-media>
-                <div hlmAttachmentContent>
-                  <span hlmAttachmentTitle elbFileUploadMeta field="name" [index]="$index"></span>
-                  <span hlmAttachmentDescription class="flex items-center gap-1">
-                    <span elbFileUploadMeta field="type" [index]="$index"></span>
-                    <span aria-hidden="true">·</span>
-                    <span elbFileUploadMeta field="size" [index]="$index"></span>
-                  </span>
-                </div>
-                <hlm-attachment-actions>
-                  <button elbFileUploadRemove [index]="$index" hlmAttachmentAction>
-                    <ng-icon name="lucideX" />
-                  </button>
-                </hlm-attachment-actions>
-              </hlm-attachment>
-            }
+            <div class="grid grid-cols-3 gap-3">
+              @for (file of files; track file) {
+                <hlm-attachment orientation="vertical" class="w-full!">
+                  <hlm-attachment-media [variant]="isImage(file) ? 'image' : 'icon'">
+                    @if (isImage(file)) {
+                      <img elbFileUploadPreviewImage [index]="$index" />
+                    } @else {
+                      <ng-icon name="lucideFile" />
+                    }
+                  </hlm-attachment-media>
+                  <div hlmAttachmentContent>
+                    <span hlmAttachmentTitle elbFileUploadMeta field="name" [index]="$index"></span>
+                    <span hlmAttachmentDescription class="flex items-center gap-1">
+                      <span elbFileUploadMeta field="type" [index]="$index"></span>
+                      <span aria-hidden="true">·</span>
+                      <span elbFileUploadMeta field="size" [index]="$index"></span>
+                    </span>
+                  </div>
+                  <hlm-attachment-actions>
+                    <button elbFileUploadRemove [index]="$index" hlmAttachmentAction>
+                      <ng-icon name="lucideX" />
+                    </button>
+                  </hlm-attachment-actions>
+                </hlm-attachment>
+              }
+            </div>
           </ng-template>
         </div>
         <hlm-empty-header elbFileUploadPlaceholder>
@@ -80,4 +86,8 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
     </elb-file-upload>
   `,
 })
-export class FileUploadMultiPreview {}
+export class FileUploadMultiAttachmentPreview {
+  protected isImage(file: File): boolean {
+    return file.type.startsWith('image/');
+  }
+}
