@@ -86,7 +86,7 @@ import { FileUploadPreview } from './file-upload.preview';
             >Angular Primitives</a
           >
           in your project. Install
-          <code>npm install ng-primitives @floating-ui/dom</code>.
+          <code>npm install ng-primitives</code>.
         </p>
       </div>
 
