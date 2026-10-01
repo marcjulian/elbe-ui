@@ -3,6 +3,7 @@
 @import 'tailwindcss/preflight.css' layer(base);
 @import 'tailwindcss/utilities.css';
 @import './typeset.css';
+@import './highlight.css';
 
 @import 'inter-ui/inter.css';
 @import '@fontsource/noto-mono';

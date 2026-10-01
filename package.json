@@ -4,12 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "pnpm sitemap && ng build",
-    "build:pages": "pnpm sitemap && ng build && cp dist/elbeui/browser/index.html dist/elbeui/browser/404.html",
+    "build": "pnpm sitemap && pnpm markdown:highlight && ng build",
+    "build:pages": "pnpm sitemap && pnpm markdown:highlight && ng build && cp dist/elbeui/browser/index.html dist/elbeui/browser/404.html",
     "watch": "ng build --watch --configuration development",
     "serve:ssr:elbeui": "node dist/elbeui/server/server.mjs",
     "fmt": "prettier --write .",
     "sitemap": "tsx tools/sitemap.ts",
+    "markdown:highlight": "tsx tools/markdown-highlight.ts",
     "og": "tsx tools/og.ts"
   },
   "packageManager": "pnpm@11.22.0",
@@ -31,6 +32,7 @@
     "@spartan-ng/brain": "1.5.0",
     "@tanstack/angular-charts": "0.18.0",
     "@tanstack/charts": "0.18.0",
+    "@tanstack/highlight": "1.0.0",
     "@tanstack/markdown": "1.0.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",

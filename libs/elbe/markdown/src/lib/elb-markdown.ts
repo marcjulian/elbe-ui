@@ -10,7 +10,9 @@ import {
   linkedSignal,
 } from '@angular/core';
 import { classes } from '@spartan-ng/helm/utils';
+import type { CodeHighlighter } from '@tanstack/markdown';
 import { renderHtml } from '@tanstack/markdown/html';
+import { injectElbMarkdownConfig } from './elb-markdown.token';
 
 /** SSR → hydration carrier for inline markdown. */
 const INLINE_SOURCE_ATTR = 'data-elb-markdown-source';
@@ -25,9 +27,13 @@ const INLINE_SOURCE_ATTR = 'data-elb-markdown-source';
 export class ElbMarkdown implements AfterViewInit {
   private readonly _element = inject(ElementRef<HTMLElement>);
   private readonly _native = this._element.nativeElement;
+  private readonly _config = injectElbMarkdownConfig();
 
   public readonly content = input<string>();
   public readonly src = input<string>();
+
+  /** Optional synchronous code highlighter, e.g. from `@tanstack/highlight`. */
+  public readonly highlighter = input<CodeHighlighter | undefined>(this._config.highlighter);
 
   private readonly _file = httpResource.text(() => this.src());
 
@@ -38,7 +44,10 @@ export class ElbMarkdown implements AfterViewInit {
 
   private readonly _html = computed(() => {
     const markdown = this._markdown();
-    return markdown ? renderHtml(markdown) : null;
+    if (!markdown) {
+      return null;
+    }
+    return renderHtml(markdown, { highlighter: this.highlighter() });
   });
 
   constructor() {
