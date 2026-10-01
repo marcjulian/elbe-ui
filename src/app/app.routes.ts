@@ -84,6 +84,19 @@ export const routes: Routes = [
           }),
         },
       },
+      {
+        path: 'markdown',
+        loadComponent: () =>
+          import('./pages/components/markdown/markdown.page').then((m) => m.MarkdownPage),
+        title: 'Markdown',
+        data: {
+          ...meta({
+            description:
+              'Markdown renderer built with TanStack Markdown. Render content inline, through an input, or loaded from a source file.',
+            ogImage: '/assets/og/markdown.webp',
+          }),
+        },
+      },
     ],
   },
   {
