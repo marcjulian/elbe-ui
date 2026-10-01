@@ -1,11 +1,18 @@
 import { InjectionToken, type ValueProvider, inject } from '@angular/core';
-import type { RenderOptions } from '@tanstack/markdown';
+import type { CodeHighlighter, RenderOptions } from '@tanstack/markdown';
 
-/** Markdown render options that are not shared with code blocks. */
+/** Markdown render options, excluding highlighting which is configured separately. */
 export type ElbMarkdownRenderOptions = Omit<RenderOptions, 'highlighter' | 'codeLineNumbers'>;
 
 export interface ElbMarkdownConfig {
   renderOptions?: ElbMarkdownRenderOptions;
+  /**
+   * Markdown-flavored highlighter, e.g. `createTanStackMarkdownHighlighter(highlighter)`.
+   * The markdown package does not depend on `@tanstack/highlight`.
+   */
+  highlighter?: CodeHighlighter;
+  /** Render line numbers in fenced code blocks. */
+  codeLineNumbers?: boolean;
 }
 
 const defaultConfig: ElbMarkdownConfig = {};

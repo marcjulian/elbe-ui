@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElbMarkdownImports } from '@elbe/ui/markdown';
+import { markdownHighlighter } from '../../../highlight';
 
 @Component({
   selector: 'elb-markdown-syntax-highlighting-preview',
@@ -7,9 +8,11 @@ import { ElbMarkdownImports } from '@elbe/ui/markdown';
   host: {
     class: 'block w-full',
   },
-  template: ` <elb-markdown [content]="markdown" /> `,
+  template: ` <elb-markdown [content]="markdown" [highlighter]="highlighter" /> `,
 })
 export class MarkdownSyntaxHighlightingPreview {
+  protected readonly highlighter = markdownHighlighter;
+
   protected readonly markdown = [
     '# Angular',
     '',

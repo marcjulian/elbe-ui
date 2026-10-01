@@ -80,9 +80,11 @@ import { MarkdownPreview } from './markdown.preview';
       <p class="typeset mt-2">
         Highlighting is opt-in: pass a highlighter to <code>elb-markdown</code> with
         <code>[highlighter]</code>, or set a default once via
-        <code>provideElbHighlightConfig(&#123; highlighter &#125;)</code>. The token colors come
-        from a theme stylesheet — here <code>highlight.css</code>, generated from the GitHub themes
-        with <code>createThemeCss()</code>.
+        <code>provideElbMarkdownConfig(&#123; highlighter &#125;)</code>. Since the component only
+        depends on <code>@tanstack/markdown</code>, the highlighter is a markdown-flavored one —
+        wrap a TanStack highlighter with <code>createTanStackMarkdownHighlighter()</code>. The token
+        colors come from a theme stylesheet — here <code>highlight.css</code>, generated from the
+        GitHub themes with <code>createThemeCss()</code>.
       </p>
       <div elbPreview>
         <elb-markdown-syntax-highlighting-preview />

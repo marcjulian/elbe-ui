@@ -1,6 +1,8 @@
+import { BooleanInput } from '@angular/cdk/coercion';
 import { httpResource } from '@angular/common/http';
 import {
   AfterViewInit,
+  booleanAttribute,
   Component,
   computed,
   effect,
@@ -9,9 +11,7 @@ import {
   input,
   linkedSignal,
 } from '@angular/core';
-import { injectElbHighlightConfig } from '@elbe/ui/highlight';
 import { classes } from '@spartan-ng/helm/utils';
-import { createTanStackMarkdownHighlighter } from '@tanstack/highlight/markdown';
 import type { CodeHighlighter } from '@tanstack/markdown';
 import { renderHtml } from '@tanstack/markdown/html';
 import { injectElbMarkdownConfig, type ElbMarkdownRenderOptions } from './elb-markdown.token';
@@ -30,17 +30,23 @@ export class ElbMarkdown implements AfterViewInit {
   private readonly _element = inject(ElementRef<HTMLElement>);
   private readonly _native = this._element.nativeElement;
   private readonly _config = injectElbMarkdownConfig();
-  private readonly _highlight = injectElbHighlightConfig();
 
   public readonly content = input<string>();
   public readonly src = input<string>();
-  public readonly renderOptions = input<ElbMarkdownRenderOptions | undefined>(undefined);
+  public readonly renderOptions = input<ElbMarkdownRenderOptions | undefined>(
+    this._config.renderOptions,
+  );
 
-  /** Per-instance override; defaults to the shared highlight config. */
-  public readonly highlighter = input<CodeHighlighter | undefined>(
-    this._highlight.highlighter
-      ? createTanStackMarkdownHighlighter(this._highlight.highlighter)
-      : undefined,
+  /**
+   * Markdown-flavored highlighter for fenced code blocks, e.g.
+   * `createTanStackMarkdownHighlighter(highlighter)`. Defaults to the markdown config.
+   */
+  public readonly highlighter = input<CodeHighlighter | undefined>(this._config.highlighter);
+
+  /** Per-instance override; defaults to the markdown config. */
+  public readonly codeLineNumbers = input<boolean | undefined, BooleanInput>(
+    this._config.codeLineNumbers,
+    { transform: booleanAttribute },
   );
 
   private readonly _file = httpResource.text(() => this.src());
@@ -56,10 +62,9 @@ export class ElbMarkdown implements AfterViewInit {
       return null;
     }
     return renderHtml(markdown, {
-      ...this._config.renderOptions,
       ...this.renderOptions(),
       highlighter: this.highlighter(),
-      codeLineNumbers: this._highlight.codeLineNumbers,
+      codeLineNumbers: this.codeLineNumbers(),
     });
   });
 
