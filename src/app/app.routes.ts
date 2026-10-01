@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { provideElbHighlightConfig } from '@elbe/ui/highlight/config';
+import { elbHighlighter } from './highlight';
 import { meta } from './tools/seo.types';
 
 export const routes: Routes = [
@@ -8,6 +10,7 @@ export const routes: Routes = [
   },
   {
     path: 'components',
+    providers: [provideElbHighlightConfig({ highlighter: elbHighlighter })],
     children: [
       {
         path: '',

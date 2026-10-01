@@ -9,8 +9,9 @@ const css = createThemeCss({
   dark: githubDarkTheme,
   lightSelector: ':root',
   darkSelector: '.dark',
-  codeBlockSelector: 'pre.tm-code',
-  lineNumbersSelector: '.tm-code--line-numbers',
+  // `createThemeBaseCss` appends ` code` / ` .th-line::before`, so a bare comma list
+  // would only bind to the last selector — `:is(...)` groups them correctly.
+  lineNumbersSelector: ':is(.th-code--line-numbers, .tm-code--line-numbers)',
 });
 
 const path = resolve(process.cwd(), 'src/highlight.css');

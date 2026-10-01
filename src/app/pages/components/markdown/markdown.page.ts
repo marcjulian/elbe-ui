@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { provideElbMarkdownConfig } from '@elbe/ui/markdown';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
@@ -7,7 +6,6 @@ import { config } from '../../../config';
 import { BaseLayout } from '../../../layouts/base.layout';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
-import { highlightMarkdownCode } from './markdown-highlighter';
 import { MarkdownSyntaxHighlightingPreview } from './markdown-syntax-highlighting.preview';
 import { MarkdownPreview } from './markdown.preview';
 
@@ -23,10 +21,7 @@ import { MarkdownPreview } from './markdown.preview';
     MarkdownPreview,
     MarkdownSyntaxHighlightingPreview,
   ],
-  providers: [
-    provideIcons({ simpleGithub }),
-    provideElbMarkdownConfig({ highlighter: highlightMarkdownCode }),
-  ],
+  providers: [provideIcons({ simpleGithub })],
   template: `
     <elb-base-layout mainClass="pt-8">
       <div class="flex flex-col gap-2">
@@ -82,6 +77,13 @@ import { MarkdownPreview } from './markdown.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
+      <p class="typeset mt-2">
+        Highlighting is opt-in: pass a highlighter to <code>elb-markdown</code> with
+        <code>[highlighter]</code>, or set a default once via
+        <code>provideElbHighlightConfig(&#123; highlighter &#125;)</code>. The token colors come
+        from a theme stylesheet — here <code>highlight.css</code>, generated from the GitHub themes
+        with <code>createThemeCss()</code>.
+      </p>
       <div elbPreview>
         <elb-markdown-syntax-highlighting-preview />
       </div>

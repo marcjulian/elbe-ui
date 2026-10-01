@@ -17,6 +17,8 @@
       "@elbe/ui/drawer": ["./libs/elbe/drawer/src/index.ts"],
       "@elbe/ui/file-upload": ["./libs/elbe/file-upload/src/index.ts"],
       "@elbe/ui/gallery": ["./libs/elbe/gallery/src/index.ts"],
+      "@elbe/ui/highlight": ["./libs/elbe/highlight/src/index.ts"],
+      "@elbe/ui/highlight/config": ["./libs/elbe/highlight/src/lib/elb-highlight.token.ts"],
       "@elbe/ui/map": ["./libs/elbe/map/src/index.ts"],
       "@elbe/ui/markdown": ["./libs/elbe/markdown/src/index.ts"],
       "@spartan-ng/helm/attachment": ["./libs/ui/attachment/src/index.ts"],

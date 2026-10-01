@@ -9,10 +9,12 @@ import {
   input,
   linkedSignal,
 } from '@angular/core';
+import { injectElbHighlightConfig } from '@elbe/ui/highlight';
 import { classes } from '@spartan-ng/helm/utils';
+import { createTanStackMarkdownHighlighter } from '@tanstack/highlight/markdown';
 import type { CodeHighlighter } from '@tanstack/markdown';
 import { renderHtml } from '@tanstack/markdown/html';
-import { injectElbMarkdownConfig } from './elb-markdown.token';
+import { injectElbMarkdownConfig, type ElbMarkdownRenderOptions } from './elb-markdown.token';
 
 /** SSR → hydration carrier for inline markdown. */
 const INLINE_SOURCE_ATTR = 'data-elb-markdown-source';
@@ -28,12 +30,18 @@ export class ElbMarkdown implements AfterViewInit {
   private readonly _element = inject(ElementRef<HTMLElement>);
   private readonly _native = this._element.nativeElement;
   private readonly _config = injectElbMarkdownConfig();
+  private readonly _highlight = injectElbHighlightConfig();
 
   public readonly content = input<string>();
   public readonly src = input<string>();
+  public readonly renderOptions = input<ElbMarkdownRenderOptions | undefined>(undefined);
 
-  /** Optional synchronous code highlighter, e.g. from `@tanstack/highlight`. */
-  public readonly highlighter = input<CodeHighlighter | undefined>(this._config.highlighter);
+  /** Per-instance override; defaults to the shared highlight config. */
+  public readonly highlighter = input<CodeHighlighter | undefined>(
+    this._highlight.highlighter
+      ? createTanStackMarkdownHighlighter(this._highlight.highlighter)
+      : undefined,
+  );
 
   private readonly _file = httpResource.text(() => this.src());
 
@@ -47,7 +55,12 @@ export class ElbMarkdown implements AfterViewInit {
     if (!markdown) {
       return null;
     }
-    return renderHtml(markdown, { highlighter: this.highlighter() });
+    return renderHtml(markdown, {
+      ...this._config.renderOptions,
+      ...this.renderOptions(),
+      highlighter: this.highlighter(),
+      codeLineNumbers: this._highlight.codeLineNumbers,
+    });
   });
 
   constructor() {

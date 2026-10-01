@@ -48,7 +48,7 @@
   --th-variable: #ffa657;
 }
 
-pre.tm-code {
+pre.th-code {
   overflow-x: auto;
   padding: 1rem;
   background: var(--th-background);
@@ -77,8 +77,8 @@ pre.tm-code {
 .th-type { color: var(--th-type); }
 .th-variable { color: var(--th-variable); }
 .th-line { display: inline-block; min-width: 100%; width: max-content; }
-.tm-code--line-numbers code { counter-reset: th-line; }
-.tm-code--line-numbers .th-line::before {
+:is(.th-code--line-numbers, .tm-code--line-numbers) code { counter-reset: th-line; }
+:is(.th-code--line-numbers, .tm-code--line-numbers) .th-line::before {
   display: inline-block;
   width: 2.5em;
   padding-right: 1em;

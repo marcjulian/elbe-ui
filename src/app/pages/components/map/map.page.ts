@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { ElbHighlightImports } from '@elbe/ui/highlight';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { BaseLayout } from '../../../layouts/base.layout';
-import { CodeBlock } from '../../../ui/code-block';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
 import { mapStyles } from './map-styles';
@@ -12,7 +12,7 @@ import { MapPreview } from './map.preview';
 
 @Component({
   selector: 'elb-map-page',
-  imports: [BaseLayout, NgIcon, H2, H3, HlmButtonImports, CodeBlock, Preview, MapPreview],
+  imports: [BaseLayout, NgIcon, H2, H3, HlmButtonImports, ElbHighlightImports, Preview, MapPreview],
   providers: [provideIcons({ simpleGithub })],
   template: `
     <elb-base-layout mainClass="pt-8">
@@ -54,12 +54,12 @@ import { MapPreview } from './map.preview';
         </p>
 
         <p>Install <code>npm install @maplibre/ngx-maplibre-gl maplibre-gl</code>.</p>
-        <elb-code-block [code]="mapStyles" fileName="styles.css" />
+        <elb-code-block [code]="mapStyles" lang="css" />
         <p>
           <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control
           for its functionality, so hide the original one via CSS:
         </p>
-        <elb-code-block [code]="geolocateStyles" fileName="styles.css" />
+        <elb-code-block [code]="geolocateStyles" lang="css" />
       </div>
 
       <elb-h2 id="examples"> Examples </elb-h2>
