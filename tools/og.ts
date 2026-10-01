@@ -2,7 +2,7 @@ import type { Route, Routes } from '@angular/router';
 import { readFileSync } from 'fs';
 import { readdir, unlink, writeFile } from 'fs/promises';
 import { render, type RenderInput } from 'takumi-js';
-import { routes } from '../src/app/app.routes';
+import { allRoutes } from './routes';
 
 const sharedOptions = {
   width: 1200,
@@ -122,7 +122,7 @@ async function main() {
     await Promise.all(toRemove.map((f) => unlink(`${ogDir}/${f}`)));
   }
 
-  const componentRoutes = collectOgRoutes(routes);
+  const componentRoutes = collectOgRoutes(allRoutes);
 
   console.log(`\n\x1b[1m📸 Generating ${componentRoutes.length} component OG images\x1b[0m\n`);
   for (const route of componentRoutes) {

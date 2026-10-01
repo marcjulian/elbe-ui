@@ -3,8 +3,8 @@ import { writeFileSync } from 'fs';
 import { resolve } from 'path';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
-import { routes } from '../src/app/app.routes';
 import { environment } from '../src/environments/environment';
+import { allRoutes } from './routes';
 
 // Helper to extract paths from Angular routes
 function getPaths(routes: Route[], parentPath = ''): string[] {
@@ -43,7 +43,7 @@ async function generateSitemap() {
 
     const stream = new SitemapStream({ hostname: environment.appUrl });
 
-    const paths = getPaths(routes);
+    const paths = getPaths(allRoutes);
     const links = paths.map((url) => ({
       url,
     }));

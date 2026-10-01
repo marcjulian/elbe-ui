@@ -4,6 +4,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   lucideChevronRight,
   lucideCloudUpload,
+  lucideFileText,
   lucideImages,
   lucideMap,
   lucidePanelTopClose,
@@ -32,6 +33,7 @@ type UiComponent = {
       lucideChevronRight,
       lucideSearch,
       lucideCloudUpload,
+      lucideFileText,
     }),
   ],
   template: `
@@ -99,6 +101,13 @@ export class ComponentsPage {
       name: 'Map',
       icon: 'lucideMap',
       description: 'Map controls built for ngx-mapbox-gl library.',
+    },
+    {
+      slug: 'markdown',
+      name: 'Markdown',
+      icon: 'lucideFileText',
+      description: 'Markdown renderer built with TanStack Markdown.',
+      new: true,
     },
   ];
 }

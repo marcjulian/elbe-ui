@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { ElbHighlightImports } from '@elbe/ui/highlight';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { BaseLayout } from '../../../layouts/base.layout';
-import { CodeBlock } from '../../../ui/code-block';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
 import { GalleryCaptionPreview } from './gallery-caption.preview';
@@ -21,7 +21,7 @@ import { GalleryPreview } from './gallery.preview';
     H2,
     H3,
     Preview,
-    CodeBlock,
+    ElbHighlightImports,
     GalleryPreview,
     GalleryCaptionPreview,
     GalleryCarouselPreview,
@@ -64,7 +64,7 @@ import { GalleryPreview } from './gallery.preview';
           to your CSS file.
         </p>
 
-        <elb-code-block [code]="galleryStyles" fileName="styles.css" />
+        <elb-code-block [code]="galleryStyles" lang="css" />
       </div>
 
       <elb-h2 id="examples"> Examples </elb-h2>
