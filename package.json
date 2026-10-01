@@ -31,6 +31,7 @@
     "@spartan-ng/brain": "1.5.0",
     "@tanstack/angular-charts": "0.18.0",
     "@tanstack/charts": "0.18.0",
+    "@tanstack/markdown": "1.0.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cupertino-pane": "1.5.4",

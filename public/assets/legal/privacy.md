@@ -62,8 +62,8 @@ We herewith advise you that the transmission of data via the Internet (i.e., thr
 
 The data processing controller on this website is:
 
-Marc Stammerjohann  
-Hechtholz 25  
+Marc Stammerjohann\
+Hechtholz 25\
 21502 Geesthacht
 
 E-mail: [me@marcjulian.de](mailto:me@marcjulian.de)

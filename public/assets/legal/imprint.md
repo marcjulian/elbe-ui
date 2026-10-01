@@ -1,7 +1,7 @@
 # Imprint
 
-Marc Stammerjohann  
-Hechtholz 25  
+Marc Stammerjohann\
+Hechtholz 25\
 21502 Geesthacht
 
 ## Contact

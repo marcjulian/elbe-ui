@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Directive, effect, ElementRef, inject, input } from '@angular/core';
 import { classes } from '@spartan-ng/helm/utils';
-import { marked } from 'marked';
+import { renderHtml } from '@tanstack/markdown/html';
 import { firstValueFrom } from 'rxjs';
 
 @Directive({
@@ -44,8 +44,8 @@ export class ElbMarkdown implements AfterViewInit {
     return firstValueFrom(this._http.get(sourceFile, { responseType: 'text' }));
   }
 
-  private async render(markdown: string): Promise<void> {
-    const html = await marked.parse(markdown);
+  private render(markdown: string) {
+    const html = renderHtml(markdown);
     this._element.nativeElement.innerHTML = html;
   }
 }

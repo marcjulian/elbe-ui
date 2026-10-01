@@ -59,6 +59,9 @@ importers:
       '@tanstack/charts':
         specifier: 0.18.0
         version: 0.18.0(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))(@angular/platform-browser@22.2.0(@angular/common@22.2.0(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2)))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@tanstack/markdown':
+        specifier: 1.0.0
+        version: 1.0.0(react@19.2.1)
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
@@ -2951,6 +2954,17 @@ packages:
       svelte:
         optional: true
       vue:
+        optional: true
+
+  '@tanstack/markdown@1.0.0':
+    resolution: {integrity: sha512-zE07RepFMbSQlHdnE82twgiVOKy50rP6a/X9UPOOBt8Z8x9lzaPvGpn2zioCnjXMvNt/IQkW5sSalXQ25C/FKw==}
+    peerDependencies:
+      octane: '>=0.1.12'
+      react: '>=18'
+    peerDependenciesMeta:
+      octane:
+        optional: true
+      react:
         optional: true
 
   '@trysound/sax@0.2.0':
@@ -10371,6 +10385,10 @@ snapshots:
       '@angular/platform-browser': 22.2.0(@angular/common@22.2.0(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.0(@angular/compiler@22.2.0)(rxjs@7.8.2))
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
+
+  '@tanstack/markdown@1.0.0(react@19.2.1)':
+    optionalDependencies:
+      react: 19.2.1
 
   '@trysound/sax@0.2.0': {}
 
