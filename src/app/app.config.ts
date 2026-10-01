@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 import { provideMaptilerConfig } from '@elbe/ui/address-autocomplete';
 import { provideMaplibreWorker } from '@maplibre/ngx-maplibre-gl/config';
@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
       }),
     ),
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(),
     provideSeo({
       title: 'elbe/ui - Angular UI components built with Tailwind CSS and spartan/ui',
       titleTemplate: '%s | elbe/ui',
