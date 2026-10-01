@@ -12,8 +12,14 @@ import {
   linkedSignal,
 } from '@angular/core';
 import { classes } from '@spartan-ng/helm/utils';
-import type { CodeHighlighter } from '@tanstack/markdown';
-import { renderHtml } from '@tanstack/markdown/html';
+import {
+  parseMarkdown,
+  type CodeHighlighter,
+  type MarkdownDocument,
+  type MarkdownHeading,
+} from '@tanstack/markdown';
+import { collectMarkdownHeadings } from '@tanstack/markdown/extensions/headings';
+import { renderDocument } from '@tanstack/markdown/html';
 import { injectElbMarkdownConfig, type ElbMarkdownRenderOptions } from './elb-markdown.token';
 
 /** SSR → hydration carrier for inline markdown. */
@@ -56,12 +62,26 @@ export class ElbMarkdown implements AfterViewInit {
     this.src() ? this._file.value() : this.content(),
   );
 
-  private readonly _html = computed(() => {
+  private readonly _document = computed<MarkdownDocument | null>(() => {
     const markdown = this._markdown();
-    if (!markdown) {
+    return markdown ? parseMarkdown(markdown, this.renderOptions()) : null;
+  });
+
+  /**
+   * Headings parsed from the markdown, with generated IDs, e.g. to build a
+   * table of contents. Empty when `renderOptions.headingIds` is `false`.
+   */
+  public readonly headings = computed<MarkdownHeading[]>(() => {
+    const document = this._document();
+    return document ? collectMarkdownHeadings(document) : [];
+  });
+
+  private readonly _html = computed(() => {
+    const document = this._document();
+    if (!document) {
       return null;
     }
-    return renderHtml(markdown, {
+    return renderDocument(document, {
       ...this.renderOptions(),
       highlighter: this.highlighter(),
       codeLineNumbers: this.codeLineNumbers(),

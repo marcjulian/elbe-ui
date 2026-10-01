@@ -7,6 +7,7 @@ import { BaseLayout } from '../../../layouts/base.layout';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
 import { MarkdownSyntaxHighlightingPreview } from './markdown-syntax-highlighting.preview';
+import { MarkdownTocPreview } from './markdown-toc.preview';
 import { MarkdownPreview } from './markdown.preview';
 
 @Component({
@@ -20,6 +21,7 @@ import { MarkdownPreview } from './markdown.preview';
     H3,
     MarkdownPreview,
     MarkdownSyntaxHighlightingPreview,
+    MarkdownTocPreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -88,6 +90,30 @@ import { MarkdownPreview } from './markdown.preview';
       </p>
       <div elbPreview>
         <elb-markdown-syntax-highlighting-preview />
+      </div>
+
+      <div class="flex items-baseline justify-between gap-6">
+        <elb-h3 id="table-of-contents"> Table of Contents </elb-h3>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/components/markdown/markdown-toc.preview.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <p class="typeset mt-2">
+        <code>elb-markdown</code> exposes its parsed headings via <code>headings()</code>. Pass them
+        to <code>elb-markdown-toc</code>, which filters them to a level range with
+        <code>[minLevel]</code>/<code>[maxLevel]</code> and highlights the heading currently in view
+        as you scroll.
+      </p>
+      <div elbPreview>
+        <elb-markdown-toc-preview />
       </div>
     </elb-base-layout>
   `,
