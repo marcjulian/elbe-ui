@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { meta } from './tools/seo.types';
+import { meta } from '@elbe/ui/seo/config';
 
 export const routes: Routes = [
   {

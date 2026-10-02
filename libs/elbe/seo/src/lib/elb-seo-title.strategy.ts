@@ -1,13 +1,13 @@
 import { type ClassProvider, inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { type RouterStateSnapshot, TitleStrategy } from '@angular/router';
-import { Seo } from './seo';
-import { injectSeoConfig, type SeoConfig } from './seo.types';
+import { ElbSeo } from './elb-seo';
+import { injectSeoConfig, type SeoConfig } from './elb-seo.token';
 
 @Injectable()
-export class AppTitleStrategy extends TitleStrategy {
+export class ElbSeoTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);
-  private readonly seo = inject(Seo);
+  private readonly seo = inject(ElbSeo);
   private readonly config = injectSeoConfig();
 
   updateTitle(snapshot: RouterStateSnapshot): void {
@@ -38,6 +38,6 @@ export class AppTitleStrategy extends TitleStrategy {
   }
 }
 
-export function provideTitleStrategy(): ClassProvider {
-  return { provide: TitleStrategy, useClass: AppTitleStrategy };
+export function provideSeoTitleStrategy(): ClassProvider {
+  return { provide: TitleStrategy, useClass: ElbSeoTitleStrategy };
 }

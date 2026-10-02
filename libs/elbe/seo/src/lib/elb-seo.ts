@@ -1,18 +1,16 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Service } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { environment } from '../../environments/environment';
-import type { SeoConfig } from './seo.types';
-import { injectSeoConfig } from './seo.types';
+import { injectSeoConfig, type SeoConfig } from './elb-seo.token';
 
 @Service()
-export class Seo {
+export class ElbSeo {
   private readonly document = inject(DOCUMENT);
   private readonly meta = inject(Meta);
   private readonly config = injectSeoConfig();
 
   /**
-   * Called by TitleStrategy on every navigation.
+   * Called by the title strategy on every navigation.
    * Writes all managed tags, merging the route config with sensible defaults.
    */
   applyFromStrategy(config: SeoConfig, fullTitle: string, url: string): void {
@@ -58,13 +56,13 @@ export class Seo {
     return this.resolveUrl(url.split('#')[0]);
   }
 
-  /** If the path is relative, prefix it with the app URL. */
+  /** If the path is relative, prefix it with the configured site origin. */
   private resolveUrl(path: string): string {
     if (path.startsWith('http://') || path.startsWith('https://')) {
       return path;
     }
     const normalized = path.startsWith('/') ? path : `/${path}`;
-    return `${environment.appUrl}${normalized}`;
+    return `${this.config.origin}${normalized}`;
   }
 
   set(config: Partial<SeoConfig>): void {
