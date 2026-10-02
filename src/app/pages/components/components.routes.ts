@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { provideElbHighlightConfig } from '@elbe/ui/highlight/config';
+import { meta } from '@elbe/ui/seo/config';
 import { elbHighlighter } from '../../highlight';
-import { meta } from '../../tools/seo.types';
 
 /**
  * Component routes are loaded lazily as a group so the shared highlighter

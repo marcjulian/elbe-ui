@@ -24,6 +24,8 @@
       "@elbe/ui/highlight/config": ["./libs/elbe/highlight/src/lib/elb-highlight.token.ts"],
       "@elbe/ui/map": ["./libs/elbe/map/src/index.ts"],
       "@elbe/ui/markdown": ["./libs/elbe/markdown/src/index.ts"],
+      "@elbe/ui/seo": ["./libs/elbe/seo/src/index.ts"],
+      "@elbe/ui/seo/config": ["./libs/elbe/seo/src/lib/elb-seo.token.ts"],
       "@spartan-ng/helm/attachment": ["./libs/ui/attachment/src/index.ts"],
       "@spartan-ng/helm/autocomplete": ["./libs/ui/autocomplete/src/index.ts"],
       "@spartan-ng/helm/badge": ["./libs/ui/badge/src/index.ts"],

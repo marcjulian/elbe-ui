@@ -1,36 +1,48 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Service } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { environment } from '../../environments/environment';
-import type { SeoConfig } from './seo.types';
-import { injectSeoConfig } from './seo.types';
+import { injectSeoConfig, type SeoConfig } from './elb-seo.token';
 
 @Service()
-export class Seo {
+export class ElbSeo {
   private readonly document = inject(DOCUMENT);
   private readonly meta = inject(Meta);
   private readonly config = injectSeoConfig();
 
   /**
-   * Called by TitleStrategy on every navigation.
+   * Called by the title strategy on every navigation.
    * Writes all managed tags, merging the route config with sensible defaults.
    */
   applyFromStrategy(config: SeoConfig, fullTitle: string, url: string): void {
     const merged = { ...this.config, ...config };
 
-    this.meta.updateTag({ name: 'description', content: merged.description });
-    this.meta.updateTag({ name: 'robots', content: merged.robots });
+    this.updateMeta({ name: 'description' }, merged.description);
+    this.updateMeta({ name: 'robots' }, merged.robots);
 
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
-    this.meta.updateTag({ property: 'og:description', content: merged.description });
-    this.meta.updateTag({ property: 'og:type', content: merged.ogType });
-    this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
+    this.updateMeta({ property: 'og:description' }, merged.description);
+    this.updateMeta({ property: 'og:type' }, merged.ogType);
+    if (merged.ogImage) {
+      this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
+    }
     this.meta.updateTag({ property: 'og:url', content: this.resolvePageUrl(url) });
 
-    this.meta.updateTag({ name: 'twitter:card', content: merged.twitterCard });
+    this.updateMeta({ name: 'twitter:card' }, merged.twitterCard);
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
-    this.meta.updateTag({ name: 'twitter:description', content: merged.description });
-    this.meta.updateTag({ name: 'twitter:image', content: this.resolveUrl(merged.ogImage) });
+    this.updateMeta({ name: 'twitter:description' }, merged.description);
+    if (merged.ogImage) {
+      this.meta.updateTag({ name: 'twitter:image', content: this.resolveUrl(merged.ogImage) });
+    }
+  }
+
+  /** Upsert a meta tag only when a value is present (avoids `content="undefined"`). */
+  private updateMeta(
+    selector: { name: string } | { property: string },
+    content: string | undefined,
+  ): void {
+    if (content !== undefined) {
+      this.meta.updateTag({ ...selector, content });
+    }
   }
 
   /** Imperative API — pages may override tags between navigations. */
@@ -58,13 +70,13 @@ export class Seo {
     return this.resolveUrl(url.split('#')[0]);
   }
 
-  /** If the path is relative, prefix it with the app URL. */
+  /** If the path is relative, prefix it with the configured site origin. */
   private resolveUrl(path: string): string {
     if (path.startsWith('http://') || path.startsWith('https://')) {
       return path;
     }
     const normalized = path.startsWith('/') ? path : `/${path}`;
-    return `${environment.appUrl}${normalized}`;
+    return `${this.config.origin}${normalized}`;
   }
 
   set(config: Partial<SeoConfig>): void {
