@@ -2,7 +2,7 @@ import { type ClassProvider, inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { type RouterStateSnapshot, TitleStrategy } from '@angular/router';
 import { ElbSeo } from './elb-seo';
-import { injectSeoConfig, type SeoConfig } from './elb-seo.token';
+import { injectSeoConfig, resolveTitleTemplate, type SeoConfig } from './elb-seo.token';
 
 @Injectable()
 export class ElbSeoTitleStrategy extends TitleStrategy {
@@ -13,7 +13,7 @@ export class ElbSeoTitleStrategy extends TitleStrategy {
   updateTitle(snapshot: RouterStateSnapshot): void {
     const pageTitle = this.buildTitle(snapshot);
     const fullTitle = pageTitle
-      ? this.config.titleTemplate.replace('%s', pageTitle)
+      ? resolveTitleTemplate(this.config.titleTemplate, pageTitle)
       : this.config.title;
     this.title.setTitle(fullTitle);
 

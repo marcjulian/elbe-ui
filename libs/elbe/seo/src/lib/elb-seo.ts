@@ -16,19 +16,33 @@ export class ElbSeo {
   applyFromStrategy(config: SeoConfig, fullTitle: string, url: string): void {
     const merged = { ...this.config, ...config };
 
-    this.meta.updateTag({ name: 'description', content: merged.description });
-    this.meta.updateTag({ name: 'robots', content: merged.robots });
+    this.updateMeta({ name: 'description' }, merged.description);
+    this.updateMeta({ name: 'robots' }, merged.robots);
 
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
-    this.meta.updateTag({ property: 'og:description', content: merged.description });
-    this.meta.updateTag({ property: 'og:type', content: merged.ogType });
-    this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
+    this.updateMeta({ property: 'og:description' }, merged.description);
+    this.updateMeta({ property: 'og:type' }, merged.ogType);
+    if (merged.ogImage) {
+      this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
+    }
     this.meta.updateTag({ property: 'og:url', content: this.resolvePageUrl(url) });
 
-    this.meta.updateTag({ name: 'twitter:card', content: merged.twitterCard });
+    this.updateMeta({ name: 'twitter:card' }, merged.twitterCard);
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
-    this.meta.updateTag({ name: 'twitter:description', content: merged.description });
-    this.meta.updateTag({ name: 'twitter:image', content: this.resolveUrl(merged.ogImage) });
+    this.updateMeta({ name: 'twitter:description' }, merged.description);
+    if (merged.ogImage) {
+      this.meta.updateTag({ name: 'twitter:image', content: this.resolveUrl(merged.ogImage) });
+    }
+  }
+
+  /** Upsert a meta tag only when a value is present (avoids `content="undefined"`). */
+  private updateMeta(
+    selector: { name: string } | { property: string },
+    content: string | undefined,
+  ): void {
+    if (content !== undefined) {
+      this.meta.updateTag({ ...selector, content });
+    }
   }
 
   /** Imperative API — pages may override tags between navigations. */

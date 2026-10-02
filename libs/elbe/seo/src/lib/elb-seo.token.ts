@@ -1,10 +1,13 @@
 import { inject, InjectionToken, type ValueProvider } from '@angular/core';
 
+/** Title template: every `%s` is replaced, or use a function for full control. */
+export type TitleTemplate = string | ((title: string) => string);
+
 export interface SeoConfig {
   /** Site name used as the fallback title and behind `titleTemplate`. */
   title: string;
-  /** Title template, e.g. `'%s | elbe/ui'`. `%s` is replaced by the route title. */
-  titleTemplate: string;
+  /** Title template, e.g. `'%s | elbe/ui'`. All `%s` are replaced by the route title. */
+  titleTemplate: TitleTemplate;
   /** Absolute site origin used to resolve relative canonical/OG URLs, e.g. `https://elbe-ui.dev`. */
   origin: string;
   description?: string;
@@ -14,14 +17,19 @@ export interface SeoConfig {
   twitterCard?: string;
 }
 
-const SeoConfigToken = new InjectionToken<Required<SeoConfig>>('SeoConfig');
+const SeoConfigToken = new InjectionToken<SeoConfig>('SeoConfig');
 
-export function provideSeoConfig(config: Required<SeoConfig>): ValueProvider {
+export function provideSeoConfig(config: SeoConfig): ValueProvider {
   return { provide: SeoConfigToken, useValue: config };
 }
 
-export function injectSeoConfig(): Required<SeoConfig> {
+export function injectSeoConfig(): SeoConfig {
   return inject(SeoConfigToken);
+}
+
+/** Resolve a title template against a page title. */
+export function resolveTitleTemplate(template: TitleTemplate, title: string): string {
+  return typeof template === 'function' ? template(title) : template.replaceAll('%s', title);
 }
 
 /**

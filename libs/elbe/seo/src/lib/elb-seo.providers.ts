@@ -8,6 +8,6 @@ import { provideSeoConfig, type SeoConfig } from './elb-seo.token';
  * Must be listed after `provideRouter(...)` so the custom strategy overrides
  * the router's default `TitleStrategy`.
  */
-export function provideSeo(config: Required<SeoConfig>): EnvironmentProviders {
+export function provideSeo(config: SeoConfig): EnvironmentProviders {
   return makeEnvironmentProviders([provideSeoConfig(config), provideSeoTitleStrategy()]);
 }
