@@ -1,4 +1,4 @@
-import { inject, InjectionToken, type ValueProvider } from '@angular/core';
+import { inject, InjectionToken, type Provider } from '@angular/core';
 
 /** Title template: every `%s` is replaced, or use a function for full control. */
 export type TitleTemplate = string | ((title: string) => string);
@@ -19,8 +19,13 @@ export interface SeoConfig {
 
 const SeoConfigToken = new InjectionToken<SeoConfig>('SeoConfig');
 
-export function provideSeoConfig(config: SeoConfig): ValueProvider {
-  return { provide: SeoConfigToken, useValue: config };
+/** Factory form, for configs whose values are only known at runtime (e.g. injected). */
+export type SeoConfigFactory = () => SeoConfig;
+
+export function provideSeoConfig(config: SeoConfig | SeoConfigFactory): Provider {
+  return typeof config === 'function'
+    ? { provide: SeoConfigToken, useFactory: config }
+    : { provide: SeoConfigToken, useValue: config };
 }
 
 export function injectSeoConfig(): SeoConfig {
