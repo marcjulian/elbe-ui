@@ -1,5 +1,5 @@
-import { inject, InjectionToken, ValueProvider } from '@angular/core';
-import { GeocodingForwardQueryParams } from './elb-maptiler.types';
+import { inject, InjectionToken, type Provider } from '@angular/core';
+import { type GeocodingForwardQueryParams } from './elb-maptiler.types';
 
 export interface MaptilerConfig {
   apiKey: string;
@@ -8,8 +8,12 @@ export interface MaptilerConfig {
 
 export const MaptilerConfigToken = new InjectionToken<MaptilerConfig>('MaptilerToken');
 
-export function provideMaptilerConfig(config: MaptilerConfig): ValueProvider {
-  return { provide: MaptilerConfigToken, useValue: config };
+export type MaptilerConfigFactory = () => MaptilerConfig;
+
+export function provideMaptilerConfig(config: MaptilerConfig | MaptilerConfigFactory): Provider {
+  return typeof config === 'function'
+    ? { provide: MaptilerConfigToken, useFactory: config }
+    : { provide: MaptilerConfigToken, useValue: config };
 }
 
 export function injectMaptilerConfig(): MaptilerConfig {

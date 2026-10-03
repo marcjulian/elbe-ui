@@ -3,7 +3,7 @@ import { inject, Service } from '@angular/core';
 import { map } from 'rxjs';
 import { mapGeocodingFeatureToAddress } from './elb-maptiler-feature-mapping';
 import { injectMaptilerConfig } from './elb-maptiler.token';
-import { GeocodingForwardQueryParams, GeocodingSearchResult } from './elb-maptiler.types';
+import type { GeocodingForwardQueryParams, GeocodingSearchResult } from './elb-maptiler.types';
 
 @Service()
 export class MaptilerService {

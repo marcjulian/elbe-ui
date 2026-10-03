@@ -1,4 +1,4 @@
-import { FeatureHierarchy, GeocodingFeature, GeocodingPlaceType } from './elb-maptiler.types';
+import type { FeatureHierarchy, GeocodingFeature, GeocodingPlaceType } from './elb-maptiler.types';
 
 export interface Address {
   placeName: string;
