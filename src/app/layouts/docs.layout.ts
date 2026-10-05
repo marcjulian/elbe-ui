@@ -10,11 +10,7 @@ import {
 } from '@spartan-ng/helm/sidebar';
 import { Footer } from '../ui/footer';
 import { Header } from '../ui/header';
-import {
-  siteNavigation,
-  type SiteNavigationGroup,
-  type SiteNavigationItem,
-} from './site-navigation';
+import { navigationLink, siteNavigation } from './site-navigation';
 
 @Component({
   selector: 'elb-docs-layout',
@@ -122,7 +118,5 @@ export class DocsLayout {
 
   siteNavigation = siteNavigation;
 
-  protected _link(group: SiteNavigationGroup, item: SiteNavigationItem): string | string[] {
-    return item.path ? [group.basePath, item.path] : group.basePath;
-  }
+  protected readonly _link = navigationLink;
 }

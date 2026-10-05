@@ -12,14 +12,7 @@ import {
 } from '@ng-icons/lucide';
 import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmItemImports } from '@spartan-ng/helm/item';
-
-type UiComponent = {
-  slug: string;
-  name: string;
-  icon: string;
-  description: string;
-  new?: boolean;
-};
+import { navigationLink, siteNavigation } from '../../layouts/site-navigation';
 
 @Component({
   selector: 'elb-components',
@@ -46,68 +39,34 @@ type UiComponent = {
       </p>
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-2">
-      @for (component of components; track component.slug) {
-        <a hlmItem [routerLink]="[component.slug]" variant="outline" class="items-start">
-          <hlm-item-media variant="icon">
-            <ng-icon [name]="component.icon" />
-          </hlm-item-media>
-          <hlm-item-content>
-            <hlm-item-title>
-              {{ component.name }}
-              @if (component.new) {
-                <span hlmBadge variant="secondary">New</span>
-              }
-            </hlm-item-title>
-            <p hlmItemDescription>{{ component.description }}</p>
-          </hlm-item-content>
-          <hlm-item-actions>
-            <ng-icon name="lucideChevronRight" />
-          </hlm-item-actions>
-        </a>
-      }
-    </div>
+    @if (_componentGroup; as group) {
+      <div class="grid gap-4 sm:grid-cols-2">
+        @for (item of group.items; track item.path) {
+          <a hlmItem [routerLink]="_link(group, item)" variant="outline" class="items-start">
+            <hlm-item-media variant="icon">
+              <ng-icon [name]="item.icon" />
+            </hlm-item-media>
+            <hlm-item-content>
+              <hlm-item-title>
+                {{ item.name }}
+                @if (item.new) {
+                  <span hlmBadge variant="secondary">New</span>
+                }
+              </hlm-item-title>
+              <p hlmItemDescription>{{ item.description }}</p>
+            </hlm-item-content>
+            <hlm-item-actions>
+              <ng-icon name="lucideChevronRight" />
+            </hlm-item-actions>
+          </a>
+        }
+      </div>
+    }
   `,
 })
 export class ComponentsPage {
-  components: UiComponent[] = [
-    {
-      slug: 'address-autocomplete',
-      name: 'Address Autocomplete',
-      icon: 'lucideSearch',
-      description: 'Autocomplete with Maptiler Forward Geocoding.',
-    },
-    {
-      slug: 'drawer',
-      name: 'Drawer',
-      icon: 'lucidePanelTopClose',
-      description: 'Drawer component built with Cupertino Panes library.',
-    },
-    {
-      slug: 'file-upload',
-      name: 'File Upload',
-      icon: 'lucideCloudUpload',
-      description: 'File upload component built with ngx-primitives library.',
-      new: true,
-    },
-    {
-      slug: 'gallery',
-      name: 'Gallery',
-      icon: 'lucideImages',
-      description: 'Image gallery built with photoswipe library.',
-    },
-    {
-      slug: 'map',
-      name: 'Map',
-      icon: 'lucideMap',
-      description: 'Map controls built for ngx-mapbox-gl library.',
-    },
-    {
-      slug: 'markdown',
-      name: 'Markdown',
-      icon: 'lucideFileText',
-      description: 'Markdown renderer built with TanStack Markdown.',
-      new: true,
-    },
-  ];
+  protected readonly _componentGroup = siteNavigation.find(
+    (group) => group.basePath === '/components',
+  );
+  protected readonly _link = navigationLink;
 }

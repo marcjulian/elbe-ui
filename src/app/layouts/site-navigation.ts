@@ -23,6 +23,19 @@ export type SiteNavigationGroup = {
   items: SiteNavigationItem[];
 };
 
+/**
+ * Resolve an item to a router link array/string.
+ * Group-root items (empty `path`) must use the base path alone, otherwise
+ * `[basePath, '']` produces a trailing slash (`/labs/`) that does not match
+ * the route on client-side navigation.
+ */
+export function navigationLink(
+  group: SiteNavigationGroup,
+  item: SiteNavigationItem,
+): string | string[] {
+  return item.path ? [group.basePath, item.path] : group.basePath;
+}
+
 export const siteNavigation: SiteNavigationGroup[] = [
   {
     title: 'Components',
