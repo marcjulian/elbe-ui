@@ -104,6 +104,12 @@ export const siteNavigation: SiteNavigationGroup[] = [
         icon: 'lucideSearch',
         description: 'Route-driven titles, meta tags and canonical URLs.',
       },
+      {
+        path: 'theme',
+        name: 'Theme',
+        icon: 'lucideSunMoon',
+        description: 'Light and dark themes with system preference detection.',
+      },
     ],
   },
 ];
