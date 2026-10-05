@@ -5,9 +5,11 @@
 ## Components
 
 - Address Autocomplete - built on [spartan/ui Autocomplete](https://spartan.ng/components/autocomplete) and [MapTiler](https://www.maptiler.com/)
-- Gallery - built on [photoswipe](https://photoswipe.com/)
 - Drawer - built on [Cupertino Panes](https://panejs.com/)
+- File Upload - built on [Angular Primitives](https://angularprimitives.com/)
+- Gallery - built on [photoswipe](https://photoswipe.com/)
 - Map Control - built on [ngx-maplibre-gl](https://github.com/maplibre/ngx-maplibre-gl)
+- Markdown - built on [TanStack Markdown](https://tanstack.com/markdown)
 
 ## Blocks
 
@@ -16,6 +18,12 @@ elbe/ui works great with spartan/ui components. Here are some example combinatio
 - [Gallery + Carousel](https://elbe-ui.dev/components/gallery#gallery-carousel-preview)
 - [Drawer + Sidebar](https://elbe-ui.dev/components/drawer#sidebar-drawer-mobile)
 - [Map Control](https://elbe-ui.dev/components/map#map-control)
+
+## Tools
+
+Utilities that power elbe/ui:
+
+- [SEO](https://github.com/marcjulian/elbe-ui/tree/main/libs/elbe/seo/src/lib) - route-driven title templating, meta tags, Open Graph/Twitter cards, and canonical URLs built on Angular's `TitleStrategy`.
 
 ## Labs
 
