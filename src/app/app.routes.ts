@@ -13,15 +13,21 @@ export const routes: Routes = [
   },
   {
     path: 'labs',
-    loadComponent: () => import('./pages/labs/labs.page').then((m) => m.LabsPage),
-    title: 'Labs',
-    data: {
-      ...meta({
-        description:
-          'A collection of experimental components and blocks that are still in development.',
-        ogImage: '/assets/og/labs.webp',
-      }),
-    },
+    loadComponent: () => import('./layouts/docs.layout').then((m) => m.DocsLayout),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/labs/labs.page').then((m) => m.LabsPage),
+        title: 'Labs',
+        data: {
+          ...meta({
+            description:
+              'A collection of experimental components and blocks that are still in development.',
+            ogImage: '/assets/og/labs.webp',
+          }),
+        },
+      },
+    ],
   },
   {
     path: 'preview',

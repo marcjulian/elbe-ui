@@ -4,7 +4,6 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
-import { BaseLayout } from '../../../layouts/base.layout';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
 import { GalleryCaptionPreview } from './gallery-caption.preview';
@@ -15,7 +14,6 @@ import { GalleryPreview } from './gallery.preview';
 @Component({
   selector: 'elb-gallery-page',
   imports: [
-    BaseLayout,
     HlmButtonImports,
     NgIcon,
     H2,
@@ -28,54 +26,14 @@ import { GalleryPreview } from './gallery.preview';
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
-    <elb-base-layout mainClass="pt-8">
-      <div class="flex flex-col gap-2">
-        <div class="flex justify-between">
-          <h1 class="text-3xl font-semibold">Gallery</h1>
-          <a
-            hlmBtn
-            variant="outline"
-            size="sm"
-            href="${config.github}/tree/main/libs/elbe/gallery/src/lib"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open in
-            <ng-icon name="simpleGithub" />
-          </a>
-        </div>
-        <p class="text-muted-foreground">Image gallery built with photoswipe.</p>
-      </div>
-
-      <div elbPreview>
-        <elb-gallery-preview />
-      </div>
-
-      <elb-h2 id="installation"> Installation </elb-h2>
-      <div class="typeset mt-2">
-        <p>
-          The gallery component is built using the
-          <a href="https://photoswipe.com/" target="_blank" rel="noopener noreferrer">photoswipe</a>
-          library.
-        </p>
-
-        <p>
-          Install <code>npm install photoswipe</code> and add the following style import and colors
-          to your CSS file.
-        </p>
-
-        <elb-code-block [code]="galleryStyles" lang="css" />
-      </div>
-
-      <elb-h2 id="examples"> Examples </elb-h2>
-
-      <div class="flex items-baseline justify-between gap-6">
-        <elb-h3 id="gallery-carousel-preview"> Gallery and Carousel Preview </elb-h3>
+    <div class="flex flex-col gap-2">
+      <div class="flex justify-between">
+        <h1 class="text-3xl font-semibold">Gallery</h1>
         <a
           hlmBtn
           variant="outline"
           size="sm"
-          href="${config.github}/tree/main/src/app/pages/components/gallery/gallery-carousel.preview.ts"
+          href="${config.github}/tree/main/libs/elbe/gallery/src/lib"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -83,40 +41,78 @@ import { GalleryPreview } from './gallery.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
-      <p class="typeset mt-2">
-        Gallery in combination with spartan/ui
-        <a href="https://spartan.ng/components/carousel" target="_blank" rel="noopener noreferrer"
-          >carousel</a
-        >
-        component.
-      </p>
-      <div elbPreview>
-        <elb-gallery-carousel-preview />
-      </div>
+      <p class="text-muted-foreground">Image gallery built with photoswipe.</p>
+    </div>
 
-      <div class="flex items-baseline justify-between gap-6">
-        <elb-h3 id="gallery-caption-preview"> Gallery Caption </elb-h3>
-        <a
-          hlmBtn
-          variant="outline"
-          size="sm"
-          href="${config.github}/tree/main/src/app/pages/components/gallery/gallery-caption.preview.ts"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open in
-          <ng-icon name="simpleGithub" />
-        </a>
-      </div>
+    <div elbPreview>
+      <elb-gallery-preview />
+    </div>
 
-      <p class="typeset mt-2">
-        Use
-        <code>elb-gallery-caption</code> to add captions to each image in the gallery component.
+    <elb-h2 id="installation"> Installation </elb-h2>
+    <div class="typeset mt-2">
+      <p>
+        The gallery component is built using the
+        <a href="https://photoswipe.com/" target="_blank" rel="noopener noreferrer">photoswipe</a>
+        library.
       </p>
-      <div elbPreview>
-        <elb-gallery-caption-preview />
-      </div>
-    </elb-base-layout>
+
+      <p>
+        Install <code>npm install photoswipe</code> and add the following style import and colors to
+        your CSS file.
+      </p>
+
+      <elb-code-block [code]="galleryStyles" lang="css" />
+    </div>
+
+    <elb-h2 id="examples"> Examples </elb-h2>
+
+    <div class="flex items-baseline justify-between gap-6">
+      <elb-h3 id="gallery-carousel-preview"> Gallery and Carousel Preview </elb-h3>
+      <a
+        hlmBtn
+        variant="outline"
+        size="sm"
+        href="${config.github}/tree/main/src/app/pages/components/gallery/gallery-carousel.preview.ts"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open in
+        <ng-icon name="simpleGithub" />
+      </a>
+    </div>
+    <p class="typeset mt-2">
+      Gallery in combination with spartan/ui
+      <a href="https://spartan.ng/components/carousel" target="_blank" rel="noopener noreferrer"
+        >carousel</a
+      >
+      component.
+    </p>
+    <div elbPreview>
+      <elb-gallery-carousel-preview />
+    </div>
+
+    <div class="flex items-baseline justify-between gap-6">
+      <elb-h3 id="gallery-caption-preview"> Gallery Caption </elb-h3>
+      <a
+        hlmBtn
+        variant="outline"
+        size="sm"
+        href="${config.github}/tree/main/src/app/pages/components/gallery/gallery-caption.preview.ts"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open in
+        <ng-icon name="simpleGithub" />
+      </a>
+    </div>
+
+    <p class="typeset mt-2">
+      Use
+      <code>elb-gallery-caption</code> to add captions to each image in the gallery component.
+    </p>
+    <div elbPreview>
+      <elb-gallery-caption-preview />
+    </div>
   `,
 })
 export class GalleryPage {

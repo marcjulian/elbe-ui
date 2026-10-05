@@ -10,6 +10,7 @@ import { elbHighlighter } from '../../highlight';
 export const componentsRoutes: Routes = [
   {
     path: '',
+    loadComponent: () => import('../../layouts/docs.layout').then((m) => m.DocsLayout),
     providers: [provideElbHighlightConfig({ highlighter: elbHighlighter })],
     children: [
       {

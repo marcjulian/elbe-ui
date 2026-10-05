@@ -16,6 +16,8 @@ import { ThemeService } from '../tools/theme';
     <header
       class="bg-background/40 flex h-(--header-height) items-center gap-2 px-4 backdrop-blur-lg"
     >
+      <ng-content />
+
       <a routerLink="/" hlmBtn variant="ghost" size="sm" class="font-semibold">
         <ng-icon name="lucideKayak" class="text-primary text-xl" />
         <span>elbe/<span class="text-primary">ui</span></span>

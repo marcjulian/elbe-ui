@@ -12,7 +12,6 @@ import {
 } from '@ng-icons/lucide';
 import { HlmBadgeImports } from '@spartan-ng/helm/badge';
 import { HlmItemImports } from '@spartan-ng/helm/item';
-import { BaseLayout } from '../../layouts/base.layout';
 
 type UiComponent = {
   slug: string;
@@ -24,7 +23,7 @@ type UiComponent = {
 
 @Component({
   selector: 'elb-components',
-  imports: [BaseLayout, NgIcon, HlmBadgeImports, HlmItemImports, RouterLink],
+  imports: [NgIcon, HlmBadgeImports, HlmItemImports, RouterLink],
   providers: [
     provideIcons({
       lucideImages,
@@ -36,37 +35,38 @@ type UiComponent = {
       lucideFileText,
     }),
   ],
+  host: {
+    class: 'flex flex-col gap-6',
+  },
   template: `
-    <elb-base-layout class="flex min-h-dvh flex-col" mainClass="flex-1 flex flex-col gap-10 pt-10">
-      <div class="text-center">
-        <h1 class="text-4xl font-bold">Components</h1>
-        <p class="text-muted-foreground mx-auto mt-3 max-w-sm text-xl text-balance">
-          All available elbe/ui components
-        </p>
-      </div>
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">Components</h1>
+      <p class="text-muted-foreground mx-auto mt-3 max-w-sm text-xl text-balance">
+        All available elbe/ui components
+      </p>
+    </div>
 
-      <div class="grid gap-4 sm:grid-cols-2">
-        @for (component of components; track component.slug) {
-          <a hlmItem [routerLink]="[component.slug]" variant="outline" class="items-start">
-            <hlm-item-media variant="icon">
-              <ng-icon [name]="component.icon" />
-            </hlm-item-media>
-            <hlm-item-content>
-              <hlm-item-title>
-                {{ component.name }}
-                @if (component.new) {
-                  <span hlmBadge variant="secondary">New</span>
-                }
-              </hlm-item-title>
-              <p hlmItemDescription>{{ component.description }}</p>
-            </hlm-item-content>
-            <hlm-item-actions>
-              <ng-icon name="lucideChevronRight" />
-            </hlm-item-actions>
-          </a>
-        }
-      </div>
-    </elb-base-layout>
+    <div class="grid gap-4 sm:grid-cols-2">
+      @for (component of components; track component.slug) {
+        <a hlmItem [routerLink]="[component.slug]" variant="outline" class="items-start">
+          <hlm-item-media variant="icon">
+            <ng-icon [name]="component.icon" />
+          </hlm-item-media>
+          <hlm-item-content>
+            <hlm-item-title>
+              {{ component.name }}
+              @if (component.new) {
+                <span hlmBadge variant="secondary">New</span>
+              }
+            </hlm-item-title>
+            <p hlmItemDescription>{{ component.description }}</p>
+          </hlm-item-content>
+          <hlm-item-actions>
+            <ng-icon name="lucideChevronRight" />
+          </hlm-item-actions>
+        </a>
+      }
+    </div>
   `,
 })
 export class ComponentsPage {
