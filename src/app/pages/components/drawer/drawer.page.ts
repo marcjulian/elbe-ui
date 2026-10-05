@@ -5,7 +5,6 @@ import { lucideEye } from '@ng-icons/lucide';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
-import { BaseLayout } from '../../../layouts/base.layout';
 import { BlockPreview } from '../../../ui/block-preview';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
@@ -13,91 +12,77 @@ import { DrawerPreview } from './drawer.preview';
 
 @Component({
   selector: 'elb-drawer-page',
-  imports: [
-    BaseLayout,
-    HlmButtonImports,
-    NgIcon,
-    H2,
-    H3,
-    Preview,
-    DrawerPreview,
-    BlockPreview,
-    RouterLink,
-  ],
+  imports: [HlmButtonImports, NgIcon, H2, H3, Preview, DrawerPreview, BlockPreview, RouterLink],
   providers: [provideIcons({ simpleGithub, lucideEye })],
   template: `
-    <elb-base-layout mainClass="pt-8">
-      <div class="flex flex-col gap-2">
-        <div class="flex justify-between">
-          <h1 class="text-3xl font-semibold">Drawer</h1>
-          <a
-            hlmBtn
-            variant="outline"
-            size="sm"
-            href="${config.github}/tree/main/libs/elbe/drawer/src/lib"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open in
-            <ng-icon name="simpleGithub" />
-          </a>
-        </div>
-        <p class="text-muted-foreground">Drawer component built with Cupertino Pane.</p>
-      </div>
-
-      <div elbPreview>
-        <elb-drawer-preview />
-      </div>
-
-      <elb-h2 id="installation"> Installation </elb-h2>
-      <div class="typeset mt-2">
-        <p>
-          The drawer component is built using the
-          <a href="https://panejs.com/" target="_blank" rel="noopener noreferrer"
-            >Cupertino Panes</a
-          >
-          library.
-        </p>
-
-        <p>Install <code>npm install cupertino-pane</code>.</p>
-      </div>
-
-      <elb-h2 id="examples"> Examples </elb-h2>
-
-      <div class="flex items-baseline justify-between gap-6">
-        <elb-h3 id="sidebar-drawer-mobile">Sidebar with Drawer on Mobile</elb-h3>
-
-        <div class="flex items-center gap-1">
-          <a [routerLink]="['/preview/sidebar-drawer']" hlmBtn variant="outline" size="icon-sm">
-            <ng-icon name="lucideEye" />
-          </a>
-          <a
-            hlmBtn
-            variant="outline"
-            size="sm"
-            href="${config.github}/tree/main/src/app/pages/preview/sidebar-drawer-preview.page.ts"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open in
-            <ng-icon name="simpleGithub" />
-          </a>
-        </div>
-      </div>
-
-      <p class="typeset mt-2">
-        Copy
-        <code>hlm-sidebar</code> as <code>hlm-sidebar-drawer</code> and replace
-        <code>hlm-sheet</code> with <code>elb-drawer</code> (<a
-          href="${config.github}/tree/main/src/app/pages/preview/hlm-sidebar-drawer.ts#L32-L39"
+    <div class="flex flex-col gap-2">
+      <div class="flex justify-between">
+        <h1 class="text-3xl font-semibold">Drawer</h1>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/libs/elbe/drawer/src/lib"
           target="_blank"
           rel="noopener noreferrer"
-          >hlm-sidebar-drawer</a
-        >).
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+      <p class="text-muted-foreground">Drawer component built with Cupertino Pane.</p>
+    </div>
+
+    <div elbPreview>
+      <elb-drawer-preview />
+    </div>
+
+    <elb-h2 id="installation"> Installation </elb-h2>
+    <div class="typeset mt-2">
+      <p>
+        The drawer component is built using the
+        <a href="https://panejs.com/" target="_blank" rel="noopener noreferrer">Cupertino Panes</a>
+        library.
       </p>
 
-      <elb-block-preview name="sidebar-drawer" [showImagesOnMobile]="false" />
-    </elb-base-layout>
+      <p>Install <code>npm install cupertino-pane</code>.</p>
+    </div>
+
+    <elb-h2 id="examples"> Examples </elb-h2>
+
+    <div class="flex items-baseline justify-between gap-6">
+      <elb-h3 id="sidebar-drawer-mobile">Sidebar with Drawer on Mobile</elb-h3>
+
+      <div class="flex items-center gap-1">
+        <a [routerLink]="['/preview/sidebar-drawer']" hlmBtn variant="outline" size="icon-sm">
+          <ng-icon name="lucideEye" />
+        </a>
+        <a
+          hlmBtn
+          variant="outline"
+          size="sm"
+          href="${config.github}/tree/main/src/app/pages/preview/sidebar-drawer-preview.page.ts"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in
+          <ng-icon name="simpleGithub" />
+        </a>
+      </div>
+    </div>
+
+    <p class="typeset mt-2">
+      Copy
+      <code>hlm-sidebar</code> as <code>hlm-sidebar-drawer</code> and replace
+      <code>hlm-sheet</code> with <code>elb-drawer</code> (<a
+        href="${config.github}/tree/main/src/app/pages/preview/hlm-sidebar-drawer.ts#L32-L39"
+        target="_blank"
+        rel="noopener noreferrer"
+        >hlm-sidebar-drawer</a
+      >).
+    </p>
+
+    <elb-block-preview name="sidebar-drawer" [showImagesOnMobile]="false" />
   `,
 })
 export class DrawerPage {}
