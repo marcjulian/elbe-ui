@@ -28,7 +28,11 @@ import {
   ],
   providers: [
     provideIcons({ lucideMenu, lucideKayak, lucideX }),
-    provideHlmSidebarConfig({ closeMobileSidebarOnMenuButtonClick: true }),
+    HlmSidebarService,
+    provideHlmSidebarConfig({
+      closeMobileSidebarOnMenuButtonClick: true,
+      mobileBreakpoint: '64rem',
+    }),
   ],
   template: `
     <div hlmSidebarWrapper class="flex-col">
@@ -37,19 +41,19 @@ import {
           hlmBtn
           size="icon-sm"
           variant="ghost"
-          class="md:hidden"
+          class="lg:hidden"
           (click)="_sidebarService.toggleSidebar()"
         >
           <ng-icon name="lucideMenu" />
           <span class="sr-only">Toggle sidebar</span>
         </button>
       </elb-header>
-      <div class="flex flex-1">
+      <div class="mx-auto flex w-full max-w-(--breakpoint-xl) flex-1">
         <hlm-sidebar
           class="bg-transparent **:data-[slot=sidebar-inner]:bg-transparent"
-          sidebarContainerClass="top-(--header-height) h-[calc(100svh-var(--header-height))] group-data-[side=left]:border-r-0 group-data-[side=right]:border-l-0"
+          sidebarContainerClass="top-(--header-height) h-[calc(100svh-var(--header-height))] data-[side=left]:left-[max(0px,calc((100%_-_var(--breakpoint-xl))/2))] data-[side=right]:right-[max(0px,calc((100%_-_var(--breakpoint-xl))/2))] group-data-[side=left]:border-r-0 group-data-[side=right]:border-l-0"
         >
-          <hlm-sidebar-header class="flex-row items-center justify-between md:hidden">
+          <hlm-sidebar-header class="flex-row items-center justify-between lg:hidden">
             <a
               routerLink="/"
               hlmBtn
@@ -71,7 +75,7 @@ import {
               <span class="sr-only">Close sidebar</span>
             </button>
           </hlm-sidebar-header>
-          <hlm-sidebar-content>
+          <hlm-sidebar-content class="lg:pt-8">
             @for (group of siteNavigation; track group.title) {
               <hlm-sidebar-group>
                 <div hlmSidebarGroupLabel>
@@ -101,7 +105,7 @@ import {
           </hlm-sidebar-content>
         </hlm-sidebar>
         <main hlmSidebarInset>
-          <div class="mx-auto w-full max-w-(--breakpoint-lg) px-4 pt-8 pb-20">
+          <div class="px-4 pt-8 pb-20">
             <router-outlet />
           </div>
         </main>
