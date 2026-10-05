@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ElbTheme } from '@elbe/ui/theme';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../config';
-import { ThemeService } from '../tools/theme';
 
 @Component({
   selector: 'elb-header',
@@ -51,5 +51,5 @@ import { ThemeService } from '../tools/theme';
   `,
 })
 export class Header {
-  protected _themeService = inject(ThemeService);
+  protected _themeService = inject(ElbTheme);
 }

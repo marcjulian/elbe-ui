@@ -1,12 +1,12 @@
 import { Component, computed, inject, signal, viewChild } from '@angular/core';
 import { Address, ElbAddressAutocompleteImports } from '@elbe/ui/address-autocomplete';
 import { ElbMapImports } from '@elbe/ui/map';
+import { ElbTheme } from '@elbe/ui/theme';
 import { MapComponent, NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideArrowUpFromDot, lucidePlane } from '@ng-icons/lucide';
 import { HlmToggleGroupImports } from '@spartan-ng/helm/toggle-group';
 import { environment } from '../../../../environments/environment';
-import { ThemeService } from '../../../tools/theme';
 
 @Component({
   selector: 'elb-address-autocomplete-map-preview',
@@ -58,7 +58,7 @@ import { ThemeService } from '../../../tools/theme';
   `,
 })
 export class AddressAutocompleteMapPreview {
-  private readonly _theme = inject(ThemeService);
+  private readonly _theme = inject(ElbTheme);
 
   private readonly map = viewChild.required(MapComponent);
 

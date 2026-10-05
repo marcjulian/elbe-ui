@@ -1,8 +1,8 @@
 import { Component, computed, inject } from '@angular/core';
 import { ElbMapImports } from '@elbe/ui/map';
+import { ElbTheme } from '@elbe/ui/theme';
 import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { environment } from '../../../../environments/environment';
-import { ThemeService } from '../../../tools/theme';
 
 @Component({
   selector: 'elb-map-preview',
@@ -33,7 +33,7 @@ import { ThemeService } from '../../../tools/theme';
   `,
 })
 export class MapPreview {
-  private readonly _theme = inject(ThemeService);
+  private readonly _theme = inject(ElbTheme);
 
   mapStyle = computed(() => {
     const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;
