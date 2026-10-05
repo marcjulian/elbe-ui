@@ -25,6 +25,18 @@ export const toolsRoutes: Routes = [
           }),
         },
       },
+      {
+        path: 'theme',
+        loadComponent: () => import('./theme/theme.page').then((m) => m.ThemePage),
+        title: 'Theme',
+        data: {
+          ...meta({
+            description:
+              'Light and dark themes with system preference detection, a persisted choice, and a configurable dark class.',
+            ogImage: '/assets/og/theme.webp',
+          }),
+        },
+      },
     ],
   },
 ];

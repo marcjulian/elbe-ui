@@ -24,6 +24,7 @@ elbe/ui works great with spartan/ui components. Here are some example combinatio
 Utilities that power elbe/ui:
 
 - [SEO](https://elbe-ui.dev/tools/seo) - route-driven title templating, meta tags, Open Graph/Twitter cards, and canonical URLs built on Angular's `TitleStrategy`.
+- [Theme](https://elbe-ui.dev/tools/theme) - light and dark themes with system preference detection, a persisted choice, and a configurable dark class.
 
 ## Labs
 
