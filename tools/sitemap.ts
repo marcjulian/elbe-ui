@@ -25,7 +25,11 @@ function getPaths(routes: Route[], parentPath = ''): string[] {
     // Clean up double slashes
     const cleanPath = currentPath.replace(/\/+/g, '/');
 
-    if (route.component || route.loadComponent) {
+    // A route with an empty-path child is a layout wrapper: its index child owns
+    // the URL, so the wrapper itself is not a page and must not be emitted.
+    const hasIndexChild = route.children?.some((child) => !child.path) ?? false;
+
+    if ((route.component || route.loadComponent) && !hasIndexChild) {
       paths.push(cleanPath || '/');
     }
 
@@ -43,8 +47,7 @@ async function generateSitemap() {
 
     const stream = new SitemapStream({ hostname: environment.appUrl });
 
-    // Layout routes (e.g. DocsLayout) can resolve to the same URL as their
-    // empty-path index child, so collapse duplicates while preserving order.
+    // Collapse any duplicate URLs while preserving discovery order.
     const paths = [...new Set(getPaths(allRoutes))];
     const links = paths.map((url) => ({
       url,

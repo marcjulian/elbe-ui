@@ -30,6 +30,10 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'tools',
+    loadChildren: () => import('./pages/tools/tools.routes').then((m) => m.toolsRoutes),
+  },
+  {
     path: 'preview',
     children: [
       {

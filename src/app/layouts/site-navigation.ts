@@ -94,17 +94,16 @@ export const siteNavigation: SiteNavigationGroup[] = [
       },
     ],
   },
-  // Add new sections here once their routes exist, for example:
-  // {
-  //   title: 'Tools',
-  //   basePath: '/tools',
-  //   items: [
-  //     {
-  //       path: 'seo',
-  //       name: 'SEO',
-  //       icon: 'lucideSearch',
-  //       description: 'Route-driven titles, meta tags and canonical URLs.',
-  //     },
-  //   ],
-  // },
+  {
+    title: 'Tools',
+    basePath: '/tools',
+    items: [
+      {
+        path: 'seo',
+        name: 'SEO',
+        icon: 'lucideSearch',
+        description: 'Route-driven titles, meta tags and canonical URLs.',
+      },
+    ],
+  },
 ];
