@@ -43,7 +43,9 @@ async function generateSitemap() {
 
     const stream = new SitemapStream({ hostname: environment.appUrl });
 
-    const paths = getPaths(allRoutes);
+    // Layout routes (e.g. DocsLayout) can resolve to the same URL as their
+    // empty-path index child, so collapse duplicates while preserving order.
+    const paths = [...new Set(getPaths(allRoutes))];
     const links = paths.map((url) => ({
       url,
     }));
