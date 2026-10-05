@@ -8,6 +8,7 @@ import {
   HlmSidebarService,
   provideHlmSidebarConfig,
 } from '@spartan-ng/helm/sidebar';
+import { Footer } from '../ui/footer';
 import { Header } from '../ui/header';
 import {
   siteNavigation,
@@ -25,6 +26,7 @@ import {
     RouterLink,
     RouterLinkActive,
     NgIcon,
+    Footer,
   ],
   providers: [
     provideIcons({ lucideMenu, lucideKayak, lucideX }),
@@ -105,9 +107,10 @@ import {
           </hlm-sidebar-content>
         </hlm-sidebar>
         <main hlmSidebarInset>
-          <div class="px-4 pt-8 pb-20">
+          <div class="flex-1 px-4 pt-8 pb-20">
             <router-outlet />
           </div>
+          <elb-footer />
         </main>
       </div>
     </div>
