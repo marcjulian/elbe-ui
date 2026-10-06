@@ -65,7 +65,7 @@ import { FileUploadPreview } from './file-upload.preview';
       <p>
         This component uses Angular Primitives
         <a
-          href="https://docs.maptiler.com/cloud/api/geocoding/#search-by-name-forward"
+          href="https://angularprimitives.com/primitives/file-upload"
           target="_blank"
           rel="noopener noreferrer"
         >
