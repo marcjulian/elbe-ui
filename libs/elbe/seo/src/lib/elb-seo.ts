@@ -1,10 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Service } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { injectSeoConfig, type SeoConfig } from './elb-seo.token';
+import { injectSeoConfig, type LanguageAlternate, type SeoConfig } from './elb-seo.token';
 
 @Service()
 export class ElbSeo {
+  /** Marks language alternate links created here, so stale ones can be pruned without touching other `rel="alternate"` tags. */
+  private static readonly HREFLANG_ATTR = 'data-elb-hreflang';
+
   private readonly document = inject(DOCUMENT);
   private readonly meta = inject(Meta);
   private readonly config = injectSeoConfig();
@@ -19,9 +22,14 @@ export class ElbSeo {
     this.updateMeta({ name: 'description' }, merged.description);
     this.updateMeta({ name: 'robots' }, merged.robots);
 
+    if (merged.lang !== undefined) {
+      this.setLang(merged.lang);
+    }
+
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
     this.updateMeta({ property: 'og:description' }, merged.description);
     this.updateMeta({ property: 'og:type' }, merged.ogType);
+    this.updateMeta({ property: 'og:locale' }, merged.ogLocale);
     if (merged.ogImage) {
       this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
     }
@@ -33,6 +41,9 @@ export class ElbSeo {
     if (merged.ogImage) {
       this.meta.updateTag({ name: 'twitter:image', content: this.resolveUrl(merged.ogImage) });
     }
+
+    // Always written as a set, so locales dropped between navigations are removed.
+    this.setLanguageAlternates(merged.languageAlternates ?? []);
   }
 
   /** Upsert a meta tag only when a value is present (avoids `content="undefined"`). */
@@ -54,6 +65,37 @@ export class ElbSeo {
 
   setRobots(value: string): void {
     this.meta.updateTag({ name: 'robots', content: value });
+  }
+
+  /** Set the BCP-47 language tag on `<html lang>`, e.g. `'en'` or `'en-GB'`. */
+  setLang(lang: string): void {
+    this.document.documentElement.lang = lang;
+  }
+
+  /** Set the Open Graph locale, e.g. `'en_US'`. Independent of {@link setLang}. */
+  setOgLocale(locale: string): void {
+    this.meta.updateTag({ property: 'og:locale', content: locale });
+  }
+
+  /**
+   * Replaces every managed `rel="alternate"` language alternate link. The set is written
+   * as a whole, so passing `[]` clears the alternates and links for removed locales are
+   * pruned. Relative `href`s are resolved against the configured `origin`.
+   */
+  setLanguageAlternates(alternates: readonly LanguageAlternate[]): void {
+    const attr = ElbSeo.HREFLANG_ATTR;
+    this.document
+      .querySelectorAll(`link[rel="alternate"][${attr}]`)
+      .forEach((link) => link.remove());
+
+    for (const { hreflang, href } of alternates) {
+      const link = this.document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', hreflang);
+      link.setAttribute('href', this.resolveUrl(href));
+      link.setAttribute(attr, '');
+      this.document.head.appendChild(link);
+    }
   }
 
   /**
@@ -85,6 +127,15 @@ export class ElbSeo {
     }
     if (config.robots !== undefined) {
       this.setRobots(config.robots);
+    }
+    if (config.lang !== undefined) {
+      this.setLang(config.lang);
+    }
+    if (config.ogLocale !== undefined) {
+      this.setOgLocale(config.ogLocale);
+    }
+    if (config.languageAlternates !== undefined) {
+      this.setLanguageAlternates(config.languageAlternates);
     }
     if (config.ogType !== undefined) {
       this.meta.updateTag({ property: 'og:type', content: config.ogType });

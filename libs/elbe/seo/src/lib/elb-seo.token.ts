@@ -3,6 +3,14 @@ import { inject, InjectionToken, type Provider } from '@angular/core';
 /** Title template: every `%s` is replaced, or use a function for full control. */
 export type TitleTemplate = string | ((title: string) => string);
 
+/** A single `rel="alternate"` language alternate link for a translated page. */
+export interface LanguageAlternate {
+  /** BCP-47 language tag, e.g. `'en-GB'`, or `'x-default'` for the fallback. */
+  hreflang: string;
+  /** Absolute URL, or a path resolved against the configured `origin`, e.g. `/de`. */
+  href: string;
+}
+
 export interface SeoConfig {
   /** Site name used as the fallback title and behind `titleTemplate`. */
   title: string;
@@ -12,6 +20,22 @@ export interface SeoConfig {
   origin: string;
   description?: string;
   robots?: string;
+  /**
+   * BCP-47 language tag written to `<html lang>`, e.g. `'en'` or `'en-GB'`.
+   * Does not affect `og:locale` — set that separately.
+   */
+  lang?: string;
+  /**
+   * Open Graph locale written to `<meta property="og:locale">`, e.g. `'en_US'`.
+   * Uses the `language_TERRITORY` form, which differs from {@link SeoConfig.lang}.
+   */
+  ogLocale?: string;
+  /**
+   * `rel="alternate"` language alternate links for translated versions of the page. The
+   * set is replaced as a whole on every navigation, so locales that are no longer present
+   * are removed. Include a self-reference and an `'x-default'` entry for best results.
+   */
+  languageAlternates?: LanguageAlternate[];
   ogType?: string;
   ogImage?: string;
   twitterCard?: string;
