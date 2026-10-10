@@ -14,6 +14,11 @@ export interface LanguageAlternate {
 export interface SeoConfig {
   /** Site name used as the fallback title and behind `titleTemplate`. */
   title: string;
+  /**
+   * Site name emitted as `og:site_name`, shown above the title in link cards.
+   * Defaults to nothing (the tag is omitted) when unset.
+   */
+  siteName?: string;
   /** Title template, e.g. `'%s | elbe/ui'`. All `%s` are replaced by the route title. */
   titleTemplate: TitleTemplate;
   /** Absolute site origin used to resolve relative canonical/OG URLs, e.g. `https://elbe-ui.dev`. */
@@ -38,6 +43,10 @@ export interface SeoConfig {
   languageAlternates?: LanguageAlternate[];
   ogType?: string;
   ogImage?: string;
+  /** Intrinsic width of `ogImage` in pixels, emitted as `og:image:width`. */
+  ogImageWidth?: number;
+  /** Intrinsic height of `ogImage` in pixels, emitted as `og:image:height`. */
+  ogImageHeight?: number;
   twitterCard?: string;
 }
 

@@ -1,7 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Service } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
-import { injectSeoConfig, type LanguageAlternate, type SeoConfig } from './elb-seo.token';
+import { Meta, Title } from '@angular/platform-browser';
+import {
+  injectSeoConfig,
+  resolveTitleTemplate,
+  type LanguageAlternate,
+  type SeoConfig,
+} from './elb-seo.token';
 
 @Service()
 export class ElbSeo {
@@ -10,14 +15,25 @@ export class ElbSeo {
 
   private readonly document = inject(DOCUMENT);
   private readonly meta = inject(Meta);
+  private readonly title = inject(Title);
   private readonly config = injectSeoConfig();
 
   /**
    * Called by the title strategy on every navigation.
-   * Writes all managed tags, merging the route config with sensible defaults.
+   * Resolves and sets the document title and canonical URL, then writes all
+   * managed tags, merging the route config with sensible defaults.
+   *
+   * @param pageTitle the route's own title; falls back to the configured site
+   *   title when the route has none.
    */
-  applyFromStrategy(config: SeoConfig, fullTitle: string, url: string): void {
+  applyFromStrategy(config: SeoConfig, pageTitle: string | undefined, url: string): void {
     const merged = { ...this.config, ...config };
+    const fullTitle = pageTitle
+      ? resolveTitleTemplate(merged.titleTemplate, pageTitle)
+      : merged.title;
+
+    this.title.setTitle(fullTitle);
+    this.setCanonical(url);
 
     this.updateMeta({ name: 'description' }, merged.description);
     this.updateMeta({ name: 'robots' }, merged.robots);
@@ -27,11 +43,21 @@ export class ElbSeo {
     }
 
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
+
+    this.updateMeta({ property: 'og:site_name' }, merged.siteName);
     this.updateMeta({ property: 'og:description' }, merged.description);
     this.updateMeta({ property: 'og:type' }, merged.ogType);
     this.updateMeta({ property: 'og:locale' }, merged.ogLocale);
     if (merged.ogImage) {
       this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
+       this.updateMeta(
+        { property: 'og:image:width' },
+        merged.ogImageWidth?.toString(),
+      );
+      this.updateMeta(
+        { property: 'og:image:height' },
+        merged.ogImageHeight?.toString(),
+      );
     }
     this.meta.updateTag({ property: 'og:url', content: this.resolvePageUrl(url) });
 
