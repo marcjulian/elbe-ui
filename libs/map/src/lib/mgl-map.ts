@@ -1,27 +1,26 @@
 import {
-  Component,
-  ElementRef,
-  OnChanges,
-  OnDestroy,
-  SimpleChanges,
   afterEveryRender,
   afterNextRender,
   booleanAttribute,
+  Directive,
+  ElementRef,
   inject,
   input,
   model,
+  OnChanges,
+  OnDestroy,
   output,
-  viewChild,
+  SimpleChanges,
 } from '@angular/core';
 import type {
   AnimationOptions,
   LngLatBoundsLike,
   Map,
-  MapLibreEvent,
-  MapOptions,
   MapBoxZoomEvent,
   MapContextEvent,
+  MapLibreEvent,
   MapMouseEvent,
+  MapOptions,
   MapSourceDataEvent,
   MapStyleDataEvent,
   MapStyleImageMissingEvent,
@@ -29,65 +28,41 @@ import type {
   MapWheelEvent,
   MissingStyleImageResolver,
   PointLike,
-  TerrainSpecification,
   ProjectionSpecification,
+  TerrainSpecification,
 } from 'maplibre-gl';
-import { MglMapService, type MovingOptions } from './mgl-map.service';
-import type {
-  MapEvent,
-  EventData,
-  LngLatLikeOrPosition,
-  MapDataEvent,
-} from './mgl-map.types';
 import { firstValueFrom } from 'rxjs';
 import { BooleanInput } from '../shared/utils/types';
+import { MglMapService, type MovingOptions } from './mgl-map.service';
+import type { EventData, LngLatLikeOrPosition, MapDataEvent, MapEvent } from './mgl-map.types';
 
 /**
- * `mgl-map` - The main map component
+ * `mgl-map` / `[mglMap]` - the main map directive.
+ *
+ * The host element is used as the MapLibre container, so it must be sized.
+ *
  * @see [Map](https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/)
  *
- * @category Map Component
+ * @category Map Directive
  *
  * @example
- * ```typescript
- * ...
- * @Component({
- *   template: `
- *   <mgl-map
- *     [mapStyle]="'https://demotiles.maplibre.org/style.json'"
- *     [zoom]="9"
- *     [center]="[-74.50, 40]"
- *     (mapLoad)="map = $event"
- *   ></mgl-map>
- *   `,
- * ...
- * })
- * export class DisplayMapComponent {
- *   map: Map; // MapLibre GL Map object (MapLibre is ran outside angular zone, keep that in mind when binding events from this object)
- * ...
- * }
+ * ```html
+ * <mgl-map class="size-full" [mapStyle]="style" [zoom]="9" [center]="[-74.5, 40]" />
+ *
+ * <!-- or attach the map to any element -->
+ * <div class="size-full" mglMap [mapStyle]="style" (mapLoad)="map = $event"></div>
  * ```
  */
-
-@Component({
-  selector: 'mgl-map',
-  template: '<div #container></div>',
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-      div {
-        height: 100%;
-        width: 100%;
-      }
-    `,
-  ],
+@Directive({
+  selector: '[mglMap],mgl-map',
   providers: [MglMapService],
+  host: { '[style]': 'hostStyles()' },
 })
 export class MglMap implements OnChanges, OnDestroy, MapEvent {
   private readonly mapService = inject(MglMapService);
-  private readonly elementRef = inject(ElementRef);
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  public readonly hostStyles = input<string>('display: block');
 
   /** Init input */
   readonly collectResourceTiming = input<MapOptions['collectResourceTiming']>();
@@ -100,8 +75,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   /** Init input */
   readonly refreshExpiredTiles = input<MapOptions['refreshExpiredTiles']>();
   /** Init input */
-  readonly canvasContextAttributes =
-    input<MapOptions['canvasContextAttributes']>();
+  readonly canvasContextAttributes = input<MapOptions['canvasContextAttributes']>();
   /** Init input */
   readonly bearingSnap = input<MapOptions['bearingSnap']>();
   /** Init input */
@@ -117,8 +91,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   /** Init input */
   readonly maxTileCacheSize = input<MapOptions['maxTileCacheSize']>();
   /** Init input */
-  readonly localIdeographFontFamily =
-    input<MapOptions['localIdeographFontFamily']>();
+  readonly localIdeographFontFamily = input<MapOptions['localIdeographFontFamily']>();
   /** Init input */
   readonly trackResize = input<MapOptions['trackResize']>();
   /** Init input */
@@ -139,8 +112,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   /** Init input */
   readonly maxCanvasSize = input<MapOptions['maxCanvasSize']>();
   /** Init input */
-  readonly maxTileCacheZoomLevels =
-    input<MapOptions['maxTileCacheZoomLevels']>();
+  readonly maxTileCacheZoomLevels = input<MapOptions['maxTileCacheZoomLevels']>();
   /** Init input */
   readonly pixelRatio = input<MapOptions['pixelRatio']>();
   /** Init input */
@@ -154,8 +126,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   /** Init input */
   readonly terrainSkirtLength = input<MapOptions['terrainSkirtLength']>();
   /** Init input */
-  readonly zoomLevelsToOverscale =
-    input<MapOptions['zoomLevelsToOverscale']>();
+  readonly zoomLevelsToOverscale = input<MapOptions['zoomLevelsToOverscale']>();
   /** Init input */
   readonly aroundCenter = input<MapOptions['aroundCenter']>();
 
@@ -207,8 +178,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   /** Dynamic input */
   readonly zoomSnap = input<MapOptions['zoomSnap']>();
   /** Dynamic input */
-  readonly anisotropicFilterPitch =
-    input<MapOptions['anisotropicFilterPitch']>();
+  readonly anisotropicFilterPitch = input<MapOptions['anisotropicFilterPitch']>();
   /** Dynamic input */
   readonly transformConstrain = input<MapOptions['transformConstrain']>();
   /** Dynamic input that is not part of the `MapOptions` object */
@@ -259,15 +229,9 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   readonly moveEnd = output<
     MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined> & EventData
   >();
-  readonly mapDragStart = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly mapDrag = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly mapDragEnd = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
+  readonly mapDragStart = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly mapDrag = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly mapDragEnd = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
   readonly zoomStart = output<
     MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined> & EventData
   >();
@@ -277,24 +241,12 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
   readonly zoomEnd = output<
     MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined> & EventData
   >();
-  readonly rotateStart = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly rotate = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly rotateEnd = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly pitchStart = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly pitchEvt = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
-  readonly pitchEnd = output<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >();
+  readonly rotateStart = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly rotate = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly rotateEnd = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly pitchStart = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly pitchEvt = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
+  readonly pitchEnd = output<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>();
   readonly boxZoomStart = output<MapBoxZoomEvent & EventData>();
   readonly boxZoomEnd = output<MapBoxZoomEvent & EventData>();
   readonly boxZoomCancel = output<MapBoxZoomEvent & EventData>();
@@ -316,29 +268,12 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
     return this.mapService.mapInstance;
   }
 
-  readonly mapContainer =
-    viewChild.required<ElementRef<HTMLDivElement>>('container');
-
   constructor() {
     afterNextRender(() => {
-      if (this.canvasContextAttributes()?.preserveDrawingBuffer) {
-        // This is to allow better interaction with the map state
-        const htmlElement: HTMLElement = this.elementRef.nativeElement;
-        htmlElement.setAttribute('data-cy', 'map');
-        this.mapLoad.subscribe(() => {
-          htmlElement.setAttribute('data-loaded', 'true');
-        });
-        this.idle.subscribe(() => {
-          htmlElement.setAttribute('data-idle', 'true');
-        });
-        this.render.subscribe(() => {
-          htmlElement.removeAttribute('data-idle');
-        });
-      }
       this.mapService.setup({
         mapOptions: {
           collectResourceTiming: this.collectResourceTiming(),
-          container: this.mapContainer().nativeElement,
+          container: this.elementRef.nativeElement,
           crossSourceCollisions: this.crossSourceCollisions(),
           fadeDuration: this.fadeDuration(),
           minZoom: this.minZoom(),
@@ -378,8 +313,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
           fitBoundsOptions: this.fitBoundsOptions(),
           locale: this.locale(),
           cooperativeGestures: this.cooperativeGestures(),
-          cancelPendingTileRequestsWhileZooming:
-            this.cancelPendingTileRequestsWhileZooming(),
+          cancelPendingTileRequestsWhileZooming: this.cancelPendingTileRequestsWhileZooming(),
           centerClampedToGround: this.centerClampedToGround(),
           elevation: this.elevation(),
           maplibreLogo: this.maplibreLogo(),
@@ -458,7 +392,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
       !changes['missingStyleImageResolver'].isFirstChange()
     ) {
       this.mapService.setMissingStyleImageResolver(
-        changes['missingStyleImageResolver'].currentValue ?? null
+        changes['missingStyleImageResolver'].currentValue ?? null,
       );
     }
     if (changes['minZoom'] && !changes['minZoom'].isFirstChange()) {
@@ -476,29 +410,16 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
     if (changes['zoomSnap'] && !changes['zoomSnap'].isFirstChange()) {
       this.mapService.updateZoomSnap(changes['zoomSnap'].currentValue);
     }
-    if (
-      changes['anisotropicFilterPitch'] &&
-      !changes['anisotropicFilterPitch'].isFirstChange()
-    ) {
+    if (changes['anisotropicFilterPitch'] && !changes['anisotropicFilterPitch'].isFirstChange()) {
       this.mapService.updateAnisotropicFilterPitch(
-        changes['anisotropicFilterPitch'].currentValue ?? null
+        changes['anisotropicFilterPitch'].currentValue ?? null,
       );
     }
-    if (
-      changes['transformConstrain'] &&
-      !changes['transformConstrain'].isFirstChange()
-    ) {
-      this.mapService.updateTransformConstrain(
-        changes['transformConstrain'].currentValue ?? null
-      );
+    if (changes['transformConstrain'] && !changes['transformConstrain'].isFirstChange()) {
+      this.mapService.updateTransformConstrain(changes['transformConstrain'].currentValue ?? null);
     }
-    if (
-      changes['renderWorldCopies'] &&
-      !changes['renderWorldCopies'].isFirstChange()
-    ) {
-      this.mapService.updateRenderWorldCopies(
-        changes['renderWorldCopies'].currentValue
-      );
+    if (changes['renderWorldCopies'] && !changes['renderWorldCopies'].isFirstChange()) {
+      this.mapService.updateRenderWorldCopies(changes['renderWorldCopies'].currentValue);
     }
     if (changes['scrollZoom'] && !changes['scrollZoom'].isFirstChange()) {
       this.mapService.updateScrollZoom(changes['scrollZoom'].currentValue);
@@ -510,14 +431,10 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
       this.mapService.updateTouchPitch(changes['touchPitch'].currentValue);
     }
     if (changes['touchZoomRotate'] && !changes['touchZoomRotate'].isFirstChange()) {
-      this.mapService.updateTouchZoomRotate(
-        changes['touchZoomRotate'].currentValue
-      );
+      this.mapService.updateTouchZoomRotate(changes['touchZoomRotate'].currentValue);
     }
     if (changes['doubleClickZoom'] && !changes['doubleClickZoom'].isFirstChange()) {
-      this.mapService.updateDoubleClickZoom(
-        changes['doubleClickZoom'].currentValue
-      );
+      this.mapService.updateDoubleClickZoom(changes['doubleClickZoom'].currentValue);
     }
     if (changes['keyboard'] && !changes['keyboard'].isFirstChange()) {
       this.mapService.updateKeyboard(changes['keyboard'].currentValue);
@@ -539,27 +456,21 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
       changes['fitBounds'].currentValue &&
       !changes['fitBounds'].isFirstChange()
     ) {
-      this.mapService.fitBounds(
-        changes['fitBounds'].currentValue,
-        this.fitBoundsOptions()
-      );
+      this.mapService.fitBounds(changes['fitBounds'].currentValue, this.fitBoundsOptions());
     }
-    if (
-      changes['fitScreenCoordinates'] &&
-      changes['fitScreenCoordinates'].currentValue
-    ) {
+    if (changes['fitScreenCoordinates'] && changes['fitScreenCoordinates'].currentValue) {
       if (
         (center || zoom || pitch || this.fitBounds()) &&
         changes['fitScreenCoordinates'].isFirstChange()
       ) {
         console.warn(
-          '[@elbe-ui/map] center / zoom / pitch / fitBounds inputs are being overridden by fitScreenCoordinates input'
+          '[@elbe-ui/map] center / zoom / pitch / fitBounds inputs are being overridden by fitScreenCoordinates input',
         );
       }
       this.mapService.fitScreenCoordinates(
         changes['fitScreenCoordinates'].currentValue,
         bearing ?? 0,
-        this.movingOptions()
+        this.movingOptions(),
       );
     }
     if (
@@ -588,7 +499,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
         changes['center'] ? center : undefined,
         changes['bearing'] ? bearing : undefined,
         changes['pitch'] ? pitch : undefined,
-        changes['roll'] ? roll : undefined
+        changes['roll'] ? roll : undefined,
       );
     }
     if (changes['terrain'] && !changes['terrain'].isFirstChange()) {

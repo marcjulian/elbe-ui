@@ -41,8 +41,10 @@ import { MglPopup } from '@elbe-ui/map/popup';
 import { MglControl } from '@elbe-ui/map/control';
 ```
 
+`MglMap` is a directive with the selector `[mglMap], mgl-map`, and it uses **its host element** as the MapLibre container — so the element must be sized. Both forms are equivalent:
+
 ```html
-<mgl-map [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12">
+<mgl-map class="size-full" [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12">
   <mgl-marker [lngLat]="[9.99, 53.55]">
     <mgl-popup>Hello from the popup</mgl-popup>
   </mgl-marker>
@@ -50,10 +52,14 @@ import { MglControl } from '@elbe-ui/map/control';
   <mgl-control position="bottom-left">MapTiler</mgl-control>
   <mgl-control mglNavigation position="top-right"></mgl-control>
 </mgl-map>
+
+<!-- or attach it to any existing element -->
+<div class="size-full" mglMap [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12"></div>
 ```
 
-Components declared inside `<mgl-map>` can inject `MglMapService` to reach the `maplibre-gl` map
+Components declared inside the map element can inject `MglMapService` to reach the `maplibre-gl` map
 instance (`mapCreated$` emits once it is ready, and `mapInstance` exposes it).
+
 
 ## Building
 

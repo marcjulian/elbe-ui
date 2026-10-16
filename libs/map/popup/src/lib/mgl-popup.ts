@@ -42,7 +42,7 @@ import { injectMglPopupConfig } from './mgl-popup.config';
 @Component({
   selector: 'mgl-popup',
   template: `
-    <div #content data-cy="mgl-popup" [style]="contentStyle()">
+    <div #content [style]="contentStyle()">
       <ng-content />
     </div>
   `,

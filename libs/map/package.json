@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Angular components for building maps with MapLibre, styled with spartan/ui.",
   "license": "MIT",
+  "author": "Marc Stammerjohann <me@marcjulian.de>",
   "repository": {
     "type": "git",
     "url": "https://github.com/marcjulian/elbe-ui.git",
