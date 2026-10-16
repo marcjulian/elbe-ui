@@ -61,22 +61,20 @@ import { MarkerPreview } from './marker.preview';
       </p>
     </div>
 
-    <elb-h2 id="stacking"> Stacking &amp; offset </elb-h2>
+    <elb-h2 id="stacking"> Stacking </elb-h2>
     <div class="typeset mt-2">
       <p>
         MapLibre appends markers to the canvas container in DOM order and sets no
-        <code>z-index</code>, so the last marker renders on top by default. Use a
-        <code>z-*</code> class on the host to control stacking, and the <code>offset</code> input to
-        nudge a marker relative to its anchor. In the example above, marker 2 is offset below marker
-        1 (<code>z-10 &lt; z-20</code>) — raise it to <code>z-30</code> to bring it to the front.
+        <code>z-index</code>, so the last marker renders on top by default. Control the stacking with
+        a <code>z-index</code> on the host.
       </p>
     </div>
 
     <elb-h2 id="z-index"> z-index </elb-h2>
     <div class="typeset mt-2">
       <p>
-        Pass a CSS variable to drive the z-index of one or many markers, and reference it with the
-        Tailwind <code>z-(--marker-level)</code> utility on the host:
+        A marker's stacking can be controlled through the host's <code>class</code> (e.g. the
+        Tailwind <code>z-10</code> utility) or its <code>style</code> directly:
       </p>
       <elb-code-block [code]="zIndexSnippet" lang="html" />
       <p>
@@ -106,13 +104,11 @@ export class MarkerPage {
   exportAsSnippet = `<mgl-marker [lngLat]="center" #marker="mglMarker">Hamburg</mgl-marker>
 <mgl-popup [marker]="marker">Hello from Hamburg</mgl-popup>`;
 
-  zIndexSnippet = `<mgl-marker
-  [lngLat]="[lng, lat]"
-  class="z-(--marker-level)"
-  [style]="{ '--marker-level': level }"
->
-  …
-</mgl-marker>`;
+  zIndexSnippet = `<!-- Tailwind utility -->
+<mgl-marker [lngLat]="[lng, lat]" class="z-10">…</mgl-marker>
+
+<!-- or bind the style -->
+<mgl-marker [lngLat]="[lng, lat]" [style.zIndex]="level">…</mgl-marker>`;
 
   isolationSnippet = `/* styles.css */
 .maplibregl-canvas-container {
