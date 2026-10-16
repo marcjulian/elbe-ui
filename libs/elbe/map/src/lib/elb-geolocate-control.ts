@@ -1,32 +1,30 @@
 import type { BooleanInput } from '@angular/cdk/coercion';
 import {
+  afterNextRender,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
+  inject,
   input,
+  OnDestroy,
   output,
-  viewChild,
 } from '@angular/core';
-import { ControlComponent, GeolocateControlDirective, Position } from '@maplibre/ngx-maplibre-gl';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MglControl } from '@elbe-ui/map/control';
+import { MglMapService } from '@elbe-ui/map';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideLocateFixed } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
-import type { ControlPosition, GeolocateControl as MaplibreGeolocateControl } from 'maplibre-gl';
+import { GeolocateControl } from 'maplibre-gl';
+import type { ControlPosition, GeolocatePositionEvent } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-geolocate-control',
-  imports: [ControlComponent, GeolocateControlDirective, HlmButton, NgIcon],
+  imports: [MglControl, HlmButton, NgIcon],
   providers: [provideIcons({ lucideLocateFixed })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <mgl-control
-      mglGeolocate
-      #geolocateControl
-      [trackUserLocation]="true"
-      [positionOptions]="{ enableHighAccuracy: true }"
-      (geolocate)="geolocate.emit($event)"
-    />
-
     <mgl-control [position]="position()">
       <button
         hlmBtn
@@ -36,26 +34,50 @@ import type { ControlPosition, GeolocateControl as MaplibreGeolocateControl } fr
         aria-label="Geolocate"
         class="dark:bg-background dark:hover:bg-background/80"
         [disabled]="disabled()"
-        (click)="geolocateControl.control.trigger()"
+        (click)="trigger()"
       >
         <ng-icon name="lucideLocateFixed" />
       </button>
     </mgl-control>
   `,
 })
-export class ElbGeolocateControl {
-  private _geolocateControl =
-    viewChild.required<ControlComponent<MaplibreGeolocateControl>>('geolocateControl');
+export class ElbGeolocateControl implements OnDestroy {
+  private readonly _mapService = inject(MglMapService);
+  private readonly _destroyRef = inject(DestroyRef);
+
+  private _control: GeolocateControl | null = null;
 
   public readonly position = input<ControlPosition>();
   public readonly disabled = input<boolean, BooleanInput>(false, {
     transform: booleanAttribute,
   });
 
-  geolocate = output<Position>();
+  /** Emits when the browser reports a new position. */
+  public readonly geolocate = output<GeolocatePositionEvent>();
 
-  trigger() {
-    const control = this._geolocateControl().control as MaplibreGeolocateControl;
-    control.trigger();
+  constructor() {
+    afterNextRender(() => {
+      const control = new GeolocateControl({
+        trackUserLocation: true,
+        positionOptions: { enableHighAccuracy: true },
+      });
+      control.on('geolocate', (event) => this.geolocate.emit(event));
+      this._control = control;
+
+      this._mapService.mapCreated$
+        .pipe(takeUntilDestroyed(this._destroyRef))
+        .subscribe(() => this._mapService.addControl(control));
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this._control && this._mapService.mapInstance?.hasControl(this._control)) {
+      this._mapService.removeControl(this._control);
+    }
+  }
+
+  /** Triggers a one-off geolocation request. */
+  public trigger() {
+    this._control?.trigger();
   }
 }

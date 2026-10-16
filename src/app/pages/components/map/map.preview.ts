@@ -1,12 +1,13 @@
 import { Component, computed, inject } from '@angular/core';
+import { MglMap } from '@elbe-ui/map';
+import { MglControl } from '@elbe-ui/map/control';
 import { ElbMapImports } from '@elbe/ui/map';
 import { ElbTheme } from '@elbe/ui/theme';
-import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'elb-map-preview',
-  imports: [NgxMapLibreGLModule, ElbMapImports],
+  imports: [MglMap, MglControl, ElbMapImports],
   host: {
     class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden',
   },

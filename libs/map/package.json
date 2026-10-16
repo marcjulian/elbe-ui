@@ -1,12 +1,31 @@
 {
-  "name": "map",
+  "name": "@elbe-ui/map",
   "version": "0.0.1",
+  "description": "Angular components for building maps with MapLibre, styled with spartan/ui.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcjulian/elbe-ui.git",
+    "directory": "libs/map"
+  },
+  "homepage": "https://elbe-ui.dev/components/map",
+  "keywords": [
+    "angular",
+    "map",
+    "maplibre",
+    "maps",
+    "spartan"
+  ],
   "peerDependencies": {
     "@angular/common": "^22.2.0",
-    "@angular/core": "^22.2.0"
+    "@angular/core": "^22.2.0",
+    "maplibre-gl": "^6.12.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
 }

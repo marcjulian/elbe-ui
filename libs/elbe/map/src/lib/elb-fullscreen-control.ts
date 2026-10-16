@@ -1,6 +1,14 @@
 import type { BooleanInput } from '@angular/cdk/coercion';
-import { booleanAttribute, Component, DOCUMENT, inject, input } from '@angular/core';
-import { ControlComponent, MapService } from '@maplibre/ngx-maplibre-gl';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  DOCUMENT,
+  inject,
+  input,
+} from '@angular/core';
+import { MglControl } from '@elbe-ui/map/control';
+import { MglMapService } from '@elbe-ui/map';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMaximize } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
@@ -8,8 +16,9 @@ import type { ControlPosition } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-fullscreen-control',
-  imports: [ControlComponent, HlmButton, NgIcon],
+  imports: [MglControl, HlmButton, NgIcon],
   providers: [provideIcons({ lucideMaximize })],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control [position]="position()">
       <button
@@ -28,18 +37,22 @@ import type { ControlPosition } from 'maplibre-gl';
   `,
 })
 export class ElbFullscreenControl {
-  private mapService = inject(MapService);
-  private document = inject(DOCUMENT);
+  private readonly _mapService = inject(MglMapService);
+  private readonly _document = inject(DOCUMENT);
 
   public readonly position = input<ControlPosition>();
   public readonly disabled = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
   toggleFullscreen() {
-    const map = this.mapService.mapInstance;
-    if (!this.document.fullscreenElement) {
+    const map = this._mapService.mapInstance;
+    if (!map) {
+      return;
+    }
+
+    if (!this._document.fullscreenElement) {
       map.getContainer().requestFullscreen();
     } else {
-      this.document.exitFullscreen();
+      this._document.exitFullscreen();
     }
   }
 }

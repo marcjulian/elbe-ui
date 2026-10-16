@@ -1,64 +1,64 @@
-# Map
+# @elbe-ui/map
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+Angular components for building maps with [MapLibre](https://maplibre.org), forked from
+[`ngx-maplibre-gl`](https://github.com/maplibre/ngx-maplibre-gl). Requires `maplibre-gl` as a peer dependency.
 
-## Code scaffolding
+## Entry points
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+| Import                 | Exports                                                                                                                                          |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `@elbe-ui/map`         | `MglMap`, `MglMapService`, map types, `ContentStyle`                                                                                             |
+| `@elbe-ui/map/marker`  | `MglMarker`, `provideMglMarkerConfig`, `MglMarkerConfig`                                                                                         |
+| `@elbe-ui/map/popup`   | `MglPopup`, `provideMglPopupConfig`, `MglPopupConfig`                                                                                            |
+| `@elbe-ui/map/control` | `MglControl` + `[mglNavigation]`, `[mglFullscreen]`, `[mglGeolocate]`, `[mglGlobe]`, `[mglScale]`, `[mglAttribution]`, `[mglTerrain]` directives |
+| `@elbe-ui/map/core`    | `provideMaplibreWorker`, `MAPLIBRE_WORKER_URL`                                                                                                   |
+
+## Installation
 
 ```bash
-ng generate component component-name
+npm install @elbe-ui/map maplibre-gl
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+MapLibre GL JS v6 requires a web worker. Copy `maplibre-gl-worker.mjs` and
+`maplibre-gl-shared.mjs` from `node_modules/maplibre-gl/dist` into your build assets and point the
+library at the worker:
 
-```bash
-ng generate --help
+```typescript
+// app.config.ts
+import { provideMaplibreWorker } from '@elbe-ui/map/core';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideMaplibreWorker('maplibre-gl-worker.mjs')],
+};
 ```
+
+## Usage
+
+```ts
+import { MglMap } from '@elbe-ui/map';
+import { MglMarker, provideMglMarkerConfig } from '@elbe-ui/map/marker';
+import { MglPopup } from '@elbe-ui/map/popup';
+import { MglControl } from '@elbe-ui/map/control';
+```
+
+```html
+<mgl-map [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12">
+  <mgl-marker [lngLat]="[9.99, 53.55]">
+    <mgl-popup>Hello from the popup</mgl-popup>
+  </mgl-marker>
+
+  <mgl-control position="bottom-left">MapTiler</mgl-control>
+  <mgl-control mglNavigation position="top-right"></mgl-control>
+</mgl-map>
+```
+
+Components declared inside `<mgl-map>` can inject `MglMapService` to reach the `maplibre-gl` map
+instance (`mapCreated$` emits once it is ready, and `mapInstance` exposes it).
 
 ## Building
-
-To build the library, run:
 
 ```bash
 ng build map
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/map
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The build artifacts are placed in `dist/map` as a single package with the entry points above.

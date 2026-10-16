@@ -21,7 +21,7 @@ import { MapPreview } from './map.preview';
           hlmBtn
           variant="outline"
           size="sm"
-          href="${config.github}/tree/main/libs/elbe/map/src/lib"
+          href="${config.github}/tree/main/libs/map/src/lib"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -41,17 +41,16 @@ import { MapPreview } from './map.preview';
     <elb-h2 id="installation"> Installation </elb-h2>
     <div class="typeset mt-2">
       <p>
-        The map components are an addition to the
+        The map components are a thin wrapper around
         <a
-          href="https://github.com/maplibre/ngx-maplibre-gl"
+          href="https://maplibre.org/maplibre-gl-js/docs/"
           target="_blank"
           rel="noopener noreferrer"
-          >ngx-maplibre-gl</a
-        >
-        library.
+          >maplibre-gl</a
+        >, styled with spartan/ui.
       </p>
 
-      <p>Install <code>npm install @maplibre/ngx-maplibre-gl maplibre-gl</code>.</p>
+      <p>Install <code>npm install maplibre-gl</code>.</p>
       <elb-code-block [code]="mapStyles" lang="css" />
       <p>
         <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control
