@@ -76,6 +76,9 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
   readonly anchor = input<PopupOptions['anchor']>(this.config.anchor);
 
   /** Init input */
+  readonly className = input<PopupOptions['className']>(this.config.className);
+
+  /** Init input */
   readonly locationOccludedOpacity = input<
     PopupOptions['locationOccludedOpacity']
   >(this.config.locationOccludedOpacity);
@@ -208,6 +211,7 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
           focusAfterOpen: this.focusAfterOpen(),
           anchor: this.anchor(),
           offset: this.offset(),
+          className: this.className(),
           maxWidth: this.maxWidth(),
           subpixelPositioning: this.subpixelPositioning(),
           locationOccludedOpacity: this.locationOccludedOpacity(),

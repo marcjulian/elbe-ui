@@ -74,12 +74,12 @@ export const componentsRoutes: Routes = [
         },
       },
       {
-        path: 'map',
-        loadComponent: () => import('./map/map.page').then((m) => m.MapPage),
-        title: 'Map',
+        path: 'map-controls',
+        loadComponent: () => import('./map-controls/map-controls.page').then((m) => m.MapControlsPage),
+        title: 'Map Controls',
         data: {
           ...meta({
-            description: 'Map controls built for ngx-mapbox-gl library.',
+            description: 'spartan/ui styled map controls for MapLibre.',
             ogImage: '/assets/og/map.webp',
           }),
         },

@@ -26,6 +26,7 @@ import { config } from '../config';
 
         <nav>
           <a hlmBtn variant="ghost" size="sm" routerLink="/components">Components</a>
+          <a hlmBtn variant="ghost" size="sm" routerLink="/maps">Maps</a>
           <a hlmBtn variant="ghost" size="sm" routerLink="/labs">Labs</a>
         </nav>
 
