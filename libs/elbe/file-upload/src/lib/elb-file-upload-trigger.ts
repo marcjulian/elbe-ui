@@ -1,5 +1,5 @@
+import type { BooleanInput } from '@angular/cdk/coercion';
 import { booleanAttribute, Directive, input } from '@angular/core';
-import { BooleanInput } from '@maplibre/ngx-maplibre-gl';
 import { classes } from '@spartan-ng/helm/utils';
 import {
   injectFileUploadState,
