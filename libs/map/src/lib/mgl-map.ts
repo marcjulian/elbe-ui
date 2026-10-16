@@ -55,8 +55,12 @@ import type { EventData, LngLatLikeOrPosition, MapDataEvent, MapEvent } from './
  */
 @Directive({
   selector: '[mglMap],mgl-map',
+  exportAs: 'mglMap',
   providers: [MglMapService],
-  host: { '[style]': 'hostStyles()' },
+  host: {
+    'data-slot': 'map',
+    '[style]': 'hostStyles()',
+  },
 })
 export class MglMap implements OnChanges, OnDestroy, MapEvent {
   private readonly mapService = inject(MglMapService);
