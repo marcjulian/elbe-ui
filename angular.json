@@ -4,7 +4,7 @@
   "cli": {
     "packageManager": "pnpm"
   },
-  "newProjectRoot": "projects",
+  "newProjectRoot": "libs",
   "projects": {
     "elbeui": {
       "projectType": "application",
@@ -112,6 +112,32 @@
             }
           },
           "defaultConfiguration": "development"
+        }
+      }
+    },
+    "map": {
+      "projectType": "library",
+      "root": "libs/map",
+      "sourceRoot": "libs/map/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/map/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/map/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "libs/map/tsconfig.spec.json"
+          }
         }
       }
     }
