@@ -68,12 +68,6 @@
   "references": [
     {
       "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./libs/map/tsconfig.lib.json"
-    },
-    {
-      "path": "./libs/map/tsconfig.spec.json"
     }
   ]
 }
