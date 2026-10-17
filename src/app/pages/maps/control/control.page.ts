@@ -30,7 +30,7 @@ import { ControlPreview } from './control.preview';
         </a>
       </div>
       <p class="text-muted-foreground">
-        Place any content in the map's corners with <code>&#64;elbe-ui/map/control</code>.
+        Place any content in the map's corners.
       </p>
     </div>
 

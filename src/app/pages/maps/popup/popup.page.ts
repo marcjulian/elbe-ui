@@ -29,7 +29,7 @@ import { PopupPreview } from './popup.preview';
         </a>
       </div>
       <p class="text-muted-foreground">
-        Show a small overlay anchored to the map with <code>&#64;elbe-ui/map/popup</code>.
+        Show a small overlay anchored to a position, feature or marker on the map.
       </p>
     </div>
 
@@ -109,9 +109,7 @@ export class PopupPage {
   <p class="text-muted-foreground text-xs">Anchored to the marker.</p>
 </mgl-popup>`;
 
-  stylingClassNameSnippet = `import { provideMglPopupConfig } from '@elbe-ui/map/popup';
-
-@Component({
+  stylingClassNameSnippet = `@Component({
   // …
   providers: [
     provideMglPopupConfig({
@@ -125,9 +123,7 @@ export class PopupPage {
 @custom-variant popup-content (& .maplibregl-popup-content);
 @custom-variant popup-tip (& .maplibregl-popup-tip);`;
 
-  configSnippet = `import { provideMglPopupConfig } from '@elbe-ui/map/popup';
-
-// app.config.ts or a component's providers
+  configSnippet = `// app.config.ts or a component's providers
 providers: [provideMglPopupConfig({ closeButton: false, offset: 16 })];
 `;
 }

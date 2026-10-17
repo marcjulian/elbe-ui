@@ -30,10 +30,7 @@ import { MapPreview } from './map.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
-      <p class="text-muted-foreground">
-        A Maplibre map directive and spartan/ui styled controls from
-        <code>&#64;elbe-ui/map</code>.
-      </p>
+      <p class="text-muted-foreground">A MapLibre map directive and controls for Angular.</p>
     </div>
 
     <div elbPreview>
@@ -52,14 +49,13 @@ import { MapPreview } from './map.preview';
         >.
       </p>
 
-      <p>Install <code>npm install &#64;elbe-ui/map maplibre-gl</code>.</p>
+      <p>Install <code>npm install maplibre-gl</code>.</p>
       <elb-code-block [code]="mapStyles" lang="css" />
       <p>
-        MapLibre GL JS v6 needs a web worker. Copy <code>maplibre-gl-worker.mjs</code> and
-        <code>maplibre-gl-shared.mjs</code> from <code>node_modules/maplibre-gl/dist</code> into
-        your assets and provide the worker URL:
+        MapLibre GL JS v6 needs its worker files served. Add them to your project's
+        <code>assets</code>:
       </p>
-      <elb-code-block [code]="workerSnippet" lang="ts" />
+      <elb-code-block [code]="workerAssetsSnippet" lang="json" />
     </div>
 
     <elb-h2 id="usage"> Usage </elb-h2>
@@ -104,12 +100,18 @@ import { MapPreview } from './map.preview';
 export class MapPage {
   mapStyles = mapStyles;
 
-  workerSnippet = `// app.config.ts
-import { provideMglMaplibreWorker } from '@elbe-ui/map/core';
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideMglMaplibreWorker('maplibre-gl-worker.mjs')],
-};`;
+  workerAssetsSnippet = `"assets": [
+  {
+    "glob": "maplibre-gl-worker.mjs",
+    "input": "node_modules/maplibre-gl/dist",
+    "output": "/"
+  },
+  {
+    "glob": "maplibre-gl-shared.mjs",
+    "input": "node_modules/maplibre-gl/dist",
+    "output": "/"
+  }
+]`;
 
   usageSnippet = `<mgl-map class="size-full" [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="8">
   <mgl-control mglNavigation position="top-right"></mgl-control>

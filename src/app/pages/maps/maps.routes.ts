@@ -4,10 +4,10 @@ import { meta } from '@elbe/ui/seo/config';
 import { elbHighlighter } from '../../highlight';
 
 /**
- * Documentation for the map library (`@elbe-ui/map`).
+ * Documentation for the map components.
  *
  * Grouped under `/maps` (rather than `/components`) so the routes mirror the
- * package entry points, e.g. `@elbe-ui/map/marker` -> `/maps/marker`.
+ * map entry points, e.g. marker -> `/maps/marker`.
  */
 export const mapsRoutes: Routes = [
   {
@@ -22,8 +22,8 @@ export const mapsRoutes: Routes = [
         data: {
           ...meta({
             description:
-              'MapLibre map directive for Angular, with spartan/ui styled controls. Part of @elbe-ui/map.',
-            ogImage: '/assets/og/map.webp',
+              'Maplibre map directive for Angular, with markers, popups and controls.',
+            ogImage: '/assets/og/maps.webp',
           }),
         },
       },
@@ -34,8 +34,8 @@ export const mapsRoutes: Routes = [
         data: {
           ...meta({
             description:
-              'Marker directive for @elbe-ui/map, anchored at a position and styled through the host element.',
-            ogImage: '/assets/og/map.webp',
+              'Anchor HTML content to a position on the map and style it through the host element.',
+            ogImage: '/assets/og/maps-marker.webp',
           }),
         },
       },
@@ -46,8 +46,8 @@ export const mapsRoutes: Routes = [
         data: {
           ...meta({
             description:
-              'Popup directive for @elbe-ui/map, anchored to a position, a feature or a marker.',
-            ogImage: '/assets/og/map.webp',
+              'Popups anchored to a position, a feature or a marker on the map.',
+            ogImage: '/assets/og/maps-popup.webp',
           }),
         },
       },
@@ -58,8 +58,8 @@ export const mapsRoutes: Routes = [
         data: {
           ...meta({
             description:
-              'Custom map controls and MapLibre native control directives for @elbe-ui/map.',
-            ogImage: '/assets/og/map.webp',
+              'Custom map controls and native MapLibre control directives.',
+            ogImage: '/assets/og/maps-control.webp',
           }),
         },
       },

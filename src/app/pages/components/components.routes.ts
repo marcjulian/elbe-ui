@@ -80,7 +80,7 @@ export const componentsRoutes: Routes = [
         data: {
           ...meta({
             description: 'spartan/ui styled map controls for MapLibre.',
-            ogImage: '/assets/og/map.webp',
+            ogImage: '/assets/og/map-controls.webp',
           }),
         },
       },

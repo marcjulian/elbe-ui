@@ -1,11 +1,13 @@
 import type { Routes } from '@angular/router';
 import { routes } from '../src/app/app.routes';
 import { componentsRoutes } from '../src/app/pages/components/components.routes';
+import { mapsRoutes } from '../src/app/pages/maps/maps.routes';
 import { toolsRoutes } from '../src/app/pages/tools/tools.routes';
 
 /** Inline the children for every route group that is lazy-loaded via `loadChildren`. */
 const lazyChildren: Record<string, Routes> = {
   components: componentsRoutes,
+  maps: mapsRoutes,
   tools: toolsRoutes,
 };
 

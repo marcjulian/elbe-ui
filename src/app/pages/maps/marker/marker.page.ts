@@ -29,8 +29,7 @@ import { MarkerPreview } from './marker.preview';
         </a>
       </div>
       <p class="text-muted-foreground">
-        Anchor HTML content to a position on the map with
-        <code>&#64;elbe-ui/map/marker</code>.
+        Anchor HTML content to a position on the map.
       </p>
     </div>
 
@@ -115,9 +114,7 @@ export class MarkerPage {
   isolation: isolate;
 }`;
 
-  configSnippet = `import { provideMglMarkerConfig } from '@elbe-ui/map/marker';
-
-// app.config.ts or a component's providers
+  configSnippet = `// app.config.ts or a component's providers
 providers: [provideMglMarkerConfig({ offset: [0, -14] })];
 `;
 }

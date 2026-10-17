@@ -40,9 +40,7 @@ import { MapControlsPreview } from './map-controls.preview';
         </a>
       </div>
       <p class="text-muted-foreground">
-        A set of spartan/ui styled controls for
-        <a routerLink="/maps"><code>&#64;elbe-ui/map</code></a
-        >.
+        A set of spartan/ui styled controls for the <a routerLink="/maps">map</a>.
       </p>
     </div>
 
@@ -52,7 +50,7 @@ import { MapControlsPreview } from './map-controls.preview';
 
     <elb-h2 id="installation"> Installation </elb-h2>
     <div class="typeset mt-2">
-      <p>Install <code>npm install &#64;elbe-ui/map maplibre-gl</code> and add the MapLibre styles:</p>
+      <p>Install <code>npm install maplibre-gl</code> and add the MapLibre styles:</p>
       <elb-code-block [code]="mapStyles" lang="css" />
       <p>
         <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control for

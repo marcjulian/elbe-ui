@@ -11,25 +11,30 @@ Angular components for building maps with [MapLibre](https://maplibre.org), fork
 | `@elbe-ui/map/marker`  | `MglMarker`, `provideMglMarkerConfig`, `MglMarkerConfig`                                                                                         |
 | `@elbe-ui/map/popup`   | `MglPopup`, `provideMglPopupConfig`, `MglPopupConfig`                                                                                            |
 | `@elbe-ui/map/control` | `MglControl` + `[mglNavigation]`, `[mglFullscreen]`, `[mglGeolocate]`, `[mglGlobe]`, `[mglScale]`, `[mglAttribution]`, `[mglTerrain]` directives |
-| `@elbe-ui/map/core`    | `provideMglMaplibreWorker`, `MAPLIBRE_WORKER_URL`                                                                                                   |
 
 ## Installation
 
 ```bash
-npm install @elbe-ui/map maplibre-gl
+npm install maplibre-gl
 ```
 
-MapLibre GL JS v6 requires a web worker. Copy `maplibre-gl-worker.mjs` and
-`maplibre-gl-shared.mjs` from `node_modules/maplibre-gl/dist` into your build assets and point the
-library at the worker:
+MapLibre GL JS v6 uses a web worker. Serve `maplibre-gl-worker.mjs` and `maplibre-gl-shared.mjs` by
+adding them to your project's assets (the map loads `maplibre-gl-worker.mjs` relative to the app base
+URL):
 
-```typescript
-// app.config.ts
-import { provideMglMaplibreWorker } from '@elbe-ui/map/core';
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideMglMaplibreWorker('maplibre-gl-worker.mjs')],
-};
+```json
+"assets": [
+  {
+    "glob": "maplibre-gl-worker.mjs",
+    "input": "node_modules/maplibre-gl/dist",
+    "output": "/"
+  },
+  {
+    "glob": "maplibre-gl-shared.mjs",
+    "input": "node_modules/maplibre-gl/dist",
+    "output": "/"
+  }
+]
 ```
 
 ## Usage
