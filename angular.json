@@ -4,7 +4,7 @@
   "cli": {
     "packageManager": "pnpm"
   },
-  "newProjectRoot": "projects",
+  "newProjectRoot": "libs",
   "projects": {
     "elbeui": {
       "projectType": "application",

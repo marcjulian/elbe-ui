@@ -12,6 +12,10 @@ export const routes: Routes = [
       import('./pages/components/components.routes').then((m) => m.componentsRoutes),
   },
   {
+    path: 'maps',
+    loadChildren: () => import('./pages/maps/maps.routes').then((m) => m.mapsRoutes),
+  },
+  {
     path: 'labs',
     loadComponent: () => import('./layouts/docs.layout').then((m) => m.DocsLayout),
     children: [

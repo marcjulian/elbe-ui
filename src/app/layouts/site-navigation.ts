@@ -67,10 +67,10 @@ export const siteNavigation: SiteNavigationGroup[] = [
         description: 'Image gallery built with photoswipe library.',
       },
       {
-        path: 'map',
-        name: 'Map',
+        path: 'map-controls',
+        name: 'Map Controls',
         icon: 'lucideMap',
-        description: 'Map controls built for ngx-mapbox-gl library.',
+        description: 'spartan/ui styled map controls.',
       },
       {
         path: 'markdown',
@@ -78,6 +78,36 @@ export const siteNavigation: SiteNavigationGroup[] = [
         icon: 'lucideFileText',
         description: 'Markdown renderer built with TanStack Markdown.',
         new: true,
+      },
+    ],
+  },
+  {
+    title: 'Maps',
+    basePath: '/maps',
+    items: [
+      {
+        path: '',
+        name: 'Map',
+        icon: 'lucideMap',
+        description: 'MapLibre map directive.',
+      },
+      {
+        path: 'marker',
+        name: 'Marker',
+        icon: 'lucideMapPin',
+        description: 'Anchor HTML content to a position on the map.',
+      },
+      {
+        path: 'popup',
+        name: 'Popup',
+        icon: 'lucideMessageSquare',
+        description: 'Overlays anchored to a position or marker.',
+      },
+      {
+        path: 'control',
+        name: 'Controls',
+        icon: 'lucideSlidersHorizontal',
+        description: 'Custom and native map controls.',
       },
     ],
   },

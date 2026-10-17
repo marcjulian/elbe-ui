@@ -1,6 +1,14 @@
 import type { BooleanInput } from '@angular/cdk/coercion';
-import { booleanAttribute, Component, inject, input, signal } from '@angular/core';
-import { ControlComponent, MapService } from '@maplibre/ngx-maplibre-gl';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
+import { MglMapService } from '@elbe-ui/map';
+import { MglControl } from '@elbe-ui/map/control';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGlobe } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
@@ -8,8 +16,9 @@ import type { ControlPosition } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-globe-control',
-  imports: [ControlComponent, HlmButton, NgIcon],
+  imports: [MglControl, HlmButton, NgIcon],
   providers: [provideIcons({ lucideGlobe })],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mgl-control [position]="position()">
       <button
@@ -29,7 +38,7 @@ import type { ControlPosition } from 'maplibre-gl';
   `,
 })
 export class ElbGlobeControl {
-  private mapService = inject(MapService);
+  private readonly _mapService = inject(MglMapService);
 
   protected readonly _active = signal(false);
 
@@ -38,15 +47,19 @@ export class ElbGlobeControl {
   public readonly disabled = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
 
   toggleGlobeView() {
-    const map = this.mapService.mapInstance;
-    const currentProjection = map.getProjection()?.type;
-
-    if (currentProjection === 'mercator' || !currentProjection) {
-      map.setProjection({ type: 'globe' });
-    } else {
-      map.setProjection({ type: 'mercator' });
+    const map = this._mapService.mapInstance;
+    if (!map) {
+      return;
     }
 
-    this._active.set(currentProjection !== 'globe');
+    const currentProjection = map.getProjection()?.type;
+
+    if (currentProjection === 'globe') {
+      map.setProjection({ type: 'mercator' });
+      this._active.set(false);
+    } else {
+      map.setProjection({ type: 'globe' });
+      this._active.set(true);
+    }
   }
 }

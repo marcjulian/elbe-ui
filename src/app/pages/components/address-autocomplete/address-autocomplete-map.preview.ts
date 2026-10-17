@@ -1,8 +1,9 @@
 import { Component, computed, inject, signal, viewChild } from '@angular/core';
+import { MglMap } from '@elbe-ui/map';
+import { MglControl } from '@elbe-ui/map/control';
 import { Address, ElbAddressAutocompleteImports } from '@elbe/ui/address-autocomplete';
 import { ElbMapImports } from '@elbe/ui/map';
 import { ElbTheme } from '@elbe/ui/theme';
-import { MapComponent, NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideArrowUpFromDot, lucidePlane } from '@ng-icons/lucide';
 import { HlmToggleGroupImports } from '@spartan-ng/helm/toggle-group';
@@ -11,7 +12,8 @@ import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'elb-address-autocomplete-map-preview',
   imports: [
-    NgxMapLibreGLModule,
+    MglMap,
+    MglControl,
     ElbAddressAutocompleteImports,
     ElbMapImports,
     HlmToggleGroupImports,
@@ -45,9 +47,7 @@ import { environment } from '../../../../environments/environment';
         </div>
       </mgl-control>
 
-      <mgl-control position="top-right">
-        <elb-navigation-control />
-      </mgl-control>
+      <elb-navigation-control position="top-right" />
 
       <mgl-control position="bottom-left">
         <a href="https://www.maptiler.com">
@@ -60,7 +60,7 @@ import { environment } from '../../../../environments/environment';
 export class AddressAutocompleteMapPreview {
   private readonly _theme = inject(ElbTheme);
 
-  private readonly map = viewChild.required(MapComponent);
+  private readonly map = viewChild.required(MglMap);
 
   zoomType = signal<'jump' | 'fly'>('jump');
 
@@ -72,13 +72,16 @@ export class AddressAutocompleteMapPreview {
   zoomToAddress(address: Address | null) {
     if (!address) return;
 
+    const map = this.map().mapInstance;
+    if (!map) return;
+
     if (this.zoomType() === 'fly') {
-      this.map().mapInstance.flyTo({
+      map.flyTo({
         center: [address.lng, address.lat],
         zoom: 12,
       });
     } else {
-      this.map().mapInstance.jumpTo({
+      map.jumpTo({
         center: [address.lng, address.lat],
         zoom: 12,
       });

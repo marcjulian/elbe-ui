@@ -1,12 +1,12 @@
 import { Component, computed, inject } from '@angular/core';
-import { ElbMapImports } from '@elbe/ui/map';
+import { MglMap } from '@elbe-ui/map';
+import { MglControl, MglNavigationControl } from '@elbe-ui/map/control';
 import { ElbTheme } from '@elbe/ui/theme';
-import { NgxMapLibreGLModule } from '@maplibre/ngx-maplibre-gl';
 import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'elb-map-preview',
-  imports: [NgxMapLibreGLModule, ElbMapImports],
+  imports: [MglMap, MglControl, MglNavigationControl],
   host: {
     class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden',
   },
@@ -14,15 +14,12 @@ import { environment } from '../../../../environments/environment';
     <mgl-map
       class="size-full"
       [mapStyle]="mapStyle()"
-      [center]="[9.9278215, 53.5584587]"
+      [center]="center"
       [zoom]="8"
       [minZoom]="1"
       [maxZoom]="14"
     >
-      <elb-fullscreen-control />
-      <elb-geolocate-control />
-      <elb-navigation-control />
-      <elb-globe-control />
+      <mgl-control mglNavigation position="top-right"></mgl-control>
 
       <mgl-control position="bottom-left">
         <a href="https://www.maptiler.com">
@@ -34,6 +31,8 @@ import { environment } from '../../../../environments/environment';
 })
 export class MapPreview {
   private readonly _theme = inject(ElbTheme);
+
+  readonly center: [number, number] = [9.9278215, 53.5584587];
 
   mapStyle = computed(() => {
     const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;

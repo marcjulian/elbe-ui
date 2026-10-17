@@ -89,6 +89,7 @@ import { navigationLink, siteNavigation } from './site-navigation';
                           [routerLink]="_link(group, item)"
                           [fragment]="item.fragment"
                           routerLinkActive
+                          [routerLinkActiveOptions]="{ exact: true }"
                           #rla="routerLinkActive"
                           [isActive]="rla.isActive"
                         >

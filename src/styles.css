@@ -24,6 +24,9 @@
   --color-gallery-foreground: var(--gallery-foreground);
 }
 
+@custom-variant popup-content (& .maplibregl-popup-content);
+@custom-variant popup-tip (& .maplibregl-popup-tip);
+
 :root {
   color-scheme: light;
 
