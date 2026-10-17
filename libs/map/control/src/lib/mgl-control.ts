@@ -1,12 +1,4 @@
-import {
-  afterNextRender,
-  Component,
-  ElementRef,
-  inject,
-  input,
-  OnDestroy,
-  viewChild,
-} from '@angular/core';
+import { afterNextRender, Directive, ElementRef, inject, input, OnDestroy } from '@angular/core';
 import { MglMapService } from '@elbe-ui/map';
 import type { ControlPosition, IControl } from 'maplibre-gl';
 
@@ -31,42 +23,45 @@ export class MglCustomControl implements IControl {
 }
 
 /**
- * `mgl-control` - a custom control component
+ * `mgl-control` / `[mglControl]` - a custom control directive.
+ *
+ * The host element is used as the control element, so any projected content
+ * becomes the control.
+ *
  * @see [Controls](https://maplibre.org/maplibre-gl-js/docs/API/interfaces/IControl/)
  *
- * @category Components
+ * @category Directives
  *
  * @example
  * ```html
  * <mgl-map ...>
- *   <mgl-control> Hello </mgl-control>
+ *   <mgl-control position="bottom-left"> Hello </mgl-control>
  *   <mgl-control mglNavigation></mgl-control>
  *   <mgl-control mglScale unit="imperial" position="top-right"></mgl-control>
  * </mgl-map>
  * ```
  */
-@Component({
-  selector: 'mgl-control',
-  template: `
-    <div class="maplibregl-ctrl" #content>
-      <ng-content></ng-content>
-    </div>
-  `,
+@Directive({
+  selector: '[mglControl],mgl-control',
+  exportAs: 'mglControl',
+  host: {
+    'data-slot': 'map-control',
+    class: 'maplibregl-ctrl',
+  },
 })
 export class MglControl<T extends IControl> implements OnDestroy {
   private readonly mapService = inject(MglMapService);
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
 
   readonly position = input<ControlPosition>();
-
-  /** @hidden */
-  readonly content = viewChild.required<ElementRef<HTMLDivElement>>('content');
 
   control?: T | MglCustomControl;
 
   constructor() {
     afterNextRender(() => {
-      if (this.content().nativeElement.childNodes.length) {
-        this.control = new MglCustomControl(this.content().nativeElement);
+      const element = this.elementRef.nativeElement;
+      if (element.childNodes.length) {
+        this.control = new MglCustomControl(element);
         this.mapService.mapCreated$.subscribe(() => {
           this.mapService.addControl(this.control!, this.position());
         });
