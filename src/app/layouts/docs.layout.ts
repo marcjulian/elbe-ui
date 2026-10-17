@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideKayak, lucideMenu, lucideX } from '@ng-icons/lucide';
+import { lucideKayak, lucideX } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import {
   HlmSidebarImports,
@@ -25,7 +25,7 @@ import { navigationLink, siteNavigation } from './site-navigation';
     Footer,
   ],
   providers: [
-    provideIcons({ lucideMenu, lucideKayak, lucideX }),
+    provideIcons({ lucideKayak, lucideX }),
     HlmSidebarService,
     provideHlmSidebarConfig({
       closeMobileSidebarOnMenuButtonClick: true,
@@ -34,18 +34,7 @@ import { navigationLink, siteNavigation } from './site-navigation';
   ],
   template: `
     <div hlmSidebarWrapper class="flex-col">
-      <elb-header>
-        <button
-          hlmBtn
-          size="icon-sm"
-          variant="ghost"
-          class="lg:hidden"
-          (click)="_sidebarService.toggleSidebar()"
-        >
-          <ng-icon name="lucideMenu" />
-          <span class="sr-only">Toggle sidebar</span>
-        </button>
-      </elb-header>
+      <elb-header />
       <div class="mx-auto flex w-full max-w-(--breakpoint-xl) flex-1">
         <hlm-sidebar
           class="bg-transparent **:data-[slot=sidebar-inner]:bg-transparent"
