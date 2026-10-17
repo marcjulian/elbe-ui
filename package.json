@@ -6,7 +6,6 @@
     "start": "ng serve",
     "build": "pnpm sitemap && pnpm markdown:highlight && ng build",
     "build:pages": "pnpm sitemap && pnpm markdown:highlight && ng build && cp dist/elbeui/browser/index.html dist/elbeui/browser/404.html",
-    "build:map": "ng build map",
     "watch": "ng build --watch --configuration development",
     "serve:ssr:elbeui": "node dist/elbeui/server/server.mjs",
     "fmt": "prettier --write .",
