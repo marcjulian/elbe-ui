@@ -33,10 +33,7 @@ export class MglFullscreenControl {
         this.controlComponent.control = new FullscreenControl({
           container: this.container(),
         });
-        this.mapService.addControl(
-          this.controlComponent.control,
-          this.controlComponent.position(),
-        );
+        this.mapService.addControl(this.controlComponent.control, this.controlComponent.position());
       });
     });
   }

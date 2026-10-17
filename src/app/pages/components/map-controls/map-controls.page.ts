@@ -7,8 +7,8 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
-import { mapStyles } from './map-controls.styles';
 import { MapControlsPreview } from './map-controls.preview';
+import { mapStyles } from './map-controls.styles';
 
 @Component({
   selector: 'elb-map-controls-page',
@@ -53,8 +53,8 @@ import { MapControlsPreview } from './map-controls.preview';
       <p>Install <code>npm install maplibre-gl</code> and add the MapLibre styles:</p>
       <elb-code-block [code]="mapStyles" lang="css" />
       <p>
-        <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control for
-        its functionality, so hide the original one via CSS:
+        <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control
+        for its functionality, so hide the original one via CSS:
       </p>
       <elb-code-block [code]="geolocateStyles" lang="css" />
     </div>

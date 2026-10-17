@@ -40,9 +40,9 @@ import { PopupPreview } from './popup.preview';
     <elb-h2 id="usage"> Usage </elb-h2>
     <div class="typeset mt-2">
       <p>
-        <code>MglPopup</code> is a directive (<code>[mglPopup]</code> or <code>mgl-popup</code>) that
-        uses its <strong>host element</strong> as the popup content. It must be anchored by exactly
-        one of <code>lngLat</code>, <code>feature</code> or <code>marker</code>.
+        <code>MglPopup</code> is a directive (<code>[mglPopup]</code> or <code>mgl-popup</code>)
+        that uses its <strong>host element</strong> as the popup content. It must be anchored by
+        exactly one of <code>lngLat</code>, <code>feature</code> or <code>marker</code>.
       </p>
       <elb-code-block [code]="usageSnippet" lang="html" />
     </div>
@@ -66,9 +66,8 @@ import { PopupPreview } from './popup.preview';
     <elb-h2 id="styling"> Styling </elb-h2>
     <div class="typeset mt-2">
       <p>
-        The popup host is the popup content, so style it directly with <code>class</code>/<code
-          >style</code
-        >:
+        The popup host is the popup content, so style it directly with
+        <code>class</code>/<code>style</code>:
       </p>
       <elb-code-block [code]="stylingHostSnippet" lang="html" />
       <p>

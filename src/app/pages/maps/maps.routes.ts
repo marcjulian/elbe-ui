@@ -21,8 +21,7 @@ export const mapsRoutes: Routes = [
         title: 'Map',
         data: {
           ...meta({
-            description:
-              'Maplibre map directive for Angular, with markers, popups and controls.',
+            description: 'Maplibre map directive for Angular, with markers, popups and controls.',
             ogImage: '/assets/og/maps.webp',
           }),
         },
@@ -45,8 +44,7 @@ export const mapsRoutes: Routes = [
         title: 'Popup',
         data: {
           ...meta({
-            description:
-              'Popups anchored to a position, a feature or a marker on the map.',
+            description: 'Popups anchored to a position, a feature or a marker on the map.',
             ogImage: '/assets/og/maps-popup.webp',
           }),
         },
@@ -57,8 +55,7 @@ export const mapsRoutes: Routes = [
         title: 'Controls',
         data: {
           ...meta({
-            description:
-              'Custom map controls and native MapLibre control directives.',
+            description: 'Custom map controls and native MapLibre control directives.',
             ogImage: '/assets/og/maps-control.webp',
           }),
         },

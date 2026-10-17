@@ -7,8 +7,8 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { MglControl } from '@elbe-ui/map/control';
 import { MglMapService } from '@elbe-ui/map';
+import { MglControl } from '@elbe-ui/map/control';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideGlobe } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';

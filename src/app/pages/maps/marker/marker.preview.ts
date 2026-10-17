@@ -21,7 +21,7 @@ import { environment } from '../../../../environments/environment';
     >
       <mgl-marker
         [lngLat]="center"
-        class="z-20 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium shadow-md"
+        class="border-border bg-background z-20 rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
       >
         Marker 1
       </mgl-marker>
@@ -29,7 +29,7 @@ import { environment } from '../../../../environments/environment';
       <mgl-marker
         [lngLat]="center"
         [offset]="markerOffset"
-        class="z-10 rounded-full border border-border bg-primary px-2.5 py-1 text-xs font-medium text-primary-foreground shadow-md"
+        class="border-border bg-primary text-primary-foreground z-10 rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
       >
         Marker 2
       </mgl-marker>

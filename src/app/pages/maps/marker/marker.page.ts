@@ -28,9 +28,7 @@ import { MarkerPreview } from './marker.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
-      <p class="text-muted-foreground">
-        Anchor HTML content to a position on the map.
-      </p>
+      <p class="text-muted-foreground">Anchor HTML content to a position on the map.</p>
     </div>
 
     <div elbPreview>
@@ -64,8 +62,8 @@ import { MarkerPreview } from './marker.preview';
     <div class="typeset mt-2">
       <p>
         MapLibre appends markers to the canvas container in DOM order and sets no
-        <code>z-index</code>, so the last marker renders on top by default. Control the stacking with
-        a <code>z-index</code> on the host.
+        <code>z-index</code>, so the last marker renders on top by default. Control the stacking
+        with a <code>z-index</code> on the host.
       </p>
     </div>
 

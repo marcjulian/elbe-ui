@@ -11,8 +11,8 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MglControl } from '@elbe-ui/map/control';
 import { MglMapService } from '@elbe-ui/map';
+import { MglControl } from '@elbe-ui/map/control';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMinus, lucidePlus } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
@@ -76,20 +76,18 @@ export class ElbNavigationControl {
 
   constructor() {
     afterNextRender(() => {
-      this._mapService.mapCreated$
-        .pipe(takeUntilDestroyed(this._destroyRef))
-        .subscribe(() => {
-          const map = this._mapService.mapInstance;
-          const updateZoomState = () => {
-            this._zoom.set(map.getZoom());
-            this._maxZoom.set(map.getMaxZoom());
-            this._minZoom.set(map.getMinZoom());
-          };
+      this._mapService.mapCreated$.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
+        const map = this._mapService.mapInstance;
+        const updateZoomState = () => {
+          this._zoom.set(map.getZoom());
+          this._maxZoom.set(map.getMaxZoom());
+          this._minZoom.set(map.getMinZoom());
+        };
 
-          updateZoomState();
-          map.on('zoom', updateZoomState);
-          this._destroyRef.onDestroy(() => map.off('zoom', updateZoomState));
-        });
+        updateZoomState();
+        map.on('zoom', updateZoomState);
+        this._destroyRef.onDestroy(() => map.off('zoom', updateZoomState));
+      });
     });
   }
 

@@ -50,14 +50,8 @@ export class ElbSeo {
     this.updateMeta({ property: 'og:locale' }, merged.ogLocale);
     if (merged.ogImage) {
       this.meta.updateTag({ property: 'og:image', content: this.resolveUrl(merged.ogImage) });
-       this.updateMeta(
-        { property: 'og:image:width' },
-        merged.ogImageWidth?.toString(),
-      );
-      this.updateMeta(
-        { property: 'og:image:height' },
-        merged.ogImageHeight?.toString(),
-      );
+      this.updateMeta({ property: 'og:image:width' }, merged.ogImageWidth?.toString());
+      this.updateMeta({ property: 'og:image:height' }, merged.ogImageHeight?.toString());
     }
     this.meta.updateTag({ property: 'og:url', content: this.resolvePageUrl(url) });
 

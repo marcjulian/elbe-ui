@@ -28,10 +28,7 @@ export class MglGlobeControl {
 
         this.controlComponent.control = new GlobeControl();
 
-        this.mapService.addControl(
-          this.controlComponent.control,
-          this.controlComponent.position(),
-        );
+        this.mapService.addControl(this.controlComponent.control, this.controlComponent.position());
       });
     });
   }

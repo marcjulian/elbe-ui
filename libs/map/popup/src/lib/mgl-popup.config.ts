@@ -19,9 +19,7 @@ const defaultConfig: MglPopupConfig = {};
  *
  * @category Directives
  */
-export const MGL_POPUP_CONFIG = new InjectionToken<MglPopupConfig>(
-  'MglPopupConfig',
-);
+export const MGL_POPUP_CONFIG = new InjectionToken<MglPopupConfig>('MglPopupConfig');
 
 /**
  * Provides default options for every `mgl-popup` within the injector scope.
@@ -37,9 +35,7 @@ export const MGL_POPUP_CONFIG = new InjectionToken<MglPopupConfig>(
  *
  * @category Directives
  */
-export function provideMglPopupConfig(
-  config: Partial<MglPopupConfig>,
-): ValueProvider {
+export function provideMglPopupConfig(config: Partial<MglPopupConfig>): ValueProvider {
   return {
     provide: MGL_POPUP_CONFIG,
     useValue: { ...defaultConfig, ...config },

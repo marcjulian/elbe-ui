@@ -75,7 +75,8 @@ export const componentsRoutes: Routes = [
       },
       {
         path: 'map-controls',
-        loadComponent: () => import('./map-controls/map-controls.page').then((m) => m.MapControlsPage),
+        loadComponent: () =>
+          import('./map-controls/map-controls.page').then((m) => m.MapControlsPage),
         title: 'Map Controls',
         data: {
           ...meta({

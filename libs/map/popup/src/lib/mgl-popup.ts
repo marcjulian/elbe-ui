@@ -11,12 +11,12 @@ import {
   output,
   SimpleChanges,
 } from '@angular/core';
-import type { Popup, PopupOptions } from 'maplibre-gl';
-import { MglMapService } from '@elbe-ui/map';
-import type { LngLatLikeOrPosition } from '@elbe-ui/map';
-import type { MglMarker } from '@elbe-ui/map/marker';
-import { tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import type { LngLatLikeOrPosition } from '@elbe-ui/map';
+import { MglMapService } from '@elbe-ui/map';
+import type { MglMarker } from '@elbe-ui/map/marker';
+import type { Popup, PopupOptions } from 'maplibre-gl';
+import { tap } from 'rxjs';
 import { injectMglPopupConfig } from './mgl-popup.config';
 
 /**
@@ -53,24 +53,16 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
   private readonly config = injectMglPopupConfig();
 
   /** Init input */
-  readonly closeButton = input<PopupOptions['closeButton']>(
-    this.config.closeButton,
-  );
+  readonly closeButton = input<PopupOptions['closeButton']>(this.config.closeButton);
 
   /** Init input */
-  readonly closeOnClick = input<PopupOptions['closeOnClick']>(
-    this.config.closeOnClick,
-  );
+  readonly closeOnClick = input<PopupOptions['closeOnClick']>(this.config.closeOnClick);
 
   /** Init input */
-  readonly closeOnMove = input<PopupOptions['closeOnMove']>(
-    this.config.closeOnMove,
-  );
+  readonly closeOnMove = input<PopupOptions['closeOnMove']>(this.config.closeOnMove);
 
   /** Init input */
-  readonly focusAfterOpen = input<PopupOptions['focusAfterOpen']>(
-    this.config.focusAfterOpen,
-  );
+  readonly focusAfterOpen = input<PopupOptions['focusAfterOpen']>(this.config.focusAfterOpen);
 
   /** Init input */
   readonly anchor = input<PopupOptions['anchor']>(this.config.anchor);
@@ -79,9 +71,9 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
   readonly className = input<PopupOptions['className']>(this.config.className);
 
   /** Init input */
-  readonly locationOccludedOpacity = input<
-    PopupOptions['locationOccludedOpacity']
-  >(this.config.locationOccludedOpacity);
+  readonly locationOccludedOpacity = input<PopupOptions['locationOccludedOpacity']>(
+    this.config.locationOccludedOpacity,
+  );
 
   /**
    * Dynamic input [ngx]
@@ -120,9 +112,7 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
   constructor() {
     afterNextRender(() => {
       this.popupInstance = this.createPopup();
-      this.addPopup(this.popupInstance)
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe();
+      this.addPopup(this.popupInstance).pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
     });
   }
 
@@ -162,19 +152,11 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
         this.mapService.addPopupToMarker(markerInstance, this.popupInstance);
       }
     }
-    if (
-      changes['offset'] &&
-      !changes['offset'].isFirstChange() &&
-      this.popupInstance
-    ) {
+    if (changes['offset'] && !changes['offset'].isFirstChange() && this.popupInstance) {
       this.popupInstance.setOffset(changes['offset'].currentValue);
     }
 
-    if (
-      changes['maxWidth'] &&
-      !changes['maxWidth'].isFirstChange() &&
-      this.popupInstance
-    ) {
+    if (changes['maxWidth'] && !changes['maxWidth'].isFirstChange() && this.popupInstance) {
       this.popupInstance.setMaxWidth(changes['maxWidth'].currentValue);
     }
 
@@ -183,16 +165,10 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
       !changes['subpixelPositioning'].isFirstChange() &&
       this.popupInstance
     ) {
-      this.popupInstance.setSubpixelPositioning(
-        changes['subpixelPositioning'].currentValue,
-      );
+      this.popupInstance.setSubpixelPositioning(changes['subpixelPositioning'].currentValue);
     }
 
-    if (
-      changes['padding'] &&
-      !changes['padding'].isFirstChange() &&
-      this.popupInstance
-    ) {
+    if (changes['padding'] && !changes['padding'].isFirstChange() && this.popupInstance) {
       this.popupInstance.setPadding(changes['padding'].currentValue);
     }
   }
@@ -237,9 +213,7 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
         } else if (markerInstance) {
           this.mapService.addPopupToMarker(markerInstance, popup);
         } else {
-          throw new Error(
-            'mgl-popup need either lngLat/marker/feature to be set',
-          );
+          throw new Error('mgl-popup need either lngLat/marker/feature to be set');
         }
       }),
     );

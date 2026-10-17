@@ -29,9 +29,7 @@ import { ControlPreview } from './control.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
-      <p class="text-muted-foreground">
-        Place any content in the map's corners.
-      </p>
+      <p class="text-muted-foreground">Place any content in the map's corners.</p>
     </div>
 
     <div elbPreview>

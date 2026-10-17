@@ -4,11 +4,11 @@ import type {
   GeolocateControl,
   LngLatLike,
   Map,
-  MapLibreEvent,
   MapBoxZoomEvent,
   MapContextEvent,
   MapLayerMouseEvent,
   MapLayerTouchEvent,
+  MapLibreEvent,
   MapMouseEvent,
   MapSourceDataEvent,
   MapStyleDataEvent,
@@ -58,15 +58,9 @@ export type MapEvent = {
   moveEnd: OutputEmitterRef<
     MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined> & EventData
   >;
-  mapDragStart: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  mapDrag: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  mapDragEnd: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
+  mapDragStart: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  mapDrag: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  mapDragEnd: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
   zoomStart: OutputEmitterRef<
     MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined> & EventData
   >;
@@ -76,24 +70,12 @@ export type MapEvent = {
   zoomEnd: OutputEmitterRef<
     MapLibreEvent<MouseEvent | TouchEvent | WheelEvent | undefined> & EventData
   >;
-  rotateStart: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  rotate: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  rotateEnd: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  pitchStart: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  pitchEvt: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
-  pitchEnd: OutputEmitterRef<
-    MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData
-  >;
+  rotateStart: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  rotate: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  rotateEnd: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  pitchStart: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  pitchEvt: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
+  pitchEnd: OutputEmitterRef<MapLibreEvent<MouseEvent | TouchEvent | undefined> & EventData>;
   boxZoomStart: OutputEmitterRef<MapBoxZoomEvent & EventData>;
   boxZoomEnd: OutputEmitterRef<MapBoxZoomEvent & EventData>;
   boxZoomCancel: OutputEmitterRef<MapBoxZoomEvent & EventData>;
@@ -110,7 +92,7 @@ export type MapEvent = {
   sourceDataLoading: OutputEmitterRef<MapSourceDataEvent & EventData>;
   styleImageMissing: OutputEmitterRef<MapStyleImageMissingEvent & EventData>;
   idle: OutputEmitterRef<MapLibreEvent & EventData>;
-}
+};
 
 export type LayerEvents = {
   layerClick: OutputEmitterRef<MapLayerMouseEvent & EventData>;
@@ -126,7 +108,7 @@ export type LayerEvents = {
   layerTouchStart: OutputEmitterRef<MapLayerTouchEvent & EventData>;
   layerTouchEnd: OutputEmitterRef<MapLayerTouchEvent & EventData>;
   layerTouchCancel: OutputEmitterRef<MapLayerTouchEvent & EventData>;
-}
+};
 
 /**
  * in typescript 4.1 DOM interface Position and Coordinates renamed to GeolocationPosition GeolocationCoordinates
@@ -141,14 +123,14 @@ export type NgxMapLibreGeolocationCoordinates = {
   readonly latitude: number;
   readonly longitude: number;
   readonly speed: number | null;
-}
+};
 
 export type Position = {
   coords: NgxMapLibreGeolocationCoordinates;
   target: GeolocateControl;
   timestamp: number;
   type: string;
-}
+};
 
 export type MapImageData =
   | HTMLImageElement
@@ -160,4 +142,4 @@ export type MapImageData =
 export type MapImageOptions = {
   pixelRatio: number;
   sdf: boolean;
-}
+};

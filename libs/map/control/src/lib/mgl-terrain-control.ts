@@ -1,7 +1,7 @@
 import { afterNextRender, Directive, inject, input } from '@angular/core';
 import { MglMapService } from '@elbe-ui/map';
-import { TerrainControl } from 'maplibre-gl';
 import type { TerrainSpecification } from 'maplibre-gl';
+import { TerrainControl } from 'maplibre-gl';
 import { MglControl } from './mgl-control';
 
 /**
@@ -37,10 +37,7 @@ export class MglTerrainControl {
 
         this.controlComponent.control = new TerrainControl(options);
 
-        this.mapService.addControl(
-          this.controlComponent.control,
-          this.controlComponent.position(),
-        );
+        this.mapService.addControl(this.controlComponent.control, this.controlComponent.position());
       });
     });
   }

@@ -64,7 +64,6 @@ import { MglControl } from '@elbe-ui/map/control';
 Markers and popups use their host element as the MapLibre element, so style/annotate the host directly. Components declared inside the map element can inject `MglMapService` to reach the `maplibre-gl` map
 instance (`mapCreated$` emits once it is ready, and `mapInstance` exposes it).
 
-
 ## Building
 
 ```bash

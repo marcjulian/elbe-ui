@@ -1,14 +1,7 @@
-import {
-  afterNextRender,
-  Directive,
-  inject,
-  input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
-import { MglMapService, keepAvailableObjectValues } from '@elbe-ui/map';
-import { ScaleControl } from 'maplibre-gl';
+import { afterNextRender, Directive, inject, input, OnChanges, SimpleChanges } from '@angular/core';
+import { keepAvailableObjectValues, MglMapService } from '@elbe-ui/map';
 import type { ScaleControlOptions, Unit } from 'maplibre-gl';
+import { ScaleControl } from 'maplibre-gl';
 import { MglControl } from './mgl-control';
 
 /**
@@ -45,10 +38,7 @@ export class MglScaleControl implements OnChanges {
         });
 
         this.controlComponent.control = new ScaleControl(options);
-        this.mapService.addControl(
-          this.controlComponent.control,
-          this.controlComponent.position(),
-        );
+        this.mapService.addControl(this.controlComponent.control, this.controlComponent.position());
       });
     });
   }

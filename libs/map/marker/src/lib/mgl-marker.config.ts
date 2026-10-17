@@ -20,9 +20,7 @@ const defaultConfig: MglMarkerConfig = {};
  *
  * @category Directives
  */
-export const MGL_MARKER_CONFIG = new InjectionToken<MglMarkerConfig>(
-  'MglMarkerConfig',
-);
+export const MGL_MARKER_CONFIG = new InjectionToken<MglMarkerConfig>('MglMarkerConfig');
 
 /**
  * Provides default options for every `mgl-marker` within the injector scope.
@@ -38,9 +36,7 @@ export const MGL_MARKER_CONFIG = new InjectionToken<MglMarkerConfig>(
  *
  * @category Directives
  */
-export function provideMglMarkerConfig(
-  config: Partial<MglMarkerConfig>,
-): ValueProvider {
+export function provideMglMarkerConfig(config: Partial<MglMarkerConfig>): ValueProvider {
   return {
     provide: MGL_MARKER_CONFIG,
     useValue: { ...defaultConfig, ...config },
