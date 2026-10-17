@@ -2,6 +2,8 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@tanstack/markdown@1.0.0'
   - '@tanstack/highlight@1.0.0'
+  - '@spartan-ng/brain@1.8.0'
+  - '@spartan-ng/cli@1.8.0'
 
 allowBuilds:
   '@parcel/watcher': false
