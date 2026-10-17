@@ -1,6 +1,5 @@
 import type { BooleanInput } from '@angular/cdk/coercion';
 import {
-  afterNextRender,
   booleanAttribute,
   ChangeDetectionStrategy,
   Component,
@@ -11,13 +10,13 @@ import {
   output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MglControl } from '@elbe-ui/map/control';
 import { MglMapService } from '@elbe-ui/map';
+import { MglControl } from '@elbe-ui/map/control';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideLocateFixed } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
-import { GeolocateControl } from 'maplibre-gl';
 import type { ControlPosition, GeolocatePositionEvent } from 'maplibre-gl';
+import { GeolocateControl } from 'maplibre-gl';
 
 @Component({
   selector: 'elb-geolocate-control',
@@ -56,17 +55,14 @@ export class ElbGeolocateControl implements OnDestroy {
   public readonly geolocate = output<GeolocatePositionEvent>();
 
   constructor() {
-    afterNextRender(() => {
+    this._mapService.mapCreated$.pipe(takeUntilDestroyed(this._destroyRef)).subscribe(() => {
       const control = new GeolocateControl({
         trackUserLocation: true,
         positionOptions: { enableHighAccuracy: true },
       });
       control.on('geolocate', (event) => this.geolocate.emit(event));
       this._control = control;
-
-      this._mapService.mapCreated$
-        .pipe(takeUntilDestroyed(this._destroyRef))
-        .subscribe(() => this._mapService.addControl(control));
+      this._mapService.addControl(control);
     });
   }
 
