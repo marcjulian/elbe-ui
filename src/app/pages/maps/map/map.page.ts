@@ -30,7 +30,7 @@ import { MapPreview } from './map.preview';
           <ng-icon name="simpleGithub" />
         </a>
       </div>
-      <p class="text-muted-foreground">A MapLibre map directive and controls for Angular.</p>
+      <p class="text-muted-foreground">A MapLibre map component and controls for Angular.</p>
     </div>
 
     <div elbPreview>
@@ -61,8 +61,8 @@ import { MapPreview } from './map.preview';
     <elb-h2 id="usage"> Usage </elb-h2>
     <div class="typeset mt-2">
       <p>
-        <code>MglMap</code> is a directive (<code>[mglMap]</code> or <code>mgl-map</code>) that uses
-        its host element as the map container, so the element must be sized.
+        <code>MglMap</code> is a component (<code>mgl-map</code>) that renders the map container, so
+        the element must be sized.
       </p>
       <elb-code-block [code]="usageSnippet" lang="html" />
       <p>

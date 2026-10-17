@@ -46,7 +46,7 @@ import { MglPopup } from '@elbe-ui/map/popup';
 import { MglControl } from '@elbe-ui/map/control';
 ```
 
-`MglMap`, `MglMarker` and `MglPopup` are directives (each exposes an `exportAs` — `mglMap`, `mglMarker`, `mglPopup`). `MglMap` uses **its host element** as the MapLibre container, so the element must be sized. Every usage accepts either the element or the attribute form:
+`MglMap` is a component and `MglMarker`/`MglPopup` are directives (each exposes an `exportAs` — `mglMap`, `mglMarker`, `mglPopup`). `mgl-map` renders its own container, so the element must be sized. Content placed inside it is instantiated but intentionally **not projected into the DOM** — MapLibre attaches markers, popups and controls once the map is ready:
 
 ```html
 <mgl-map class="size-full" [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12">
@@ -56,12 +56,9 @@ import { MglControl } from '@elbe-ui/map/control';
   <mgl-control position="bottom-left">MapTiler</mgl-control>
   <mgl-control mglNavigation position="top-right"></mgl-control>
 </mgl-map>
-
-<!-- or attach the map to any existing element -->
-<div class="size-full" mglMap [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12"></div>
 ```
 
-Markers and popups use their host element as the MapLibre element, so style/annotate the host directly. Components declared inside the map element can inject `MglMapService` to reach the `maplibre-gl` map
+Markers and popups use their host element as the MapLibre element, so style/annotate the host directly. Directives declared inside `mgl-map` can inject `MglMapService` to reach the `maplibre-gl` map
 instance (`mapCreated$` emits once it is ready, and `mapInstance` exposes it).
 
 ## Building

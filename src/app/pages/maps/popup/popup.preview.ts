@@ -13,7 +13,7 @@ import { environment } from '../../../../environments/environment';
       closeButton: false,
       offset: 16,
       className:
-        'popup-tip:invisible max-w-none! popup-content:rounded-xl popup-content:overflow-hidden popup-content:p-0 popup-content:shadow popup-content:ring-1 popup-content:ring-gray-950/5',
+        'popup-tip:invisible max-w-none! popup-content:bg-popover popup-content:rounded-xl popup-content:overflow-hidden popup-content:p-0 popup-content:shadow popup-content:ring-1 popup-content:ring-gray-950/5',
     }),
   ],
   host: {

@@ -3,7 +3,8 @@ import {
   afterEveryRender,
   afterNextRender,
   booleanAttribute,
-  Directive,
+  ChangeDetectionStrategy,
+  Component,
   ElementRef,
   inject,
   input,
@@ -12,6 +13,7 @@ import {
   OnDestroy,
   output,
   SimpleChanges,
+  viewChild,
 } from '@angular/core';
 import type {
   AnimationOptions,
@@ -37,36 +39,47 @@ import { MglMapService, type MovingOptions } from './mgl-map.service';
 import type { EventData, LngLatLikeOrPosition, MapDataEvent, MapEvent } from './mgl-map.types';
 
 /**
- * `mgl-map` / `[mglMap]` - the main map directive.
+ * `mgl-map` - the main map component.
  *
- * The host element is used as the MapLibre container, so it must be sized.
+ * Renders a sized container that hosts MapLibre. Content such as `mgl-marker`,
+ * `mgl-popup` and `mgl-control` is instantiated but intentionally not projected
+ * into the DOM — MapLibre attaches it to the map once it is ready. Adding
+ * `<ng-content>` to the template would render that content inside the container
+ * before MapLibre takes ownership of it.
  *
  * @see [Map](https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/)
  *
- * @category Map Directive
+ * @category Map Component
  *
  * @example
  * ```html
  * <mgl-map class="size-full" [mapStyle]="style" [zoom]="9" [center]="[-74.5, 40]" />
- *
- * <!-- or attach the map to any element -->
- * <div class="size-full" mglMap [mapStyle]="style" (mapLoad)="map = $event"></div>
  * ```
  */
-@Directive({
-  selector: '[mglMap],mgl-map',
+@Component({
+  selector: 'mgl-map',
   exportAs: 'mglMap',
   providers: [MglMapService],
+  template: '<div #container></div>',
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+      div {
+        height: 100%;
+        width: 100%;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'data-slot': 'map',
-    '[style]': 'hostStyles()',
   },
 })
 export class MglMap implements OnChanges, OnDestroy, MapEvent {
   private readonly mapService = inject(MglMapService);
-  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
-
-  public readonly hostStyles = input<string>('display: block');
+  private readonly containerRef = viewChild.required<ElementRef<HTMLDivElement>>('container');
 
   /** Init input */
   readonly collectResourceTiming = input<MapOptions['collectResourceTiming']>();
@@ -277,7 +290,7 @@ export class MglMap implements OnChanges, OnDestroy, MapEvent {
       this.mapService.setup({
         mapOptions: {
           collectResourceTiming: this.collectResourceTiming(),
-          container: this.elementRef.nativeElement,
+          container: this.containerRef().nativeElement,
           crossSourceCollisions: this.crossSourceCollisions(),
           fadeDuration: this.fadeDuration(),
           minZoom: this.minZoom(),

@@ -21,7 +21,7 @@ export const mapsRoutes: Routes = [
         title: 'Map',
         data: {
           ...meta({
-            description: 'Maplibre map directive for Angular, with markers, popups and controls.',
+            description: 'Maplibre map component for Angular, with markers, popups and controls.',
             ogImage: '/assets/og/maps.webp',
           }),
         },
