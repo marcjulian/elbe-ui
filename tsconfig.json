@@ -54,7 +54,6 @@
       "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"],
       "@elbe-ui/map": ["./libs/map/src/public-api.ts"],
       "@elbe-ui/map/control": ["./libs/map/control/src/public-api.ts"],
-      "@elbe-ui/map/core": ["./libs/map/core/src/public-api.ts"],
       "@elbe-ui/map/marker": ["./libs/map/marker/src/public-api.ts"],
       "@elbe-ui/map/popup": ["./libs/map/popup/src/public-api.ts"]
     }

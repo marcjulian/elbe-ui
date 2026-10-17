@@ -1,7 +1,7 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
-import { provideMglMaplibreWorker } from '@elbe-ui/map/core';
+
 import { provideMaptilerConfig } from '@elbe/ui/address-autocomplete/config';
 import { provideSeo } from '@elbe/ui/seo';
 import { environment } from '../environments/environment';
@@ -33,6 +33,5 @@ export const appConfig: ApplicationConfig = {
       twitterCard: 'summary_large_image',
     }),
     provideMaptilerConfig({ apiKey: environment.maptilerKey }),
-    provideMglMaplibreWorker('maplibre-gl-worker.mjs'),
   ],
 };
