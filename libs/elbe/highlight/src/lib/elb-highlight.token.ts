@@ -6,6 +6,8 @@ export interface ElbHighlightConfig {
   highlighter?: Highlighter;
   /** Shared default for code blocks and markdown fences. */
   codeLineNumbers?: boolean;
+  /** Shared default for wrapping long lines in code blocks. */
+  codeWrap?: boolean;
 }
 
 const defaultConfig: ElbHighlightConfig = {};

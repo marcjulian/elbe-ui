@@ -48,8 +48,8 @@ importers:
         specifier: 36.1.0
         version: 36.1.0(@ng-icons/core@36.1.0(@angular/common@22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(@schematics/angular@22.2.1(chokidar@5.0.0))(rxjs@7.8.2))
       '@spartan-ng/brain':
-        specifier: 1.5.0
-        version: 1.5.0(fe729d844a15000ffd656ab9d74e7403)
+        specifier: 1.8.0
+        version: 1.8.0(fe729d844a15000ffd656ab9d74e7403)
       '@tanstack/angular-charts':
         specifier: 0.18.0
         version: 0.18.0(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(@angular/platform-browser@22.2.1(@angular/common@22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2)))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -124,8 +124,8 @@ importers:
         specifier: 22.2.1
         version: 22.2.1(@angular/compiler@22.2.1)(typescript@6.0.3)
       '@spartan-ng/cli':
-        specifier: 1.5.0
-        version: 1.5.0(@angular-devkit/core@20.3.32(chokidar@5.0.0))(@angular/build@22.2.1(28c86bd32e9375d3dbadd65fce1877b3))(@angular/compiler@22.2.1)(@babel/traverse@7.29.7(supports-color@8.1.1))(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@5.0.0)(csso@5.0.5)(debug@4.4.3(supports-color@8.1.1))(esbuild@0.28.2)(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))(less@4.4.2)(lightningcss@1.33.0)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(supports-color@8.1.1)(tslib@2.8.1)
+        specifier: 1.8.0
+        version: 1.8.0(@angular-devkit/core@20.3.32(chokidar@5.0.0))(@angular/build@22.2.1(28c86bd32e9375d3dbadd65fce1877b3))(@angular/compiler@22.2.1)(@babel/traverse@7.29.7(supports-color@8.1.1))(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@5.0.0)(csso@5.0.5)(debug@4.4.3(supports-color@8.1.1))(esbuild@0.28.2)(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))(less@4.4.2)(lightningcss@1.33.0)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(supports-color@8.1.1)(tslib@2.8.1)
       '@tailwindcss/postcss':
         specifier: 4.3.3
         version: 4.3.3
@@ -2612,8 +2612,8 @@ packages:
   '@sinclair/typebox@0.34.41':
     resolution: {integrity: sha512-6gS8pZzSXdyRHTIqoqSVknxolr1kzfy4/CeDnrzsVz8TTIWUbOBr6gnzOmTYJ3eXQNh4IYHIGi5aIL7sOZ2G/g==}
 
-  '@spartan-ng/brain@1.5.0':
-    resolution: {integrity: sha512-h/8PhelvtU5Evdbj1n8pgQfli8GPAWpHSJrsYMMpMNyM8o5bHRHot2nOD7k9aQGZp1JkClzcwSb9Au//p7jIAQ==}
+  '@spartan-ng/brain@1.8.0':
+    resolution: {integrity: sha512-JZUoaWQRHu6PeMiqEF4U9yjij0YrK6tN1iZwzgaTP740uVPkJHdTYv6Ui8+vOrHD3eOxiXNxnb2Q6VDcO+rJ6Q==}
     peerDependencies:
       '@angular/cdk': '>=21.0.0 <23.0.0'
       '@angular/common': '>=21.0.0 <23.0.0'
@@ -2628,8 +2628,8 @@ packages:
       luxon:
         optional: true
 
-  '@spartan-ng/cli@1.5.0':
-    resolution: {integrity: sha512-yDfXvWejluM0K68DTW/qkO8tI5g5EnfdjxYrqTUG3kqnmqMPEcMHMp9axkJ805lyPK/oq8u9tpPGrxknjjUpmg==}
+  '@spartan-ng/cli@1.8.0':
+    resolution: {integrity: sha512-UFbyniNj61unzXPbeg6D+dPz9LMO72nRFZwCUiMaS6HqJ2bifa4dGPicx5t3nTx8/9DdZjiN2Th/+aJ9NTZegA==}
     peerDependencies:
       tslib: ^2.3.0
 
@@ -9798,7 +9798,7 @@ snapshots:
 
   '@sinclair/typebox@0.34.41': {}
 
-  '@spartan-ng/brain@1.5.0(fe729d844a15000ffd656ab9d74e7403)':
+  '@spartan-ng/brain@1.8.0(fe729d844a15000ffd656ab9d74e7403)':
     dependencies:
       '@angular/cdk': 22.2.1(@angular/common@22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(@angular/forms@22.2.1(@angular/common@22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(@angular/platform-browser@22.2.1(@angular/common@22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/platform-browser@22.2.1(@angular/common@22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@angular/common': 22.2.1(@angular/core@22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2))(rxjs@7.8.2)
@@ -9812,7 +9812,7 @@ snapshots:
     optionalDependencies:
       luxon: 3.7.2
 
-  '@spartan-ng/cli@1.5.0(@angular-devkit/core@20.3.32(chokidar@5.0.0))(@angular/build@22.2.1(28c86bd32e9375d3dbadd65fce1877b3))(@angular/compiler@22.2.1)(@babel/traverse@7.29.7(supports-color@8.1.1))(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@5.0.0)(csso@5.0.5)(debug@4.4.3(supports-color@8.1.1))(esbuild@0.28.2)(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))(less@4.4.2)(lightningcss@1.33.0)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(supports-color@8.1.1)(tslib@2.8.1)':
+  '@spartan-ng/cli@1.8.0(@angular-devkit/core@20.3.32(chokidar@5.0.0))(@angular/build@22.2.1(28c86bd32e9375d3dbadd65fce1877b3))(@angular/compiler@22.2.1)(@babel/traverse@7.29.7(supports-color@8.1.1))(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@rspack/core@1.6.7)(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(chokidar@5.0.0)(csso@5.0.5)(debug@4.4.3(supports-color@8.1.1))(esbuild@0.28.2)(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))(less@4.4.2)(lightningcss@1.33.0)(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(supports-color@8.1.1)(tslib@2.8.1)':
     dependencies:
       '@angular/core': 22.2.1(@angular/compiler@22.2.1)(rxjs@7.8.2)
       '@nx/angular': 22.2.0(@angular-devkit/core@20.3.32(chokidar@5.0.0))(@angular/build@22.2.1(28c86bd32e9375d3dbadd65fce1877b3))(@babel/traverse@7.29.7(supports-color@8.1.1))(@module-federation/enhanced@0.21.6(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@module-federation/node@2.7.25(@rspack/core@1.6.7)(debug@4.4.3(supports-color@8.1.1))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(supports-color@8.1.1)(typescript@6.0.3)(webpack@5.103.0(esbuild@0.28.2)))(@rspack/core@1.6.7)(@schematics/angular@21.2.14(chokidar@5.0.0))(@types/express@5.0.6)(@zkochan/js-yaml@0.0.7)(csso@5.0.5)(debug@4.4.3(supports-color@8.1.1))(esbuild@0.28.2)(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))(less@4.4.2)(lightningcss@1.33.0)(nx@22.2.0(debug@4.4.3(supports-color@8.1.1)))(react-dom@19.2.1(react@19.2.1))(react-refresh@0.18.0)(react@19.2.1)(rxjs@7.8.2)(supports-color@8.1.1)(typescript@6.0.3)

@@ -1,45 +1,39 @@
+import type { BooleanInput } from '@angular/cdk/coercion';
 import {
+  booleanAttribute,
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   computed,
-  inject,
   input,
-  signal,
 } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideCheck, lucideCopy } from '@ng-icons/lucide';
-import { HlmButtonImports } from '@spartan-ng/helm/button';
+import { HlmCodeBlock, HlmCodeBlockImports } from '@spartan-ng/helm/code-block';
 import { classes } from '@spartan-ng/helm/utils';
 import type { Highlighter } from '@tanstack/highlight/core';
+import { highlightLines, type ElbHighlightToken } from './elb-highlight-lines';
 import { injectElbHighlightConfig } from './elb-highlight.token';
 
 @Component({
   selector: 'elb-code-block',
-  imports: [NgIcon, HlmButtonImports],
-  providers: [provideIcons({ lucideCopy, lucideCheck })],
+  imports: [HlmCodeBlockImports],
+  hostDirectives: [{ directive: HlmCodeBlock, inputs: ['variant', 'size'] }],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div [innerHTML]="_html()"></div>
-    <button
-      hlmBtn
-      variant="ghost"
-      size="icon"
-      class="absolute top-1 right-1"
-      (click)="copy()"
-      aria-label="Copy code"
-    >
-      @if (copied()) {
-        <ng-icon name="lucideCheck" class="text-green-500" />
-      } @else {
-        <ng-icon name="lucideCopy" />
-      }
-    </button>
+    @if (title()) {
+      <hlm-code-block-header>
+        <hlm-code-block-title>{{ title() }}</hlm-code-block-title>
+      </hlm-code-block-header>
+    }
+
+    <!-- Whitespace inside the projected pre is literal — keep the loop on one line. -->
+    <!-- prettier-ignore -->
+    <pre hlmCodeBlockContent [lineNumbers]="lineNumbers()" [wrap]="wrap()">@for (line of _lines(); track $index) {<span hlmCodeBlockLine>@for (token of line; track $index) {<span [class]="token.classes">{{ token.value }}</span>}</span>}</pre>
+
+    <hlm-code-block-actions>
+      <button hlmCodeBlockCopyButton [value]="_code()"></button>
+    </hlm-code-block-actions>
   `,
 })
 export class ElbCodeBlock {
-  private readonly _sanitizer = inject(DomSanitizer);
   private readonly _config = injectElbHighlightConfig();
 
   public readonly code = input.required<string>();
@@ -47,51 +41,34 @@ export class ElbCodeBlock {
   public readonly lineNumbers = input<boolean | undefined>(this._config.codeLineNumbers);
   public readonly title = input<string>();
 
+  /** Wrap long lines instead of scrolling. Defaults to the shared highlight config. */
+  public readonly wrap = input<boolean | undefined, BooleanInput>(this._config.codeWrap, {
+    transform: booleanAttribute,
+  });
+
   /** Per-instance override; defaults to the shared highlight config. */
   public readonly highlighter = input<Highlighter | undefined>(this._config.highlighter);
 
-  protected readonly copied = signal(false);
+  /** Highlighter trims the trailing newline; copy exactly what is rendered. */
+  protected readonly _code = computed(() => this.code().trimEnd());
 
-  private _copiedTimeout: ReturnType<typeof setTimeout> | undefined;
+  /**
+   * One token array per source line, like shadcn's `useHighlightedCode`. Each line
+   * is rendered inside `[hlmCodeBlockLine]`, so the code block owns line numbers,
+   * wrapping and copy — the highlighting is just the tokens.
+   */
+  protected readonly _lines = computed<ElbHighlightToken[][]>(() => {
+    const highlighter = this.highlighter();
+    const code = this._code();
+
+    if (!highlighter) {
+      return code.split('\n').map((line) => [{ classes: '', value: line }]);
+    }
+
+    return highlightLines(highlighter, code, this.lang());
+  });
 
   constructor() {
-    classes(
-      () =>
-        'border-border not-typeset relative mt-(--typeset-flow) block overflow-hidden rounded-lg border',
-    );
-
-    inject(DestroyRef).onDestroy(() => clearTimeout(this._copiedTimeout));
-  }
-
-  private readonly _block = computed(() => {
-    const highlighter = this.highlighter();
-    if (!highlighter) {
-      return null;
-    }
-    return highlighter.renderCodeBlockData({
-      code: this.code(),
-      lang: this.lang(),
-      lineNumbers: this.lineNumbers(),
-      title: this.title(),
-    });
-  });
-
-  // Highlighter output is escaped by TanStack, so trusting it is safe and preserves `data-*`.
-  protected readonly _html = computed(() => {
-    const block = this._block();
-    return block ? this._sanitizer.bypassSecurityTrustHtml(block.htmlMarkup) : null;
-  });
-
-  protected async copy(): Promise<void> {
-    try {
-      await navigator.clipboard.writeText(this._block()?.copyText ?? this.code());
-    } catch {
-      // Clipboard can be unavailable (insecure context, permissions) — leave the icon unchanged.
-      return;
-    }
-
-    this.copied.set(true);
-    clearTimeout(this._copiedTimeout);
-    this._copiedTimeout = setTimeout(() => this.copied.set(false), 2000);
+    classes(() => 'not-typeset mt-(--typeset-flow)');
   }
 }
