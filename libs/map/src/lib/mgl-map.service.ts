@@ -53,7 +53,7 @@ import type {
   MapImageData,
   MapImageOptions,
 } from './mgl-map.types';
-import { keepAvailableObjectValues } from '../shared/utils/functions/object.fn';
+import { keepAvailableObjectValues } from './utils/object.fn';
 
 export type SetupMap = {
   mapOptions: Omit<MapOptions, 'center'> & {

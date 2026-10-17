@@ -1,3 +1,4 @@
+import type { BooleanInput } from '@angular/cdk/coercion';
 import {
   afterNextRender,
   booleanAttribute,
@@ -13,10 +14,10 @@ import {
   signal,
   SimpleChanges,
 } from '@angular/core';
-import type { Marker, MarkerOptions } from 'maplibre-gl';
-import { MglMapService } from '@elbe-ui/map';
-import type { BooleanInput, LngLatLikeOrPosition } from '@elbe-ui/map';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import type { LngLatLikeOrPosition } from '@elbe-ui/map';
+import { MglMapService } from '@elbe-ui/map';
+import type { Marker, MarkerOptions } from 'maplibre-gl';
 import { injectMglMarkerConfig } from './mgl-marker.config';
 
 /**
@@ -57,9 +58,7 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
   /** Init inputs */
   readonly offset = input<MarkerOptions['offset']>(this.config.offset);
   readonly anchor = input<MarkerOptions['anchor']>(this.config.anchor);
-  readonly clickTolerance = input<MarkerOptions['clickTolerance']>(
-    this.config.clickTolerance,
-  );
+  readonly clickTolerance = input<MarkerOptions['clickTolerance']>(this.config.clickTolerance);
   readonly color = input<MarkerOptions['color']>(this.config.color);
   readonly scale = input<MarkerOptions['scale']>(this.config.scale);
   readonly opacity = input<MarkerOptions['opacity']>(this.config.opacity);
@@ -76,9 +75,7 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
   readonly popupShown = input<boolean, BooleanInput>(undefined, {
     transform: booleanAttribute,
   });
-  readonly pitchAlignment = input<MarkerOptions['pitchAlignment']>(
-    this.config.pitchAlignment,
-  );
+  readonly pitchAlignment = input<MarkerOptions['pitchAlignment']>(this.config.pitchAlignment);
   readonly rotationAlignment = input<MarkerOptions['rotationAlignment']>(
     this.config.rotationAlignment,
   );
@@ -92,35 +89,33 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
 
   constructor() {
     afterNextRender(() => {
-      this.mapService.mapCreated$
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe(() => {
-          const marker = this.mapService.addMarker({
-            markersOptions: {
-              element: this.elementRef.nativeElement,
-              feature: this.feature(),
-              lngLat: this.lngLat(),
-              offset: this.offset(),
-              anchor: this.anchor(),
-              color: this.color(),
-              scale: this.scale(),
-              draggable: !!this.draggable(),
-              clickTolerance: this.clickTolerance(),
-              rotation: this.rotation(),
-              rotationAlignment: this.rotationAlignment(),
-              pitchAlignment: this.pitchAlignment(),
-              opacity: this.opacity(),
-              opacityWhenCovered: this.opacityWhenCovered(),
-              subpixelPositioning: this.subpixelPositioning(),
-            },
-            markersEvents: {
-              markerDragStart: this.markerDragStart,
-              markerDrag: this.markerDrag,
-              markerDragEnd: this.markerDragEnd,
-            },
-          });
-          this.markerInstance.set(marker);
+      this.mapService.mapCreated$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+        const marker = this.mapService.addMarker({
+          markersOptions: {
+            element: this.elementRef.nativeElement,
+            feature: this.feature(),
+            lngLat: this.lngLat(),
+            offset: this.offset(),
+            anchor: this.anchor(),
+            color: this.color(),
+            scale: this.scale(),
+            draggable: !!this.draggable(),
+            clickTolerance: this.clickTolerance(),
+            rotation: this.rotation(),
+            rotationAlignment: this.rotationAlignment(),
+            pitchAlignment: this.pitchAlignment(),
+            opacity: this.opacity(),
+            opacityWhenCovered: this.opacityWhenCovered(),
+            subpixelPositioning: this.subpixelPositioning(),
+          },
+          markersEvents: {
+            markerDragStart: this.markerDragStart,
+            markerDrag: this.markerDrag,
+            markerDragEnd: this.markerDragEnd,
+          },
         });
+        this.markerInstance.set(marker);
+      });
     });
   }
 
@@ -141,9 +136,7 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
     }
 
     if (changes['feature'] && !changes['feature'].isFirstChange()) {
-      markerInstance.setLngLat(
-        changes['feature'].currentValue.geometry.coordinates,
-      );
+      markerInstance.setLngLat(changes['feature'].currentValue.geometry.coordinates);
     }
     if (changes['draggable'] && !changes['draggable'].isFirstChange()) {
       markerInstance.setDraggable(!!changes['draggable'].currentValue);
@@ -156,13 +149,8 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
     if (changes['pitchAlignment'] && !changes['pitchAlignment'].isFirstChange()) {
       markerInstance.setPitchAlignment(changes['pitchAlignment'].currentValue);
     }
-    if (
-      changes['rotationAlignment'] &&
-      !changes['rotationAlignment'].isFirstChange()
-    ) {
-      markerInstance.setRotationAlignment(
-        changes['rotationAlignment'].currentValue,
-      );
+    if (changes['rotationAlignment'] && !changes['rotationAlignment'].isFirstChange()) {
+      markerInstance.setRotationAlignment(changes['rotationAlignment'].currentValue);
     }
     if (changes['rotation'] && !changes['rotation'].isFirstChange()) {
       markerInstance.setRotation(changes['rotation'].currentValue);

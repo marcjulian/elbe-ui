@@ -1,8 +1,8 @@
+import type { BooleanInput } from '@angular/cdk/coercion';
 import { afterNextRender, booleanAttribute, Directive, inject, input } from '@angular/core';
-import { MglMapService, keepAvailableObjectValues } from '@elbe-ui/map';
-import type { BooleanInput } from '@elbe-ui/map';
-import { AttributionControl } from 'maplibre-gl';
+import { keepAvailableObjectValues, MglMapService } from '@elbe-ui/map';
 import type { AttributionControlOptions } from 'maplibre-gl';
+import { AttributionControl } from 'maplibre-gl';
 import { MglControl } from './mgl-control';
 
 /**
@@ -39,10 +39,7 @@ export class MglAttributionControl {
         });
 
         this.controlComponent.control = new AttributionControl(options);
-        this.mapService.addControl(
-          this.controlComponent.control,
-          this.controlComponent.position(),
-        );
+        this.mapService.addControl(this.controlComponent.control, this.controlComponent.position());
       });
     });
   }

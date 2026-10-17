@@ -1,8 +1,8 @@
+import type { BooleanInput } from '@angular/cdk/coercion';
 import { afterNextRender, booleanAttribute, Directive, inject, input } from '@angular/core';
-import { MglMapService, keepAvailableObjectValues } from '@elbe-ui/map';
-import type { BooleanInput } from '@elbe-ui/map';
-import { NavigationControl } from 'maplibre-gl';
+import { keepAvailableObjectValues, MglMapService } from '@elbe-ui/map';
 import type { NavigationControlOptions } from 'maplibre-gl';
+import { NavigationControl } from 'maplibre-gl';
 import { MglControl } from './mgl-control';
 
 /**
@@ -49,10 +49,7 @@ export class MglNavigationControl {
         });
 
         this.controlComponent.control = new NavigationControl(options);
-        this.mapService.addControl(
-          this.controlComponent.control,
-          this.controlComponent.position(),
-        );
+        this.mapService.addControl(this.controlComponent.control, this.controlComponent.position());
       });
     });
   }

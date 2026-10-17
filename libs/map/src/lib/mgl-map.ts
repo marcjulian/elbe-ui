@@ -1,3 +1,4 @@
+import type { BooleanInput } from '@angular/cdk/coercion';
 import {
   afterEveryRender,
   afterNextRender,
@@ -32,7 +33,6 @@ import type {
   TerrainSpecification,
 } from 'maplibre-gl';
 import { firstValueFrom } from 'rxjs';
-import { BooleanInput } from '../shared/utils/types';
 import { MglMapService, type MovingOptions } from './mgl-map.service';
 import type { EventData, LngLatLikeOrPosition, MapDataEvent, MapEvent } from './mgl-map.types';
 

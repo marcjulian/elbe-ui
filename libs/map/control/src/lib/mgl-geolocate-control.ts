@@ -1,15 +1,9 @@
-import {
-  afterNextRender,
-  booleanAttribute,
-  Directive,
-  inject,
-  input,
-  output,
-} from '@angular/core';
-import { MglMapService, keepAvailableObjectValues } from '@elbe-ui/map';
-import type { BooleanInput, Position } from '@elbe-ui/map';
-import { GeolocateControl } from 'maplibre-gl';
+import type { BooleanInput } from '@angular/cdk/coercion';
+import { afterNextRender, booleanAttribute, Directive, inject, input, output } from '@angular/core';
+import type { Position } from '@elbe-ui/map';
+import { keepAvailableObjectValues, MglMapService } from '@elbe-ui/map';
 import type { FitBoundsOptions, GeolocateControlOptions } from 'maplibre-gl';
+import { GeolocateControl } from 'maplibre-gl';
 import { MglControl } from './mgl-control';
 
 /**
