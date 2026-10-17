@@ -76,7 +76,7 @@ import { PopupPreview } from './popup.preview';
         them with the <code>className</code> input (or a config default), which lands on the
         <code>.maplibregl-popup</code> container:
       </p>
-      <elb-code-block [code]="stylingClassNameSnippet" lang="ts" />
+      <elb-code-block [code]="stylingClassNameSnippet" lang="ts" wrap />
       <p>
         The example uses two Tailwind custom variants (defined once in your global stylesheet) so
         the utilities reach MapLibre's elements:

@@ -50,7 +50,7 @@ import { mapStyles } from './map-controls.styles';
 
     <elb-h2 id="installation"> Installation </elb-h2>
     <div class="typeset mt-2">
-      <p>Install <code>npm install maplibre-gl</code> and add the MapLibre styles:</p>
+      <p>Install <code>npm install maplibre-gl</code> and add the MapLibre styles</p>
       <elb-code-block [code]="mapStyles" lang="css" />
       <p>
         <code>&lt;elb-geolocate-control /&gt;</code> reuses the native MapLibre geolocate control
