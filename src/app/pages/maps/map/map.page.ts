@@ -105,10 +105,10 @@ export class MapPage {
   mapStyles = mapStyles;
 
   workerSnippet = `// app.config.ts
-import { provideMaplibreWorker } from '@elbe-ui/map/core';
+import { provideMglMaplibreWorker } from '@elbe-ui/map/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideMaplibreWorker('maplibre-gl-worker.mjs')],
+  providers: [provideMglMaplibreWorker('maplibre-gl-worker.mjs')],
 };`;
 
   usageSnippet = `<mgl-map class="size-full" [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="8">

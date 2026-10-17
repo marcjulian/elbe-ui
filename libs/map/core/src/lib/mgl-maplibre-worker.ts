@@ -4,7 +4,7 @@ import { InjectionToken, type Provider } from '@angular/core';
  * Injection token for the MapLibre GL JS worker URL, applied via `setWorkerUrl()`
  * by `<mgl-map>` before the first map is created.
  *
- * Prefer {@link provideMaplibreWorker} over using this token directly.
+ * Prefer {@link provideMglMaplibreWorker} over using this token directly.
  */
 export const MAPLIBRE_WORKER_URL = new InjectionToken<string>('elbe-ui maplibre worker URL');
 
@@ -21,10 +21,10 @@ export const MAPLIBRE_WORKER_URL = new InjectionToken<string>('elbe-ui maplibre 
  * ```typescript
  * // app.config.ts
  * export const appConfig: ApplicationConfig = {
- *   providers: [provideMaplibreWorker('maplibre-gl-worker.mjs')],
+ *   providers: [provideMglMaplibreWorker('maplibre-gl-worker.mjs')],
  * };
  * ```
  */
-export function provideMaplibreWorker(workerUrl: string): Provider {
+export function provideMglMaplibreWorker(workerUrl: string): Provider {
   return { provide: MAPLIBRE_WORKER_URL, useValue: workerUrl };
 }

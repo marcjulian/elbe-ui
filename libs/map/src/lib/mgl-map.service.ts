@@ -136,7 +136,7 @@ export class MglMapService {
       console.warn(
         '@elbe-ui/map: MAPLIBRE_WORKER_URL is not provided. ' +
         'MapLibre GL JS v6 requires a worker URL to function correctly. ' +
-        "Provide it via provideMaplibreWorker('maplibre-gl-worker.mjs') " +
+        "Provide it via provideMglMaplibreWorker('maplibre-gl-worker.mjs') " +
         'in your application config or component providers.'
       );
     }

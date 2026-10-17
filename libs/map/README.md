@@ -11,7 +11,7 @@ Angular components for building maps with [MapLibre](https://maplibre.org), fork
 | `@elbe-ui/map/marker`  | `MglMarker`, `provideMglMarkerConfig`, `MglMarkerConfig`                                                                                         |
 | `@elbe-ui/map/popup`   | `MglPopup`, `provideMglPopupConfig`, `MglPopupConfig`                                                                                            |
 | `@elbe-ui/map/control` | `MglControl` + `[mglNavigation]`, `[mglFullscreen]`, `[mglGeolocate]`, `[mglGlobe]`, `[mglScale]`, `[mglAttribution]`, `[mglTerrain]` directives |
-| `@elbe-ui/map/core`    | `provideMaplibreWorker`, `MAPLIBRE_WORKER_URL`                                                                                                   |
+| `@elbe-ui/map/core`    | `provideMglMaplibreWorker`, `MAPLIBRE_WORKER_URL`                                                                                                   |
 
 ## Installation
 
@@ -25,10 +25,10 @@ library at the worker:
 
 ```typescript
 // app.config.ts
-import { provideMaplibreWorker } from '@elbe-ui/map/core';
+import { provideMglMaplibreWorker } from '@elbe-ui/map/core';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideMaplibreWorker('maplibre-gl-worker.mjs')],
+  providers: [provideMglMaplibreWorker('maplibre-gl-worker.mjs')],
 };
 ```
 
