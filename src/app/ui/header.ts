@@ -24,10 +24,10 @@ import { config } from '../config';
           <span>elbe/<span class="text-primary">ui</span></span>
         </a>
 
-        <nav>
+        <nav class="hidden sm:flex sm:gap-1">
           <a hlmBtn variant="ghost" size="sm" routerLink="/components">Components</a>
           <a hlmBtn variant="ghost" size="sm" routerLink="/maps">Maps</a>
-          <a hlmBtn variant="ghost" size="sm" routerLink="/labs">Labs</a>
+          <a hlmBtn variant="ghost" size="sm" routerLink="/labs" >Labs</a>
         </nav>
 
         <div class="ml-auto flex gap-1">
