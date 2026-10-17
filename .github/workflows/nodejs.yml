@@ -25,5 +25,3 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
       - run: pnpm build
-      - name: Build map library
-        run: pnpm build:map
