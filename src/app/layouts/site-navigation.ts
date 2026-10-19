@@ -109,6 +109,12 @@ export const siteNavigation: SiteNavigationGroup[] = [
         icon: 'lucideSlidersHorizontal',
         description: 'Custom and native map controls.',
       },
+      {
+        path: 'source',
+        name: 'Source',
+        icon: 'lucideLayers',
+        description: 'Add GeoJSON data to the map.',
+      },
     ],
   },
   {

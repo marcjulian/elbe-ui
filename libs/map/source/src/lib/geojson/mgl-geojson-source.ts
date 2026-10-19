@@ -27,17 +27,15 @@ import { MglSource } from '../mgl-source';
  *   <mgl-geojson-source id="symbols-source">
  *     <mgl-feature
  *       *ngFor="let geometry of geometries"
- *       [geometry]="geometry"
- *     ></mgl-feature>
- *   </mgl-geojson-source>
+ *       [geometry]="geometry" />
+ *    </mgl-geojson-source>
  *   ...
  *   <mgl-geojson-source
  *     id="earthquakes"
  *     [data]="earthquakes"
  *     [cluster]="true"
  *     [clusterMaxZoom]="14"
- *     [clusterRadius]="50"
- *   ></mgl-geojson-source>
+ *     [clusterRadius]="50" />
  * </mgl-map>
  *
  * ```

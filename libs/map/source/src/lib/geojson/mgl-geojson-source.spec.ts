@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MglMapService } from '@elbe-ui/map';
 import { of } from 'rxjs';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { createSpyObj, type SpyObj } from '../../../testing/spy-obj';
+import { createSpyObj, type SpyObj } from '../../../../testing/spy-obj';
 import { MglGeoJSONSource } from './mgl-geojson-source';
 
 const getMapServiceStub = () =>

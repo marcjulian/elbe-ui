@@ -60,6 +60,17 @@ export const mapsRoutes: Routes = [
           }),
         },
       },
+      {
+        path: 'source',
+        loadComponent: () => import('./source/source.page').then((m) => m.SourcePage),
+        title: 'Source',
+        data: {
+          ...meta({
+            description: 'Add GeoJSON data to the map with a declarative source directive.',
+            ogImage: '/assets/og/maps-source.webp',
+          }),
+        },
+      },
     ],
   },
 ];

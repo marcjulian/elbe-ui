@@ -13,7 +13,7 @@ import { MglMapService } from '@elbe-ui/map';
 import { VectorSourceSpecification } from 'maplibre-gl';
 import { of, tap } from 'rxjs';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { createSpyObj, type SpyObj } from '../../testing/spy-obj';
+import { createSpyObj, type SpyObj } from '../../../testing/spy-obj';
 import { MglSource } from './mgl-source';
 
 const getMapServiceStub = () =>

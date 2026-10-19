@@ -11,6 +11,7 @@ Angular components for building maps with [MapLibre](https://maplibre.org), fork
 | `@elbe-ui/map/marker`  | `MglMarker`, `provideMglMarkerConfig`, `MglMarkerConfig`                                                                                            |
 | `@elbe-ui/map/popup`   | `MglPopup`, `provideMglPopupConfig`, `MglPopupConfig`                                                                                               |
 | `@elbe-ui/map/control` | `MglControl` + `[mglNavigation]`, `[mglFullscreen]`, `[mglGeolocate]`, `[mglGlobe]`, `[mglScale]`, `[mglAttribution]`, `[mglTerrain]` directives    |
+| `@elbe-ui/map/layer`   | `MglLayer`                                                                                                                                          |
 | `@elbe-ui/map/source`  | `MglGeoJSONSource`, `MglFeature`, `MglVectorSource`, `MglRasterSource`, `MglRasterDemSource`, `MglImageSource`, `MglCanvasSource`, `MglVideoSource` |
 
 ## Installation
@@ -45,6 +46,7 @@ import { MglMap } from '@elbe-ui/map';
 import { MglMarker, provideMglMarkerConfig } from '@elbe-ui/map/marker';
 import { MglPopup } from '@elbe-ui/map/popup';
 import { MglControl } from '@elbe-ui/map/control';
+import { MglLayer } from '@elbe-ui/map/layer';
 import { MglGeoJSONSource } from '@elbe-ui/map/source';
 ```
 
