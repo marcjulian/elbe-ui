@@ -56,6 +56,7 @@
       "@elbe-ui/map/control": ["./libs/map/control/src/public-api.ts"],
       "@elbe-ui/map/marker": ["./libs/map/marker/src/public-api.ts"],
       "@elbe-ui/map/popup": ["./libs/map/popup/src/public-api.ts"],
+      "@elbe-ui/map/source": ["./libs/map/source/src/public-api.ts"],
       "@spartan-ng/helm/code-block": ["./libs/ui/code-block/src/index.ts"]
     }
   },
