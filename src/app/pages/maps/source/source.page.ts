@@ -6,11 +6,20 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { H2 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
+import { ClusterPreview } from './cluster.preview';
 import { SourcePreview } from './source.preview';
 
 @Component({
   selector: 'elb-source-page',
-  imports: [NgIcon, H2, HlmButtonImports, ElbHighlightImports, Preview, SourcePreview],
+  imports: [
+    NgIcon,
+    H2,
+    HlmButtonImports,
+    ElbHighlightImports,
+    Preview,
+    SourcePreview,
+    ClusterPreview,
+  ],
   providers: [provideIcons({ simpleGithub })],
   template: `
     <div class="flex flex-col gap-2">
@@ -81,12 +90,23 @@ import { SourcePreview } from './source.preview';
         Point sources can be clustered in MapLibre. The clustering options are inputs on the source,
         so they can be bound like any other value.
       </p>
-      <elb-code-block [code]="clusteringSnippet" lang="html" />
+      <elb-code-block [code]="clusteringSnippet" lang="html" wrap />
       <p>
         Cluster-aware helpers such as <code>getClusterExpansionZoom</code>,
         <code>getClusterChildren</code> and <code>getClusterLeaves</code> are available on the
         directive.
       </p>
+      <p>
+        To render clustered points as HTML markers instead of WebGL symbols, add
+        <code>mgl-marker-cluster</code> from <code>&#64;elbe-ui/map/marker-cluster</code>, provide a
+        template for points and clusters, and import the two template directives
+        <code>MglPointTemplate</code> and <code>MglClusterPointTemplate</code> in the host
+        component's <code>imports</code>.
+      </p>
+      <elb-code-block [code]="markerClusterSnippet" lang="html" wrap />
+      <div elbPreview>
+        <elb-cluster-preview />
+      </div>
     </div>
 
     <elb-h2 id="attribute-form"> Attribute form </elb-h2>
@@ -131,6 +151,18 @@ export class SourcePage {
   [clusterRadius]="50"
   [clusterMaxZoom]="14"
 />`;
+
+  markerClusterSnippet = `<mgl-marker-cluster source="places">
+  <ng-template mglPoint>
+    <span class="bg-primary block size-2.5 rounded-full border border-white"></span>
+  </ng-template>
+
+  <ng-template mglClusterPoint let-feature>
+    <span class="bg-primary text-primary-foreground flex size-9 items-center justify-center rounded-full border-2 border-white text-xs font-semibold">
+      {{ feature.properties?.['point_count'] }}
+    </span>
+  </ng-template>
+</mgl-marker-cluster>`;
 
   popupSnippet = `<mgl-layer
   id="places"
