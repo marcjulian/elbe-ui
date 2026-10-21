@@ -103,5 +103,12 @@ export class MapControlsPage {
   <elb-geolocate-control />
   <elb-fullscreen-control />
   <elb-globe-control />
+  <elb-style-switcher
+    position="top-right"
+    orientation="vertical"
+    [options]="styleOptions"
+    [value]="styleService.styleName()"
+    (valueChange)="styleService.setStyle($event)"
+  />
 </mgl-map>`;
 }

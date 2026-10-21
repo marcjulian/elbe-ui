@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MglMap } from '@elbe-ui/map';
 import { MglControl } from '@elbe-ui/map/control';
-import { ElbMapImports } from '@elbe/ui/map';
-import { injectMapStyle } from '../../../map-style';
+import { ElbMapImports, type ElbStyleSwitcherOption } from '@elbe/ui/map';
+import { provideIcons } from '@ng-icons/core';
+import { lucideMap, lucideSatellite } from '@ng-icons/lucide';
+import { injectMapStyle, MapStyleService } from '../../../map-style';
 
 @Component({
   selector: 'elb-map-controls-preview',
   imports: [MglMap, MglControl, ElbMapImports],
+  providers: [provideIcons({ lucideMap, lucideSatellite })],
   host: {
     class: 'flex aspect-square md:aspect-video size-full rounded-xl overflow-hidden',
   },
@@ -23,6 +26,12 @@ import { injectMapStyle } from '../../../map-style';
       <elb-geolocate-control />
       <elb-navigation-control />
       <elb-globe-control />
+      <elb-style-switcher
+        position="top-right"
+        [options]="styleOptions"
+        [value]="_styleService.styleName()"
+        (valueChange)="_styleService.setStyle($event)"
+      />
 
       <mgl-control position="bottom-left">
         <a href="https://www.maptiler.com">
@@ -34,6 +43,12 @@ import { injectMapStyle } from '../../../map-style';
 })
 export class MapControlsPreview {
   protected readonly _mapStyle = injectMapStyle();
+  protected readonly _styleService = inject(MapStyleService);
 
   readonly center: [number, number] = [9.9278215, 53.5584587];
+
+  protected readonly styleOptions: ElbStyleSwitcherOption[] = [
+    { value: 'streets', label: 'Streets', icon: 'lucideMap' },
+    { value: 'satellite-hybrid', label: 'Satellite', icon: 'lucideSatellite' },
+  ];
 }
