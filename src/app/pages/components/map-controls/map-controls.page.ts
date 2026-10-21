@@ -7,6 +7,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { config } from '../../../config';
 import { H2, H3 } from '../../../ui/heading';
 import { Preview } from '../../../ui/preview';
+import { StylePickerPreview } from './map-controls-style-picker.preview';
 import { MapControlsPreview } from './map-controls.preview';
 import { mapStyles } from './map-controls.styles';
 
@@ -21,6 +22,7 @@ import { mapStyles } from './map-controls.styles';
     ElbHighlightImports,
     Preview,
     MapControlsPreview,
+    StylePickerPreview,
   ],
   providers: [provideIcons({ simpleGithub })],
   template: `
@@ -63,6 +65,10 @@ import { mapStyles } from './map-controls.styles';
     <div class="typeset mt-2">
       <p>Place the controls inside a <code>&lt;mgl-map&gt;</code>:</p>
       <elb-code-block [code]="usageSnippet" lang="html" />
+      <p>
+        Use <code>&lt;elb-style-switcher&gt;</code> for a compact segmented control, or
+        <code>&lt;elb-style-picker&gt;</code> for an icon-only trigger that opens a menu.
+      </p>
     </div>
 
     <elb-h2 id="examples"> Examples </elb-h2>
@@ -83,6 +89,30 @@ import { mapStyles } from './map-controls.styles';
     </div>
     <div elbPreview>
       <elb-map-controls-preview />
+    </div>
+
+    <div class="mt-12 flex items-baseline justify-between gap-6">
+      <elb-h3 id="style-picker"> Style Picker </elb-h3>
+      <a
+        hlmBtn
+        variant="outline"
+        size="sm"
+        href="${config.github}/tree/main/src/app/pages/components/map-controls/map-controls-style-picker.preview.ts"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open in
+        <ng-icon name="simpleGithub" />
+      </a>
+    </div>
+    <p class="text-muted-foreground mt-2 text-sm">
+      An icon-only trigger that opens a menu with the available basemap styles.
+    </p>
+    <div elbPreview>
+      <elb-style-picker-preview />
+    </div>
+    <div class="typeset mt-4">
+      <elb-code-block [code]="pickerSnippet" lang="html" />
     </div>
   `,
 })
@@ -111,4 +141,11 @@ export class MapControlsPage {
     (valueChange)="styleService.setStyle($event)"
   />
 </mgl-map>`;
+
+  pickerSnippet = `<elb-style-picker
+  position="top-right"
+  [options]="styleOptions"
+  [value]="styleService.styleName()"
+  (valueChange)="styleService.setStyle($event)"
+/>`;
 }
