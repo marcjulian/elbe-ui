@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { MglMap } from '@elbe-ui/map';
 import { MglControl } from '@elbe-ui/map/control';
-import { ElbMapImports, type ElbStyleSwitcherOption } from '@elbe/ui/map';
+import { ElbMapImports } from '@elbe/ui/map';
 import { provideIcons } from '@ng-icons/core';
 import { lucideMap, lucideSatellite } from '@ng-icons/lucide';
 import { injectMapStyle, MapStyleService } from '../../../map-style';
+import { mapStyleOptions } from './map-controls.styles';
 
 @Component({
   selector: 'elb-map-controls-preview',
@@ -28,6 +29,7 @@ import { injectMapStyle, MapStyleService } from '../../../map-style';
       <elb-globe-control />
       <elb-style-switcher
         position="top-right"
+        orientation="vertical"
         [options]="styleOptions"
         [value]="_styleService.styleName()"
         (valueChange)="_styleService.setStyle($event)"
@@ -47,8 +49,5 @@ export class MapControlsPreview {
 
   readonly center: [number, number] = [9.9278215, 53.5584587];
 
-  protected readonly styleOptions: ElbStyleSwitcherOption[] = [
-    { value: 'streets', label: 'Streets', icon: 'lucideMap' },
-    { value: 'satellite-hybrid', label: 'Satellite', icon: 'lucideSatellite' },
-  ];
+  protected readonly styleOptions = mapStyleOptions.slice(0, 2);
 }

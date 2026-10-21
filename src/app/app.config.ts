@@ -45,6 +45,10 @@ export const appConfig: ApplicationConfig = {
           light: `${environment.mapSatelliteHybrid}?key=${environment.maptilerKey}`,
           dark: `${environment.mapSatelliteHybridDark}?key=${environment.maptilerKey}`,
         },
+        ocean: {
+          light: `${environment.mapOcean}?key=${environment.maptilerKey}`,
+          dark: `${environment.mapOceanDark}?key=${environment.maptilerKey}`,
+        },
       },
     }),
   ],

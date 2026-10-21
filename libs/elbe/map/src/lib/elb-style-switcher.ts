@@ -5,12 +5,7 @@ import { NgIcon } from '@ng-icons/core';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmButtonGroupImports } from '@spartan-ng/helm/button-group';
 import type { ControlPosition } from 'maplibre-gl';
-
-export interface ElbStyleSwitcherOption {
-  value: string;
-  label: string;
-  icon: string;
-}
+import type { ElbStyleOption } from './elb-style-option';
 
 /**
  * `elb-style-switcher` - a segmented map control for switching basemap styles.
@@ -61,7 +56,7 @@ export class ElbStyleSwitcher {
 
   public readonly orientation = input<'horizontal' | 'vertical'>('vertical');
 
-  public readonly options = input.required<ElbStyleSwitcherOption[]>();
+  public readonly options = input.required<ElbStyleOption[]>();
 
   public readonly value = input.required<string>();
 
