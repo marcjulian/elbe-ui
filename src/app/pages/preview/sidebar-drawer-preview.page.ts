@@ -8,13 +8,20 @@ import {
   lucideSettings2,
   lucideSquareTerminal,
 } from '@ng-icons/lucide';
-import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
+import {
+  HlmSidebarImports,
+  HlmSidebarService,
+  provideHlmSidebarConfig,
+} from '@spartan-ng/helm/sidebar';
 import { HlmSidebarDrawer } from './hlm-sidebar-drawer';
 
 @Component({
   selector: 'elb-sidebar-drawer-preview-page',
   imports: [HlmSidebarImports, NgIcon, RouterLink, HlmSidebarDrawer],
   providers: [
+    // Own service instance + cookie name so the preview does not affect the docs layout.
+    HlmSidebarService,
+    provideHlmSidebarConfig({ sidebarCookieName: 'sidebar_drawer_preview_state' }),
     provideIcons({
       lucideCommand,
       lucideSquareTerminal,
