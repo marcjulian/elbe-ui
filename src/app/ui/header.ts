@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ElbTheme } from '@elbe/ui/theme';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideKayak, lucideMenu, lucideMoon, lucideSun } from '@ng-icons/lucide';
+import { lucideKayak, lucideMoon, lucideSun } from '@ng-icons/lucide';
 import { simpleGithub } from '@ng-icons/simple-icons';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmSidebarService } from '@spartan-ng/helm/sidebar';
@@ -11,23 +11,14 @@ import { config } from '../config';
 @Component({
   selector: 'elb-header',
   imports: [RouterLink, NgIcon, HlmButtonImports],
-  providers: [provideIcons({ lucideMenu, simpleGithub, lucideSun, lucideMoon, lucideKayak })],
+  providers: [provideIcons({ simpleGithub, lucideSun, lucideMoon, lucideKayak })],
   host: { class: 'sticky top-0 z-10' },
   template: `
     <header class="bg-background/40 backdrop-blur-lg">
       <div
         class="mx-auto flex h-(--header-height) w-full max-w-(--breakpoint-xl) items-center gap-2 px-4"
       >
-        <button
-          hlmBtn
-          size="icon-sm"
-          variant="ghost"
-          class="lg:hidden"
-          (click)="_sidebarService.toggleSidebar()"
-        >
-          <ng-icon name="lucideMenu" />
-          <span class="sr-only">Toggle sidebar</span>
-        </button>
+        <ng-content />
 
         <a routerLink="/" hlmBtn variant="ghost" size="sm" class="font-semibold">
           <ng-icon name="lucideKayak" class="text-primary text-xl" />
