@@ -93,7 +93,16 @@ import { navigationLink, siteNavigation } from './site-navigation';
                           #rla="routerLinkActive"
                           [isActive]="rla.isActive"
                         >
-                          <span>{{ item.name }}</span>
+                          <span class="truncate">{{ item.name }}</span>
+                          @if (item.new) {
+                            <span class="flex shrink-0 items-center gap-1">
+                              <span
+                                class="bg-primary size-1.5 rounded-full"
+                                aria-hidden="true"
+                              ></span>
+                              <span class="sr-only">New</span>
+                            </span>
+                          }
                         </a>
                       </li>
                     }
