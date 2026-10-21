@@ -15,6 +15,8 @@ import type {
   MapStyleImageMissingEvent,
   MapTouchEvent,
   MapWheelEvent,
+  StyleImageMetadata,
+  StyleImageSource,
 } from 'maplibre-gl';
 
 export type EventData = Record<string, any>;
@@ -132,14 +134,6 @@ export type Position = {
   type: string;
 };
 
-export type MapImageData =
-  | HTMLImageElement
-  | ArrayBufferView
-  | { width: number; height: number; data: Uint8Array | Uint8ClampedArray }
-  | ImageData
-  | ImageBitmap;
+export type MapImageData = StyleImageSource;
 
-export type MapImageOptions = {
-  pixelRatio: number;
-  sdf: boolean;
-};
+export type MapImageOptions = Partial<StyleImageMetadata>;

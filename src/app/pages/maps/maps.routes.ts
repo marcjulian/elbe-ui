@@ -71,6 +71,17 @@ export const mapsRoutes: Routes = [
           }),
         },
       },
+      {
+        path: 'image',
+        loadComponent: () => import('./image/image.page').then((m) => m.ImagePage),
+        title: 'Image',
+        data: {
+          ...meta({
+            description: 'Register an image in the map style for icons, symbols and patterns.',
+            ogImage: '/assets/og/maps-image.webp',
+          }),
+        },
+      },
     ],
   },
 ];

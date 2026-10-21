@@ -576,15 +576,41 @@ export class MglMapService {
   }
 
   async loadAndAddImage(imageId: string, url: string, options?: MapImageOptions) {
-    return this.zone.runOutsideAngular(async () => {
-      const image = await this.mapInstance.loadImage(url);
-      this.addImage(imageId, image.data, options);
-    });
+    const image = await this.loadImage(url);
+    this.addImage(imageId, image.data, options);
+  }
+
+  async loadImage(url: string) {
+    return this.zone.runOutsideAngular(() => this.mapInstance.loadImage(url));
   }
 
   addImage(imageId: string, data: MapImageData, options?: MapImageOptions) {
     return this.zone.runOutsideAngular(() => {
-      this.mapInstance.addImage(imageId, data as any, options);
+      this.mapInstance.addImage(imageId, data, options);
+    });
+  }
+
+  /**
+   * Adds an image, replacing it when an image with the same id already exists.
+   */
+  setImage(imageId: string, data: MapImageData, options?: MapImageOptions) {
+    return this.zone.runOutsideAngular(() => {
+      if (this.mapInstance.hasImage(imageId)) {
+        this.mapInstance.removeImage(imageId);
+      }
+      this.mapInstance.addImage(imageId, data, options);
+    });
+  }
+
+  /**
+   * Removes an image immediately instead of queueing it for the next render.
+   * Used when an image's inputs change and it has to be re-added right away.
+   */
+  removeImageNow(imageId: string) {
+    return this.zone.runOutsideAngular(() => {
+      if (this.mapInstance.hasImage(imageId)) {
+        this.mapInstance.removeImage(imageId);
+      }
     });
   }
 
@@ -721,7 +747,9 @@ export class MglMapService {
 
   private removeImages() {
     for (const imageId of this.imageIdsToRemove()) {
-      this.mapInstance.removeImage(imageId);
+      if (this.mapInstance.hasImage(imageId)) {
+        this.mapInstance.removeImage(imageId);
+      }
     }
     this.imageIdsToRemove.set([]);
   }

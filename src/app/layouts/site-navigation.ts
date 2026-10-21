@@ -115,6 +115,12 @@ export const siteNavigation: SiteNavigationGroup[] = [
         icon: 'lucideLayers',
         description: 'Add GeoJSON data to the map.',
       },
+      {
+        path: 'image',
+        name: 'Image',
+        icon: 'lucideImage',
+        description: 'Register images for icons, symbols and patterns.',
+      },
     ],
   },
   {

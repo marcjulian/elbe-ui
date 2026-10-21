@@ -54,6 +54,7 @@
       "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"],
       "@elbe-ui/map": ["./libs/map/src/public-api.ts"],
       "@elbe-ui/map/control": ["./libs/map/control/src/public-api.ts"],
+      "@elbe-ui/map/image": ["./libs/map/image/src/public-api.ts"],
       "@elbe-ui/map/layer": ["./libs/map/layer/src/public-api.ts"],
       "@elbe-ui/map/marker": ["./libs/map/marker/src/public-api.ts"],
       "@elbe-ui/map/marker-cluster": ["./libs/map/marker-cluster/src/public-api.ts"],
