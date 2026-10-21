@@ -42,7 +42,7 @@ import { navigationLink, siteNavigation } from '../../layouts/site-navigation';
     @if (_componentGroup; as group) {
       <div class="grid gap-4 sm:grid-cols-2">
         @for (item of group.items; track item.path) {
-          <a hlmItem [routerLink]="_link(group, item)" variant="outline" class="items-start">
+          <a hlmItem [routerLink]="_link(group, item)" variant="outline">
             <hlm-item-media variant="icon">
               <ng-icon [name]="item.icon" />
             </hlm-item-media>
