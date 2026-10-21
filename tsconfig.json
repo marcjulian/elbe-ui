@@ -60,7 +60,8 @@
       "@elbe-ui/map/marker-cluster": ["./libs/map/marker-cluster/src/public-api.ts"],
       "@elbe-ui/map/popup": ["./libs/map/popup/src/public-api.ts"],
       "@elbe-ui/map/source": ["./libs/map/source/src/public-api.ts"],
-      "@spartan-ng/helm/code-block": ["./libs/ui/code-block/src/index.ts"]
+      "@spartan-ng/helm/code-block": ["./libs/ui/code-block/src/index.ts"],
+      "@spartan-ng/helm/dropdown-menu": ["./libs/ui/dropdown-menu/src/index.ts"]
     }
   },
   "angularCompilerOptions": {
