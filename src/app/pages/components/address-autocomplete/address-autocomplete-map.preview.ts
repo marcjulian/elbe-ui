@@ -1,13 +1,12 @@
-import { Component, computed, inject, signal, viewChild } from '@angular/core';
+import { Component, signal, viewChild } from '@angular/core';
 import { MglMap } from '@elbe-ui/map';
 import { MglControl } from '@elbe-ui/map/control';
 import { Address, ElbAddressAutocompleteImports } from '@elbe/ui/address-autocomplete';
 import { ElbMapImports } from '@elbe/ui/map';
-import { ElbTheme } from '@elbe/ui/theme';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideArrowUpFromDot, lucidePlane } from '@ng-icons/lucide';
 import { HlmToggleGroupImports } from '@spartan-ng/helm/toggle-group';
-import { environment } from '../../../../environments/environment';
+import { injectMapStyle } from '../../../map-style';
 
 @Component({
   selector: 'elb-address-autocomplete-map-preview',
@@ -26,7 +25,7 @@ import { environment } from '../../../../environments/environment';
   template: `
     <mgl-map
       class="size-full"
-      [mapStyle]="mapStyle()"
+      [mapStyle]="_mapStyle()"
       [center]="[9.9278215, 53.5584587]"
       [zoom]="8"
       [minZoom]="2"
@@ -58,16 +57,11 @@ import { environment } from '../../../../environments/environment';
   `,
 })
 export class AddressAutocompleteMapPreview {
-  private readonly _theme = inject(ElbTheme);
+  protected readonly _mapStyle = injectMapStyle();
 
   private readonly map = viewChild.required(MglMap);
 
   zoomType = signal<'jump' | 'fly'>('jump');
-
-  mapStyle = computed(() => {
-    const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;
-    return `${base}?key=${environment.maptilerKey}`;
-  });
 
   zoomToAddress(address: Address | null) {
     if (!address) return;

@@ -1,8 +1,7 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MglMap } from '@elbe-ui/map';
 import { MglMarker } from '@elbe-ui/map/marker';
-import { ElbTheme } from '@elbe/ui/theme';
-import { environment } from '../../../../environments/environment';
+import { injectMapStyle } from '../../../map-style';
 
 @Component({
   selector: 'elb-marker-preview',
@@ -13,7 +12,7 @@ import { environment } from '../../../../environments/environment';
   template: `
     <mgl-map
       class="size-full"
-      [mapStyle]="mapStyle()"
+      [mapStyle]="_mapStyle()"
       [center]="center"
       [zoom]="8"
       [minZoom]="1"
@@ -37,13 +36,8 @@ import { environment } from '../../../../environments/environment';
   `,
 })
 export class MarkerPreview {
-  private readonly _theme = inject(ElbTheme);
+  protected readonly _mapStyle = injectMapStyle();
 
   readonly center: [number, number] = [9.9278215, 53.5584587];
   readonly markerOffset: [number, number] = [0, 22];
-
-  mapStyle = computed(() => {
-    const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;
-    return `${base}?key=${environment.maptilerKey}`;
-  });
 }

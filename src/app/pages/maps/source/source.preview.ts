@@ -1,11 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MglMap } from '@elbe-ui/map';
 import { MglLayer } from '@elbe-ui/map/layer';
 import { MglPopup, provideMglPopupConfig } from '@elbe-ui/map/popup';
 import { MglGeoJSONSource } from '@elbe-ui/map/source';
-import { ElbTheme } from '@elbe/ui/theme';
 import type { MapLayerMouseEvent } from 'maplibre-gl';
-import { environment } from '../../../../environments/environment';
+import { injectMapStyle } from '../../../map-style';
 
 type SelectedPlace = GeoJSON.Feature<GeoJSON.Point>;
 
@@ -26,7 +25,7 @@ type SelectedPlace = GeoJSON.Feature<GeoJSON.Point>;
   template: `
     <mgl-map
       class="size-full"
-      [mapStyle]="mapStyle()"
+      [mapStyle]="_mapStyle()"
       [center]="center"
       [zoom]="10"
       [minZoom]="1"
@@ -57,7 +56,7 @@ type SelectedPlace = GeoJSON.Feature<GeoJSON.Point>;
   `,
 })
 export class SourcePreview {
-  private readonly _theme = inject(ElbTheme);
+  protected readonly _mapStyle = injectMapStyle();
 
   readonly center: [number, number] = [9.9278215, 53.5584587];
 
@@ -85,11 +84,6 @@ export class SourcePreview {
       },
     ],
   };
-
-  mapStyle = computed(() => {
-    const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;
-    return `${base}?key=${environment.maptilerKey}`;
-  });
 
   showPopup(event: MapLayerMouseEvent) {
     this.selected.set(event.features![0] as GeoJSON.Feature<GeoJSON.Point>);

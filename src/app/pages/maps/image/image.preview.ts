@@ -1,12 +1,11 @@
-import { afterNextRender, Component, computed, inject, signal } from '@angular/core';
+import { afterNextRender, Component, signal } from '@angular/core';
 import { MglMap, type MapImageData } from '@elbe-ui/map';
 import { MglImage, svgToImage } from '@elbe-ui/map/image';
 import { MglLayer } from '@elbe-ui/map/layer';
 import { MglGeoJSONSource } from '@elbe-ui/map/source';
-import { ElbTheme } from '@elbe/ui/theme';
 import { lucideCoffee, lucideLandmark, lucideShoppingBag } from '@ng-icons/lucide';
 import type { SymbolLayerSpecification } from 'maplibre-gl';
-import { environment } from '../../../../environments/environment';
+import { injectMapStyle } from '../../../map-style';
 
 type MapIcon = {
   id: string;
@@ -28,7 +27,7 @@ const ICON_DEFINITIONS = [
   template: `
     <mgl-map
       class="size-full"
-      [mapStyle]="mapStyle()"
+      [mapStyle]="_mapStyle()"
       [center]="center"
       [zoom]="11"
       [minZoom]="1"
@@ -45,7 +44,7 @@ const ICON_DEFINITIONS = [
   `,
 })
 export class ImagePreview {
-  private readonly _theme = inject(ElbTheme);
+  protected readonly _mapStyle = injectMapStyle();
 
   readonly center: [number, number] = [9.9878215, 53.55484587];
 
@@ -90,9 +89,4 @@ export class ImagePreview {
         .catch((error: unknown) => console.error('Could not render map icons', error));
     });
   }
-
-  mapStyle = computed(() => {
-    const base = this._theme.isDark() ? environment.mapDark : environment.mapLight;
-    return `${base}?key=${environment.maptilerKey}`;
-  });
 }

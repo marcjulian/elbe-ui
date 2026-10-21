@@ -6,6 +6,7 @@ import { provideMaptilerConfig } from '@elbe/ui/address-autocomplete/config';
 import { provideSeo } from '@elbe/ui/seo';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
+import { provideMapStyleConfig } from './map-style';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,5 +34,14 @@ export const appConfig: ApplicationConfig = {
       twitterCard: 'summary_large_image',
     }),
     provideMaptilerConfig({ apiKey: environment.maptilerKey }),
+    provideMapStyleConfig({
+      defaultStyle: 'streets',
+      styles: {
+        streets: {
+          light: `${environment.mapLight}?key=${environment.maptilerKey}`,
+          dark: `${environment.mapDark}?key=${environment.maptilerKey}`,
+        },
+      },
+    }),
   ],
 };
