@@ -22,6 +22,7 @@ import type { ClassValue } from 'clsx';
 
 @Component({
   selector: 'hlm-toaster',
+  exportAs: 'hlmToaster',
   imports: [BrnSonnerImports, HlmButtonImports, NgIcon],
   providers: [
     provideIcons({

@@ -20,6 +20,7 @@ import type { ClassValue } from 'clsx';
 
 @Component({
   selector: 'hlm-combobox-trigger',
+  exportAs: 'hlmComboboxTrigger',
   imports: [
     NgIcon,
     HlmButton,

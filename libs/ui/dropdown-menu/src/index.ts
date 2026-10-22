@@ -11,6 +11,7 @@ import { HlmDropdownMenuSeparator } from './lib/hlm-dropdown-menu-separator';
 import { HlmDropdownMenuShortcut } from './lib/hlm-dropdown-menu-shortcut';
 import { HlmDropdownMenuSub } from './lib/hlm-dropdown-menu-sub';
 import { HlmDropdownMenuSubTrigger } from './lib/hlm-dropdown-menu-sub-trigger';
+
 import { HlmDropdownMenuTrigger } from './lib/hlm-dropdown-menu-trigger';
 
 export * from './lib/hlm-dropdown-menu';
