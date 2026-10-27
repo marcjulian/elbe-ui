@@ -11,13 +11,24 @@
 - Map Control - built on [ngx-maplibre-gl](https://github.com/maplibre/ngx-maplibre-gl)
 - Markdown - built on [TanStack Markdown](https://tanstack.com/markdown)
 
+## Maps
+
+Angular map components built on [MapLibre](https://maplibre.org/), forked from [ngx-maplibre-gl](https://github.com/maplibre/ngx-maplibre-gl):
+
+- [Map](https://elbe-ui.dev/maps) - map component, service and types
+- [Marker](https://elbe-ui.dev/maps/marker) - anchor HTML content to a position on the map
+- [Popup](https://elbe-ui.dev/maps/popup) - overlays anchored to a position, feature or marker
+- [Controls](https://elbe-ui.dev/maps/control) - custom and native MapLibre controls
+- [Source](https://elbe-ui.dev/maps/source) - GeoJSON, vector, raster and other map sources
+- [Image](https://elbe-ui.dev/maps/image) - register images for icons, symbols and patterns
+
 ## Blocks
 
 elbe/ui works great with spartan/ui components. Here are some example combinations:
 
 - [Gallery + Carousel](https://elbe-ui.dev/components/gallery#gallery-carousel-preview)
 - [Drawer + Sidebar](https://elbe-ui.dev/components/drawer#sidebar-drawer-mobile)
-- [Map Control](https://elbe-ui.dev/components/map#map-control)
+- [Map Control](https://elbe-ui.dev/components/map-controls#map-control)
 
 ## Tools
 
