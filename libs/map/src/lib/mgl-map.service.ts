@@ -633,6 +633,10 @@ export class MglMapService {
 
   removeSource(sourceId: string) {
     this.zone.runOutsideAngular(() => {
+      if (!this.mapInstance.getSource(sourceId)) {
+        return;
+      }
+
       this.findLayersBySourceId(sourceId).forEach((layer) => this.removeLayer(layer.id));
       this.mapInstance.removeSource(sourceId);
     });
