@@ -1,7 +1,7 @@
 import {
   afterNextRender,
+  Component,
   DestroyRef,
-  Directive,
   ElementRef,
   inject,
   input,
@@ -10,9 +10,10 @@ import {
   OnInit,
   output,
   SimpleChanges,
+  viewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import type { LngLatLikeOrPosition } from '@elbe-ui/map';
+import type { ContentStyle, LngLatLikeOrPosition } from '@elbe-ui/map';
 import { MglMapService } from '@elbe-ui/map';
 import type { MglMarker } from '@elbe-ui/map/marker';
 import type { Popup, PopupOptions } from 'maplibre-gl';
@@ -20,27 +21,31 @@ import { tap } from 'rxjs';
 import { injectMglPopupConfig } from './mgl-popup.config';
 
 /**
- * `mgl-popup` / `[mglPopup]` - a popup directive.
- *
- * The host element is used as the popup content.
- *
+ * `mgl-popup` - a popup component
  * @see [Popup](https://maplibre.org/maplibre-gl-js/docs/API/classes/Popup/)
  *
- * @category Directives
+ * @category Components
  *
  * @example
  * ```html
- * <mgl-map [mapStyle]="style">
- *   <mgl-popup [lngLat]="[-96, 37.8]" [closeOnClick]="false">Hello world !</mgl-popup>
- *
- *   <mgl-marker #myMarker [lngLat]="[-96, 37.8]">…</mgl-marker>
- *   <mgl-popup [marker]="myMarker">Hello from marker !</mgl-popup>
+ * ...
+ * <mgl-map ...>
+ *   <mgl-popup [lngLat]="[-96, 37.8]" [closeOnClick]="false">
+ *     <h1>Hello world !</h1>
+ *   </mgl-popup>
+ *   ...
+ *   <mgl-marker #myMarker ...> ... </mgl-marker>
+ *   <mgl-popup [marker]="myMarker"> Hello from marker ! </mgl-popup>
  * </mgl-map>
  * ```
  */
-@Directive({
-  selector: '[mglPopup], mgl-popup',
-  exportAs: 'mglPopup',
+@Component({
+  selector: 'mgl-popup',
+  template: `
+    <div #content [style]="contentStyle()">
+      <ng-content />
+    </div>
+  `,
   host: {
     'data-slot': 'popup',
   },
@@ -49,7 +54,6 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
   /** Init injection */
   private readonly destroyRef = inject(DestroyRef);
   private readonly mapService = inject(MglMapService);
-  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly config = injectMglPopupConfig();
 
   /** Init input */
@@ -69,6 +73,9 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
 
   /** Init input */
   readonly className = input<PopupOptions['className']>(this.config.className);
+
+  /** Inline styles applied to the popup content element. */
+  readonly contentStyle = input<ContentStyle | undefined>(this.config.contentStyle);
 
   /** Init input */
   readonly locationOccludedOpacity = input<PopupOptions['locationOccludedOpacity']>(
@@ -108,6 +115,8 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
   readonly popupOpen = output<void>();
 
   private popupInstance: Popup | null = null;
+
+  private readonly content = viewChild.required<ElementRef<HTMLDivElement>>('content');
 
   constructor() {
     afterNextRender(() => {
@@ -198,7 +207,7 @@ export class MglPopup implements OnChanges, OnInit, OnDestroy {
           popupClose: this.popupClose,
         },
       },
-      this.elementRef.nativeElement,
+      this.content().nativeElement,
     );
   }
 

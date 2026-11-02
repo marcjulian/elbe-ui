@@ -54,7 +54,7 @@ import { MglLayer } from '@elbe-ui/map/layer';
 import { MglGeoJSONSource } from '@elbe-ui/map/source';
 ```
 
-`MglMap` and `MglMarker` are components; `MglPopup` is a directive. `mgl-map` renders its own container, so the element must be sized. Content placed inside it is instantiated but intentionally **not projected into the DOM** — MapLibre attaches markers, popups and controls once the map is ready:
+`MglMap`, `MglMarker` and `MglPopup` are components. `mgl-map` renders its own container, so the element must be sized. Content placed inside it is instantiated but intentionally **not projected into the DOM** — MapLibre attaches markers, popups and controls once the map is ready:
 
 ```html
 <mgl-map class="size-full" [mapStyle]="style" [center]="[9.99, 53.55]" [zoom]="12">
@@ -66,11 +66,11 @@ import { MglGeoJSONSource } from '@elbe-ui/map/source';
 </mgl-map>
 ```
 
-Markers render a dedicated inner element for MapLibre. Style it with the `className` and
-`contentStyle` inputs, or set defaults with `provideMglMarkerConfig`. Popups still use their host
-element as the popup content, so style and annotate the popup host directly. Directives declared inside `mgl-map` can inject `MglMapService` to
-reach the `maplibre-gl` map instance (`mapCreated$` emits once it is ready, and `mapInstance`
-exposes it).
+Markers and popups render dedicated inner elements for MapLibre. Style their content with the
+`contentStyle` input, or set defaults with `provideMglMarkerConfig`/`provideMglPopupConfig`. The
+marker `className` and popup `className` inputs target MapLibre's own marker/popup containers.
+Directives declared inside `mgl-map` can inject `MglMapService` to reach the `maplibre-gl` map
+instance (`mapCreated$` emits once it is ready, and `mapInstance` exposes it).
 
 ## Building
 

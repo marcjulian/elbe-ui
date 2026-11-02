@@ -35,9 +35,11 @@ import { injectMapStyle } from '../../../map-style';
         Hamburg
       </mgl-marker>
 
-      <mgl-popup [marker]="marker" class="flex flex-col gap-1 p-4">
-        <p class="text-sm font-medium">Hello from Hamburg 👋</p>
-        <p class="text-muted-foreground text-xs">Anchored to the marker.</p>
+      <mgl-popup [marker]="marker">
+        <div class="flex flex-col gap-1 p-4">
+          <p class="text-sm font-medium">Hello from Hamburg 👋</p>
+          <p class="text-muted-foreground text-xs">Anchored to the marker.</p>
+        </div>
       </mgl-popup>
     </mgl-map>
   `,

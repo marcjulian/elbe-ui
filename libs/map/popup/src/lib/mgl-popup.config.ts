@@ -1,15 +1,19 @@
 import { InjectionToken, inject, type ValueProvider } from '@angular/core';
+import type { ContentStyle } from '@elbe-ui/map';
 import type { PopupOptions } from 'maplibre-gl';
 
 /**
  * Default options applied to every `mgl-popup` in the injector scope.
  *
- * All MapLibre popup options are supported. A popup can still override any of
- * them through its inputs.
+ * All MapLibre popup options are supported. `contentStyle` is applied to the
+ * inner popup content element. A popup can still override any of them through
+ * its inputs.
  *
- * @category Directives
+ * @category Components
  */
-export type MglPopupConfig = PopupOptions;
+export type MglPopupConfig = PopupOptions & {
+  contentStyle?: ContentStyle;
+};
 
 const defaultConfig: MglPopupConfig = {};
 
@@ -17,7 +21,7 @@ const defaultConfig: MglPopupConfig = {};
  * Injection token holding the {@link MglPopupConfig}. Prefer
  * {@link provideMglPopupConfig} over using this token directly.
  *
- * @category Directives
+ * @category Components
  */
 export const MGL_POPUP_CONFIG = new InjectionToken<MglPopupConfig>('MglPopupConfig');
 
@@ -33,7 +37,7 @@ export const MGL_POPUP_CONFIG = new InjectionToken<MglPopupConfig>('MglPopupConf
  * };
  * ```
  *
- * @category Directives
+ * @category Components
  */
 export function provideMglPopupConfig(config: Partial<MglPopupConfig>): ValueProvider {
   return {
@@ -46,7 +50,7 @@ export function provideMglPopupConfig(config: Partial<MglPopupConfig>): ValuePro
  * Reads the current {@link MglPopupConfig}, falling back to an empty config
  * when none was provided.
  *
- * @category Directives
+ * @category Components
  */
 export function injectMglPopupConfig(): MglPopupConfig {
   return inject(MGL_POPUP_CONFIG, { optional: true }) ?? defaultConfig;

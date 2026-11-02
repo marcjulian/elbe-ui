@@ -40,9 +40,9 @@ import { PopupPreview } from './popup.preview';
     <elb-h2 id="usage"> Usage </elb-h2>
     <div class="typeset mt-2">
       <p>
-        <code>MglPopup</code> is a directive (<code>[mglPopup]</code> or <code>mgl-popup</code>)
-        that uses its <strong>host element</strong> as the popup content. It must be anchored by
-        exactly one of <code>lngLat</code>, <code>feature</code> or <code>marker</code>.
+        <code>MglPopup</code> is a component (<code>mgl-popup</code>) that renders a dedicated
+        content element for MapLibre. It must be anchored by exactly one of <code>lngLat</code>,
+        <code>feature</code> or <code>marker</code>.
       </p>
       <elb-code-block [code]="usageSnippet" lang="html" />
     </div>
@@ -53,8 +53,7 @@ import { PopupPreview } from './popup.preview';
         <li><code>lngLat</code> — a fixed position on the map.</li>
         <li><code>feature</code> — a GeoJSON point (its coordinates are used).</li>
         <li>
-          <code>marker</code> — an <code>MglMarker</code> template reference
-          (<code>#marker</code>).
+          <code>marker</code> — an <code>MglMarker</code> template reference (<code>#marker</code>).
         </li>
       </ul>
       <p>
@@ -66,15 +65,15 @@ import { PopupPreview } from './popup.preview';
     <elb-h2 id="styling"> Styling </elb-h2>
     <div class="typeset mt-2">
       <p>
-        The popup host is the popup content, so style it directly with
-        <code>class</code>/<code>style</code>:
+        The popup content is an inner element. Style it with <code>contentStyle</code>, or wrap the
+        content in your own element and style that:
       </p>
-      <elb-code-block [code]="stylingHostSnippet" lang="html" />
+      <elb-code-block [code]="stylingContentSnippet" lang="html" />
       <p>
         MapLibre wraps that content in its own <code>.maplibregl-popup-content</code> box and
-        <code>.maplibregl-popup-tip</code> arrow. Those aren't descendants of the host, so target
-        them with the <code>className</code> input (or a config default), which lands on the
-        <code>.maplibregl-popup</code> container:
+        <code>.maplibregl-popup-tip</code> arrow. Those aren't descendants of the content element,
+        so target them with the <code>className</code> input (or a config default), which lands on
+        the <code>.maplibregl-popup</code> container:
       </p>
       <elb-code-block [code]="stylingClassNameSnippet" lang="ts" wrap />
       <p>
@@ -87,8 +86,9 @@ import { PopupPreview } from './popup.preview';
     <elb-h2 id="configuration"> Configuration </elb-h2>
     <div class="typeset mt-2">
       <p>
-        <code>provideMglPopupConfig</code> sets defaults (close button, offset, class name, …) for
-        every <code>mgl-popup</code> within its injector scope. Per-popup inputs still win.
+        <code>provideMglPopupConfig</code> sets defaults (close button, offset, class name, content
+        styles, …) for every <code>mgl-popup</code> within its injector scope. Per-popup inputs
+        still win.
       </p>
       <elb-code-block [code]="configSnippet" lang="ts" />
     </div>
@@ -98,14 +98,18 @@ export class PopupPage {
   usageSnippet = `<mgl-map [mapStyle]="style" [center]="center" [zoom]="12">
   <mgl-marker [lngLat]="center" #marker>Hamburg</mgl-marker>
 
-  <mgl-popup [marker]="marker" class="flex flex-col gap-1 p-4">
-    <p class="text-sm font-medium">Hello from Hamburg 👋</p>
+  <mgl-popup [marker]="marker">
+    <div class="flex flex-col gap-1 p-4">
+      <p class="text-sm font-medium">Hello from Hamburg 👋</p>
+    </div>
   </mgl-popup>
 </mgl-map>`;
 
-  stylingHostSnippet = `<mgl-popup [marker]="marker" class="flex flex-col gap-1 p-4">
-  <p class="text-sm font-medium">Hello from Hamburg</p>
-  <p class="text-muted-foreground text-xs">Anchored to the marker.</p>
+  stylingContentSnippet = `<mgl-popup [marker]="marker">
+  <div class="flex flex-col gap-1 p-4">
+    <p class="text-sm font-medium">Hello from Hamburg</p>
+    <p class="text-muted-foreground text-xs">Anchored to the marker.</p>
+  </div>
 </mgl-popup>`;
 
   stylingClassNameSnippet = `@Component({
@@ -123,6 +127,12 @@ export class PopupPage {
 @custom-variant popup-tip (& .maplibregl-popup-tip);`;
 
   configSnippet = `// app.config.ts or a component's providers
-providers: [provideMglPopupConfig({ closeButton: false, offset: 16 })];
+providers: [
+  provideMglPopupConfig({
+    closeButton: false,
+    offset: 16,
+    contentStyle: { padding: '1rem' },
+  }),
+];
 `;
 }
