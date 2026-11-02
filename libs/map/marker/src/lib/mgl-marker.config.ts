@@ -1,16 +1,19 @@
 import { InjectionToken, inject, type ValueProvider } from '@angular/core';
+import type { ContentStyle } from '@elbe-ui/map';
 import type { MarkerOptions } from 'maplibre-gl';
 
 /**
  * Default options applied to every `mgl-marker` in the injector scope.
  *
- * All MapLibre marker options except `element` and `className` are supported —
- * the host element is the marker element, so style/annotate it (including its
- * classes) directly. A marker can still override any option through its inputs.
+ * All MapLibre marker options except `element` are supported. `className` and
+ * `contentStyle` are applied to the inner marker element. A marker can still
+ * override any option through its inputs.
  *
- * @category Directives
+ * @category Components
  */
-export type MglMarkerConfig = Omit<MarkerOptions, 'element' | 'className'>;
+export type MglMarkerConfig = Omit<MarkerOptions, 'element'> & {
+  contentStyle?: ContentStyle;
+};
 
 const defaultConfig: MglMarkerConfig = {};
 
@@ -34,7 +37,7 @@ export const MGL_MARKER_CONFIG = new InjectionToken<MglMarkerConfig>('MglMarkerC
  * };
  * ```
  *
- * @category Directives
+ * @category Components
  */
 export function provideMglMarkerConfig(config: Partial<MglMarkerConfig>): ValueProvider {
   return {
@@ -47,7 +50,7 @@ export function provideMglMarkerConfig(config: Partial<MglMarkerConfig>): ValueP
  * Reads the current {@link MglMarkerConfig}, falling back to an empty config
  * when none was provided.
  *
- * @category Directives
+ * @category Components
  */
 export function injectMglMarkerConfig(): MglMarkerConfig {
   return inject(MGL_MARKER_CONFIG, { optional: true }) ?? defaultConfig;

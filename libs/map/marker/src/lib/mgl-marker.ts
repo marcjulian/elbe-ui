@@ -2,8 +2,8 @@ import type { BooleanInput } from '@angular/cdk/coercion';
 import {
   afterNextRender,
   booleanAttribute,
+  Component,
   DestroyRef,
-  Directive,
   ElementRef,
   inject,
   input,
@@ -13,37 +13,39 @@ import {
   output,
   signal,
   SimpleChanges,
+  viewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import type { LngLatLikeOrPosition } from '@elbe-ui/map';
+import type { ContentStyle, LngLatLikeOrPosition } from '@elbe-ui/map';
 import { MglMapService } from '@elbe-ui/map';
 import type { Marker, MarkerOptions } from 'maplibre-gl';
 import { injectMglMarkerConfig } from './mgl-marker.config';
 
 /**
- * `mgl-marker` / `[mglMarker]` - a marker directive.
- *
- * The host element is used as the MapLibre marker element, so any projected
- * content (or styling on the host) becomes the marker's content. When the host
- * has no children, MapLibre's default marker is used.
- *
+ * `mgl-marker` - a marker component
  * @see [Marker](https://maplibre.org/maplibre-gl-js/docs/API/classes/Marker/)
  *
- * @category Directives
+ * @category Components
  *
  * @example
  * ```html
- * <mgl-map [mapStyle]="style">
- *   <mgl-marker [lngLat]="[9.99, 53.55]" #marker="mglMarker">Hamburg</mgl-marker>
- *   <mgl-popup [marker]="marker">Hello</mgl-popup>
+ * ...
+ * <mgl-map ...>
+ *   <mgl-marker [lngLat]="[-66.324462890625, -16.024695711685304]">
+ *     <div (click)="alert('Foo')" class="marker">Hello</div>
+ *   </mgl-marker>
  * </mgl-map>
  * ```
  *
- * Note: Only use this if you **really** need to use HTML/Angular to render your symbol. These markers are slow compared to a `Layer` of symbol because they're not rendered using WebGL.
+ * Note: Only use this if you **really** need to use HTML/Angular component to render your symbol. These markers are slow compared to a `Layer` of symbol because they're not rendered using WebGL.
  */
-@Directive({
-  selector: '[mglMarker], mgl-marker',
-  exportAs: 'mglMarker',
+@Component({
+  selector: 'mgl-marker',
+  template: `
+    <div #content [class]="className()" [style]="contentStyle()">
+      <ng-content />
+    </div>
+  `,
   host: {
     'data-slot': 'marker',
   },
@@ -52,7 +54,6 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
   /** Init injection */
   private readonly mapService = inject(MglMapService);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly config = injectMglMarkerConfig();
 
   /** Init inputs */
@@ -68,6 +69,10 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
   readonly subpixelPositioning = input<MarkerOptions['subpixelPositioning']>(
     this.config.subpixelPositioning,
   );
+  /** Classes applied to the marker element. */
+  readonly className = input<MarkerOptions['className']>(this.config.className);
+  /** Inline styles applied to the marker element. */
+  readonly contentStyle = input<ContentStyle | undefined>(this.config.contentStyle);
   /** Dynamic input */
   readonly feature = input<GeoJSON.Feature<GeoJSON.Point>>();
   readonly lngLat = input<LngLatLikeOrPosition>();
@@ -87,12 +92,14 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
 
   readonly markerInstance = signal<Marker | null>(null);
 
+  private readonly content = viewChild.required<ElementRef<HTMLDivElement>>('content');
+
   constructor() {
     afterNextRender(() => {
       this.mapService.mapCreated$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
         const marker = this.mapService.addMarker({
           markersOptions: {
-            element: this.elementRef.nativeElement,
+            element: this.content().nativeElement,
             feature: this.feature(),
             lngLat: this.lngLat(),
             offset: this.offset(),
@@ -130,7 +137,9 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const markerInstance = this.markerInstance()!;
+    const markerInstance = this.markerInstance();
+    if (!markerInstance) return;
+
     if (changes['lngLat'] && !changes['lngLat'].isFirstChange()) {
       markerInstance.setLngLat(changes['lngLat'].currentValue);
     }
@@ -158,11 +167,14 @@ export class MglMarker implements OnChanges, OnInit, OnDestroy {
   }
 
   removeMarker() {
-    this.mapService.removeMarker(this.markerInstance()!);
-    this.markerInstance.set(null);
+    const marker = this.markerInstance();
+    if (marker) {
+      this.mapService.removeMarker(marker);
+      this.markerInstance.set(null);
+    }
   }
 
   togglePopup() {
-    this.markerInstance()!.togglePopup();
+    this.markerInstance()?.togglePopup();
   }
 }

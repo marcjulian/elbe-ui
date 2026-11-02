@@ -29,8 +29,8 @@ import { injectMapStyle } from '../../../map-style';
     >
       <mgl-marker
         [lngLat]="center"
-        #marker="mglMarker"
-        class="border-border bg-primary text-primary-foreground rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
+        #marker
+        className="border-border bg-primary text-primary-foreground rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
       >
         Hamburg
       </mgl-marker>

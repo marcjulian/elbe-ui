@@ -20,7 +20,7 @@ import { injectMapStyle } from '../../../map-style';
     >
       <mgl-marker
         [lngLat]="center"
-        class="border-border bg-background z-20 rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
+        className="border-border bg-background z-20 rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
       >
         Marker 1
       </mgl-marker>
@@ -28,7 +28,7 @@ import { injectMapStyle } from '../../../map-style';
       <mgl-marker
         [lngLat]="center"
         [offset]="markerOffset"
-        class="border-border bg-primary text-primary-foreground z-10 rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
+        className="border-border bg-primary text-primary-foreground z-10 rounded-full border px-2.5 py-1 text-xs font-medium shadow-md"
       >
         Marker 2
       </mgl-marker>

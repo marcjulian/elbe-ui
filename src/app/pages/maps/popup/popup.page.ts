@@ -53,8 +53,8 @@ import { PopupPreview } from './popup.preview';
         <li><code>lngLat</code> — a fixed position on the map.</li>
         <li><code>feature</code> — a GeoJSON point (its coordinates are used).</li>
         <li>
-          <code>marker</code> — an <code>MglMarker</code> reference
-          (<code>#marker="mglMarker"</code>).
+          <code>marker</code> — an <code>MglMarker</code> template reference
+          (<code>#marker</code>).
         </li>
       </ul>
       <p>
@@ -96,7 +96,7 @@ import { PopupPreview } from './popup.preview';
 })
 export class PopupPage {
   usageSnippet = `<mgl-map [mapStyle]="style" [center]="center" [zoom]="12">
-  <mgl-marker [lngLat]="center" #marker="mglMarker">Hamburg</mgl-marker>
+  <mgl-marker [lngLat]="center" #marker>Hamburg</mgl-marker>
 
   <mgl-popup [marker]="marker" class="flex flex-col gap-1 p-4">
     <p class="text-sm font-medium">Hello from Hamburg 👋</p>

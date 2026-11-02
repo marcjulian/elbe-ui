@@ -23,7 +23,7 @@ import { filter, switchMap } from 'rxjs/operators';
 /**
  * Options accepted by {@link MglMarkerCluster} for styling its
  * markers, based on maplibre-gl's `MarkerOptions` without the options the
- * marker directive handles through its host element.
+ * marker component handles through its content element.
  *
  * @category Components
  */

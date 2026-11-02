@@ -38,23 +38,24 @@ import { MarkerPreview } from './marker.preview';
     <elb-h2 id="usage"> Usage </elb-h2>
     <div class="typeset mt-2">
       <p>
-        <code>MglMarker</code> is a directive (<code>[mglMarker]</code> or <code>mgl-marker</code>)
-        that uses its <strong>host element</strong> as the marker element. Style and annotate the
-        host directly.
+        <code>MglMarker</code> is a component (<code>mgl-marker</code>) that renders a dedicated
+        marker element for MapLibre. Style it with the <code>className</code> and
+        <code>contentStyle</code> inputs.
       </p>
       <elb-code-block [code]="usageSnippet" lang="html" />
       <p>
-        Give it an <code>exportAs="mglMarker"</code> reference to anchor a popup to it, or to call
+        Give it a template reference to anchor a popup to it, or to call
         <code>togglePopup()</code>.
       </p>
-      <elb-code-block [code]="exportAsSnippet" lang="html" />
+      <elb-code-block [code]="markerRefSnippet" lang="html" />
     </div>
 
     <elb-h2 id="default-marker"> Default marker </elb-h2>
     <div class="typeset mt-2">
       <p>
-        When the host has no children, MapLibre's default marker is used. Add any content (or style
-        the host) to render your own marker.
+        When no content is projected, MapLibre's default marker is used. Add any content (and style
+        the marker element with <code>className</code> or <code>contentStyle</code>) to render your
+        own marker.
       </p>
     </div>
 
@@ -63,15 +64,15 @@ import { MarkerPreview } from './marker.preview';
       <p>
         MapLibre appends markers to the canvas container in DOM order and sets no
         <code>z-index</code>, so the last marker renders on top by default. Control the stacking
-        with a <code>z-index</code> on the host.
+        with a <code>z-index</code> on the marker element.
       </p>
     </div>
 
     <elb-h2 id="z-index"> z-index </elb-h2>
     <div class="typeset mt-2">
       <p>
-        A marker's stacking can be controlled through the host's <code>class</code> (e.g. the
-        Tailwind <code>z-10</code> utility) or its <code>style</code> directly:
+        A marker's stacking can be controlled through <code>className</code> (e.g. the Tailwind
+        <code>z-10</code> utility) or <code>contentStyle</code> directly:
       </p>
       <elb-code-block [code]="zIndexSnippet" lang="html" />
       <p>
@@ -84,8 +85,9 @@ import { MarkerPreview } from './marker.preview';
     <elb-h2 id="configuration"> Configuration </elb-h2>
     <div class="typeset mt-2">
       <p>
-        <code>provideMglMarkerConfig</code> sets defaults (offset, anchor, color, draggable, …) for
-        every <code>mgl-marker</code> within its injector scope. Per-marker inputs still win.
+        <code>provideMglMarkerConfig</code> sets defaults (offset, anchor, color, draggable,
+        className, contentStyle, …) for every <code>mgl-marker</code> within its injector scope.
+        Per-marker inputs still win.
       </p>
       <elb-code-block [code]="configSnippet" lang="ts" />
     </div>
@@ -93,19 +95,22 @@ import { MarkerPreview } from './marker.preview';
 })
 export class MarkerPage {
   usageSnippet = `<mgl-map [mapStyle]="style" [center]="center" [zoom]="12">
-  <mgl-marker [lngLat]="center" class="rounded-full bg-primary px-2 py-1 text-xs">
+  <mgl-marker
+    [lngLat]="center"
+    className="rounded-full bg-primary px-2 py-1 text-xs"
+  >
     Hamburg
   </mgl-marker>
 </mgl-map>`;
 
-  exportAsSnippet = `<mgl-marker [lngLat]="center" #marker="mglMarker">Hamburg</mgl-marker>
+  markerRefSnippet = `<mgl-marker [lngLat]="center" #marker>Hamburg</mgl-marker>
 <mgl-popup [marker]="marker">Hello from Hamburg</mgl-popup>`;
 
   zIndexSnippet = `<!-- Tailwind utility -->
-<mgl-marker [lngLat]="[lng, lat]" class="z-10">…</mgl-marker>
+<mgl-marker [lngLat]="[lng, lat]" className="z-10">…</mgl-marker>
 
 <!-- or bind the style -->
-<mgl-marker [lngLat]="[lng, lat]" [style.zIndex]="level">…</mgl-marker>`;
+<mgl-marker [lngLat]="[lng, lat]" [contentStyle]="{ zIndex: level }">…</mgl-marker>`;
 
   isolationSnippet = `/* styles.css */
 .maplibregl-canvas-container {
@@ -113,6 +118,12 @@ export class MarkerPage {
 }`;
 
   configSnippet = `// app.config.ts or a component's providers
-providers: [provideMglMarkerConfig({ offset: [0, -14] })];
+providers: [
+  provideMglMarkerConfig({
+    offset: [0, -14],
+    className: 'rounded-full bg-primary px-2 py-1 text-xs',
+    contentStyle: { zIndex: 10 },
+  }),
+];
 `;
 }

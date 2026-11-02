@@ -32,6 +32,14 @@ export type EventData = Record<string, any>;
  */
 export type LngLatLikeOrPosition = LngLatLike | GeoJSON.Position;
 
+/**
+ * Inline styles accepted by a marker's content element. Either a CSS
+ * declaration string (`'z-index: 8'`) or a map of properties, where keys may be
+ * camelCase (`zIndex`), kebab-case (`z-index`) or custom properties
+ * (`--marker-level`). `null` and `undefined` values remove the declaration.
+ */
+export type ContentStyle = string | Record<string, string | number | null | undefined>;
+
 /** The payload of the `data` and `dataloading` map events. */
 export type MapDataEvent = MapSourceDataEvent | MapStyleDataEvent;
 

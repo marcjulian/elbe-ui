@@ -504,7 +504,8 @@ export class MglMapService {
     });
   }
 
-  removeMarker(marker: Marker) {
+  removeMarker(marker: Marker | null | undefined) {
+    if (!marker) return;
     this.markersToRemove.update((markers) => [...markers, marker]);
   }
 
@@ -737,7 +738,7 @@ export class MglMapService {
 
   private removeMarkers() {
     for (const marker of this.markersToRemove()) {
-      marker.remove();
+      marker?.remove();
     }
     this.markersToRemove.set([]);
   }

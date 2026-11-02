@@ -33,7 +33,7 @@ export const mapsRoutes: Routes = [
         data: {
           ...meta({
             description:
-              'Anchor HTML content to a position on the map and style it through the host element.',
+              'Anchor HTML content to a position on the map and style it through the marker element.',
             ogImage: '/assets/og/maps-marker.webp',
           }),
         },
