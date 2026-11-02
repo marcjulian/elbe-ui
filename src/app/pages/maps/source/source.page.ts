@@ -172,9 +172,11 @@ export class SourcePage {
 />
 
 @if (selected(); as place) {
-  <mgl-popup [feature]="place" class="flex flex-col gap-1 p-4">
-    <p class="text-sm font-medium">{{ place.properties?.['name'] }}</p>
-    <p class="text-muted-foreground text-xs">GeoJSON feature</p>
+  <mgl-popup [feature]="place">
+    <div class="flex flex-col gap-1 p-4">
+      <p class="text-sm font-medium">{{ place.properties?.['name'] }}</p>
+      <p class="text-muted-foreground text-xs">GeoJSON feature</p>
+    </div>
   </mgl-popup>
 }`;
 
